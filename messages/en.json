@@ -93,5 +93,30 @@
    "HowItWorks": {
       "title": "How it works",
       "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
-   }
+   },
+   "FAQs": {
+     "title": "FAQ's",
+     "items": {
+       "faqFirst": {
+         "question": "How to contact with Customer Service?",
+         "answer": "Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!."
+       },
+       "faqSecond": {
+         "question": "App installation failed, how to update system information?",
+         "answer": "To update system information after a failed app installation, follow these steps:\n1. Check your device's network connection.\n2. Restart your device.\n3. Ensure your device has enough storage space.\n4. Update your device's operating system to the latest version.\n5. Try reinstalling the app."
+      },
+      "faqThird": {
+        "question": "Website response time is slow, how to improve?",
+        "answer": "To improve website response time, consider the following:\n1. Optimize images and multimedia content for faster loading.\n2. Use a Content Delivery Network (CDN) to serve content closer to users.\n3. Minimize HTTP requests by combining files and scripts.\n4. Implement caching strategies to store frequently accessed data.\n5. Upgrade your web hosting plan or server resources if needed."
+      },
+      "faqFourth": {
+        "question": "How do I create an account?",
+        "answer": "Creating an account is simple:\n1. Visit our website and locate the 'Sign Up' or 'Register' button.\n2. Fill out the required information, including your name, email address, and password.\n3. Follow any additional verification steps if prompted.\n4. Click 'Submit' or 'Create Account'.\n5. You may now log in with your newly created credentials."
+      },
+      "faqFifth": {
+        "question": "How to reset my password?",
+        "answer": "To reset your password:\n1. Go to the login page and click on the 'Forgot Password' or 'Reset Password' link.\n2. Enter your email address associated with your account.\n3. Check your email inbox for a password reset link.\n4. Click on the link provided and follow the instructions to set a new password.\n5. Log in with your new password."
+      }
+    }
+  }
 }

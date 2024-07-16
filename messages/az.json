@@ -104,5 +104,31 @@
    "HowItWorks": {
       "title": "Bu necə işləyir",
       "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
-   }
+
+},
+"FAQs": {
+    "title": "Tez-tez Verilən Suallar",
+    "items": {
+      "faqFirst": {
+        "question": "Müştəri Xidmətləri ilə necə əlaqə qurulur?",
+        "answer": "Bizim Müştəri Təcrübəsi Komandamız həftənin 7 günü mövcuddur və biz əlaqə qurmaq üçün iki yol təklif edirik: e-poçt və çat. Biz tez cavab verməyə çalışırıq, beləliklə cavab gözləmək üçün çox uzun gözləmək lazım deyil!"
+      },
+      "faqSecond": {
+        "question": "Proqram quraşdırılması uğursuz oldu, sistem məlumatlarını necə yeniləmək olar?",
+        "answer": "Proqram quraşdırılmasından sonra sistem məlumatlarını yeniləmək üçün aşağıdakı addımları izləyin:\n1. Cihazınızın şəbəkə bağlantısını yoxlayın.\n2. Cihazınızı yenidən başladın.\n3. Cihazınızda kifayət qədər yer olub-olmadığını yoxlayın.\n4. Cihazınızın əməliyyat sisteminizi ən son versiyaya yeniləyin.\n5. Proqramı yenidən quraşdırmağa cəhd edin."
+      },
+      "faqThird": {
+        "question": "Veb saytın cavab vaxtı yavaşdır, necə yaxşılaşdırmaq olar?",
+        "answer": "Veb saytın cavab vaxtını yaxşılaşdırmaq üçün aşağıdakı tövsiyələri nəzərdən keçirin:\n1. Şəkilləri və multimedia məzmununu sürətli yüklənmə üçün optimallaşdırın.\n2. Məzmunu yaxın istifadəçilərə xidmət edən Məzmun Təchizat Şəbəkəsi (CDN) istifadə edin.\n3. HTTP sorğularını bir araya gətirərək faylları və skriptləri minimalizə edin.\n4. Tez-tez istifadə olunan məlumatları saxlamaq üçün kəşləmə strategiyalarını tətbiq edin.\n5. Ehtiyac olarsa, hosting planınızı və ya server resurslarını yeniləyin."
+      },
+      "faqFourth": {
+        "question": "Hesab yaratmaq necədir?",
+        "answer": "Hesab yaratmaq çox sadədir:\n1. Bizim veb saytımızı ziyarət edin və 'Qeydiyyat' və ya 'Hesab yaratmaq' düyməsini tapın.\n2. Adınız, e-poçt ünvanınız və şifrənizi daxil edərək tələb olunan məlumatı doldurun.\n3. Tələb olunan təsdiqləmə addımlarını əgər tələb edilsə, izləyin.\n4. 'Göndər' və ya 'Hesab yarat' düyməsinə basın.\n5. Artıq yeni yaratılmış məlumatlarınızla daxil ola bilərsiniz."
+      },
+    "faqFifth": {
+    "question": "Parolunuzu necə sıfırlamaq olar?",
+    "answer": "Parolunuzu sıfırlamaq üçün:\n1. Giriş səhifəsinə keçin və 'Parolu unutdum' və ya 'Parolu sıfırla' keçidinə klikləyin.\n2. Hesabınızla əlaqəli e-poçt ünvanınızı daxil edin.\n3. Parolunuzu sıfırlamaq üçün göndərilən linki e-poçt qutunuza yoxlayın.\n4. Təqdim edilən keçidi klikləyin və yeni parol qurmaq üçün təlimatları izləyin.\n5. Yeni parolunuzla daxil olun."
+  }
+ }
+}
 }
