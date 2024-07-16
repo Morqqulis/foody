@@ -1,11 +1,9 @@
-import { NextPage } from 'next'
+import { NextPage } from "next";
 
 interface IRestaurants {}
 
 const RestaurantsPage: NextPage = (): JSX.Element => {
-  return (
-    <div>page</div>
-  )
-}
+  return <main>page</main>;
+};
 
-export default RestaurantsPage
+export default RestaurantsPage;

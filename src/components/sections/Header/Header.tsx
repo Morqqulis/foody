@@ -16,8 +16,8 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
    const path = usePathname()
    const t = useTranslations('Header')
    return (
-      <header className={`${className || ''}`}>
-         <div className={`container`}>
+      <header className={`${className || ''} `}>
+         <div className={`container `}>
             <div
                className={`flex  rounded py-9  pt-7 ${path === '/login' ? 'bg-normal-red px-[40px]' : 'bg-gray-7 pl-[57px]'}`}
             >
