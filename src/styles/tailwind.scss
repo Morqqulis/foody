@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply h-full tracking-[.3px];
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    & > * > * {
+      @apply transition-all duration-300;
+    }
+  }
+
+  main {
+    @apply flex-[1_1_auto] grow;
+    > * {
+      @apply min-w-0 duration-300;
+    }
+  }
+
+  img {
+    @apply transition-all duration-300;
+  }
+  a,
+  button {
+    @apply whitespace-nowrap transition-all duration-300;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .wrapper {
+    @apply flex min-h-screen flex-col overflow-x-hidden;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .container,
+  [class*="__container"] {
+    @apply mx-auto max-w-[1440px] px-5;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 0s 600000s,
+    color 0s 600000s !important;
+}

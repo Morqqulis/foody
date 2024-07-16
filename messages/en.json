@@ -1,0 +1,97 @@
+{
+   "Header": {
+      "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
+      "search": "Search...",
+      "signUp": "Sign Up"
+   },
+   "Footer": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
+      "popular": {
+         "title": "Popular",
+         "links": [
+            "Programming",
+            "Books for children",
+            "Psychology",
+            "Business"
+         ]
+      },
+
+      "cash": {
+         "title": "Cash",
+         "links": ["Delivery", "Payment", "About the store"]
+      },
+
+      "help": {
+         "title": "Help",
+         "links": ["Contacts", "Purchase returns", "Buyer help"]
+      },
+
+      "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
+   },
+
+   "Login": {
+      "signIn": "Login",
+      "signUp": "Register",
+      "form": {
+         "fullName": "Full Name",
+         "userName": "Username",
+         "email": "Email",
+         "password": "Password",
+         "btnSignIn": "Log in",
+         "btnSignUp": "Register"
+      }
+   },
+
+   "Home": {
+      "Hero": {
+         "title": "Our Food site makes it easy to find local food",
+         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+         "firstBtn": "Get Started",
+         "secondBtn": "Order now"
+      },
+      "Features": {
+         "title": "Features",
+         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+         "cardsTitle": [
+            "Discount Boucher",
+            "Fresh healthy Food",
+            "Fast Home Delivery"
+         ],
+         "cardsText": [
+            "Lorem ipsum is placeholder  commonly used in the graphic",
+            "Lorem ipsum is placeholder  commonly used in the graphic",
+            "Lorem ipsum is placeholder  commonly used in the graphic"
+         ]
+      },
+      "Food": {
+         "titles": [
+            "Menu That Always Make You Fall In Love",
+            "Yummy Always Papa John’s Pizza.Agree?",
+            "Do You Like French Fries? Mmm..."
+         ],
+         "texts": [
+            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+         ]
+      },
+      "Popular": {
+         "title": "Our Popular Update New Foods",
+         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+         "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
+         "cardsTexts": [
+            "Lorem ipsum is placeholder  commonly used in the graphic ",
+            "Lorem ipsum is placeholder  commonly used in the graphic ",
+            "Lorem ipsum is placeholder  commonly used in the graphic "
+         ]
+      },
+      "Discover": {
+         "title": "Discover Restaurants Near From you",
+         "buttonText": "Explore"
+      }
+   },
+   "HowItWorks": {
+      "title": "How it works",
+      "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
+   }
+}
