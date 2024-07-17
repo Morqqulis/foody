@@ -7,7 +7,6 @@ import {
   AccordionContent,
 } from '@ui/accordion';
 
-
 const FaqsSection = () => {
   const t = useTranslations('FAQs');
 
@@ -88,8 +87,7 @@ const FaqsSection = () => {
                   key="faqFifth"
                   aria-label={t("items.faqFifth.question")}
                   title={t("items.faqFifth.question")}
-                  className="p-6 text-lg font-medium text-[#828282]"
-                >
+                  className="p-6 text-lg font-medium text-[#828282]">
                   {t("items.faqFifth.answer")}
                 </div>
               </AccordionContent>
