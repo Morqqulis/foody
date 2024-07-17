@@ -1,10 +1,12 @@
 import React from 'react'
-import Chart from '../../../../components/Charts/chart'
+import OrderChart from '../../../../components/Charts/OrderChart'
+import AmountChart from '../../../../components/Charts/AmountChart'
 
 const Dashboard = () => {
   return (
     <div>
-        <Chart/>
+        <OrderChart/>
+        {/* <AmountChart/> */}
     </div>
   )
 }
