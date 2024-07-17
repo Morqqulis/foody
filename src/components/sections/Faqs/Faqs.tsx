@@ -7,6 +7,7 @@ import {
   AccordionContent,
 } from '@ui/accordion';
 
+
 const FaqsSection = () => {
   const t = useTranslations('FAQs');
 
