@@ -10,4 +10,5 @@ const FaqsPage: NextPage = () => {
   );
 };
 
+
 export default FaqsPage;
