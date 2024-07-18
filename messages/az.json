@@ -91,26 +91,31 @@
       "buttonText": "Təzə düzənlər"
     }
   },
+
   "Restaurants": {
     "Metadata": {
       "title": "Restoranlar",
       "description": "Yaxınlığınızdakı ən yaxşı restoranları axtarın. Menyuları, qiymətləri və rəyləri müqayisə edin və düzgün seçimi edin."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "Haqqımızda",
       "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
     }
   },
+
   "HowItWorks": {
     "Metadata": {
       "title": "Necə işləyir",
       "description": "Xidmətimizin necə işlədiyini və sizə hansı faydaları təklif edə biləcəyini öyrənin."
     },
+
     "title": "Bu necə işləyir",
     "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
   },
+
   "FAQs": {
     "Metadata": {
       "title": "FAQ",
@@ -146,6 +151,12 @@
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
+
+    "Header": {
+      "btn": "Mehsul artir",
+      "admin": "Admin"
+    },
+
     "Products": {
       "Modal": {
         "title": "Silmək istədiyinizdən əminsinizmi?",
@@ -156,7 +167,7 @@
     },
 
     "Aside": {
-      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif","Çıxış"]
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif", "Çıxış"]
     }
   },
 
@@ -167,8 +178,8 @@
     }
   },
   "Basket": {
-"title": "Səbətiniz",
-"items": "Məhsul",
-"checkout": "Təsdiqlə"
-}
+    "title": "Səbətiniz",
+    "items": "Məhsul",
+    "checkout": "Təsdiqlə"
+  }
 }

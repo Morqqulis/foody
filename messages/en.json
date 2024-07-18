@@ -140,8 +140,11 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Header": {
+      "btn": "Add Product",
+      "admin": "Admin"
+    },
 
-    
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
@@ -165,5 +168,5 @@
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
- }
+  }
 }
