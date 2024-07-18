@@ -1,18 +1,14 @@
-import { roboto } from "@settings/fonts";
-import "@styles/index.scss";
-import Header from "@sections/Header/Header";
-import Footer from "@sections/Footer/Footer";
-import Provider from "@providers/Provider";
-
+import Provider from "@providers/Provider"
+import Footer from "@sections/Footer/Footer"
+import Header from "@sections/Header/Header"
+import { roboto } from "@settings/fonts"
+import "@styles/index.scss"
 interface IRootLayout {
   params: { locale: string };
   children: React.ReactNode;
 }
 
-export default function RootLayout({
-  children,
-  params: { locale },
-}: IRootLayout) {
+export default function RootLayout({ children, params: { locale } }: IRootLayout) {
   return (
     <html lang={locale}>
       <body className={roboto.className}>
@@ -22,6 +18,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+         
         </Provider>
       </body>
     </html>

@@ -1,108 +1,157 @@
 {
-   "Header": {
-      "menu": [
-         "Ana səhifə",
-         "Restoranlar",
-         "Haqqımızda",
-         "Necə işləyir?",
-         "FAQ"
-      ],
+  "Header": {
+    "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
 
-      "search": "Axtar...",
-      "signUp": "Qeydiyyat"
-   },
+    "search": "Axtar...",
+    "signUp": "Qeydiyyat"
+  },
 
-   "Footer": {
-      "text": "Lorem ipsum, qrafikdə çox istifadə olunan yer tutucu mətndir.",
+  "Footer": {
+    "text": "Lorem ipsum, qrafikdə çox istifadə olunan yer tutucu mətndir.",
 
-      "popular": {
-         "title": "Populyar",
-         "links": ["Programlama", "Kitablar", "Psixoloji", "Biznes"]
+    "popular": {
+      "title": "Populyar",
+      "links": ["Programlama", "Kitablar", "Psixoloji", "Biznes"]
+    },
+
+    "cash": {
+      "title": "Nagd",
+      "links": ["Cavabdeh", "Ödəmə", "Magazin haqqında"]
+    },
+
+    "help": {
+      "title": "Yardım",
+      "links": ["Əlaqə", "Alışı qaytarma", "Alıcı yardımı"]
+    },
+
+    "copyright": "Bütün hüquqlar qorunur © 2003-2023 Foody İSTİFADƏ ŞƏRTLƏRİ | Gizlilik Siyasəti"
+  },
+
+  "Login": {
+    "Metadata": {
+      "title": "Giriş",
+      "description": "Foody - Giriş səhifəsi"
+    },
+    "signIn": "Giriş",
+    "signUp": "Qeydiyyat",
+
+    "form": {
+      "fullName": "Ad və soyad",
+      "userName": "Istifadəci adı",
+      "email": "Email",
+      "password": "Sifrə",
+      "btnSignIn": "Daxil ol",
+      "btnSignUp": "Qeydiyyat"
+    }
+  },
+
+  "Home": {
+    "Metadata": {
+      "title": "Ana səhifə",
+      "description": "Foody - Ana səhifə"
+    },
+    "Hero": {
+      "title": "Qida saytımız yerli yeməkləri tapmağı asanlaşdırır",
+      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "firstBtn": "Başlamaq",
+      "secondBtn": "İndi sifariş edin"
+    },
+
+    "Features": {
+      "title": "Xidmətlər",
+      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləriizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+
+      "cardsTitle": ["Endirim kuponu", "Təzə sağlam qida", "Evə Sürətli Çatdırılma"],
+      "cardsText": [
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+      ]
+    },
+    "Food": {
+      "titles": ["Sizi Həmişə Aşiq Etdirən Menyu", "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?", "Kartof qızartması xoşunuza gəlirmi? Mmm..."],
+      "texts": [
+        "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
+        "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
+        "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir."
+      ]
+    },
+    "Popular": {
+      "title": "Populyar",
+      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
+      "cardsTexts": [
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
+        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+      ]
+    },
+    "Discover": {
+      "title": "Sizə yaxın restoranları kəşf edin",
+      "buttonText": "Təzə düzənlər"
+    }
+  },
+  "Restaurants": {
+    "Metadata": {
+      "title": "Restoranlar",
+      "description": "Yaxınlığınızdakı ən yaxşı restoranları axtarın. Menyuları, qiymətləri və rəyləri müqayisə edin və düzgün seçimi edin."
+    }
+  },
+  "AboutUs": {
+    "Metadata": {
+      "title": "Haqqımızda",
+      "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
+    }
+  },
+  "HowItWorks": {
+    "Metadata": {
+      "title": "Necə işləyir",
+      "description": "Xidmətimizin necə işlədiyini və sizə hansı faydaları təklif edə biləcəyini öyrənin."
+    },
+    "title": "Bu necə işləyir",
+    "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
+  },
+  "FAQs": {
+    "Metadata": {
+      "title": "FAQ",
+      "description": "Bu tez-tez sorulan suallar (SSS), istifadəçilərin bir veb saytında ola biləcəyi ümumi suallara cavabların siyahısı olan bir bölmədir."
+    },
+    "title": "Tez-tez Verilən Suallar",
+    "items": {
+      "faqFirst": {
+        "question": "Müştəri Xidmətləri ilə necə əlaqə qurulur?",
+        "answer": "Bizim Müştəri Təcrübəsi Komandamız həftənin 7 günü mövcuddur və biz əlaqə qurmaq üçün iki yol təklif edirik: e-poçt və çat. Biz tez cavab verməyə çalışırıq, beləliklə cavab gözləmək üçün çox uzun gözləmək lazım deyil!"
       },
-
-      "cash": {
-         "title": "Nagd",
-         "links": ["Cavabdeh", "Ödəmə", "Magazin haqqında"]
+      "faqSecond": {
+        "question": "Proqram quraşdırılması uğursuz oldu, sistem məlumatlarını necə yeniləmək olar?",
+        "answer": "Proqram quraşdırılmasından sonra sistem məlumatlarını yeniləmək üçün aşağıdakı addımları izləyin:\n1. Cihazınızın şəbəkə bağlantısını yoxlayın.\n2. Cihazınızı yenidən başladın.\n3. Cihazınızda kifayət qədər yer olub-olmadığını yoxlayın.\n4. Cihazınızın əməliyyat sisteminizi ən son versiyaya yeniləyin.\n5. Proqramı yenidən quraşdırmağa cəhd edin."
       },
-
-      "help": {
-         "title": "Yardım",
-         "links": ["Əlaqə", "Alışı qaytarma", "Alıcı yardımı"]
+      "faqThird": {
+        "question": "Veb saytın cavab vaxtı yavaşdır, necə yaxşılaşdırmaq olar?",
+        "answer": "Veb saytın cavab vaxtını yaxşılaşdırmaq üçün aşağıdakı tövsiyələri nəzərdən keçirin:\n1. Şəkilləri və multimedia məzmununu sürətli yüklənmə üçün optimallaşdırın.\n2. Məzmunu yaxın istifadəçilərə xidmət edən Məzmun Təchizat Şəbəkəsi (CDN) istifadə edin.\n3. HTTP sorğularını bir araya gətirərək faylları və skriptləri minimalizə edin.\n4. Tez-tez istifadə olunan məlumatları saxlamaq üçün kəşləmə strategiyalarını tətbiq edin.\n5. Ehtiyac olarsa, hosting planınızı və ya server resurslarını yeniləyin."
       },
-
-      "copyright": "Bütün hüquqlar qorunur © 2003-2023 Foody İSTİFADƏ ŞƏRTLƏRİ | Gizlilik Siyasəti"
-   },
-
-   "Login": {
-      "signIn": "Giris",
-      "signUp": "Qeydiyyat",
-
-      "form": {
-         "fullName": "Ad və soyad",
-         "userName": "Istifadəci adı",
-         "email": "Email",
-         "password": "Sifrə",
-         "btnSignIn": "Daxil ol",
-         "btnSignUp": "Qeydiyyat"
+      "faqFourth": {
+        "question": "Hesab yaratmaq necədir?",
+        "answer": "Hesab yaratmaq çox sadədir:\n1. Bizim veb saytımızı ziyarət edin və 'Qeydiyyat' və ya 'Hesab yaratmaq' düyməsini tapın.\n2. Adınız, e-poçt ünvanınız və şifrənizi daxil edərək tələb olunan məlumatı doldurun.\n3. Tələb olunan təsdiqləmə addımlarını əgər tələb edilsə, izləyin.\n4. 'Göndər' və ya 'Hesab yarat' düyməsinə basın.\n5. Artıq yeni yaratılmış məlumatlarınızla daxil ola bilərsiniz."
+      },
+      "faqFifth": {
+        "question": "Parolunuzu necə sıfırlamaq olar?",
+        "answer": "Parolunuzu sıfırlamaq üçün:\n1. Giriş səhifəsinə keçin və 'Parolu unutdum' və ya 'Parolu sıfırla' keçidinə klikləyin.\n2. Hesabınızla əlaqəli e-poçt ünvanınızı daxil edin.\n3. Parolunuzu sıfırlamaq üçün göndərilən linki e-poçt qutunuza yoxlayın.\n4. Təqdim edilən keçidi klikləyin və yeni parol qurmaq üçün təlimatları izləyin.\n5. Yeni parolunuzla daxil olun."
       }
-   },
+    }
+  },
 
-   "Home": {
-        "Metadata": {
-            "title": "Ana sehife",
-            "description": "Foody - cox dadli"
-        },
-      "Hero": {
-         "title": "Qida saytımız yerli yeməkləri tapmağı asanlaşdırır",
-         "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-         "firstBtn": "Başlamaq",
-         "secondBtn": "İndi sifariş edin"
-      },
+  "Admin": {
+    "Metadata": {
+      "title": "İdarəçi",
+      "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
+    }
+  },
 
-      "Features": {
-         "title": "Xidmətlər",
-         "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləriizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-
-         "cardsTitle": [
-            "Endirim kuponu",
-            "Təzə sağlam qida",
-            "Evə Sürətli Çatdırılma"
-         ],
-         "cardsText": [
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
-         ]
-      },
-      "Food": {
-         "titles": [
-            "Sizi Həmişə Aşiq Etdirən Menyu",
-            "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?",
-            "Kartof qızartması xoşunuza gəlirmi? Mmm..."
-         ],
-         "texts": [
-            "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
-            "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
-            "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir."
-         ]
-      },
-      "Popular": {
-         "title": "Populyar",
-         "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-         "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
-         "cardsTexts": [
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-            "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
-         ]
-      },
-      "Discover": {
-         "title": "Sizə yaxın restoranları kəşf edin",
-         "buttonText": "Təzə düzənlər"
-      }
-   },
-   "HowItWorks": {
-      "title": "Bu necə işləyir",
-      "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
-   }
+  "User": {
+    "Metadata": {
+      "title": "İstifadəçi",
+      "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
+    }
+  }
 }
