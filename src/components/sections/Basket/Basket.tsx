@@ -75,11 +75,11 @@ const Basket = () => {
       <div className="w-3/4 p-10  bg-gray-7">
         <div className="flex flex-col mb-6">
           <div className="flex items-center">
-            <h1 className="text-2xl font-semibold text-gray-950">{t('Basket.title')}</h1>
+            <h1 className="text-2xl font-semibold text-gray-950">{t('title')}</h1>
           </div>
           <div className="flex items-center mt-2">
             <ShoppingCart className="w-5 h-5 text-red-600" />
-            <h5 className="ml-2 text-red-600">{totalItems} {t('Basket.items')}</h5>
+            <h5 className="ml-2 text-red-600">{totalItems} {t('items')}</h5>
           </div>
         </div>
         <div className={styles.customScrollbar}>
