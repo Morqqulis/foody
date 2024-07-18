@@ -5,17 +5,17 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   swcMinify: true,
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        pathname: "/**",
+      },
+    ],
+  },
   webpack(config) {
     config.module.rules.push({
-      images: {
-        remotePatterns: [
-          {
-            protocol: "https",
-            hostname: "**",
-            pathname: "/**",
-          },
-        ],
-      },
       test: /\.svg$/,
 
       use: [

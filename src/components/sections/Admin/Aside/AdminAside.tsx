@@ -1,53 +1,56 @@
-import { NextPage } from "next";
-import AsideElement from "./AsideElement";
+import { useTranslations } from "next-intl";
+import AsideElement from "./AdminAsideElement";
+import { title } from "process";
 type AsideElement = {
+  id: number;
   icon: string;
-  title: string;
 };
 
 const AsideElements: AsideElement[] = [
   {
+    id: 0,
     icon: "/AdminAside/dashboard.svg",
-    title: "Dashboard",
   },
   {
+    id: 1,
     icon: "/AdminAside/products.svg",
-    title: "Products",
   },
   {
+    id: 2,
     icon: "/AdminAside/restaurants.svg",
-    title: "Restaurants",
   },
   {
+    id: 3,
     icon: "/AdminAside/category.svg",
-    title: "Category",
   },
   {
+    id: 4,
     icon: "/AdminAside/orders.svg",
-    title: "Orders",
   },
   {
+    id: 5,
     icon: "/AdminAside/offer.svg",
-    title: "Offer",
   },
 ];
 
-const Aside: NextPage = (): JSX.Element => {
+const AdminAside: React.FC = (): JSX.Element => {
+  const t = useTranslations("Admin.Aside.title");
+
   return (
     <aside className="flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px]">
       {AsideElements.map((element) => (
-        <AsideElement key={element.title} element={element} />
+        <AsideElement key={element.id} element={element} title={t(`${element.id}`)} />
       ))}
 
       <AsideElement
         element={{
           icon: "/AdminAside/logout.svg",
-          title: "Log Out",
           mt: "mt-[20px] ",
         }}
+        title={t(`${AsideElements.length}`)}
       />
     </aside>
   );
 };
 
-export default Aside;
+export default AdminAside;

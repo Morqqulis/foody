@@ -139,6 +139,17 @@
     "Metadata": {
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
+    },
+    "Products": {
+      "Modal": {
+        "title": "Are you sure it’s deleted ?",
+        "text": "Attention! If you delete this product, it will not come back",
+        "cancelBtn": "Cancel",
+        "deleteBtn": "Delete"
+      }
+    },
+    "Aside": {
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "Offer", "Log Out"]
     }
   },
 

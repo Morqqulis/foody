@@ -1,7 +1,7 @@
-import { NextPage } from "next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
 
-const Pagination: NextPage = (): JSX.Element => {
+const Pagination: React.FC = (): JSX.Element => {
   return (
     <section className="mt-[52px] flex h-[90px] w-[429px] flex-row items-center justify-center gap-4 p-[30px]">
       <div className=" flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-[100px] border border-[#EC5CF8]">
