@@ -13,6 +13,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@ui/alert-dialog";
+import Image from 'next/image'
 
 
 
@@ -23,7 +24,7 @@ const RestaurantCard = ({ prop }) => {
         <div div className='flex h-[83px] w-[290px] items-center justify-center rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] relative '>
 
 
-            <img src={prop.img_url} alt="image" width={80} height={80} className='ml-5px' />
+            <Image src={prop.img_url} alt="image" width={80} height={80} className='ml-5px' />
 
             <div className="mt-2  w-[100%] whitespace-nowrap  px-10 ">
                 <h1 className=" h-[32px] w-[100%]   text-lg font-medium leading-[24px] text-[#1E1E30]">{prop.name}</h1>

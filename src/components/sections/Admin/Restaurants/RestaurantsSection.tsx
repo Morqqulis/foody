@@ -9,7 +9,7 @@ const RestaurantsSection: NextPage = (): JSX.Element => {
             <div className=" flex flex-wrap justify-around  gap-[25px] ">
                 {
                     data.map((restaurant) => (
-                        <RestaurantCard prop={restaurant} />
+                        <RestaurantCard  key={restaurant.cuisine} prop={restaurant} />
                     ))
                 }
 
