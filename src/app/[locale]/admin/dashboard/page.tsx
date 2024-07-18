@@ -12,7 +12,7 @@ const Dashboard: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
       <AdminAside />
-      <section>
+      <section className='w-full'>
         <DashboardSection/>
       </section>
     </main>

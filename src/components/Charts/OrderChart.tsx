@@ -38,18 +38,6 @@ const data = [
     uv: 1480,
     pv: 1200,
     amt: 1228,
-  },
-  {
-    name: 'Page E',
-    uv: 1480,
-    pv: 990,
-    amt: 1228,
-  },
-  {
-    name: 'Page F',
-    uv: 1480,
-    pv: 1100,
-    amt: 1328,
   }
 ]
 
@@ -58,7 +46,7 @@ export default class OrderChart extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: 600, height: 300 }}>
+      <div style={{ width: 400, height: 300 }}>
         <ResponsiveContainer>
           <ComposedChart
             width={500}
