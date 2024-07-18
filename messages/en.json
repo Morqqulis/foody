@@ -140,6 +140,8 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+
+    
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
