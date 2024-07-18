@@ -165,5 +165,10 @@
       "title": "İstifadəçi",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
     }
-  }
+  },
+  "Basket": {
+"title": "Səbətiniz",
+"items": "Məhsul",
+"checkout": "Təsdiqlə"
+}
 }
