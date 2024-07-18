@@ -1,109 +1,124 @@
 {
-   "Header": {
-      "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
-      "search": "Search...",
-      "signUp": "Sign Up"
-   },
-   "Footer": {
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
-      "popular": {
-         "title": "Popular",
-         "links": [
-            "Programming",
-            "Books for children",
-            "Psychology",
-            "Business"
-         ]
-      },
+  "Header": {
+    "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
+    "search": "Search...",
+    "signUp": "Sign Up"
+  },
+  "Footer": {
+    "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
+    "popular": {
+      "title": "Popular",
+      "links": ["Programming", "Books for children", "Psychology", "Business"]
+    },
 
-      "cash": {
-         "title": "Cash",
-         "links": ["Delivery", "Payment", "About the store"]
-      },
+    "cash": {
+      "title": "Cash",
+      "links": ["Delivery", "Payment", "About the store"]
+    },
 
-      "help": {
-         "title": "Help",
-         "links": ["Contacts", "Purchase returns", "Buyer help"]
-      },
+    "help": {
+      "title": "Help",
+      "links": ["Contacts", "Purchase returns", "Buyer help"]
+    },
 
-      "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
-   },
+    "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
+  },
 
-   "Login": {
-      "signIn": "Login",
-      "signUp": "Register",
-      "form": {
-         "fullName": "Full Name",
-         "userName": "Username",
-         "email": "Email",
-         "password": "Password",
-         "btnSignIn": "Log in",
-         "btnSignUp": "Register"
-      }
-   },
+  "Login": {
+    "Metadata": {
+      "title": "Login",
+      "description": "Foody Login Page"
+    },
+    "signIn": "Login",
+    "signUp": "Register",
+    "form": {
+      "fullName": "Full Name",
+      "userName": "Username",
+      "email": "Email",
+      "password": "Password",
+      "btnSignIn": "Log in",
+      "btnSignUp": "Register"
+    }
+  },
 
-   "Home": {
-      "Hero": {
-         "title": "Our Food site makes it easy to find local food",
-         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-         "firstBtn": "Get Started",
-         "secondBtn": "Order now"
-      },
-      "Features": {
-         "title": "Features",
-         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-         "cardsTitle": [
-            "Discount Boucher",
-            "Fresh healthy Food",
-            "Fast Home Delivery"
-         ],
-         "cardsText": [
-            "Lorem ipsum is placeholder  commonly used in the graphic",
-            "Lorem ipsum is placeholder  commonly used in the graphic",
-            "Lorem ipsum is placeholder  commonly used in the graphic"
-         ]
-      },
-      "Food": {
-         "titles": [
-            "Menu That Always Make You Fall In Love",
-            "Yummy Always Papa John’s Pizza.Agree?",
-            "Do You Like French Fries? Mmm..."
-         ],
-         "texts": [
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
-         ]
-      },
-      "Popular": {
-         "title": "Our Popular Update New Foods",
-         "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-         "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
-         "cardsTexts": [
-            "Lorem ipsum is placeholder  commonly used in the graphic ",
-            "Lorem ipsum is placeholder  commonly used in the graphic ",
-            "Lorem ipsum is placeholder  commonly used in the graphic "
-         ]
-      },
-      "Discover": {
-         "title": "Discover Restaurants Near From you",
-         "buttonText": "Explore"
-      }
-   },
-   "HowItWorks": {
+  "Home": {
+    "Metadata": {
+      "title": "Home",
+      "description": "Foody Home Page"
+    },
+    "Hero": {
+      "title": "Our Food site makes it easy to find local food",
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "firstBtn": "Get Started",
+      "secondBtn": "Order now"
+    },
+    "Features": {
+      "title": "Features",
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "cardsTitle": ["Discount Boucher", "Fresh healthy Food", "Fast Home Delivery"],
+      "cardsText": [
+        "Lorem ipsum is placeholder  commonly used in the graphic",
+        "Lorem ipsum is placeholder  commonly used in the graphic",
+        "Lorem ipsum is placeholder  commonly used in the graphic"
+      ]
+    },
+    "Food": {
+      "titles": ["Menu That Always Make You Fall In Love", "Yummy Always Papa John’s Pizza.Agree?", "Do You Like French Fries? Mmm..."],
+      "texts": [
+        "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+        "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+        "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+      ]
+    },
+    "Popular": {
+      "title": "Our Popular Update New Foods",
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
+      "cardsTexts": [
+        "Lorem ipsum is placeholder  commonly used in the graphic ",
+        "Lorem ipsum is placeholder  commonly used in the graphic ",
+        "Lorem ipsum is placeholder  commonly used in the graphic "
+      ]
+    },
+    "Discover": {
+      "title": "Discover Restaurants Near From you",
+      "buttonText": "Explore"
+    }
+  },
+  "Restaurants": {
+    "Metadata": {
+      "title": "Restaurants",
+      "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
+    }
+  },
+  "AboutUs": {
+    "Metadata": {
+      "title": "About Us",
+      "description": "Learn more about our company, our mission and values, and what sets us apart."
+    }
+  },
+  "HowItWorks": {
+    "Metadata": {
       "title": "How it works",
-      "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
-   },
-   "FAQs": {
-     "title": "FAQ's",
-     "items": {
-       "faqFirst": {
-         "question": "How to contact with Customer Service?",
-         "answer": "Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!."
-       },
-       "faqSecond": {
-         "question": "App installation failed, how to update system information?",
-         "answer": "To update system information after a failed app installation, follow these steps:\n1. Check your device's network connection.\n2. Restart your device.\n3. Ensure your device has enough storage space.\n4. Update your device's operating system to the latest version.\n5. Try reinstalling the app."
+      "description": "Learn how our service works and what benefits it can offer you."
+    },
+    "title": "How it works",
+    "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
+  },
+  "FAQs": {
+    "Metadata": {
+      "title": "FAQ",
+      "description": "Frequently Asked Questions (FAQs) is a section on a website that lists answers to common questions that users may have."
+    },
+    "title": "FAQ's",
+    "items": {
+      "faqFirst": {
+        "question": "How to contact with Customer Service?",
+        "answer": "Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!."
+      },
+      "faqSecond": {
+        "question": "App installation failed, how to update system information?",
+        "answer": "To update system information after a failed app installation, follow these steps:\n1. Check your device's network connection.\n2. Restart your device.\n3. Ensure your device has enough storage space.\n4. Update your device's operating system to the latest version.\n5. Try reinstalling the app."
       },
       "faqThird": {
         "question": "Website response time is slow, how to improve?",
@@ -117,6 +132,20 @@
         "question": "How to reset my password?",
         "answer": "To reset your password:\n1. Go to the login page and click on the 'Forgot Password' or 'Reset Password' link.\n2. Enter your email address associated with your account.\n3. Check your email inbox for a password reset link.\n4. Click on the link provided and follow the instructions to set a new password.\n5. Log in with your new password."
       }
+    }
+  },
+
+  "Admin": {
+    "Metadata": {
+      "title": "Admin",
+      "description": "Access the admin dashboard to manage the website."
+    }
+  },
+
+  "User": {
+    "Metadata": {
+      "title": "User",
+      "description": "Manage your profile, orders, and settings."
     }
   }
 }
