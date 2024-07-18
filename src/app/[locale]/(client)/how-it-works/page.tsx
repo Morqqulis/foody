@@ -3,7 +3,20 @@ import Text from '@ui/Text'
 import Title from '@ui/Title'
 import { NextPage } from 'next'
 import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
+import { memo } from 'react'
+
+
+export async function generateMetadata({ params: { locale } }) {
+    const t = await getTranslations({ locale, namespace: "HowItWorks.Metadata" });
+  
+    return {
+      title: t("title"),
+      description: t("description"),
+    };
+  }
+
 
 interface Ipage {}
 
@@ -43,4 +56,4 @@ const HowItWorksPage: NextPage = (): JSX.Element => {
    )
 }
 
-export default HowItWorksPage
+export default memo(HowItWorksPage)

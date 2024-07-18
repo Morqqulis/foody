@@ -1,12 +1,23 @@
-import Discover from "@sections/Home/Discover";
-import Features from "@sections/Home/Features";
-import Food from "@sections/Home/Food";
-import Hero from "@sections/Home/Hero";
-import Popular from "@sections/Home/Popular";
-import { homeMeta } from "@settings/metadata";
-import { NextPage } from "next";
+import Discover from "@sections/Home/Discover"
+import Features from "@sections/Home/Features"
+import Food from "@sections/Home/Food"
+import Hero from "@sections/Home/Hero"
+import Popular from "@sections/Home/Popular"
+import { NextPage } from "next"
+import { getTranslations } from "next-intl/server"
+import { memo } from "react"
+//----------------------------------------------
 
-export const metadata = homeMeta;
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: "Home.Metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+//----------------------------------------------
 
 const Home: NextPage = () => {
   return (
@@ -20,4 +31,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default memo(Home);
