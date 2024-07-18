@@ -1,21 +1,21 @@
-import createNextIntlPlugin from "next-intl/plugin"
+import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        pathname: "/**",
+      },
+    ],
+  },
 
   webpack(config) {
     config.module.rules.push({
-      images: {
-        remotePatterns: [
-          {
-            protocol: "https",
-            hostname: "**",
-            pathname: "/**",
-          },
-        ],
-      },
       test: /\.svg$/,
 
       use: [
