@@ -19,7 +19,6 @@ const AdminPage: NextPage = async (): Promise<JSX.Element> => {
       <div className="container">
         <AdminAside />
       </div>
-      Admin
     </main>
   );
 };
