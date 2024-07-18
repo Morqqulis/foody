@@ -39,7 +39,7 @@
       "fullName": "Ad və soyad",
       "userName": "Istifadəci adı",
       "email": "Email",
-      "password": "Sifrə",
+      "password": "Şifrə",
       "btnSignIn": "Daxil ol",
       "btnSignUp": "Qeydiyyat"
     }
@@ -145,6 +145,18 @@
     "Metadata": {
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
+    },
+    "Products": {
+      "Modal": {
+        "title": "Silmək istədiyinizdən əminsinizmi?",
+        "text": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq",
+        "cancelBtn": "Ləğv etmək",
+        "deleteBtn": "Silmək"
+      }
+    },
+
+    "Aside": {
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif","Çıxış"]
     }
   },
 
