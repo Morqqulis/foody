@@ -158,5 +158,10 @@
       "title": "User",
       "description": "Manage your profile, orders, and settings."
     }
-  }
+  },
+  "Basket": {
+    "title": "Your Basket",
+    "items": "Items",
+    "checkout": "Checkout"
+ }
 }
