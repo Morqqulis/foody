@@ -1,18 +1,18 @@
 import AdminAside from "@sections/Admin/Aside/AdminAside";
 import { NextPage } from "next";
 
-interface IOrderHistoryPage {}
+interface IOffersPage {}
 
-const OrderHistoryPage: NextPage = (): JSX.Element => {
+const OfferPage: NextPage = (): JSX.Element => {
   return (
     <main>
       {" "}
       <div className="container">
         <AdminAside />
       </div>
-      AdminOrderHistory
+      page
     </main>
   );
 };
 
-export default OrderHistoryPage;
+export default OfferPage;
