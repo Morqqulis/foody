@@ -2,7 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { Pencil, Trash2 } from "lucide-react";
 import { Iprops } from "../../../../app/[locale]/admin/products/data";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
 
 import {
   AlertDialog,
@@ -38,16 +38,18 @@ const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
         <div className="flex items-center justify-between">
           <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
           <div className="flex items-center gap-[10px]">
+
             <Sheet>
               <SheetTrigger>
                 <Pencil size={20} color="#00B2A9" className="cursor-pointer" />
               </SheetTrigger>
               <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
-                  <SheetDescription></SheetDescription>
-                  <Myform />
-                </SheetHeader>
+                <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                  <SheetHeader>
+                    <SheetTitle>Add product</SheetTitle>
+                  </SheetHeader>
+                  <Myform title={"AddProduct"} />
+                </div>
               </SheetContent>
             </Sheet>
 

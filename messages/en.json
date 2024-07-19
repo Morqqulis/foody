@@ -140,6 +140,27 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Header": {
+      "btn": "Add Product",
+      "admin": "Admin",
+      "Sheet": {
+
+        "imageBlock": {
+          "title": "Add product",
+          "description": "Upload your product image",
+          "label": "upload"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Name", "Description", "Price", "Restaurants"]
+        },
+
+        "cancelBtn": "Cancel",
+        "createBtn": "Create  Product"
+      }
+    },
+
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
@@ -163,5 +184,5 @@
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
- }
+  }
 }
