@@ -16,9 +16,7 @@ interface IAdminPage {}
 const AdminPage: NextPage = async (): Promise<JSX.Element> => {
   return (
     <main>
-      <div className="container">
-        <AdminAside />
-      </div>
+        
     </main>
   );
 };

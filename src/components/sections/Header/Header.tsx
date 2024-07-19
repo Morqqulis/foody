@@ -17,7 +17,9 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
   return (
     <header className={`${className || ""} ${path.startsWith("/admin") ? "hidden" : "block"} `}>
       <div className={`container `}>
-        <div className={`flex  rounded py-9  pt-7 ${path === "/login" ? "bg-normal-red px-[40px]" : "bg-gray-7 pl-[57px]"}`}>
+        <div
+          className={`flex  rounded py-9  pt-7 ${path === "/login" ? "bg-normal-red px-[40px]" : path.startsWith("/admin") ? "hidden" : "bg-gray-7 pl-[57px]"}`}
+        >
           <nav className={`flex w-full items-center ${path === "/login" && "justify-between"}`}>
             <Logo className={"mr-8"} color={path === "/login" ? "white" : "black"} />
             <HeaderMenu className={`mr-10 ${path == "/login" && "hidden"}`} />
