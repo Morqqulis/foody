@@ -11,6 +11,7 @@ interface ILoginNavigation {}
 const LoginNavigation: React.FC = (): JSX.Element => {
   const t = useTranslations("Login");
   const { defaultTab, setDefaultTab } = useLoginStore();
+ 
 
   return (
     <>
