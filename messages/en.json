@@ -144,7 +144,6 @@
       "btn": "Add Product",
       "admin": "Admin",
       "Sheet": {
-
         "imageBlock": {
           "title": "Add product",
           "description": "Upload your product image",
@@ -157,7 +156,7 @@
         },
 
         "cancelBtn": "Cancel",
-        "createBtn": "Create  Product"
+        "submitBtn": "Create  Product"
       }
     },
 
@@ -167,6 +166,27 @@
         "text": "Attention! If you delete this product, it will not come back",
         "cancelBtn": "Cancel",
         "deleteBtn": "Delete"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit product",
+            "description": "Upload your product image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your Product description and necessary information",
+            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "restaurants": "Restaurants"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update  Product"
+        }
       }
     },
     "Aside": {
@@ -175,9 +195,14 @@
   },
 
   "User": {
+    
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Aside": {
+      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
   "Basket": {

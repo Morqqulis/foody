@@ -1,13 +1,13 @@
 import { useTranslations } from "next-intl";
-import AsideElement from "./AdminAsideElement";
-import { title } from "process";
-type AsideElement = {
+import AsideElement from "./AsideElement";
+type IAsideElements = {
   id: number;
   icon: string;
   href: string;
+  mt?: string;
 };
 
-const AsideElements: AsideElement[] = [
+const AsideElements: IAsideElements[] = [
   {
     id: 0,
     icon: "/AdminAside/dashboard.svg",
@@ -38,6 +38,12 @@ const AsideElements: AsideElement[] = [
     icon: "/AdminAside/offer.svg",
     href: "/admin/offer",
   },
+  {
+    id: 6,
+    icon: "/AdminAside/logout.svg",
+    href: "/",
+    mt: "mt-[20px] ",
+  },
 ];
 
 const AdminAside: React.FC = (): JSX.Element => {
@@ -46,17 +52,8 @@ const AdminAside: React.FC = (): JSX.Element => {
   return (
     <aside className="flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px]">
       {AsideElements.map((element) => (
-        <AsideElement key={element.id} element={element} title={t(`${element.id}`)} />
+        <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
       ))}
-
-      <AsideElement
-        element={{
-          icon: "/AdminAside/logout.svg",
-          mt: "mt-[20px] ",
-          href: "/",
-        }}
-        title={t(`${AsideElements.length}`)}
-      />
     </aside>
   );
 };

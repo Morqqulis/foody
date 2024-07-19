@@ -1,5 +1,5 @@
 import { Button } from "@ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
 interface IAddProductSheet {}
 

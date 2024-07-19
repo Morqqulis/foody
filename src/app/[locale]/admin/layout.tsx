@@ -1,4 +1,4 @@
-import AdminAside from "@sections/Admin/Aside/AdminAside";
+import AdminAside from "@sections/Aside/AdminAside";
 import AdminHeader from "@sections/Admin/Headers/AdminHeader";
 
 interface IAdminLayout {
