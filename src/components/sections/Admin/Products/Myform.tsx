@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
+import React from "react";
 
 interface IMyform {
   whatIs: string;
@@ -22,6 +23,21 @@ interface IMyFormValues {
   Restaurants: string;
 }
 const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
+  const [file, setFile] = React.useState<File | null>(null);
+  const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+
+  function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        setFileUrl(reader.result as string);
+      };
+      reader.readAsDataURL(selectedFile);
+      setFile(selectedFile);
+    }
+  }
+
   let t: any;
   if (whatIs === "EditProduct") {
     t = useTranslations("Admin.Products.EditProduct.Sheet");
@@ -48,17 +64,19 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   };
 
   return (
-    <Form {...form} >
+    <Form {...form}>
       <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
         <div className="flex gap-10">
-          <p className="flex h-[32px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
-            {t("imageBlock.description")}
-          </p>
-
+          <div className="flex flex-col gap-2">
+            <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
+              {t("imageBlock.description")}
+            </p>
+            {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" />}
+          </div>
           <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
             <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
-            <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {t("imageBlock.label")}</p>
-            <Input type="file" className="hidden" {...form.register("File")} />
+            <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {file ? file.name : t("imageBlock.label")}</p>
+            <Input type="file" className="hidden" {...form.register("File")} onChange={(e) => readerFile(e)} />
           </Label>
         </div>
 

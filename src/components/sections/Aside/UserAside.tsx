@@ -1,13 +1,13 @@
 import { useTranslations } from "next-intl";
-import Aside from "../../Admin/Aside/AdminAsideElement";
+import AsideElement from "./AsideElement";
 
-type AsideElement = {
+type IAsideElements = {
   id: number;
   icon: string;
   href: string;
 };
 
-const AsideElements: AsideElement[] = [
+const AsideElements: IAsideElements[] = [
   {
     id: 0,
     icon: "/UserAside/profile.svg",
@@ -31,15 +31,15 @@ const AsideElements: AsideElement[] = [
   {
     id: 4,
     icon: "/UserAside/basket.svg",
-    href: "/",
+    href: "/login",
   }
 ];
 const UserAside: React.FC = (): JSX.Element => {
   const t = useTranslations("User.Aside.title");
 
-  return <aside className="h-[515px] w-[325px] rounded-md bg-[#f3f4f6] pl-[35px] pr-[53px] pt-[45px]">
+  return <aside className="h-[515px] w-[325px]  rounded-md bg-[#f3f4f6] pl-[35px] pr-[53px] pt-[45px]">
     {AsideElements.map((element) => (
-      <Aside key={element.id} element={element} title={t(`${element.id}`)} whatIs="user" />
+      <AsideElement key={element.id} element={element} title={t(`${element.id}`)} whatIs="user" />
     ))} 
   </aside>;
 };

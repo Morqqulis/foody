@@ -1,4 +1,4 @@
-import UserAside from "@sections/User/Aside/UserAside";
+import UserAside from "@sections/Aside/UserAside";
 
 interface IUserLayout {
   children: React.ReactNode;

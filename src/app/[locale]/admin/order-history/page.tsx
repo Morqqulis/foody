@@ -1,4 +1,4 @@
-import AdminAside from "@sections/Admin/Aside/AdminAside";
+import AdminAside from "@sections/Aside/AdminAside";
 import SectionHeader from "@sections/Admin/Headers/SectionHeader";
 import { NextPage } from "next";
 
