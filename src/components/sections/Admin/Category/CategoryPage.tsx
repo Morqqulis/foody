@@ -46,14 +46,14 @@ const AdminRightSidebar: FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-2/3 bg-gray-100 p-6">
+    <div className="flex flex-col h-screen w-2/3  p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Category</h2>
         <button onClick={() => openModal()} className="bg-purple-700 text-white p-2 rounded-md">
           <PlusCircle className="inline mr-2" /> Add Category
         </button>
       </div>
-      <div className="overflow-y-auto">
+      <div className="overflow-y-auto bg-gray-100">
         <table className="min-w-full bg-white">
           <thead>
             <tr>
