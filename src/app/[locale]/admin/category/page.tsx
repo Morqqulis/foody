@@ -1,13 +1,17 @@
-import AdminAside from '@sections/Admin/Aside/AdminAside'
+import AdminRightSidebar from '@sections/Admin/Category/CategoryPage'
+
 import { NextPage } from 'next'
 
 interface ICategoryPage {}
 
 const CategoryPage: NextPage = (): JSX.Element => {
   return (
-    <main>  <div className="container">
-    <AdminAside />
-  </div>CategoryPage</main>
+    <main>  
+    <div className="container">
+  
+    <AdminRightSidebar />
+  </div>
+  </main>
   )
 }
 
