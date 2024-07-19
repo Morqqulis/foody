@@ -48,7 +48,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   };
 
   return (
-    <Form {...form}>
+    <Form {...form} >
       <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
         <div className="flex gap-10">
           <p className="flex h-[32px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">

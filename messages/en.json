@@ -195,9 +195,14 @@
   },
 
   "User": {
+    
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Aside": {
+      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
   "Basket": {

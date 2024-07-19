@@ -46,7 +46,7 @@ const AdminAside: React.FC = (): JSX.Element => {
   return (
     <aside className="flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px]">
       {AsideElements.map((element) => (
-        <AsideElement key={element.id} element={element} title={t(`${element.id}`)} />
+        <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
       ))}
 
       <AsideElement
@@ -56,6 +56,7 @@ const AdminAside: React.FC = (): JSX.Element => {
           href: "/",
         }}
         title={t(`${AsideElements.length}`)}
+        whatIs="admin"
       />
     </aside>
   );
