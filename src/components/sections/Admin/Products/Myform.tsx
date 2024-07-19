@@ -3,8 +3,9 @@ import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { useState } from "react";
-interface IMyform {}
+interface IMyform {
+  title: string;
+}
 
 interface IMyFormValues {
   file: FileList;
@@ -13,7 +14,7 @@ interface IMyFormValues {
   price: number;
   rest: string;
 }
-const Myform: React.FC = (): JSX.Element => {
+const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
   const { handleSubmit, register, reset } = useForm();
 
   const submit = (v: IMyFormValues) => {
@@ -41,10 +42,15 @@ const Myform: React.FC = (): JSX.Element => {
         </p>
 
         <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
+          
           <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245.27px] text-[16px] font-medium leading-[24px] text-[#C7C7C7]">Name</p>
+            <p className="h-[32px] w-[245] text-[16px] font-medium leading-[24px] text-[#C7C7C7]">Name</p>
 
-            <Input type="text" {...register("name")} className="h-[46px] w-[450px] rounded-[14px] border-none  bg-[#5A5B70] text-[#F2F2F2]" />
+            <Input
+              type="text"
+              {...register("name")}
+              className="h-[46px] w-[450px] rounded-[14px] border-none bg-[#5A5B70] text-[#F2F2F2] outline-none ring-0"
+            />
           </Label>
 
           <Label className="flex w-[450px] flex-col gap-1">
@@ -57,7 +63,7 @@ const Myform: React.FC = (): JSX.Element => {
           </Label>
 
           <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245.27px] text-[16px] font-medium leading-[24px] text-[#C7C7C7] ">Price</p>
+            <p className="h-[32px] w-[245] text-[16px] font-medium leading-[24px] text-[#C7C7C7] ">Price</p>
 
             <Input
               type="number"
@@ -69,7 +75,6 @@ const Myform: React.FC = (): JSX.Element => {
 
           <Label className="flex w-[450px] flex-col gap-1">
             <p className="h-[32px] w-[245.27px] text-[16px] font-medium leading-[24px] text-[#C7C7C7] ">Restaurants</p>
-
             <select {...register("rest")} className=" h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] p-3 text-[#F2F2F2]">
               <option value="Mc Donalds" className="text-[#F2F2F2]">
                 Mc Donalds
