@@ -46,7 +46,7 @@ export default class OrderChart extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: 400, height: 300 }}>
+      <div style={{ width: '100%', height: 300 }}>
         <ResponsiveContainer>
           <ComposedChart
             width={500}

@@ -3,10 +3,10 @@ import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
+  { name: 'KFC', value: 400 },
+  { name: 'MCdonalds', value: 250 },
+  { name: 'Pizza Hut', value: 300 },
+  { name: 'Locate Pizza', value: 200 }
 ];
 
 const renderActiveShape = (props) => {
@@ -41,7 +41,7 @@ const renderActiveShape = (props) => {
         cy={cy}
         startAngle={startAngle}
         endAngle={endAngle}
-        innerRadius={outerRadius + 6}
+        innerRadius={outerRadius + 5}
         outerRadius={outerRadius + 10}
         fill={fill}
       />
@@ -70,18 +70,18 @@ export default class AmountChart extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: '100%', height: 400 }}>
+      <div style={{ width: '100%', height: 300 }}>
         <ResponsiveContainer>
-          <PieChart width={400} height={400}>
+          <PieChart width={600} height={600}>
             <Pie
               activeIndex={this.state.activeIndex}
               activeShape={renderActiveShape}
               data={data}
               cx="50%"
               cy="50%"
-              innerRadius={60}
+              innerRadius={50}
               outerRadius={80}
-              fill="#8884d8"
+              fill="#8834d8"
               dataKey="value"
               onMouseEnter={this.onPieEnter}
             />
