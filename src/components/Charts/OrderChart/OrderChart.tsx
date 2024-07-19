@@ -17,7 +17,7 @@ import {
 const data = [
   {
     name: 'Page A',
-    uv: 590,
+    uv: 390,
     pv: 800,
     amt: 1400,
   },
