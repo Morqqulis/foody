@@ -142,7 +142,23 @@
     },
     "Header": {
       "btn": "Add Product",
-      "admin": "Admin"
+      "admin": "Admin",
+      "Sheet": {
+
+        "imageBlock": {
+          "title": "Add product",
+          "description": "Upload your product image",
+          "label": "upload"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Name", "Description", "Price", "Restaurants"]
+        },
+
+        "cancelBtn": "Cancel",
+        "createBtn": "Create  Product"
+      }
     },
 
     "Products": {

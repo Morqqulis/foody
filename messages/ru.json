@@ -155,7 +155,21 @@
 
     "Header": {
       "btn": "Добавить продукт",
-      "admin": "Админ"
+      "admin": "Админ",
+      "Sheet": {
+        "imageBlock": {
+          "title": "Добавить продукт",
+          "description": "Загрузите изображение вашего продукта",
+          "label": "загрузить"
+        },
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Имя", "Описание", "Цена", "Рестораны"]
+        },
+
+        "cancelBtn": "Отмена",
+        "createBtn": "Создать продукт"
+      }
     },
 
     "Products": {
@@ -179,9 +193,8 @@
     }
   },
   "Basket": {
-   "title": "Корзина",
-   "items": "Продуктов",
-   "checkout": "Подтвердить"
-   
-}
+    "title": "Корзина",
+    "items": "Продуктов",
+    "checkout": "Подтвердить"
+  }
 }

@@ -154,7 +154,23 @@
 
     "Header": {
       "btn": "Mehsul artir",
-      "admin": "Admin"
+      "admin": "Admin",
+
+      "Sheet": {
+        "imageBlock": {
+          "title": "Məhsul əlavə edin",
+          "text": "Məhsul şəklinizi yükləyin",
+          "label": "yükləmək"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+        },
+        
+        "cancelBtn": "Ləğv etmək",
+        "createBtn": "Məhsul yaradın"
+      }
     },
 
     "Products": {
