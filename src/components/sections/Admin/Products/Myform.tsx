@@ -3,127 +3,112 @@ import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+import MyFormLabel from "./MyFormLabel";
+import { Form } from "@ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ProductSchema } from "@settings/zodSchemes";
+import { z } from "zod";
+import { useTranslations } from "next-intl";
+
 interface IMyform {
   title: string;
 }
 
 interface IMyFormValues {
-  file: FileList;
-  name: string;
-  description: string;
-  price: number;
-  rest: string;
+  File: FileList;
+  Name: string;
+  Description: string;
+  Price: number;
+  Restaurants: string;
 }
 const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
-  const { handleSubmit, register, reset } = useForm();
+  const t = useTranslations("Admin.Products.EditProduct.Sheet");
+
+  const labels = [
+    {
+      id: 0,
+      name: "name",
+      inputType: "text",
+    },
+    {
+      id: 1,
+      name: "description",
+      inputType: "text",
+    },
+    {
+      id: 2,
+      name: "price",
+      inputType: "number",
+    },
+    {
+      id: 3,
+      name: "restaurants",
+      inputType: "text",
+      options: ["Mc Donalds", "Papa Johns", "Pizza Mizza"],
+    },
+  ];
+
+  const form = useForm<z.infer<typeof ProductSchema>>({
+    resolver: zodResolver(ProductSchema),
+    defaultValues: {
+      Name: "",
+      Description: "",
+      Price: 0,
+      Restaurants: "",
+      File: null,
+    },
+  });
 
   const submit = (v: IMyFormValues) => {
     console.log(v);
-    reset();
+    form.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-8">
-      <div className="flex gap-10">
-        <p className="flex h-[32px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
-          Upload your product image
-        </p>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8">
+        <div className="flex gap-10">
+          <p className="flex h-[32px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
+            {t("imageBlock.title")}
+          </p>
 
-        <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
-          <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
-          <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]">Upload</p>
-          <Input type="file" className="hidden" {...register("file")} />
-        </Label>
-      </div>
-
-      <div className="flex gap-10">
-        <p className="flex h-[30px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
-          Add your Product description and necessary information
-        </p>
-
-        <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-          
-          <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245] text-[16px] font-medium leading-[24px] text-[#C7C7C7]">Name</p>
-
-            <Input
-              type="text"
-              {...register("name")}
-              className="h-[46px] w-[450px] rounded-[14px] border-none bg-[#5A5B70] text-[#F2F2F2] outline-none ring-0"
-            />
-          </Label>
-
-          <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245px] text-[16px] font-medium leading-[24px] text-[#C7C7C7]">Description</p>
-
-            <textarea
-              {...register("description")}
-              className="h-[110px] w-[450px] resize-none rounded-[14px] border-none  bg-[#5A5B70] p-3 text-[#F2F2F2] "
-            />
-          </Label>
-
-          <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245] text-[16px] font-medium leading-[24px] text-[#C7C7C7] ">Price</p>
-
-            <Input
-              type="number"
-              step="0.01"
-              {...register("price")}
-              className="h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] text-[#F2F2F2]"
-            />
-          </Label>
-
-          <Label className="flex w-[450px] flex-col gap-1">
-            <p className="h-[32px] w-[245.27px] text-[16px] font-medium leading-[24px] text-[#C7C7C7] ">Restaurants</p>
-            <select {...register("rest")} className=" h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] p-3 text-[#F2F2F2]">
-              <option value="Mc Donalds" className="text-[#F2F2F2]">
-                Mc Donalds
-              </option>
-              <option value="Papa Johns" className="text-[#F2F2F2]">
-                Papa Johns
-              </option>
-              <option value="Pizza Mizza" className="text-[#F2F2F2]">
-                Pizza Mizza
-              </option>
-            </select>
+          <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
+            <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
+            <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {t("imageBlock.label")}</p>
+            <Input type="file" className="hidden" {...form.register("File")} />
           </Label>
         </div>
-      </div>
 
-      <div className="flex w-full gap-10 border-t-2 p-[20px]">
-        <button
-          type="button"
-          onClick={() => reset()}
-          style={{
-            width: "400px",
-            height: "50px",
-            boxSizing: "border-box",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "rgb(56, 57, 78)",
-            borderRadius: "14px",
-            backgroundColor: "rgb(67, 68, 90)",
-            color: "white",
-          }}
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          style={{
-            width: "400px",
-            color: "white",
-            height: "50px",
-            boxSizing: "border-box",
-            border: "2px solid rgb(192, 53, 162)",
-            borderRadius: "14px",
-            backgroundColor: "rgb(192, 53, 162)",
-          }}
-        >
-          Save
-        </button>
-      </div>
-    </form>
+        <div className="flex gap-10">
+          <p className="flex h-[30px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
+            {t("InfoBlock.text")}
+          </p>
+
+          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
+            {labels.map((label) => (
+              <MyFormLabel form={form} name={label.name} inputType={label.inputType} key={label.id} options={label.options} id={label.id} />
+            ))}
+            {/* <MyFormLabel form={form} name="name" inputType="text" />
+            <MyFormLabel form={form} name="description" inputType="text" />
+            <MyFormLabel form={form} name="price" inputType="number" />
+            <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} /> */}
+          </div>
+        </div>
+
+        <div className="flex w-full gap-10 border-t-2 p-[20px]">
+          <button
+            type="button"
+            onClick={() => form.reset()}
+            className="box-border h-[50px] w-[400px] rounded-lg border-2 border-solid border-[#38394e] bg-[#43445a] text-white"
+          >
+            Cancel
+          </button>
+          <button type="submit" className="box-border h-[50px] w-[400px] rounded-lg border-2 border-[#c035a2] bg-[#c035a2] text-white">
+            Save
+          </button>
+        </div>
+      </form>
+    </Form>
   );
 };
 

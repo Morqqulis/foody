@@ -16,7 +16,7 @@
 
     "cash": {
       "title": "Nagd",
-      "links": ["Cavabdeh", "Ödəmə", "Magazin haqqında"]
+      "links": ["Cavabdeh", "Ödəmə", "Mağaza haqqında"]
     },
 
     "help": {
@@ -153,7 +153,7 @@
     },
 
     "Header": {
-      "btn": "Mehsul artir",
+      "btn": "Məhsul artır",
       "admin": "Admin",
 
       "Sheet": {
@@ -167,7 +167,7 @@
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
           "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
         },
-        
+
         "cancelBtn": "Ləğv etmək",
         "createBtn": "Məhsul yaradın"
       }
@@ -179,6 +179,27 @@
         "text": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq",
         "cancelBtn": "Ləğv etmək",
         "deleteBtn": "Silmək"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Məhsulu redaktə edin",
+            "description": "Məhsul şəklini yükləyin",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+            "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+            "name": "Ad",
+            "description": "Təsvir",
+            "price": "Qiymət",
+            "restaurants": "Restoranlar"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Məhsulu yenilə"
+        }
       }
     },
 

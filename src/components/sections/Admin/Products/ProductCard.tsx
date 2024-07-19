@@ -2,7 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { Pencil, Trash2 } from "lucide-react";
 import { Iprops } from "../../../../app/[locale]/admin/products/data";
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 
 import {
   AlertDialog,
@@ -46,9 +46,11 @@ const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
               <SheetContent>
                 <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                   <SheetHeader>
-                    <SheetTitle>Add product</SheetTitle>
+                    <SheetTitle>Edit product</SheetTitle>
                   </SheetHeader>
-                  <Myform title={"AddProduct"} />
+                  <div>
+                    <Myform title={"EditProduct"} />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
