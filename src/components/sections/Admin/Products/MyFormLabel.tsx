@@ -10,12 +10,11 @@ interface IFormLabel {
   form: any;
   inputType?: HTMLInputTypeAttribute;
   options?: string[];
-  id: number;
 }
 
-const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, id }): JSX.Element => {
+const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options}): JSX.Element => {
   const t = useTranslations("Admin.Products.EditProduct.Sheet");
-  const labels = useTranslations("Admin.Products.EditProduct.Sheet.labels");
+  
   return (
     <FormField
       control={form.control}

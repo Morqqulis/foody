@@ -1,14 +1,18 @@
-import AdminAside from '@sections/Admin/Aside/AdminAside'
-import { NextPage } from 'next'
+import AdminAside from "@sections/Admin/Aside/AdminAside";
+import SectionHeader from "@sections/Admin/Headers/SectionHeader";
+import { NextPage } from "next";
 
 interface ICategoryPage {}
 
 const CategoryPage: NextPage = (): JSX.Element => {
   return (
-    <main>  <div className="container">
-    <AdminAside />
-  </div>CategoryPage</main>
-  )
-}
+    <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
+      <section>
+        <SectionHeader title="Restaurants" />
+        category
+      </section>
+    </main>
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

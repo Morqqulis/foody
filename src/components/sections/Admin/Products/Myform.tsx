@@ -11,7 +11,7 @@ import { z } from "zod";
 import { useTranslations } from "next-intl";
 
 interface IMyform {
-  title: string;
+  whatIs: string;
 }
 
 interface IMyFormValues {
@@ -21,32 +21,15 @@ interface IMyFormValues {
   Price: number;
   Restaurants: string;
 }
-const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
-  const t = useTranslations("Admin.Products.EditProduct.Sheet");
+const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
+  let t: any;
+  if (whatIs === "EditProduct") {
+    t = useTranslations("Admin.Products.EditProduct.Sheet");
+  }
 
-  const labels = [
-    {
-      id: 0,
-      name: "name",
-      inputType: "text",
-    },
-    {
-      id: 1,
-      name: "description",
-      inputType: "text",
-    },
-    {
-      id: 2,
-      name: "price",
-      inputType: "number",
-    },
-    {
-      id: 3,
-      name: "restaurants",
-      inputType: "text",
-      options: ["Mc Donalds", "Papa Johns", "Pizza Mizza"],
-    },
-  ];
+  if (whatIs === "AddProduct") {
+    t = useTranslations("Admin.Header.Sheet");
+  }
 
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
@@ -66,10 +49,10 @@ const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8">
+      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
         <div className="flex gap-10">
           <p className="flex h-[32px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
-            {t("imageBlock.title")}
+            {t("imageBlock.description")}
           </p>
 
           <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
@@ -85,13 +68,12 @@ const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
           </p>
 
           <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-            {labels.map((label) => (
-              <MyFormLabel form={form} name={label.name} inputType={label.inputType} key={label.id} options={label.options} id={label.id} />
-            ))}
-            {/* <MyFormLabel form={form} name="name" inputType="text" />
-            <MyFormLabel form={form} name="description" inputType="text" />
-            <MyFormLabel form={form} name="price" inputType="number" />
-            <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} /> */}
+            <>
+              <MyFormLabel form={form} name="name" inputType="text" />
+              <MyFormLabel form={form} name="description" inputType="text" />
+              <MyFormLabel form={form} name="price" inputType="number" />
+              <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+            </>
           </div>
         </div>
 
@@ -101,10 +83,10 @@ const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
             onClick={() => form.reset()}
             className="box-border h-[50px] w-[400px] rounded-lg border-2 border-solid border-[#38394e] bg-[#43445a] text-white"
           >
-            Cancel
+            {t("cancelBtn")}
           </button>
           <button type="submit" className="box-border h-[50px] w-[400px] rounded-lg border-2 border-[#c035a2] bg-[#c035a2] text-white">
-            Save
+            {t("submitBtn")}
           </button>
         </div>
       </form>

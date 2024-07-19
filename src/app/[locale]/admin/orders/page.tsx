@@ -1,14 +1,17 @@
-import AdminAside from '@sections/Admin/Aside/AdminAside'
-import { NextPage } from 'next'
+import SectionHeader from "@sections/Admin/Headers/SectionHeader";
+import { NextPage } from "next";
 
 interface IOrdersPage {}
 
 const OrdersPage: NextPage = (): JSX.Element => {
   return (
-    <main>   <div className="container">
-    <AdminAside />
-  </div> AdminOrders</main>
-  )
-}
+    <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
+      <section>
+        <SectionHeader title="Restaurants" />
+        AdminOrders
+      </section>
+    </main>
+  );
+};
 
-export default OrdersPage
+export default OrdersPage;

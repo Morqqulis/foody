@@ -156,7 +156,7 @@
         },
 
         "cancelBtn": "Cancel",
-        "createBtn": "Create  Product"
+        "submitBtn": "Create  Product"
       }
     },
 
