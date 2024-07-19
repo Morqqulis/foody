@@ -13,7 +13,7 @@ const DashboardSection: NextPage = (): JSX.Element => {
                 <div className="card bg-gray-700 w-5/12 p-1 m-1">
                     <OrderChart />
                 </div>
-                <div>
+                <div >
                     <AmountChart/>
                 </div>
             </div>
