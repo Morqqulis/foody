@@ -5,7 +5,6 @@ import Hero from "@sections/Home/Hero"
 import Popular from "@sections/Home/Popular"
 import { NextPage } from "next"
 import { getTranslations } from "next-intl/server"
-import { memo } from "react"
 //----------------------------------------------
 
 export async function generateMetadata({ params: { locale } }) {
@@ -31,4 +30,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default memo(Home);
+export default Home;
