@@ -38,8 +38,10 @@ const UserProfilePage: NextPage<IUserProfilePage> = ({ contact, username, fullNa
           <label className="mb-2">Full Name</label>
           <input type="text" defaultValue={fullName} className="rounded border p-2" readOnly />
         </div>
+        <div className="flex flex-col">
+        <button className="mt-8 rounded bg-green-500 p-2 text-white">Save</button>
+        </div>
       </div>
-      <button className="mt-4 rounded bg-green-500 p-2 text-white">Save</button>
     </main>
   );
 };
