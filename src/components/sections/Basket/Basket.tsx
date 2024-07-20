@@ -66,10 +66,9 @@ const Basket = () => {
   const totalAmount = basketItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <section>
-      <div className="container">
-        <div className="mt-4 flex  justify-end  ">
-          <div className="w-3/4 bg-gray-7  p-10">
+    <section className={''}>
+        <div className="mt-4 flex   ">
+          <div className="w-full bg-gray-7  p-10 pr-6">
             <div className="mb-6 flex flex-col">
               <div className="flex items-center">
                 <h1 className="text-2xl font-semibold text-gray-950">{t("title")}</h1>
@@ -123,7 +122,7 @@ const Basket = () => {
             </div>
           </div>
         </div>
-      </div>
+     
     </section>
   );
 };
