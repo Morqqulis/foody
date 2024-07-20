@@ -209,5 +209,15 @@
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
-  }
+  },
+  "OffersPage": {
+    "title": "Offers",
+    "addOffer": "+ Add Offer",
+    "id": "ID",
+    "image": "Image",
+    "titleColumn": "Title",
+    "description": "Description",
+    "actions": "Actions"
+    }
+  
 }
