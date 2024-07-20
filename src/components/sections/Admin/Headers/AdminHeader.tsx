@@ -3,7 +3,7 @@ import { Button } from "@ui/button";
 import Logo from "@ui/Logo";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import AddProductSheet from "./AddProductSheet";
+import AddProductSheet from "../Sheet/ReusableSheet";
 
 interface IAdminHeader {}
 
@@ -14,7 +14,16 @@ const AdminHeader: React.FC = (): JSX.Element => {
       <nav className={`flex items-center justify-between gap-5`}>
         <Logo className={`hover:scale-105`} color={"white"} />
         <div className={`flex items-center gap-4`}>
-          <AddProductSheet />
+          <AddProductSheet
+            trigger={
+              <Button
+                className={`flex items-center gap-2 rounded-[18px] border-[2px] border-[#C035A2] bg-[#C035A2] px-4 text-[10px] font-bold uppercase leading-[21px] text-white shadow-[0px_4px_4px_0px_rgb(39_174_96)/25%]`}
+              >
+                <span className={`text-lg font-normal`}>+</span> {t("btn")}
+              </Button>
+            }
+            whatIs="AddProduct"
+          />
 
           <HeaderLanguages />
           <div className={`flex items-center gap-2 text-white`}>

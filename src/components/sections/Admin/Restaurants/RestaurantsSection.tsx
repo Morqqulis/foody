@@ -3,7 +3,7 @@ import data from "../../../../app/[locale]/admin/restaurants/data"
 import RestaurantCard from "./RestaurantCard"
 import Pagination from "../Products/Pagination";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
-import Myform from "../Products/Myform";
+
 
 
 
