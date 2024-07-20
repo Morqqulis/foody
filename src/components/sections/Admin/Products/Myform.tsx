@@ -10,6 +10,7 @@ import { ProductSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import React from "react";
+import { Description } from "@radix-ui/react-toast";
 
 interface IMyform {
   whatIs: string;
@@ -86,12 +87,18 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           </p>
 
           <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-            <>
-              <MyFormLabel form={form} name="name" inputType="text" />
-              <MyFormLabel form={form} name="description" inputType="text" />
-              <MyFormLabel form={form} name="price" inputType="number" />
-              <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
-            </>
+            {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
+              <>
+                <MyFormLabel form={form} name="name" inputType="text" />
+                <MyFormLabel form={form} name="description" inputType="text" />
+                <MyFormLabel form={form} name="price" inputType="number" />
+                <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+              </>
+            ) : (
+              ""
+            )}
+
+            
           </div>
         </div>
 

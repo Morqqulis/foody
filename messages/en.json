@@ -151,7 +151,7 @@
         },
 
         "InfoBlock": {
-          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "text": "Add your Product description and necessary information",
           "labels": ["Name", "Description", "Price", "Restaurants"]
         },
 

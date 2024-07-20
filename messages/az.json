@@ -159,7 +159,7 @@
       "Sheet": {
         "imageBlock": {
           "title": "Məhsul əlavə edin",
-          "text": "Məhsul şəklinizi yükləyin",
+          "description": "Məhsul şəklinizi yükləyin",
           "label": "yükləmək"
         },
 
@@ -212,6 +212,9 @@
     "Metadata": {
       "title": "İstifadəçi",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
+    },
+    "Aside": {
+      "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
   },
   "Basket": {
