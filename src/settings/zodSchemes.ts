@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { any, z } from "zod";
 
 export const SignUpFormSchema = z.object({
   fullName: z
@@ -55,4 +55,21 @@ export const SignInFormSchema = z.object({
     .min(2, {
       message: "Password must be at least 6 characters.",
     }),
+});
+
+export const ProductSchema = z.object({
+  Name: z
+    .string({
+      required_error: "Name is required.",
+    })
+    .min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+
+  Description: z.string().min(2, {
+    message: "Description must be at least 2 characters.",
+  }),
+  Price: z.number({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
+  File: z.any(),
+  Restaurants: z.string({ required_error: "Restaurants is required." }),
 });

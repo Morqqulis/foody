@@ -16,7 +16,7 @@
 
     "cash": {
       "title": "Nagd",
-      "links": ["Cavabdeh", "Ödəmə", "Magazin haqqında"]
+      "links": ["Cavabdeh", "Ödəmə", "Mağaza haqqında"]
     },
 
     "help": {
@@ -91,26 +91,31 @@
       "buttonText": "Təzə düzənlər"
     }
   },
+
   "Restaurants": {
     "Metadata": {
       "title": "Restoranlar",
       "description": "Yaxınlığınızdakı ən yaxşı restoranları axtarın. Menyuları, qiymətləri və rəyləri müqayisə edin və düzgün seçimi edin."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "Haqqımızda",
       "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
     }
   },
+
   "HowItWorks": {
     "Metadata": {
       "title": "Necə işləyir",
       "description": "Xidmətimizin necə işlədiyini və sizə hansı faydaları təklif edə biləcəyini öyrənin."
     },
+
     "title": "Bu necə işləyir",
     "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
   },
+
   "FAQs": {
     "Metadata": {
       "title": "FAQ",
@@ -146,17 +151,60 @@
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
+
+    "Header": {
+      "btn": "Məhsul artır",
+      "admin": "Admin",
+
+      "Sheet": {
+        "imageBlock": {
+          "title": "Məhsul əlavə edin",
+          "text": "Məhsul şəklinizi yükləyin",
+          "label": "yükləmək"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+        },
+
+        "cancelBtn": "Ləğv etmək",
+        "submitBtn": "Məhsul yaradın"
+      }
+    },
+
     "Products": {
       "Modal": {
         "title": "Silmək istədiyinizdən əminsinizmi?",
         "text": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq",
         "cancelBtn": "Ləğv etmək",
         "deleteBtn": "Silmək"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Məhsulu redaktə edin",
+            "description": "Məhsul şəklini yükləyin",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+            "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+            "name": "Ad",
+            "description": "Təsvir",
+            "price": "Qiymət",
+            "restaurants": "Restoranlar"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Məhsulu yenilə"
+        }
       }
     },
 
     "Aside": {
-      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif","Çıxış"]
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif", "Çıxış"]
     }
   },
 
@@ -167,8 +215,8 @@
     }
   },
   "Basket": {
-"title": "Səbətiniz",
-"items": "Məhsul",
-"checkout": "Təsdiqlə"
-}
+    "title": "Səbətiniz",
+    "items": "Məhsul",
+    "checkout": "Təsdiqlə"
+  }
 }

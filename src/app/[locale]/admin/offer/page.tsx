@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 "use client";
 
 import AdminAside from "@sections/Admin/Aside/AdminAside";
+=======
+import SectionHeader from "@sections/Admin/Headers/SectionHeader";
+>>>>>>> d98610431a0dc94deda95851b52d55b72dfde228
 import { NextPage } from "next";
 import { useState } from "react";
 import Image from "next/image";
@@ -64,6 +68,7 @@ const OffersPage: NextPage = (): JSX.Element => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="flex min-h-screen bg-gray-900 text-white">
       <AdminAside />
       <main className="flex-1 p-6">
@@ -121,6 +126,14 @@ const OffersPage: NextPage = (): JSX.Element => {
         />
       )}
     </div>
+=======
+    <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
+      <section>
+        <SectionHeader title="Restaurants" />
+        offer
+      </section>
+    </main>
+>>>>>>> d98610431a0dc94deda95851b52d55b72dfde228
   );
 };
 
