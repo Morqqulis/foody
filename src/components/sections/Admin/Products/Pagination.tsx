@@ -11,7 +11,7 @@ const Pagination: React.FC = (): JSX.Element => {
       {[1, 2, 3].map((num) => (
         <div
           key={num}
-          className=" flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-[100px] border border-[#EC5CF8]"
+          className=" flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-[100px] border border-[#EC5CF8 ] "
         >
           <p className="h-[22px] w-[62px] text-center text-[18px] font-extrabold text-[#EC5CF8]">
             {num}

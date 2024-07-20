@@ -42,7 +42,7 @@ const Myform: React.FC<IMyform> = ({ title }): JSX.Element => {
         </p>
 
         <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-          
+
           <Label className="flex w-[450px] flex-col gap-1">
             <p className="h-[32px] w-[245] text-[16px] font-medium leading-[24px] text-[#C7C7C7]">Name</p>
 

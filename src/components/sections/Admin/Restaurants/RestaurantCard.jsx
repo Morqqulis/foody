@@ -21,7 +21,7 @@ import Image from 'next/image'
 const RestaurantCard = ({ prop }) => {
     return (
 
-        <div div className='flex h-[83px] w-[290px] items-center justify-center rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] relative '>
+        <div className='flex h-[83px] w-[290px] items-center justify-center rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] relative '>
 
 
             <Image src={prop.img_url} alt="image" width={80} height={80} className='ml-5px' />
@@ -31,21 +31,20 @@ const RestaurantCard = ({ prop }) => {
                 <p className=" h-[32px] w-[100%] text-sm  font-medium leading-[24px]  text-[#8E8E93]">{prop.cuisine}</p>
             </div>
 
-            <AlertDialog>
+            <AlertDialog >
                 <AlertDialogTrigger asChild>
                     <Trash2 size={20} color='red' className=' cursor-pointer absolute top-0 right-0' />
                 </AlertDialogTrigger>
-                <AlertDialogContent>
+                <AlertDialogContent className='flex flex-col items-center justify-center w-[px] h-[400px'>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                        <AlertDialogDescription>
-                            This action cannot be undone. This will permanently delete your
-                            account and remove your data from our servers.
+                        <AlertDialogTitle>Are you sure it’s deleted ?</AlertDialogTitle>
+                        <AlertDialogDescription >
+                            Attention! If you delete this restaurant, it will not come back...?
                         </AlertDialogDescription>
                     </AlertDialogHeader>
-                    <AlertDialogFooter>
+                    <AlertDialogFooter className='bg-red'>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>Continue</AlertDialogAction>
+                        <AlertDialogAction >Delete</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
