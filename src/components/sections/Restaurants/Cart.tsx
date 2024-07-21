@@ -42,10 +42,9 @@ const Cart: FC = () => {
 
   return (
    
-        <div className="mt-4 flex justify-end">
+        <div className="mt-4 flex justify-end mr-80">
         <div className="w-397px h-547px bg-gray-7 p-10">
             <div className="mb-6 flex flex-col">
-              
               <div className="mt-2 flex items-center text-xl">
                 <ShoppingCart className="h-7 w-7 text-red-600 " />
                 <h5 className="ml-2 text-red-600">

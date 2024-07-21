@@ -15,7 +15,8 @@ export async function generateMetadata({ params: { locale } }) {
 
 const RestaurantsPage: NextPage = (): JSX.Element => {
   return (
-    <div className="min-h-screen bg-gray-200">
+    
+    <div className="min-h-screen">
       <Header />
       <main className="flex p-4">
         <ProductList />

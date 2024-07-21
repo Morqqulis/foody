@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Header = () => {
   return (
-    <div>
+    <div className="container">
       <div className="flex justify-center p-4">
         <Image 
           src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Papa_John%27s_Logo_2019.svg" 
@@ -12,7 +12,7 @@ const Header = () => {
           height={537} 
         />
       </div>
-      <div className="flex items-center justify-between p-4 bg-white shadow">
+      <div className="flex items-center justify-between p-4 bg-gray-7 shadow">
         <div className="flex items-center">
           <div className="ml-4">
             <h1 className="text-xl font-bold">Papa John’s Pizza Restaurant</h1>
