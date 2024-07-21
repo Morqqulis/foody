@@ -23,7 +23,7 @@ const UserProfilePage: NextPage<IUserProfilePage> = ({ contact, username, fullNa
         <div className="mb-4 flex w-full flex-col px-2 md:w-1/2">
           <label className="mb-2 font-bold">Contact</label>
           <input type="text" defaultValue={contact} className="rounded border p-2 text-black" placeholder="+994 77 555 55 55" />
-        </div>kk
+        </div>
         <div className="mb-4 flex w-full flex-col px-2 md:w-1/2">
           <label className="mb-2 font-bold">Email</label>
           <input type="email" defaultValue={email} className="rounded border p-2 text-black" placeholder="kamilovelvin4@gmail.com" />
