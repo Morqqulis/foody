@@ -47,6 +47,13 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     t = useTranslations("Admin.Header.Sheet");
   }
 
+  if (whatIs === "AddRestaurant") {
+    t = useTranslations("Admin.Restaurants.AddRestaurant.Sheet");
+  }
+
+  if (whatIs === "EditRestaurant") {
+    t = useTranslations("Admin.Restaurants.EditRestaurant.Sheet");
+  }
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
     defaultValues: {
@@ -65,7 +72,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
+      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto ">
         <div className="flex gap-10">
           <div className="flex flex-col gap-2">
             <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
@@ -85,13 +92,28 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
             {t("InfoBlock.text")}
           </p>
 
-          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-            <>
-              <MyFormLabel form={form} name="name" inputType="text" />
-              <MyFormLabel form={form} name="description" inputType="text" />
-              <MyFormLabel form={form} name="price" inputType="number" />
-              <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
-            </>
+          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px] overflow-auto ">
+            {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
+              <>
+                <MyFormLabel form={form} whatIs="AddProduct" name="name" inputType="text" />
+                <MyFormLabel form={form} whatIs="AddProduct" name="description" inputType="text" />
+                <MyFormLabel form={form} whatIs="AddProduct" name="price" inputType="number" />
+                <MyFormLabel form={form} whatIs="AddProduct" name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+              </>
+            ) : (
+              whatIs === "AddRestaurant" || whatIs === "EditRestaurant" ? (
+                <>
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="name" inputType="text" />
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="cuisine" inputType="text" />
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="price" inputType="number" />
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="deliveryMin" inputType="number" />
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="adress" inputType="text" />
+                  <MyFormLabel form={form} whatIs="AddRestaurant" name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
+                </>
+              ) : (
+                ""
+              )
+            )}
           </div>
         </div>
 

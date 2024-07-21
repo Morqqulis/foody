@@ -10,11 +10,29 @@ interface IFormLabel {
   form: any;
   inputType?: HTMLInputTypeAttribute;
   options?: string[];
+  whatIs: string;
 }
 
-const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options}): JSX.Element => {
-  const t = useTranslations("Admin.Products.EditProduct.Sheet");
-  
+const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, whatIs }): JSX.Element => {
+  // const t = useTranslations("Admin.Products.EditProduct.Sheet");
+
+  let t: any;
+  // if (whatIs === "EditProduct") {
+  //   t = useTranslations("Admin.Products.EditProduct.Sheet");
+  // }
+
+  if (whatIs === "AddProduct") {
+    t = useTranslations("Admin.Header.Sheet");
+  }
+
+  if (whatIs === "AddRestaurant") {
+    t = useTranslations("Admin.Restaurants.AddRestaurant.Sheet");
+  }
+  if (whatIs === "EditRestaurant") {
+    t = useTranslations("Admin.Restaurants.EditRestaurant.Sheet");
+  }
+
+
   return (
     <FormField
       control={form.control}
@@ -31,7 +49,7 @@ const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options}): J
                 {...field}
                 className="h-[110px] w-[450px] resize-none rounded-[14px] border-none  bg-[#5A5B70] p-3 text-[#F2F2F2] placeholder:text-[#C7C7C7] "
               />
-            ) : name === "restaurants" ? (
+            ) : name === "restaurants" || name === "category" ? (
               <Select required onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <SelectTrigger className="h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] p-3 text-[#F2F2F2]">
                   <SelectValue placeholder={t(`InfoBlock.${name}`)} />

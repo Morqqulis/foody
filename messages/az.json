@@ -1,32 +1,44 @@
 {
   "Header": {
-    "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
-
+    "menu": [
+      "Ana səhifə",
+      "Restoranlar",
+      "Haqqımızda",
+      "Necə işləyir?",
+      "FAQ"
+    ],
     "search": "Axtar...",
     "signUp": "Qeydiyyat"
   },
-
   "Footer": {
     "text": "Lorem ipsum, qrafikdə çox istifadə olunan yer tutucu mətndir.",
-
     "popular": {
       "title": "Populyar",
-      "links": ["Programlama", "Kitablar", "Psixoloji", "Biznes"]
+      "links": [
+        "Programlama",
+        "Kitablar",
+        "Psixoloji",
+        "Biznes"
+      ]
     },
-
     "cash": {
       "title": "Nagd",
-      "links": ["Cavabdeh", "Ödəmə", "Mağaza haqqında"]
+      "links": [
+        "Cavabdeh",
+        "Ödəmə",
+        "Mağaza haqqında"
+      ]
     },
-
     "help": {
       "title": "Yardım",
-      "links": ["Əlaqə", "Alışı qaytarma", "Alıcı yardımı"]
+      "links": [
+        "Əlaqə",
+        "Alışı qaytarma",
+        "Alıcı yardımı"
+      ]
     },
-
     "copyright": "Bütün hüquqlar qorunur © 2003-2023 Foody İSTİFADƏ ŞƏRTLƏRİ | Gizlilik Siyasəti"
   },
-
   "Login": {
     "Metadata": {
       "title": "Giriş",
@@ -34,7 +46,6 @@
     },
     "signIn": "Giriş",
     "signUp": "Qeydiyyat",
-
     "form": {
       "fullName": "Ad və soyad",
       "userName": "Istifadəci adı",
@@ -44,7 +55,6 @@
       "btnSignUp": "Qeydiyyat"
     }
   },
-
   "Home": {
     "Metadata": {
       "title": "Ana səhifə",
@@ -56,12 +66,14 @@
       "firstBtn": "Başlamaq",
       "secondBtn": "İndi sifariş edin"
     },
-
     "Features": {
       "title": "Xidmətlər",
       "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləriizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-
-      "cardsTitle": ["Endirim kuponu", "Təzə sağlam qida", "Evə Sürətli Çatdırılma"],
+      "cardsTitle": [
+        "Endirim kuponu",
+        "Təzə sağlam qida",
+        "Evə Sürətli Çatdırılma"
+      ],
       "cardsText": [
         "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
         "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
@@ -69,7 +81,11 @@
       ]
     },
     "Food": {
-      "titles": ["Sizi Həmişə Aşiq Etdirən Menyu", "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?", "Kartof qızartması xoşunuza gəlirmi? Mmm..."],
+      "titles": [
+        "Sizi Həmişə Aşiq Etdirən Menyu",
+        "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?",
+        "Kartof qızartması xoşunuza gəlirmi? Mmm..."
+      ],
       "texts": [
         "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
         "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
@@ -79,7 +95,11 @@
     "Popular": {
       "title": "Populyar",
       "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-      "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
+      "cardsTitles": [
+        "İkiqat Pendir",
+        "Marqarita",
+        "Twister Menyu"
+      ],
       "cardsTexts": [
         "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
         "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
@@ -91,31 +111,26 @@
       "buttonText": "Təzə düzənlər"
     }
   },
-
   "Restaurants": {
     "Metadata": {
       "title": "Restoranlar",
       "description": "Yaxınlığınızdakı ən yaxşı restoranları axtarın. Menyuları, qiymətləri və rəyləri müqayisə edin və düzgün seçimi edin."
     }
   },
-
   "AboutUs": {
     "Metadata": {
       "title": "Haqqımızda",
       "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
     }
   },
-
   "HowItWorks": {
     "Metadata": {
       "title": "Necə işləyir",
       "description": "Xidmətimizin necə işlədiyini və sizə hansı faydaları təklif edə biləcəyini öyrənin."
     },
-
     "title": "Bu necə işləyir",
     "text": "Satış dövrlərində çatdırılma uzadıla bilər. Məkanınız üçün yenilənmiş təxmin üçün yoxlama səhifəsinə baxın. Nəzərə alın ki, sifariş verildikdən sonra onu dəyişdirmək mümkün deyil. Vergi və rüsumlar bütün məhsulların qiymətinə daxildir. Kredit kartı ilə ödəyirsinizsə, evinizdən və ya faktura ünvanınızdan başqa bir ünvana çatdırılma üçün sifariş verə bilərsiniz. Nəzərə alın ki, Klarna ilə ödəniş edərkən sifarişiniz qeydiyyatdan keçmiş ev ünvanınıza göndərilməlidir."
   },
-
   "FAQs": {
     "Metadata": {
       "title": "FAQ",
@@ -145,34 +160,92 @@
       }
     }
   },
-
   "Admin": {
     "Metadata": {
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
-
     "Header": {
       "btn": "Məhsul artır",
       "admin": "Admin",
-
       "Sheet": {
         "imageBlock": {
           "title": "Məhsul əlavə edin",
           "text": "Məhsul şəklinizi yükləyin",
           "label": "yükləmək"
         },
-
         "InfoBlock": {
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+          "labels": [
+            "Ad",
+            "Təsvir",
+            "Qiymət",
+            "Restoranlar"
+          ]
         },
-
         "cancelBtn": "Ləğv etmək",
         "submitBtn": "Məhsul yaradın"
       }
     },
-
+    "Restaurants": {
+      "Title": "Restoranlar",
+      "EditRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoranı yenilə",
+            "description": "Şəkil Yüklə",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatları yenilə",
+            "labels": [
+              "Ad",
+              "Mətbəx",
+              "Çatdırılma məbləği $",
+              "Çatdırılma Vaxtı",
+              "Ünvan",
+              "Kategoriya"
+            ],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "price": "Çatdırılma məbləği $",
+            "deliveryMin": "Çatdırılma Vaxtı",
+            "adress": "Ünvan",
+            "category": "Kategoriya"
+          },
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Yenilə"
+        }
+      },
+      "AddRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoran əlavə et",
+            "description": "Şəkil Yüklə",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatları daxil et",
+            "labels": [
+              "Ad",
+              "Mətbəx",
+              "Çatdırılma məbləği $",
+              "Çatdırılma Vaxtı",
+              "Ünvan",
+              "Kategoriya"
+            ],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "price": "Çatdırılma məbləği $",
+            "deliveryMin": "Çatdırılma Vaxtı",
+            "adress": "Ünvan",
+            "category": "Kategoriya"
+          },
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Yarat"
+        }
+      }
+    },
     "Products": {
       "Modal": {
         "title": "Silmək istədiyinizdən əminsinizmi?",
@@ -187,27 +260,36 @@
             "description": "Məhsul şəklini yükləyin",
             "label": "Yüklə"
           },
-
           "InfoBlock": {
             "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-            "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+            "labels": [
+              "Ad",
+              "Təsvir",
+              "Qiymət",
+              "Restoranlar"
+            ],
             "name": "Ad",
             "description": "Təsvir",
             "price": "Qiymət",
             "restaurants": "Restoranlar"
           },
-
           "cancelBtn": "Ləğv etmək",
           "submitBtn": "Məhsulu yenilə"
         }
       }
     },
-
     "Aside": {
-      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif", "Çıxış"]
+      "title": [
+        "İdarə paneli",
+        "Məhsullar",
+        "Restoranlar",
+        "Kateqoriya",
+        "Sifarişlər",
+        "Təklif",
+        "Çıxış"
+      ]
     }
   },
-
   "User": {
     "Metadata": {
       "title": "İstifadəçi",

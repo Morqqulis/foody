@@ -17,6 +17,13 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
     t = useTranslations("Admin.Header.Sheet.imageBlock");
   }
 
+  if (whatIs === "AddRestaurant") {
+    t = useTranslations("Admin.Restaurants.AddRestaurant.Sheet.imageBlock");
+  }
+  if (whatIs === "EditRestaurant") {
+    t = useTranslations("Admin.Restaurants.EditRestaurant.Sheet.imageBlock");
+  }
+
   return (
     <Sheet>
       <SheetTrigger>{trigger}</SheetTrigger>

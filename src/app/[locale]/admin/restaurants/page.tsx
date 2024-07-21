@@ -9,7 +9,7 @@ const RestaurantsAdminPage: React.FC = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30] p-[16px] relative">
       <section>
-        <SectionHeader title="Restaurants" button="Add Restaurant" />
+        <SectionHeader title="Restaurants" />
         <RestaurantsSection />
 
       </section>

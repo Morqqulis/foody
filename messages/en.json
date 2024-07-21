@@ -1,6 +1,12 @@
 {
   "Header": {
-    "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
+    "menu": [
+      "Home",
+      "Restaurants",
+      "About",
+      "How it works",
+      "FAQs"
+    ],
     "search": "Search...",
     "signUp": "Sign Up"
   },
@@ -8,22 +14,31 @@
     "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
     "popular": {
       "title": "Popular",
-      "links": ["Programming", "Books for children", "Psychology", "Business"]
+      "links": [
+        "Programming",
+        "Books for children",
+        "Psychology",
+        "Business"
+      ]
     },
-
     "cash": {
       "title": "Cash",
-      "links": ["Delivery", "Payment", "About the store"]
+      "links": [
+        "Delivery",
+        "Payment",
+        "About the store"
+      ]
     },
-
     "help": {
       "title": "Help",
-      "links": ["Contacts", "Purchase returns", "Buyer help"]
+      "links": [
+        "Contacts",
+        "Purchase returns",
+        "Buyer help"
+      ]
     },
-
     "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
   },
-
   "Login": {
     "Metadata": {
       "title": "Login",
@@ -40,7 +55,6 @@
       "btnSignUp": "Register"
     }
   },
-
   "Home": {
     "Metadata": {
       "title": "Home",
@@ -55,7 +69,11 @@
     "Features": {
       "title": "Features",
       "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-      "cardsTitle": ["Discount Boucher", "Fresh healthy Food", "Fast Home Delivery"],
+      "cardsTitle": [
+        "Discount Boucher",
+        "Fresh healthy Food",
+        "Fast Home Delivery"
+      ],
       "cardsText": [
         "Lorem ipsum is placeholder  commonly used in the graphic",
         "Lorem ipsum is placeholder  commonly used in the graphic",
@@ -63,7 +81,11 @@
       ]
     },
     "Food": {
-      "titles": ["Menu That Always Make You Fall In Love", "Yummy Always Papa John’s Pizza.Agree?", "Do You Like French Fries? Mmm..."],
+      "titles": [
+        "Menu That Always Make You Fall In Love",
+        "Yummy Always Papa John’s Pizza.Agree?",
+        "Do You Like French Fries? Mmm..."
+      ],
       "texts": [
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
@@ -73,7 +95,11 @@
     "Popular": {
       "title": "Our Popular Update New Foods",
       "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-      "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
+      "cardsTitles": [
+        "Dubble Chees",
+        "Margarita",
+        "Twister Menu"
+      ],
       "cardsTexts": [
         "Lorem ipsum is placeholder  commonly used in the graphic ",
         "Lorem ipsum is placeholder  commonly used in the graphic ",
@@ -134,7 +160,6 @@
       }
     }
   },
-
   "Admin": {
     "Metadata": {
       "title": "Admin",
@@ -149,17 +174,19 @@
           "description": "Upload your product image",
           "label": "upload"
         },
-
         "InfoBlock": {
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-          "labels": ["Name", "Description", "Price", "Restaurants"]
+          "labels": [
+            "Name",
+            "Description",
+            "Price",
+            "Restaurants"
+          ]
         },
-
         "cancelBtn": "Cancel",
         "submitBtn": "Create  Product"
       }
     },
-
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
@@ -174,40 +201,113 @@
             "description": "Upload your product image",
             "label": "Upload"
           },
-
           "InfoBlock": {
             "text": "Edit your Product description and necessary information",
-            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "labels": [
+              "Name",
+              "Description",
+              "Price",
+              "Restaurants"
+            ],
             "name": "Name",
             "description": "Description",
             "price": "Price",
             "restaurants": "Restaurants"
           },
-
           "cancelBtn": "Cancel",
           "submitBtn": "Update  Product"
         }
       }
     },
     "Aside": {
-      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "Offer", "Log Out"]
-    }
-  },
-
-  "User": {
-    
-    "Metadata": {
-      "title": "User",
-      "description": "Manage your profile, orders, and settings."
+      "title": [
+        "Dashboard",
+        "Products",
+        "Restaurants",
+        "Category",
+        "Orders",
+        "Offer",
+        "Log Out"
+      ]
     },
-
-    "Aside": {
-      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
+    "Restaurants": {
+      "Title": "Restaurants",
+      "AddRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Add Restaurant",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+          "InfoBlock": {
+            "text": "Add Your Restaurants information",
+            "labels": [
+              "Name",
+              "Cuisine",
+              "Delivery Price $",
+              "Delivery min",
+              "Adress",
+              "Category"
+            ],
+            "name": "Name",
+            "cuisine": "Cuisine",
+            "price": "Delivery Price $",
+            "deliveryMin": "Delivery min",
+            "adress": "Adress",
+            "category": "Category"
+          },
+          "cancelBtn": "Cancel",
+          "submitBtn": "Create"
+        }
+      },
+      "EditRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit Restaurant",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+          "InfoBlock": {
+            "text": "Edit Your Restaurants information",
+            "labels": [
+              "Name",
+              "Cuisine",
+              "Delivery Price $",
+              "Delivery min",
+              "Adress",
+              "Category"
+            ],
+            "name": "Name",
+            "cuisine": "Cuisine",
+            "price": "Delivery Price $",
+            "deliveryMin": "Delivery min",
+            "adress": "Adress",
+            "category": "Category"
+          },
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update Restaurant"
+        }
+      }
+    },
+    "User": {
+      "Metadata": {
+        "title": "User",
+        "description": "Manage your profile, orders, and settings."
+      },
+      "Aside": {
+        "title": [
+          "Profile",
+          "Your Basket",
+          "Your Orders",
+          "Checkout",
+          "Logout"
+        ]
+      }
+    },
+    "Basket": {
+      "title": "Your Basket",
+      "items": "Items",
+      "checkout": "Checkout"
     }
-  },
-  "Basket": {
-    "title": "Your Basket",
-    "items": "Items",
-    "checkout": "Checkout"
   }
 }

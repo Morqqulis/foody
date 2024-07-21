@@ -1,5 +1,6 @@
 import React from 'react'
-import { Trash2 } from "lucide-react";
+import { Trash2, Pencil } from "lucide-react";
+import ReusableSheet from "../Sheet/ReusableSheet"
 
 
 import {
@@ -49,6 +50,7 @@ const RestaurantCard = ({ prop }) => {
                 </AlertDialogContent>
             </AlertDialog>
 
+            <ReusableSheet trigger={<Pencil size={20} color="#00B2A9" className="cursor-pointer" />} whatIs="EditRestaurant" />
 
         </div>
 
