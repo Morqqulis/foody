@@ -37,11 +37,16 @@ const AsideElements: IAsideElements[] = [
   },
   {
     id: 5,
+    icon: "/AdminAside/history.svg",
+    href: "/admin/order-history",
+  },
+  {
+    id: 6,
     icon: "/AdminAside/offer.svg",
     href: "/admin/offer",
   },
   {
-    id: 6,
+    id: 7,
     icon: "/AdminAside/logout.svg",
     href: "/",
     mt: "mt-[20px] ",

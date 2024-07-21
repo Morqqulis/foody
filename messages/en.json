@@ -197,7 +197,7 @@
       }
     },
     "Aside": {
-      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "Offer", "Log Out"]
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders","History", "Offer", "Log Out"]
     }
   },
 
