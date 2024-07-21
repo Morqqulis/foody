@@ -10,7 +10,6 @@ import { ProductSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import React from "react";
-import { Description } from "@radix-ui/react-toast";
 
 interface IMyform {
   whatIs: string;

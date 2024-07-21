@@ -140,6 +140,12 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Login": {
+    "title": "Welcome Admin",
+    "btn": "Sign In",
+    "username": "Username",
+    "password": "Password"
+  },
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
