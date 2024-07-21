@@ -16,11 +16,11 @@ const AdminHeader: React.FC = (): JSX.Element => {
         <div className={`flex items-center gap-4`}>
           <AddProductSheet
             trigger={
-              <Button
+              <div
                 className={`flex items-center gap-2 rounded-[18px] border-[2px] border-[#C035A2] bg-[#C035A2] px-4 text-[10px] font-bold uppercase leading-[21px] text-white shadow-[0px_4px_4px_0px_rgb(39_174_96)/25%]`}
               >
                 <span className={`text-lg font-normal`}>+</span> {t("btn")}
-              </Button>
+              </div>
             }
             whatIs="AddProduct"
           />
