@@ -1,10 +1,9 @@
 import { NextPage } from "next";
-import AdminLogin from "./com/AdminLogin";
-interface ISignInPage {}
+import AdminLogin from "../../../../components/sections/Admin/Login/AdminLogin";
 
 const SignInPage: NextPage = (): JSX.Element => {
   return (
-    <main className="flex justify-center items-center h-screen w-full">
+    <main className="flex h-screen w-full items-center justify-center">
       <AdminLogin />
     </main>
   );

@@ -2,6 +2,7 @@
   "Header": {
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
+    "more":"More",
     "signUp": "Sign Up"
   },
   "Footer": {

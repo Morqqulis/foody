@@ -1,20 +1,27 @@
-import { useTranslations } from 'next-intl'
-
+"use client";
+import { useTranslations } from "next-intl";
+import SearchModal from "./HeaderModal";
+import { useState } from "react";
 interface IHeaderInput {
-   className?: string
+  className?: string;
 }
 
-const HeaderInput: React.FC<IHeaderInput> = ({
-   className
-}: IHeaderInput): JSX.Element => {
-   const t = useTranslations('Header')
-   return (
+const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.Element => {
+  const t = useTranslations("Header");
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <>
       <input
-         className={`focus:ring-mainOragne w-full max-w-[304px] rounded-[10px] bg-background px-5 py-3 font-light leading-[19px] text-black placeholder:text-black placeholder:duration-300 focus:placeholder:opacity-0 ${className || ''}`}
-         type="text"
-         placeholder={t('search')}
+        className={`focus:ring-mainOragne relative w-full max-w-[304px] rounded-[10px] bg-background px-5 py-3 font-light leading-[19px] text-black placeholder:text-black placeholder:duration-300  focus:placeholder:opacity-0 ${className || ""}`}
+        type="text"
+        placeholder={t("search")}
+        onChange={(e) => {
+          e.target.value.length > 0 ? setShowModal(true) : setShowModal(false);
+        }}
       />
-   )
-}
+      {showModal && <SearchModal setShowModal={setShowModal} />}
+    </>
+  );
+};
 
-export default HeaderInput
+export default HeaderInput;
