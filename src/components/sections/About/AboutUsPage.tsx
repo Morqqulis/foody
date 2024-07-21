@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './AboutUsPage.module.css';
+import { useTranslations } from 'next-intl';
 
 const foodItems = [
   { name: 'Hamburger', price: 5.90, image: '/About/hamburger.png', rating: 5 },
@@ -17,23 +18,24 @@ const FoodItem = ({ name, price, image, rating }) => (
   </div>
 );
 
-const AboutUsPage = () => (
-  <div className="container">
-    <div className={styles.aboutUsPage}>
-      <div className={styles.aboutUs}>
-        <h1 className={styles.aboutUsTitle}>About Us</h1>
-        <p className={styles.aboutUsText}>
-          Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
-        </p>
-      </div>
-      <div className={styles.foodList}>
-        <div className={styles.rotateBack}></div>
-        {foodItems.map((item, index) => (
-          <FoodItem key={index} {...item} />
-        ))}
+const AboutUsPage = () => {
+  const t = useTranslations("AboutUs.Metadata")
+  return (
+    <div className="container">
+      <div className={styles.aboutUsPage}>
+        <div className={styles.aboutUs}>
+          <h1 className={styles.aboutUsTitle}>{t('title')}</h1>
+          <p className={styles.aboutUsText}>{t('description')}</p>
+        </div>
+        <div className={styles.foodList}>
+          <div className={styles.rotateBack}></div>
+          {foodItems.map((item, index) => (
+            <FoodItem key={index} {...item} />
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+} 
 
 export default AboutUsPage;
