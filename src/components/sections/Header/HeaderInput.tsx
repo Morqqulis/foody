@@ -9,6 +9,7 @@ interface IHeaderInput {
 const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.Element => {
   const t = useTranslations("Header");
   const [showModal, setShowModal] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   return (
     <>
       <input
@@ -17,9 +18,10 @@ const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.E
         placeholder={t("search")}
         onChange={(e) => {
           e.target.value.length > 0 ? setShowModal(true) : setShowModal(false);
+          setInputValue(e.target.value);
         }}
       />
-      {showModal && <SearchModal setShowModal={setShowModal} />}
+      {showModal && <SearchModal setShowModal={setShowModal} value={inputValue} />}
     </>
   );
 };
