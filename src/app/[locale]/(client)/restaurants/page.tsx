@@ -1,3 +1,4 @@
+import UserAsideRestaurants from '@sections/Restaurants/AsideSection';
 import { NextPage } from 'next'
 import { getTranslations } from 'next-intl/server'
 
@@ -10,13 +11,15 @@ export async function generateMetadata({ params: { locale } }) {
     };
   }
 
-interface IRestaurants {}
+// interface IRestaurants {}
 
 
 
 const RestaurantsPage: NextPage = (): JSX.Element => {
   return (
-    <main>page</main>
+    <main>
+      <UserAsideRestaurants/>
+    </main>
   )
 }
 
