@@ -36,7 +36,7 @@ const AsideElements: IAsideElements[] = [
   {
     id: 5,
     icon: "/AdminAside/offer.svg",
-    href: "/admin/offer",
+    href: "/admin/offers",
   },
   {
     id: 6,
