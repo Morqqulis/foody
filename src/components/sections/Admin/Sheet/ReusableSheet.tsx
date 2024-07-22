@@ -16,6 +16,8 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
   if (whatIs === "AddProduct") {
     t = useTranslations("Admin.Header.Sheet.imageBlock");
   }
+  
+  
 
   return (
     <Sheet>
