@@ -168,5 +168,14 @@
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
+  },
+      "Category": {
+    "title": "Category",
+    "addCategory": "Add Category",
+    "id": "ID",
+    "image": "Image",
+    "name": "Name",
+    "slug": "Slug",
+    "actions": "Actions"
   }
 }

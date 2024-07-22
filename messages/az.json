@@ -181,5 +181,13 @@
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
+  },  "Category": {
+    "title": "Kateqoriya",
+    "addCategory": "Kateqoriya əlavə et",
+    "id": "ID",
+    "image": "Şəkil",
+    "name": "Ad",
+    "slug": "Slug",
+    "actions": "Əməliyyatlar"
   }
 }
