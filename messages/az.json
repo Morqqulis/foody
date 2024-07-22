@@ -1,7 +1,7 @@
 {
   "Header": {
     "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
-
+    "more": "Daha çox",
     "search": "Axtar...",
     "signUp": "Qeydiyyat"
   },
@@ -151,7 +151,12 @@
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
-
+    "Login": {
+      "title": "Xoş gəlmişsiniz, Admin",
+      "btn": "Daxil ol",
+      "username": "İstifadəçi adı",
+      "password": "Şifrə"
+    },
     "Header": {
       "btn": "Məhsul artır",
       "admin": "Admin",
@@ -159,7 +164,7 @@
       "Sheet": {
         "imageBlock": {
           "title": "Məhsul əlavə edin",
-          "text": "Məhsul şəklinizi yükləyin",
+          "description": "Məhsul şəklinizi yükləyin",
           "label": "yükləmək"
         },
 
@@ -204,7 +209,7 @@
     },
 
     "Aside": {
-      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif", "Çıxış"]
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər","Tarixçə", "Təklif", "Çıxış"]
     }
   },
 
@@ -212,11 +217,24 @@
     "Metadata": {
       "title": "İstifadəçi",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
+    },
+    "Aside": {
+      "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
   },
   "Basket": {
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
-  }
+  },
+  "OffersPage": {
+    "title": "Təkliflər",
+    "addOffer": "+ Təklif əlavə et",
+    "id": "ID",
+    "image": "Şəkil",
+    "titleColumn": "Başlıq",
+    "description": "Təsvir",
+    "actions": "Əməliyyatlar"
+    }
+  
 }

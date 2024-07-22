@@ -1,20 +1,11 @@
 import { FC } from "react";
 import Image from "next/image";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { Iprops } from "../../../../app/[locale]/admin/products/data";
-import ReusableSheet from "../Sheet/ReusableSheet"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@ui/alert-dialog";
+import ReusableSheet from "../Sheet/ReusableSheet";
+
 import { useTranslations } from "next-intl";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 interface DetailPageProps {
   prod: Iprops;
@@ -36,25 +27,8 @@ const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
         <div className="flex items-center justify-between">
           <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
           <div className="flex items-center gap-[10px]">
-
-           
             <ReusableSheet trigger={<Pencil size={20} color="#00B2A9" className="cursor-pointer" />} whatIs="EditProduct" />
-
-            <AlertDialog>
-              <AlertDialogTrigger>
-                <Trash2 size={20} color="red" className="cursor-pointer" />
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>{t("Modal.title")}</AlertDialogTitle>
-                  <AlertDialogDescription>{t("Modal.text")}</AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>{t("Modal.cancelBtn")}</AlertDialogCancel>
-                  <AlertDialogAction>{t("Modal.deleteBtn")}</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <DeleteModal />
           </div>
         </div>
       </div>
