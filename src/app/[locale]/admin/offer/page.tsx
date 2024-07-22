@@ -1,17 +1,16 @@
-import SectionHeader from "@sections/Admin/Headers/SectionHeader";
 import { NextPage } from "next";
+import OffersSection from "@sections/Admin/Offers/OffersSection";
 
-interface IOffersPage {}
+interface IOrdersPage {}
 
-const OfferPage: NextPage = (): JSX.Element => {
+const OffersPage: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
-      <section>
-        <SectionHeader title="Restaurants" />
-        offer
-      </section>
+     
+        <OffersSection />
+     
     </main>
   );
 };
 
-export default OfferPage;
+export default OffersPage;
