@@ -1,68 +1,15 @@
 "use client";
 
-import { NextPage } from "next";
-import { useState } from "react";
-import Image from "next/image";
-import AddOfferModal from "@sections/Admin/Offers/AddOfferModal";
-import EditOfferModal from "@sections/Admin/Offers/EditOfferModal";
-import { Edit2, Trash } from "lucide-react";
+import AddOfferModal from "@sections/Admin/Offers/AddOfferModal"
+import EditOfferModal from "@sections/Admin/Offers/EditOfferModal"
 import AdminAside from '@sections/Aside/AdminAside'
+import { Edit2, Trash } from "lucide-react"
+import { NextPage } from "next"
+import Image from "next/image"
 
-interface Offer {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-}
+interface IOrdersPage {}
 
-const OffersPage: NextPage = (): JSX.Element => {
-  const [offers, setOffers] = useState<Offer[]>([
-    {
-      id: 9177,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdwXtAOL0wCTsYOlr33hJX33swJ5ItWUmeRA&s",
-      title: "Do you like Pizza at Papa's?",
-      description: "Yummy thin pizza with chicken",
-    },
-    {
-      id: 9178,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdwXtAOL0wCTsYOlr33hJX33swJ5ItWUmeRA&s",
-      title: "Do you like Pizza at Papa's?",
-      description: "Yummy thin pizza with pepperoni",
-    },
-    {
-      id: 9179,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdwXtAOL0wCTsYOlr33hJX33swJ5ItWUmeRA&sg",
-      title: "Do you like Pizza at Papa's?",
-      description: "Yummy thin pizza with meat",
-    },
-   
-  ]);
-
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [currentOffer, setCurrentOffer] = useState<Offer | null>(null);
-
-  const openAddModal = () => setIsAddModalOpen(true);
-  const closeAddModal = () => setIsAddModalOpen(false);
-
-  const openEditModal = (offer: Offer) => {
-    setCurrentOffer(offer);
-    setIsEditModalOpen(true);
-  };
-  const closeEditModal = () => setIsEditModalOpen(false);
-
-  const addOffer = (offer: Offer) => {
-    setOffers([...offers, offer]);
-  };
-
-  const editOffer = (updatedOffer: Offer) => {
-    setOffers(offers.map((offer) => (offer.id === updatedOffer.id ? updatedOffer : offer)));
-  };
-
-  const deleteOffer = (offerId: number) => {
-    setOffers(offers.filter((offer) => offer.id !== offerId));
-  };
-
+const OrdersPage: NextPage = (): JSX.Element => {
   return (
     <div className="flex min-h-screen bg-gray-900 text-white">
       <AdminAside />
@@ -124,4 +71,4 @@ const OffersPage: NextPage = (): JSX.Element => {
   );
 };
 
-export default OffersPage;
+export default OrdersPage;

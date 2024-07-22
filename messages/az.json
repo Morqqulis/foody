@@ -218,5 +218,15 @@
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
-  }
+  },
+  "OffersPage": {
+    "title": "Təkliflər",
+    "addOffer": "+ Təklif əlavə et",
+    "id": "ID",
+    "image": "Şəkil",
+    "titleColumn": "Başlıq",
+    "description": "Təsvir",
+    "actions": "Əməliyyatlar"
+    }
+  
 }
