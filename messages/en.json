@@ -219,13 +219,13 @@
     "checkout": "Checkout"
   },
   "OffersPage": {
-    "title": "Предложения",
-    "addOffer": "+ Добавить предложение",
+    "title": "Offers",
+    "addOffer": "+ Add Offer",
     "id": "ID",
-    "image": "Изображение",
-    "titleColumn": "Название",
-    "description": "Описание",
-    "actions": "Действия"
+    "image": "Image",
+    "titleColumn": "Title",
+    "description": "Description",
+    "actions": "Actions"
     }
   
 }
