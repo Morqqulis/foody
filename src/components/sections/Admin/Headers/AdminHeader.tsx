@@ -1,19 +1,22 @@
+'use client'
 import HeaderLanguages from "@sections/Header/HeaderLangs";
 import { Button } from "@ui/button";
 import Logo from "@ui/Logo";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import AddProductSheet from "../Sheet/ReusableSheet";
+import { usePathname } from "next/navigation";
 
 interface IAdminHeader {}
 
 const AdminHeader: React.FC = (): JSX.Element => {
+  const pasthname=usePathname()
   const t = useTranslations("Admin.Header");
   return (
     <header className={`mb-[18px] rounded-b-[20px] bg-[#27283C] p-3`}>
       <nav className={`flex items-center justify-between gap-5`}>
         <Logo className={`hover:scale-105`} color={"white"} />
-        <div className={`flex items-center gap-4`}>
+        <div className={`flex items-center gap-4 ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}>
           <AddProductSheet
             trigger={
               <div
