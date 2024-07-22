@@ -3,9 +3,9 @@ import Modal from './Modal';
 
 interface Offer {
   id: number;
-  image: string;
   title: string;
   description: string;
+  image: string;
 }
 
 interface EditOfferModalProps {

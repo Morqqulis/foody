@@ -21,9 +21,9 @@ const AddOfferModal: FC<AddOfferModalProps> = ({ isOpen, onClose, onSave }) => {
   const handleSubmit = () => {
     const newOffer = {
       id: Date.now(),
-      image: image ? URL.createObjectURL(image) : '',
       title,
       description,
+      image: image ? URL.createObjectURL(image) : '',
     };
     onSave(newOffer);
     onClose();
