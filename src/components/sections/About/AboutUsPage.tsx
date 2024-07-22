@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AboutUsPage.module.css';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image'
 
 const foodItems = [
   { name: 'Hamburger', price: 5.90, image: '/About/hamburger.png', rating: 5 },
@@ -11,7 +12,7 @@ const foodItems = [
 
 const FoodItem = ({ name, price, image, rating }) => (
   <div className={styles.foodItem}>
-    <img className={styles.foodImg} src={image} alt={name} />
+    <Image className={styles.foodImg} src={image} alt={name} width={132} height={130} />
     <h3 className={styles.foodName}>{name}</h3>
     <p className={styles.star}>{'⭐'.repeat(rating)}</p>
     <p className={styles.foodPrice}>${price}</p>
