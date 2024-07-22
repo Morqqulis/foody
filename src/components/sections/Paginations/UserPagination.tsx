@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 interface IPagination {
   setCurrentPage: (prev: number) => void;
-  currentPage: number;
+  currentPage: number; 
   dataCount: number;
   perPage: number;
 }

@@ -1,4 +1,3 @@
-import UserAsideRestaurants from '@sections/Restaurants/RestAsideSec';
 import { RestaurantSection } from '@sections/Restaurants/RestaurantSection';
 import { NextPage } from 'next'
 import { getTranslations } from 'next-intl/server'

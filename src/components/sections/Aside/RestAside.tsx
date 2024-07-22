@@ -91,8 +91,8 @@ const AsideElements: RestAside[] = [
 
 const RestAside: FC = (): JSX.Element => {
     return (
-        <div className='row w-72 px-7 bg-slate-500 h-full overflow-y-scroll'>
-            {AsideElements.map((element) => <div className='flex bg-red-300 p-2 border'>
+        <div className='flex flex-col w-1/5 pt-11 pl-7 pr-7 gap-8 bg-[#F3F4F6] h-full overflow-y-scroll'>
+            {AsideElements.map((element) => <div className='flex gap-4 items-center'>
                 <Image src={element.icon} alt={element.title} width={25} height={25} />
                 <p>{element.title}</p>
             </div>)}
