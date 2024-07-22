@@ -71,4 +71,5 @@ const AddOfferModal: FC<AddOfferModalProps> = ({ isOpen, onClose, onSave }) => {
   );
 };
 
+
 export default AddOfferModal;
