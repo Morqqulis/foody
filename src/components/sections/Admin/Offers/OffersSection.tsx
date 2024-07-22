@@ -1,4 +1,4 @@
-import AdminAside from "@sections/Admin/Aside/AdminAside";
+import AdminAside from "@sections/Aside/AdminAside";
 import { NextPage } from "next";
 import Image from "next/image";
 
@@ -24,26 +24,23 @@ const offers = [
   // Add more offers as needed
 ];
 
-const OffersPage: NextPage = (): JSX.Element => {
+const OffersSection: NextPage = (): JSX.Element => {
   return (
     <div className="flex min-h-screen bg-gray-900 text-white">
-      <AdminAside />
       <main className="flex-grow p-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Offers</h1>
-          <button className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600">
-            + ADD OFFER
-          </button>
+          <button className="rounded-lg bg-pink-500 px-4 py-2 text-white hover:bg-pink-600">+ ADD OFFER</button>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-gray-800 rounded-lg">
+          <table className="min-w-full rounded-lg bg-gray-800">
             <thead>
               <tr>
-                <th className="px-4 py-2 border border-gray-700">ID</th>
-                <th className="px-4 py-2 border border-gray-700">Image</th>
-                <th className="px-4 py-2 border border-gray-700">Title</th>
-                <th className="px-4 py-2 border border-gray-700">Description</th>
-                <th className="px-4 py-2 border border-gray-700">Actions</th>
+                <th className="border border-gray-700 px-4 py-2">ID</th>
+                <th className="border border-gray-700 px-4 py-2">Image</th>
+                <th className="border border-gray-700 px-4 py-2">Title</th>
+                <th className="border border-gray-700 px-4 py-2">Description</th>
+                <th className="border border-gray-700 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -58,35 +55,13 @@ const OffersPage: NextPage = (): JSX.Element => {
                   <td className="border border-gray-700 px-4 py-2">
                     <div className="flex space-x-2">
                       <button className="text-green-500 hover:text-green-700">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-5 h-5"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M11 17l2-2m0 0l-2-2m2 2h8m-8 0H5m8 0V3m0 18V3"
-                          />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 17l2-2m0 0l-2-2m2 2h8m-8 0H5m8 0V3m0 18V3" />
                         </svg>
                       </button>
                       <button className="text-red-500 hover:text-red-700">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-5 h-5"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </button>
                     </div>
@@ -101,4 +76,4 @@ const OffersPage: NextPage = (): JSX.Element => {
   );
 };
 
-export default OffersPage;
+export default OffersSection;
