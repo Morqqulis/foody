@@ -1,12 +1,12 @@
 "use client";
 
-import AdminAside from "@sections/Admin/Aside/AdminAside";
 import { NextPage } from "next";
 import { useState } from "react";
 import Image from "next/image";
 import AddOfferModal from "@sections/Admin/Offers/AddOfferModal";
 import EditOfferModal from "@sections/Admin/Offers/EditOfferModal";
 import { Edit2, Trash } from "lucide-react";
+import AdminAside from '@sections/Aside/AdminAside'
 
 interface Offer {
   id: number;

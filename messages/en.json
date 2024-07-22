@@ -91,6 +91,7 @@
       "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
@@ -140,12 +141,53 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Header": {
+      "btn": "Add Product",
+      "admin": "Admin",
+      "Sheet": {
+        "imageBlock": {
+          "title": "Add product",
+          "description": "Upload your product image",
+          "label": "upload"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Name", "Description", "Price", "Restaurants"]
+        },
+
+        "cancelBtn": "Cancel",
+        "submitBtn": "Create  Product"
+      }
+    },
+
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
         "text": "Attention! If you delete this product, it will not come back",
         "cancelBtn": "Cancel",
         "deleteBtn": "Delete"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit product",
+            "description": "Upload your product image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your Product description and necessary information",
+            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "restaurants": "Restaurants"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update  Product"
+        }
       }
     },
     "Aside": {
@@ -154,14 +196,19 @@
   },
 
   "User": {
+    
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Aside": {
+      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
   "Basket": {
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
- }
+  }
 }

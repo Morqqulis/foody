@@ -13,7 +13,7 @@ export async function generateMetadata({ params: { locale } }) {
 interface IUserPage {}
 
 const UserPage: NextPage = (): JSX.Element => {
-  return <main>UserPage</main>;
+  return <main>user</main>;
 };
 
 export default UserPage;
