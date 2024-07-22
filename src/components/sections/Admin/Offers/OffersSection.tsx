@@ -7,6 +7,7 @@ import Table from '@sections/Admin/Table';
 import AddOfferModal from './AddOfferModal';
 import EditOfferModal from './EditOfferModal';
 import SectionHeader from "@sections/Admin/Headers/SectionHeader";
+import { useTranslations } from 'next-intl';
 
 interface Offer {
   id: number;
@@ -16,6 +17,8 @@ interface Offer {
 }
 
 const OffersPage: NextPage = (): JSX.Element => {
+  const t = useTranslations('OffersPage');
+
   const [offers, setOffers] = useState<Offer[]>([
     {
       id: 1145,
@@ -54,7 +57,14 @@ const OffersPage: NextPage = (): JSX.Element => {
     );
   };
 
-  const header = ['Id', 'Image', 'Title', 'Description', 'Actions'];
+  const header = [
+    t('id'),
+    t('image'),
+    t('titleColumn'),
+    t('description'),
+    t('actions')
+  ];
+
   const body = offers.map((offer) => ({
     ...offer,
     actions: (
@@ -68,12 +78,12 @@ const OffersPage: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] p-[10px]">
       <section>
-        <SectionHeader title="Offers" />
+        <SectionHeader title={t('title')} />
         <button
           onClick={() => setAddModalOpen(true)}
           className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600"
         >
-          + Add Offer
+          {t('addOffer')}
         </button>
         <Table headers={header} body={body} />
       </section>
