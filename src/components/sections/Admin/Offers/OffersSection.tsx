@@ -15,7 +15,7 @@ interface Offer {
   description: string;
 }
 
-const OffersPage: NextPage = (): JSX.Element => {
+const OffersSection: NextPage = (): JSX.Element => {
   const t = useTranslations("OffersPage");
 
   const [offers, setOffers] = useState<Offer[]>([
@@ -122,4 +122,4 @@ const OffersPage: NextPage = (): JSX.Element => {
   );
 };
 
-export default OffersPage;
+export default OffersSection;

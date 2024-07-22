@@ -1,16 +1,16 @@
 import { NextPage } from "next";
-import OffersPage from "@sections/Admin/Offers/Offers";
+import OffersSection from "@sections/Admin/Offers/OffersSection";
 
 interface IOrdersPage {}
 
-const OrdersPage: NextPage = (): JSX.Element => {
+const OffersPage: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
      
-        <OffersPage />
+        <OffersSection />
      
     </main>
   );
 };
 
-export default OrdersPage;
+export default OffersPage;
