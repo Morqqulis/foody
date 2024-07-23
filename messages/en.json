@@ -226,13 +226,17 @@
     "items": "Items",
     "checkout": "Checkout"
   },
-  "OffersPage": {
-    "title": "Offers",
-    "addOffer": "+ Add Offer",
-    "id": "ID",
-    "image": "Image",
-    "titleColumn": "Title",
-    "description": "Description",
-    "actions": "Actions"
+  "Header-Restaurants": {
+    "restaurantName": "Papa John’s Pizza Restaurant",
+    "address": "19 Nizami street, Sabail, Baku",
+    "cuisine": "Cuisine",
+    "cuisineList": "pizza, drink, hotdog, sandwich, roll",
+    "deliveryCost": "$5 Delivery",
+    "goBack": "Go Back"
+  },
+
+    "ProductList": {
+      "title": "Products",
+      "description": "Prepared with quality, a slice of cheese and special sauce"
+    }
   }
-}

@@ -236,13 +236,16 @@
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
   },
-  "OffersPage": {
-    "title": "Təkliflər",
-    "addOffer": "+ Təklif əlavə et",
-    "id": "ID",
-    "image": "Şəkil",
-    "titleColumn": "Başlıq",
-    "description": "Təsvir",
-    "actions": "Əməliyyatlar"
+  "Header-Restaurants": {
+    "restaurantName": "Papa John's Pizza Restoranı",
+    "address": "Nizami küçəsi 19, Səbail, Bakı",
+    "cuisine": "Mətbəx",
+    "cuisineList": "pizza, içki, hotdog, sendviç, roll",
+    "deliveryCost": "$5 Çatdırılma",
+    "goBack": "Geri Qayıt"
+  },
+"ProductList": {
+    "title": "Məhsullar",
+    "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"
   }
 }

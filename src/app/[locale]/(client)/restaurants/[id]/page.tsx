@@ -1,3 +1,6 @@
+import Cart from "@sections/Restaurants/Cart";
+import ProductList from "@sections/Restaurants/ProductList";
+import RestaurantsHeader from "@sections/Restaurants/RestaurantsHeader";
 import { NextPage } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -10,10 +13,22 @@ export async function generateMetadata({ params: { locale, id } }) {
   };
 }
 
-interface IRestaurantPage {}
+interface IRestaurantPage {
+  params: { locale: string; id: string };
+}
 
-const RestaurantPage: NextPage = (): JSX.Element => {
-  return <main>RestaurantPage</main>;
+const RestaurantPage: NextPage = ({ params: { locale, id } }: IRestaurantPage): JSX.Element => {
+  return (
+    <main>
+      <div className="container">
+        <RestaurantsHeader />
+        <div className="flex p-4">
+          <ProductList />
+          <Cart />
+        </div>
+      </div>
+    </main>
+  );
 };
 
 export default RestaurantPage;
