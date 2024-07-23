@@ -1,4 +1,3 @@
-import { mukta } from '@settings/fonts'
 import { Button } from '@ui/button'
 import Title from '@ui/Title'
 import { useTranslations } from 'next-intl'
@@ -34,7 +33,7 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
                         height={50}
                      />
                      <span
-                        className={`font-medium text-gray-2 ${mukta.className} w-full max-w-[136px] text-center text-base tracking-[3%]`}
+                        className={`font-medium text-gray-2 w-full max-w-[136px] text-center text-base tracking-[3%]`}
                      >
                         French Fries <br /> Yummy ...
                      </span>
@@ -49,7 +48,7 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
                         height={50}
                      />
                      <span
-                        className={`font-medium text-gray-2 ${mukta.className} w-full max-w-[136px] text-center text-base tracking-[3%]`}
+                        className={`font-medium text-gray-2 w-full max-w-[136px] text-center text-base tracking-[3%]`}
                      >
                         Pizza Hut <br /> Yummy ...
                      </span>
@@ -64,7 +63,7 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
                         height={50}
                      />
                      <span
-                        className={`font-medium text-gray-2 ${mukta.className} w-full max-w-[136px] text-center text-base tracking-[3%]`}
+                        className={`font-medium text-gray-2 w-full max-w-[136px] text-center text-base tracking-[3%]`}
                      >
                         Cheesburger <br /> Yummy ...
                      </span>

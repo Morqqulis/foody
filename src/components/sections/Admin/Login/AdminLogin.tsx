@@ -1,5 +1,4 @@
 import HeaderLanguages from "@sections/Header/HeaderLangs";
-import { montserrat } from "@settings/fonts";
 import Image from "next/image";
 import AdminForm from "./AdminForm";
 import { useTranslations } from "next-intl";
@@ -11,7 +10,7 @@ const AdminLogin: React.FC = (): JSX.Element => {
   return (
     <div className="flex h-[412px] w-[830p]">
       <div className="flex h-full w-[425px] flex-col gap-11 items-center justify-between p-8">
-        <h2 className={`${montserrat.className} h-fit w-full text-[33px] font-bold text-center  text-gray-400`}>{t("title")}</h2>
+        <h2 className={` h-fit w-full text-[33px] font-bold text-center  text-gray-400`}>{t("title")}</h2>
         <AdminForm />
       </div>
       <div className="h-full w-[405px] bg-white">
