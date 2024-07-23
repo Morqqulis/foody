@@ -23,7 +23,7 @@ const initialCategories: Category[] = [
 ];
 
 const AdminRightSidebar: FC = () => {
-  const t = useTranslations('Category');
+  const t = useTranslations('Admin.Category');
   const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentCategory, setCurrentCategory] = useState<Category | undefined>(undefined);

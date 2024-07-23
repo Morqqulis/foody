@@ -210,6 +210,15 @@
 
     "Aside": {
       "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Tarixçə", "Təklif", "Çıxış"]
+    },
+    "Category": {
+      "title": "Kateqoriya",
+      "addCategory": "Kateqoriya əlavə et",
+      "id": "ID",
+      "image": "Şəkil",
+      "name": "Ad",
+      "slug": "Slug",
+      "actions": "Əməliyyatlar"
     }
   },
 
@@ -234,15 +243,6 @@
     "image": "Şəkil",
     "titleColumn": "Başlıq",
     "description": "Təsvir",
-    "actions": "Əməliyyatlar"
-  },
-  "Category": {
-    "title": "Kateqoriya",
-    "addCategory": "Kateqoriya əlavə et",
-    "id": "ID",
-    "image": "Şəkil",
-    "name": "Ad",
-    "slug": "Slug",
     "actions": "Əməliyyatlar"
   }
 }
