@@ -1,13 +1,14 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
-import { Button } from "@ui/button"
-import { Form } from "@ui/form"
-import { useToast } from "@ui/use-toast"
-import axios from "axios"
-import { useTranslations } from "next-intl"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import LoginFormField from "./LoginFormField"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
+import { Button } from "@ui/button";
+import { Form } from "@ui/form";
+import { useToast } from "@ui/use-toast";
+import axios from "axios";
+import { useTranslations } from "next-intl";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import LoginFormField from "./LoginFormField";
+import { useRouter } from "@settings/navigation";
 
 // const BASEURL = "https://foody-api.vercel.app";
 // const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
@@ -20,7 +21,7 @@ interface ILoginForm {
 const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.Element => {
   const setSchema = (name: "login" | "register") => (name === "login" ? SignInFormSchema : SignUpFormSchema);
   const schema = setSchema(name);
-
+  const router = useRouter();
   const { toast } = useToast();
 
   const setDefaultValues = () => (name === "login" ? { email: "", password: "" } : { fullName: "", userName: "", email: "", password: "" });
@@ -39,6 +40,9 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
 
       toast({ title: "Sign In Success", description: `You have successfully signed in`, variant: "dark", duration: 2000 });
       form.reset();
+      setTimeout(() => {
+        router.push("/user");
+      }, 2000);
     } catch (error) {
       toast({ title: "Sign In Failed", description: `You have some Error >: ${error.message}}`, variant: "destructive", duration: 2000 });
       console.log(error);
