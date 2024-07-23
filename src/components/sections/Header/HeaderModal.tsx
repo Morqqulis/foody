@@ -1,9 +1,9 @@
 "use client";
+import { headerModalData } from '@data/data'
 import { Button } from "@ui/button";
 import { MoveRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import data from "../../../app/[locale]/admin/products/data";
 import { useEffect, useState } from "react";
 
 interface Isearchbar {
@@ -15,9 +15,9 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
   const [filteredValues, setFilteredValues] = useState([]);
 
   useEffect(() => {
-    const filteredValue = data.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
+    const filteredValue = headerModalData.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
     setFilteredValues(filteredValue);
-  }, [value, data]);
+  }, [value]);
 
   const t = useTranslations("Header");
   return (
