@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import styles from "./Basket.module.css";
+import styles from "./basket.module.css";
 import { useTranslations } from "next-intl";
 
 const Basket = () => {
