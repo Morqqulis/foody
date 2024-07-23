@@ -1,6 +1,5 @@
-import AdminAside from "@sections/Aside/AdminAside";
-import SectionHeader from "@sections/Admin/Headers/SectionHeader";
-import RestaurantsSection from "@sections/Admin/Restaurants/RestaurantsSection";
+import SectionHeader from "@sections/Admin/Headers/SectionHeader"
+import RestaurantsSection from "@sections/Admin/Restaurants/RestaurantsSection"
 
 interface Ipage {}
 
