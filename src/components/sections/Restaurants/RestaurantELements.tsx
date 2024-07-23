@@ -11,6 +11,7 @@ type RestaurantsData = {
     description: string;
     deliveryPrice: number;
     deliveryMin: number;
+    new_item?: boolean;
 }
 
 
@@ -19,9 +20,10 @@ const Restaurantsdata: RestaurantsData[] = [
         id: 0,
         image: "https://picsum.photos/25/25",
         title: "Chinese",
-        description: "string",
+        description: "dddddddddddd dddddddddddddddddddddddddddddddddddddddddddddddddd",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 1,
@@ -29,7 +31,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 2,
@@ -37,7 +40,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 3,
@@ -45,7 +49,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 4,
@@ -53,7 +58,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 5,
@@ -61,7 +67,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 6,
@@ -69,7 +76,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 7,
@@ -77,7 +85,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 8,
@@ -85,7 +94,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     },
     {
         id: 9,
@@ -93,7 +103,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 10,
@@ -101,7 +112,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 11,
@@ -109,7 +121,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 12,
@@ -117,7 +130,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: true
     },
     {
         id: 13,
@@ -125,7 +139,8 @@ const Restaurantsdata: RestaurantsData[] = [
         title: "Chinese",
         description: "string",
         deliveryPrice: 57,
-        deliveryMin: 5
+        deliveryMin: 5,
+        new_item: false
     }
 ];
 
