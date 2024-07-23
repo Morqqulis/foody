@@ -19,8 +19,8 @@ const initialCartItems: CartItem[] = [
   { id: 2, name: "Papa John's Cola Restaurant", price: 1.5, quantity: 2, img_url: 'https://via.placeholder.com/150' },
   { id: 3, name: "Papa John's Pizza Restaurant", price: 15.0, quantity: 2, img_url: 'https://via.placeholder.com/150' },
   { id: 4, name: "Papa John's Cola Restaurant", price: 1.5, quantity: 2, img_url: 'https://via.placeholder.com/150' },
-  { id: 3, name: "Papa John's Pizza Restaurant", price: 15.0, quantity: 2, img_url: 'https://via.placeholder.com/150' },
-  { id: 4, name: "Papa John's Cola Restaurant", price: 1.5, quantity: 2, img_url: 'https://via.placeholder.com/150' },
+  { id: 5, name: "Papa John's Pizza Restaurant", price: 15.0, quantity: 2, img_url: 'https://via.placeholder.com/150' },
+  { id: 6, name: "Papa John's Cola Restaurant", price: 1.5, quantity: 2, img_url: 'https://via.placeholder.com/150' },
 ];
 
 const Cart: FC = () => {

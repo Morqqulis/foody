@@ -10,14 +10,6 @@ interface IAddProductSheet {
 const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
  const t = useTranslations(`Admin.${whatIs == 'EditProduct' ? 'Products.EditProduct.Sheet.imageBlock' : 'Header.Sheet.imageBlock'}`);
 
-//   if (whatIs === "EditProduct") {
-//     t = useTranslations("Admin.Products.EditProduct.Sheet.imageBlock");
-//   }
-//   if (whatIs === "AddProduct") {
-//     t = useTranslations("Admin.Header.Sheet.imageBlock");
-//   }
-  
-  
 
   return (
     <Sheet>
@@ -30,6 +22,7 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
           <div>
             <Myform whatIs={whatIs} />
           </div>
+          <SheetDescription></SheetDescription>
         </div>
       </SheetContent>
     </Sheet>
