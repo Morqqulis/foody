@@ -1,7 +1,7 @@
 {
   "Header": {
     "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
-
+    "more": "Daha çox",
     "search": "Axtar...",
     "signUp": "Qeydiyyat"
   },
@@ -16,7 +16,7 @@
 
     "cash": {
       "title": "Nagd",
-      "links": ["Cavabdeh", "Ödəmə", "Magazin haqqında"]
+      "links": ["Cavabdeh", "Ödəmə", "Mağaza haqqında"]
     },
 
     "help": {
@@ -151,10 +151,31 @@
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
-
+    "Login": {
+      "title": "Xoş gəlmişsiniz, Admin",
+      "btn": "Daxil ol",
+      "username": "İstifadəçi adı",
+      "password": "Şifrə"
+    },
     "Header": {
-      "btn": "Mehsul artir",
-      "admin": "Admin"
+      "btn": "Məhsul artır",
+      "admin": "Admin",
+
+      "Sheet": {
+        "imageBlock": {
+          "title": "Məhsul əlavə edin",
+          "description": "Məhsul şəklinizi yükləyin",
+          "label": "yükləmək"
+        },
+
+        "InfoBlock": {
+          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+        },
+
+        "cancelBtn": "Ləğv etmək",
+        "submitBtn": "Məhsul yaradın"
+      }
     },
 
     "Products": {
@@ -163,11 +184,32 @@
         "text": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq",
         "cancelBtn": "Ləğv etmək",
         "deleteBtn": "Silmək"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Məhsulu redaktə edin",
+            "description": "Məhsul şəklini yükləyin",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+            "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+            "name": "Ad",
+            "description": "Təsvir",
+            "price": "Qiymət",
+            "restaurants": "Restoranlar"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Məhsulu yenilə"
+        }
       }
     },
 
     "Aside": {
-      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Təklif", "Çıxış"]
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Tarixçə", "Təklif", "Çıxış"]
     }
   },
 
@@ -175,13 +217,26 @@
     "Metadata": {
       "title": "İstifadəçi",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
+    },
+    "Aside": {
+      "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
   },
   "Basket": {
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
-  },  "Category": {
+  },
+  "OffersPage": {
+    "title": "Təkliflər",
+    "addOffer": "+ Təklif əlavə et",
+    "id": "ID",
+    "image": "Şəkil",
+    "titleColumn": "Başlıq",
+    "description": "Təsvir",
+    "actions": "Əməliyyatlar"
+  },
+  "Category": {
     "title": "Kateqoriya",
     "addCategory": "Kateqoriya əlavə et",
     "id": "ID",

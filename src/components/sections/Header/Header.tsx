@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import HeaderMenu from "./HeaderMenu";
 import HeaderInput from "./HeaderInput";
 import HeaderLanguages from "./HeaderLangs";
-
 interface IHeader {
   className?: string;
 }
@@ -14,9 +13,8 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
   const path = usePathname();
   const t = useTranslations("Header");
-
   return (
-    <header className={`${className || ""} `}>
+    <header className={`${className || ""} ${path.startsWith("/admin") ? "hidden" : "block"} `}>
       <div className={`container `}>
         <div
           className={`flex  rounded py-9  pt-7 ${path === "/login" ? "bg-normal-red px-[40px]" : path.startsWith("/admin") ? "hidden" : "bg-gray-7 pl-[57px]"}`}
@@ -29,7 +27,6 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
             {path === "/login" && <HeaderLanguages />}
             <div className={`flex w-full items-center gap-5 ${path == "/login" && "hidden"}`}>
               <HeaderLanguages />
-
               <Link
                 className={`flex w-full max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
                 href={"/login"}
