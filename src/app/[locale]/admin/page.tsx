@@ -1,4 +1,3 @@
-import AdminAside from "@sections/Admin/Aside/AdminAside";
 import { NextPage } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -14,11 +13,7 @@ export async function generateMetadata({ params: { locale } }) {
 interface IAdminPage {}
 
 const AdminPage: NextPage = async (): Promise<JSX.Element> => {
-  return (
-    <main>
-        
-    </main>
-  );
+  return <main></main>;
 };
 
 export default AdminPage;

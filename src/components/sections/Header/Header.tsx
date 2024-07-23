@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import HeaderMenu from "./HeaderMenu";
 import HeaderInput from "./HeaderInput";
 import HeaderLanguages from "./HeaderLangs";
-
 interface IHeader {
   className?: string;
 }
@@ -28,7 +27,6 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
             {path === "/login" && <HeaderLanguages />}
             <div className={`flex w-full items-center gap-5 ${path == "/login" && "hidden"}`}>
               <HeaderLanguages />
-
               <Link
                 className={`flex w-full max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
                 href={"/login"}

@@ -1,25 +1,14 @@
 import { FC } from "react";
 import Image from "next/image";
-import { Pencil, Trash2 } from "lucide-react";
-import { Iprops } from "../../../../app/[locale]/admin/products/data";
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
+import { Pencil } from "lucide-react";
+import ReusableSheet from "../Sheet/ReusableSheet";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@ui/alert-dialog";
 import { useTranslations } from "next-intl";
-import Myform from "./Myform";
+import DeleteModal from "../DeleteModal/DeleteModal";
+import { IProductsData } from '@data/data'
 
 interface DetailPageProps {
-  prod: Iprops;
+  prod: IProductsData;
   index: number;
 }
 const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
@@ -38,36 +27,8 @@ const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
         <div className="flex items-center justify-between">
           <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
           <div className="flex items-center gap-[10px]">
-
-            <Sheet>
-              <SheetTrigger>
-                <Pencil size={20} color="#00B2A9" className="cursor-pointer" />
-              </SheetTrigger>
-              <SheetContent>
-                <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                  <SheetHeader>
-                    <SheetTitle>Add product</SheetTitle>
-                  </SheetHeader>
-                  <Myform title={"AddProduct"} />
-                </div>
-              </SheetContent>
-            </Sheet>
-
-            <AlertDialog>
-              <AlertDialogTrigger>
-                <Trash2 size={20} color="red" className="cursor-pointer" />
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>{t("Modal.title")}</AlertDialogTitle>
-                  <AlertDialogDescription>{t("Modal.text")}</AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>{t("Modal.cancelBtn")}</AlertDialogCancel>
-                  <AlertDialogAction>{t("Modal.deleteBtn")}</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <ReusableSheet trigger={<Pencil size={20} color="#00B2A9" className="cursor-pointer" />} whatIs="EditProduct" />
+            <DeleteModal />
           </div>
         </div>
       </div>

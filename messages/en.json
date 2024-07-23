@@ -2,6 +2,7 @@
   "Header": {
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
+    "more": "More",
     "signUp": "Sign Up"
   },
   "Footer": {
@@ -91,6 +92,7 @@
       "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
@@ -140,11 +142,16 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Login": {
+      "title": "Welcome Admin",
+      "btn": "Sign In",
+      "username": "Username",
+      "password": "Password"
+    },
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
       "Sheet": {
-
         "imageBlock": {
           "title": "Add product",
           "description": "Upload your product image",
@@ -152,12 +159,12 @@
         },
 
         "InfoBlock": {
-          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "text": "Add your Product description and necessary information",
           "labels": ["Name", "Description", "Price", "Restaurants"]
         },
 
         "cancelBtn": "Cancel",
-        "createBtn": "Create  Product"
+        "submitBtn": "Create  Product"
       }
     },
 
@@ -167,10 +174,40 @@
         "text": "Attention! If you delete this product, it will not come back",
         "cancelBtn": "Cancel",
         "deleteBtn": "Delete"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit product",
+            "description": "Upload your product image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your Product description and necessary information",
+            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "restaurants": "Restaurants"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update  Product"
+        }
       }
     },
     "Aside": {
-      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "Offer", "Log Out"]
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
+    },
+    "Category": {
+      "title": "Category",
+      "addCategory": "Add category",
+      "id": "ID",
+      "image": "Image",
+      "name": "Name",
+      "slug": "Slug",
+      "actions": "Actions"
     }
   },
 
@@ -178,11 +215,24 @@
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Aside": {
+      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
   "Basket": {
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
+  },
+  "OffersPage": {
+    "title": "Offers",
+    "addOffer": "+ Add Offer",
+    "id": "ID",
+    "image": "Image",
+    "titleColumn": "Title",
+    "description": "Description",
+    "actions": "Actions"
   }
 }
