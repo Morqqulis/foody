@@ -1,10 +1,11 @@
-'use client';
+"use client";
 import { useTranslations } from "next-intl";
 import AsideElement from "./AsideElement";
 import { usePathname } from "next/navigation";
+import { ClipboardList, History, LayoutDashboard, ListOrdered, LogOut, Percent, SquareStack, Store } from "lucide-react";
 type IAsideElements = {
   id: number;
-  icon: string;
+  icon: JSX.Element;
   href: string;
   mt?: string;
 };
@@ -12,42 +13,42 @@ type IAsideElements = {
 const AsideElements: IAsideElements[] = [
   {
     id: 0,
-    icon: "/AdminAside/dashboard.svg",
+    icon: <LayoutDashboard className="text-[#F2F2F2DE]" />,
     href: "/admin",
   },
   {
     id: 1,
-    icon: "/AdminAside/products.svg",
+    icon: <Store className="text-[#F2F2F2DE]" />,
     href: "/admin/products",
   },
   {
     id: 2,
-    icon: "/AdminAside/restaurants.svg",
+    icon: <ClipboardList className="text-[#F2F2F2DE]" />,
     href: "/admin/restaurants",
   },
   {
     id: 3,
-    icon: "/AdminAside/category.svg",
+    icon: <SquareStack className="text-[#F2F2F2DE]" />,
     href: "/admin/category",
   },
   {
     id: 4,
-    icon: "/AdminAside/orders.svg",
+    icon: <ListOrdered className="text-[#F2F2F2DE]" />,
     href: "/admin/orders",
   },
   {
     id: 5,
-    icon: "/AdminAside/history.svg",
+    icon: <History className="text-[#F2F2F2DE]" />,
     href: "/admin/order-history",
   },
   {
     id: 6,
-    icon: "/AdminAside/offer.svg",
-    href: "/admin/offers",
+    icon: <Percent className="text-[#F2F2F2DE]" />,
+    href: "/admin/offer",
   },
   {
     id: 7,
-    icon: "/AdminAside/logout.svg",
+    icon: <LogOut className="text-[#F2F2F2DE]" />,
     href: "/",
     mt: "mt-[20px] ",
   },
@@ -55,10 +56,12 @@ const AsideElements: IAsideElements[] = [
 
 const AdminAside: React.FC = (): JSX.Element => {
   const t = useTranslations("Admin.Aside.title");
-  const pasthname=usePathname()
-  
+  const pasthname = usePathname();
+
   return (
-    <aside className={`flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}>
+    <aside
+      className={`flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}
+    >
       {AsideElements.map((element) => (
         <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
       ))}
