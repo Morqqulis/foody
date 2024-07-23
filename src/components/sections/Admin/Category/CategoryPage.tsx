@@ -14,12 +14,12 @@ type Category = {
 };
 
 const initialCategories: Category[] = [
-  { id: 9177, image: 'https://placehold.jp/150x150.png', name: 'Pizza', slug: 'yummy-pizza' },
-  { id: 9178, image: 'https://placehold.jp/150x150.png', name: 'Sandvic', slug: 'sendvic' },
-  { id: 9179, image: 'https://placehold.jp/150x150.png', name: 'Fries', slug: 'fries' },
-  { id: 9177, image: 'https://placehold.jp/150x150.png', name: 'Pizza', slug: 'yummy-pizza' },
-  { id: 9178, image: 'https://placehold.jp/150x150.png', name: 'Sandvic', slug: 'sendvic' },
-  { id: 9179, image: 'https://placehold.jp/150x150.png', name: 'Fries', slug: 'fries' },
+  { id: 1, image: 'https://placehold.jp/150x150.png', name: 'Pizza', slug: 'yummy-pizza' },
+  { id: 2, image: 'https://placehold.jp/150x150.png', name: 'Sandvic', slug: 'sendvic' },
+  { id: 3, image: 'https://placehold.jp/150x150.png', name: 'Fries', slug: 'fries' },
+  { id: 4, image: 'https://placehold.jp/150x150.png', name: 'Pizza', slug: 'yummy-pizza' },
+  { id: 5, image: 'https://placehold.jp/150x150.png', name: 'Sandvic', slug: 'sendvic' },
+  { id: 6, image: 'https://placehold.jp/150x150.png', name: 'Fries', slug: 'fries' },
 ];
 
 const AdminRightSidebar: FC = () => {
