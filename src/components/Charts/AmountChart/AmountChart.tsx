@@ -1,12 +1,12 @@
-"use client"
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+"use client";
+import React, { PureComponent } from "react";
+import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 
 const data = [
-  { name: 'KFC', value: 400 },
-  { name: 'MCdonalds', value: 250 },
-  { name: 'Pizza Hut', value: 300 },
-  { name: 'Locate Pizza', value: 200 }
+  { name: "KFC", value: 400 },
+  { name: "MCdonalds", value: 250 },
+  { name: "Pizza Hut", value: 300 },
+  { name: "Locate Pizza", value: 200 },
 ];
 
 const renderActiveShape = (props) => {
@@ -20,31 +20,15 @@ const renderActiveShape = (props) => {
   const my = cy + (outerRadius + 30) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
-  const textAnchor = cos >= 0 ? 'start' : 'end';
+  const textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>
       <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
         {payload.name}
       </text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        innerRadius={outerRadius + 5}
-        outerRadius={outerRadius + 10}
-        fill={fill}
-      />
+      <Sector cx={cx} cy={cy} innerRadius={innerRadius} outerRadius={outerRadius} startAngle={startAngle} endAngle={endAngle} fill={fill} />
+      <Sector cx={cx} cy={cy} startAngle={startAngle} endAngle={endAngle} innerRadius={outerRadius + 5} outerRadius={outerRadius + 10} fill={fill} />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
@@ -56,7 +40,7 @@ const renderActiveShape = (props) => {
 };
 
 export default class AmountChart extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si';
+  static demoUrl = "https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si";
 
   state = {
     activeIndex: 0,
@@ -70,7 +54,7 @@ export default class AmountChart extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: '100%', height: 300 }}>
+      <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
           <PieChart width={600} height={600}>
             <Pie
