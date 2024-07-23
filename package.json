@@ -21,6 +21,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "accordion": "^3.0.2",
     "add": "^2.0.6",
+    "appwrite": "^15.0.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
