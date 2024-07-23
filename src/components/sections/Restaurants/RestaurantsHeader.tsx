@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-const Header = () => {
+const RestaurantsHeader = () => {
   const t = useTranslations('Header-Restaurants');
 
   return (
@@ -39,4 +39,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default RestaurantsHeader;

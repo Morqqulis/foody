@@ -20,7 +20,7 @@ const ProductList: FC = () => {
   const t = useTranslations('ProductList');
 
   return (
-    <div className="container">
+    <div className=" w-full basis-3.5/6">
       <div className="flex-1 p-10 bg-gray-100 mr-6 mt-4 ml-50">
         <h2 className="mb-6 text-center text-2xl font-semibold text-gray-950">{t('title')}</h2>
         <ul className={`${styles.customScrollbar} space-y-4`}>
