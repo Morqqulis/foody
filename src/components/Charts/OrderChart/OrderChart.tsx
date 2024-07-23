@@ -1,52 +1,41 @@
-'use client'
+"use client";
 
-import React, { PureComponent } from 'react';
-import {
-  ResponsiveContainer,
-  ComposedChart,
-  Line,
-  Area,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from 'recharts';
+import React, { PureComponent } from "react";
+import { ResponsiveContainer, ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const data = [
   {
-    name: 'Page A',
+    name: "Page A",
     uv: 390,
     pv: 800,
     amt: 1400,
   },
   {
-    name: 'Page B',
+    name: "Page B",
     uv: 868,
     pv: 967,
     amt: 1506,
   },
   {
-    name: 'Page C',
+    name: "Page C",
     uv: 1397,
     pv: 1098,
     amt: 989,
   },
   {
-    name: 'Page D',
+    name: "Page D",
     uv: 1480,
     pv: 1200,
     amt: 1228,
-  }
-]
+  },
+];
 
 export default class OrderChart extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/p/sandbox/composed-chart-in-responsive-container-4vx38p';
+  static demoUrl = "https://codesandbox.io/p/sandbox/composed-chart-in-responsive-container-4vx38p";
 
   render() {
     return (
-      <div style={{ width: '100%', height: 300 }}>
+      <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
           <ComposedChart
             width={500}
@@ -73,4 +62,3 @@ export default class OrderChart extends PureComponent {
     );
   }
 }
-
