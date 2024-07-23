@@ -92,6 +92,7 @@
       "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
@@ -216,5 +217,15 @@
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
-  }
+  },
+  "OffersPage": {
+    "title": "Offers",
+    "addOffer": "+ Add Offer",
+    "id": "ID",
+    "image": "Image",
+    "titleColumn": "Title",
+    "description": "Description",
+    "actions": "Actions"
+    }
+  
 }
