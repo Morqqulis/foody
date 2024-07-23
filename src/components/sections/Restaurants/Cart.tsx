@@ -42,8 +42,8 @@ const Cart: FC = () => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <div className="mt-4 flex justify-end mr-80">
-      <div className="w-397px h-547px bg-gray-7 p-10">
+    <div className="mt-4 flex basis-2/5 w-full">
+      <div className="w-397px h-547px bg-gray-7 p-10 mb-8">
         <div className="mb-6 flex flex-col">
           <div className="mt-2 flex items-center text-xl">
             <ShoppingCart className="h-7 w-7 text-red-600 " />
@@ -56,18 +56,18 @@ const Cart: FC = () => {
           {cartItems.map((item) => (
             <div
               key={item.id}
-              className="mb-4 flex items-center justify-between rounded-lg bg-white p-4 shadow-md"
+              className="mb-4 flex items-center justify-between rounded-lg bg-white p-1 shadow-md"
             >
               <div className="flex items-center">
                 <Image
                   className="h-20 w-20 rounded-lg"
                   src={item.img_url}
                   alt={item.name}
-                  width={80}
-                  height={80}
+                  width={50}
+                  height={50}
                 />
                 <div className="ml-4">
-                  <h2 className="text-xl font-semibold">{item.name}</h2>
+                  <h2 className="text-sm font-semibold">{item.name}</h2>
                   <p className="text-gray-600">${item.price.toFixed(2)}</p>
                 </div>
               </div>
