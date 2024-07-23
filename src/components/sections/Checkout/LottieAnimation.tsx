@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import animationData from "../../../../public/doneAnimation.json"
+import animationData from "./doneAnimation.json"
 
 
 const LottieAnimation: React.FC = () => {

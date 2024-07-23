@@ -38,7 +38,7 @@ function CheckoutHome() {
 
 
   return (
-    showDoneIcon ? <DoneIconComponent /> : <div className={'flex grid  grid-flow-col justify-stretch  mb-[150px] '}>
+    showDoneIcon ? <DoneIconComponent /> : <div className={' grid  grid-flow-col justify-stretch  mb-[150px] '}>
 
       <div className={'w-[618px] h-[515px] bg-gray-7 px-7 rounded '}>
         <h2 className={'font-semibold text-3xl text-[rgba(79,79,79,1)]  my-[20px]'}>Checkout</h2>
