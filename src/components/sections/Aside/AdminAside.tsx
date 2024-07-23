@@ -44,7 +44,7 @@ const AsideElements: IAsideElements[] = [
   {
     id: 6,
     icon: <Percent className="text-[#F2F2F2DE]" />,
-    href: "/admin/offer",
+    href: "/admin/offers",
   },
   {
     id: 7,

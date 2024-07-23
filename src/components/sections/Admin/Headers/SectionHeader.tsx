@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface ISectionHeader {
   title: string;
 }

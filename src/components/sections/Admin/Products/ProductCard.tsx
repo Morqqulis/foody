@@ -1,14 +1,14 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Pencil } from "lucide-react";
-import { Iprops } from "../../../../app/[locale]/admin/products/data";
 import ReusableSheet from "../Sheet/ReusableSheet";
 
 import { useTranslations } from "next-intl";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import { IProductsData } from '@data/data'
 
 interface DetailPageProps {
-  prod: Iprops;
+  prod: IProductsData;
   index: number;
 }
 const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
