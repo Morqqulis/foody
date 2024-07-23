@@ -483,3 +483,112 @@ export const productsData: IProductsData[] = [
     rest_id: "TCr28ES3sjpVv4R72wLl",
   },
 ];
+
+export interface IadminOrders {
+  id?: string;
+  customer_id?: string;
+  time: string;
+  delivery_adress: string;
+  amount: number;
+  payment_method: "Card" | "Cash on delivery";
+  contact: string;
+}
+
+export const adminOrdersData: IadminOrders[] = [
+  {
+    id: "1",
+    customer_id: "1",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "2",
+    customer_id: "2",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "3",
+    customer_id: "3",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Cash on delivery",
+    contact: "123456789",
+  },
+  {
+    id: "4",
+    customer_id: "4",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "5",
+    customer_id: "5",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Cash on delivery",
+    contact: "123456789",
+  },
+];
+export interface IUserOrders {
+  id?: string;
+  time: string;
+  delivery_adress: string;
+  amount: number;
+  payment_method: "Card" | "Cash on delivery";
+  contact: string;
+}
+
+export const userOrdersData: IUserOrders[] = [
+  {
+    id: "1",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "2",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "3",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Cash on delivery",
+    contact: "123456789",
+  },
+  {
+    id: "4",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Card",
+    contact: "123456789",
+  },
+  {
+    id: "5",
+    time: "2020-01-01",
+    delivery_adress: "test",
+    amount: 100,
+    payment_method: "Cash on delivery",
+    contact: "123456789",
+  },
+];
