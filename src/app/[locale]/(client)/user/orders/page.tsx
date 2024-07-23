@@ -1,9 +1,13 @@
-import { NextPage } from "next";
 
+import { NextPage } from "next";
 interface IUserOrdersPage {}
 
 const UserOrdersPage: NextPage = (): JSX.Element => {
-  return <main>UserOrdersPage</main>;
+
+  return (
+    <main>
+    </main>
+  );
 };
 
 export default UserOrdersPage;

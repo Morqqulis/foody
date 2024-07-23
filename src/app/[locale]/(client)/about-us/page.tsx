@@ -1,26 +1,24 @@
 import Title from '@ui/Title'
 import { getTranslations } from 'next-intl/server'
+import AboutUsPage from '@sections/About/AboutUsPage';
 
 export async function generateMetadata({ params: { locale } }) {
-    const t = await getTranslations({ locale, namespace: "AboutUs.Metadata" });
-  
-    return {
+   const t = await getTranslations({ locale, namespace: "AboutUs.Metadata" });
+
+   return {
       title: t("title"),
       description: t("description"),
-    };
-  }
+   };
+}
 
-interface Ipage {}
+interface Ipage { }
 
 const AboutPage: React.FC = (): JSX.Element => {
    return (
       <main>
-         <section>
-            <Title
-               tag={'h1'}
-               text={'About Page'}
-            />
-         </section>
+         <div className="App">
+            <AboutUsPage />
+         </div>
       </main>
    )
 }

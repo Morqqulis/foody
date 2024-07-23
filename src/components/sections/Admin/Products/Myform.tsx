@@ -25,7 +25,10 @@ interface IMyFormValues {
 const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+  const t = useTranslations("Admin.Products.EditProduct.Sheet");
+  const t2 = useTranslations("Admin.Header.Sheet");
 
+  
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -36,15 +39,6 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
       reader.readAsDataURL(selectedFile);
       setFile(selectedFile);
     }
-  }
-
-  let t: any;
-  if (whatIs === "EditProduct") {
-    t = useTranslations("Admin.Products.EditProduct.Sheet");
-  }
-
-  if (whatIs === "AddProduct") {
-    t = useTranslations("Admin.Header.Sheet");
   }
 
   const form = useForm<z.infer<typeof ProductSchema>>({
@@ -86,12 +80,16 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           </p>
 
           <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
-            <>
-              <MyFormLabel form={form} name="name" inputType="text" />
-              <MyFormLabel form={form} name="description" inputType="text" />
-              <MyFormLabel form={form} name="price" inputType="number" />
-              <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
-            </>
+            {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
+              <>
+                <MyFormLabel form={form} name="name" inputType="text" />
+                <MyFormLabel form={form} name="description" inputType="text" />
+                <MyFormLabel form={form} name="price" inputType="number" />
+                <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 

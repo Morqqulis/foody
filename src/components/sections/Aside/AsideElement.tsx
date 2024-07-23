@@ -1,10 +1,11 @@
-import Image from "next/image";
+"use client";
 import Link from "next/link";
-import { FC } from "react";
+import { usePathname } from "next/navigation";
+import { FC, ReactElement } from "react";
 
 type AsideElements = {
   element: {
-    icon: string;
+    icon: JSX.Element;
     mt?: string;
     href: string;
   };
@@ -13,14 +14,18 @@ type AsideElements = {
 };
 
 const AdminAsideElement: FC<AsideElements> = ({ element, title, whatIs }): JSX.Element => {
+  const path = usePathname();
+
   return (
     <Link
       href={element.href}
-      className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px]  pl-[18px] ${whatIs === "admin" && "hover:bg-[#d578f2]"} ${element.mt && "mt-[20px]"}`}
+      className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px]  pl-[18px] ${path === element.href && ((whatIs === "admin" && "bg-[#d578f2]") || (whatIs === "user" && "bg-[#ffb6af]"))}`}
     >
-      <Image src={element.icon} width={24} height={24} alt={title} />
+      {element.icon}
 
-      <p className={`h-[18px] w-[138px]  text-sm font-medium leading-[21px]   ${whatIs === "admin" ? "text-[#F2F2F2DE]" : "text-[#828282]"}`}>
+      <p
+        className={`h-[18px] w-[138px]  text-sm font-medium leading-[21px]   ${whatIs === "admin" ? "text-[#F2F2F2DE]" : "text-[#828282]"} ${path === element.href && whatIs === "user" && "text-[red]"}`}
+      >
         {title}
       </p>
     </Link>

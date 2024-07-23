@@ -2,6 +2,7 @@
   "Header": {
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
+    "more": "More",
     "signUp": "Sign Up"
   },
   "Footer": {
@@ -91,6 +92,7 @@
       "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
@@ -140,6 +142,12 @@
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
     },
+    "Login": {
+      "title": "Welcome Admin",
+      "btn": "Sign In",
+      "username": "Username",
+      "password": "Password"
+    },
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
@@ -151,7 +159,7 @@
         },
 
         "InfoBlock": {
-          "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
+          "text": "Add your Product description and necessary information",
           "labels": ["Name", "Description", "Price", "Restaurants"]
         },
 
@@ -190,12 +198,20 @@
       }
     },
     "Aside": {
-      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "Offer", "Log Out"]
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
+    },
+    "Category": {
+      "title": "Category",
+      "addCategory": "Add category",
+      "id": "ID",
+      "image": "Image",
+      "name": "Name",
+      "slug": "Slug",
+      "actions": "Actions"
     }
   },
 
   "User": {
-    
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
