@@ -2,7 +2,7 @@
   "Header": {
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
-    "more":"More",
+    "more": "More",
     "signUp": "Sign Up"
   },
   "Footer": {
@@ -143,11 +143,11 @@
       "description": "Access the admin dashboard to manage the website."
     },
     "Login": {
-    "title": "Welcome Admin",
-    "btn": "Sign In",
-    "username": "Username",
-    "password": "Password"
-  },
+      "title": "Welcome Admin",
+      "btn": "Sign In",
+      "username": "Username",
+      "password": "Password"
+    },
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
@@ -198,12 +198,20 @@
       }
     },
     "Aside": {
-      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders","History", "Offer", "Log Out"]
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
+    },
+    "Category": {
+      "title": "Category",
+      "addCategory": "Add category",
+      "id": "ID",
+      "image": "Image",
+      "name": "Name",
+      "slug": "Slug",
+      "actions": "Actions"
     }
   },
 
   "User": {
-    
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
@@ -226,6 +234,5 @@
     "titleColumn": "Title",
     "description": "Description",
     "actions": "Actions"
-    }
-  
+  }
 }
