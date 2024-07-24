@@ -6,10 +6,12 @@ import Image from "next/image";
 import MyFormLabel from "./MyFormLabel";
 import { Form } from "@ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ProductSchema } from "@settings/zodSchemes";
+import { CategorySchema, ProductSchema, RestuarantSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import React from "react";
+import { multiFn } from "../../../../utls/functions";
+import { products } from "@settings/constants";
 
 interface IMyform {
   whatIs: string;
@@ -25,22 +27,84 @@ interface IMyFormValues {
 const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+
   let t: any;
+  let form: any;
+
   switch (whatIs) {
     case "EditProduct":
       t = useTranslations(`Admin.Products.EditProduct.Sheet`);
+      form = useForm<z.infer<typeof ProductSchema>>({
+        resolver: zodResolver(ProductSchema),
+        defaultValues: {
+          name: "",
+          description: "",
+          price: 0,
+          restaurants: "",
+          file: null,
+        },
+      });
       break;
     case "AddProduct":
       t = useTranslations(`Admin.Header.Sheet`);
+      form = useForm<z.infer<typeof ProductSchema>>({
+        resolver: zodResolver(ProductSchema),
+        defaultValues: {
+          name: "",
+          description: "",
+          price: 0,
+          restaurants: "",
+          file: null,
+        },
+      });
       break;
     case "EditCategory":
       t = useTranslations(`Admin.Category.EditCategory.Sheet`);
+      form = useForm<z.infer<typeof CategorySchema>>({
+        resolver: zodResolver(CategorySchema),
+        defaultValues: {
+          name: "",
+          slug: "",
+        },
+      });
       break;
     case "AddCategory":
       t = useTranslations(`Admin.Category.AddCategory.Sheet`);
+      form = useForm<z.infer<typeof CategorySchema>>({
+        resolver: zodResolver(CategorySchema),
+        defaultValues: {
+          name: "",
+          slug: "",
+        },
+      });
       break;
     case "AddRestaurant":
       t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
+      form = useForm<z.infer<typeof RestuarantSchema>>({
+        resolver: zodResolver(RestuarantSchema),
+        defaultValues: {
+          name: "",
+          cuisine: "",
+          deliveryMin: 0,
+          deliveryPrice: 0,
+          adress: "",
+          category: "",
+        },
+      });
+      break;
+    case "EditRestaurant":
+      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet`);
+      form = useForm<z.infer<typeof RestuarantSchema>>({
+        resolver: zodResolver(RestuarantSchema),
+        defaultValues: {
+          name: "",
+          cuisine: "",
+          deliveryMin: 0,
+          deliveryPrice: 0,
+          adress: "",
+          category: "",
+        },
+      });
       break;
     default:
       t = useTranslations(`Admin.Header.Sheet`);
@@ -59,19 +123,10 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     }
   }
 
-  const form = useForm<z.infer<typeof ProductSchema>>({
-    resolver: zodResolver(ProductSchema),
-    defaultValues: {
-      Name: "",
-      Description: "",
-      Price: 0,
-      Restaurants: "",
-      File: null,
-    },
-  });
-
   const submit = (v: IMyFormValues) => {
     console.log(v);
+    multiFn("post", products.post, v);
+    multiFn("get", products.get);
     form.reset();
   };
 
@@ -97,7 +152,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
             {t("InfoBlock.text")}
           </p>
 
-          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
+          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 overflow-auto rounded-[14px] bg-[#43445A] py-[10px] ">
             {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
               <>
                 <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
@@ -115,7 +170,10 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
                 <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
               </>
             ) : whatIs === "AddCategory" || whatIs === "EditCategory" ? (
-              "buraya form gelecek"
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                {whatIs === "EditCategory" && <MyFormLabel whatIs={whatIs} form={form} name="slug" inputType="text" />}
+              </>
             ) : (
               ""
             )}

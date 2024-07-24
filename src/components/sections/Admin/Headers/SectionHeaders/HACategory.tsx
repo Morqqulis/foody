@@ -1,7 +1,5 @@
-import CategoryModal from "@sections/Admin/Category/CategoryModal";
-import { PlusCircle } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
 interface IHACategory {}
 type Category = {
@@ -24,11 +22,11 @@ const HACategory: React.FC = (): JSX.Element => {
   const t = useTranslations("Admin.Category");
 
   return (
-    <div className="mb-4 flex items-center justify-between">
+    <div className="flex items-center justify-cente">
       <ReusableSheet
         trigger={
-          <div className="cursor-pointer rounded-md bg-purple-700 p-2 text-white">
-            <PlusCircle className="mr-2 inline" />
+          <div className="cursor-pointer rounded-md bg-[#C035A2] p-2 text-white  flex gap-2 items-center">
+            <PlusIcon size={20} className="" />
             {t("addCategory")}
           </div>
         }

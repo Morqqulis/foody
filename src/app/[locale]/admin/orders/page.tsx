@@ -8,7 +8,7 @@ const OrdersPage: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
       <section>
-        <SectionHeader title="Restaurants" />
+        <SectionHeader title="Orders" />
         <OrdersTable />
       </section>
     </main>

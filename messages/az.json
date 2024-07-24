@@ -261,7 +261,52 @@
           "submitBtn": "Kateqoriyanı əlavə et"
         }
       }
+    },
+    "Restaurants": {
+    "Title": "Restoranlar",
+    "AddRestaurant": {
+      "Sheet": {
+        "imageBlock": {
+          "title": "Restoran əlavə et",
+          "description": "Şəkil yükləyin",
+          "label": "Yüklə"
+        },
+        "InfoBlock": {
+          "text": "Restoran məlumatlarınızı əlavə edin",
+          "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti $", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+          "name": "Ad",
+          "cuisine": "Mətbəx",
+          "price": "Çatdırılma qiyməti $",
+          "deliveryMin": "Çatdırılma müddəti",
+          "adress": "Ünvan",
+          "category": "Kateqoriya"
+        },
+        "cancelBtn": "Ləgv etmək",
+        "submitBtn": "Əlavə et"
+      }
+    },
+    "EditRestaurant": {
+      "Sheet": {
+        "imageBlock": {
+          "title": "Restoranı redaktə et",
+          "description": "Şəkil yükləyin",
+          "label": "Yüklə"
+        },
+        "InfoBlock": {
+          "text": "Restoran məlumatlarınızı redaktə edin",
+          "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti $", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+          "name": "Ad",
+          "cuisine": "Mətbəx",
+          "price": "Çatdırılma qiyməti $",
+          "deliveryMin": "Çatdırılma müddəti",
+          "adress": "Ünvan",
+          "category": "Kateqoriya"
+        },
+        "cancelBtn": "Ləgv etmək",
+        "submitBtn": "Restoranı Yenilə"
+      }
     }
+  }
   },
 
   "User": {

@@ -163,9 +163,9 @@
           "text": "Add your Product description and necessary information",
           "labels": ["Name", "Description", "Price", "Restaurants"],
           "name": "Name",
-            "description": "Description",
-            "price": "Price",
-            "restaurants": "Restaurants"
+          "description": "Description",
+          "price": "Price",
+          "restaurants": "Restaurants"
         },
 
         "cancelBtn": "Cancel",
@@ -213,7 +213,6 @@
       "slug": "Slug",
       "actions": "Actions",
       "addCategory": "Add Category",
-
 
       "EditCategory": {
         "Sheet": {
@@ -265,14 +264,7 @@
           },
           "InfoBlock": {
             "text": "Add Your Restaurants information",
-            "labels": [
-              "Name",
-              "Cuisine",
-              "Delivery Price $",
-              "Delivery min",
-              "Adress",
-              "Category"
-            ],
+            "labels": ["Name", "Cuisine", "Delivery Price $", "Delivery min", "Adress", "Category"],
             "name": "Name",
             "cuisine": "Cuisine",
             "price": "Delivery Price $",
@@ -293,14 +285,7 @@
           },
           "InfoBlock": {
             "text": "Edit Your Restaurants information",
-            "labels": [
-              "Name",
-              "Cuisine",
-              "Delivery Price $",
-              "Delivery min",
-              "Adress",
-              "Category"
-            ],
+            "labels": ["Name", "Cuisine", "Delivery Price $", "Delivery min", "Adress", "Category"],
             "name": "Name",
             "cuisine": "Cuisine",
             "price": "Delivery Price $",
