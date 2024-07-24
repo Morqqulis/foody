@@ -22,7 +22,7 @@ const AdminRestaurants: React.FC = (): JSX.Element => {
         </option>
       </select>
 
-      <ReusableSheet trigger={<div className={`flex p-2 rounded-full bg-[#C035A2]`}>{t("title")}</div>} whatIs="AddRestaurant" />
+      <ReusableSheet trigger={<div className={`flex rounded-full bg-[#C035A2] p-2 text-white`}>{t("title")}</div>} whatIs="AddRestaurant" />
     </div>
   );
 };

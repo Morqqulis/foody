@@ -10,11 +10,30 @@ interface IFormLabel {
   form: any;
   inputType?: HTMLInputTypeAttribute;
   options?: string[];
+  whatIs:string
 }
 
-const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options}): JSX.Element => {
-  const t = useTranslations("Admin.Products.EditProduct.Sheet");
-  
+const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options,whatIs }): JSX.Element => {
+
+  let t: any;
+  switch (whatIs) {
+    case "EditProduct":
+      t = useTranslations(`Admin.Products.EditProduct.Sheet`);
+      break;
+    case "AddProduct":
+      t = useTranslations(`Admin.Header.Sheet`);
+      break;
+    case "EditCategory":
+      t = useTranslations(`Admin.Category.EditCategory.Sheet`);
+      break;
+    case "AddRestaurant":
+      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
+      break;
+    default:
+      t = useTranslations(`Admin.Header.Sheet`);
+      break;
+  }
+
   return (
     <FormField
       control={form.control}

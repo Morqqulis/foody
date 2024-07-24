@@ -1,6 +1,7 @@
-'use client';
+"use client";
 import { usePathname } from "next/navigation";
 import AdminRestaurants from "./HARestaurants";
+import AdminCategory from "./HACategory";
 
 interface ISectionHeader {
   title: string;
@@ -13,6 +14,8 @@ const SectionHeader: React.FC<ISectionHeader> = ({ title }): JSX.Element => {
       <p className={`text-[20px] font-medium leading-[24px] text-[rgb(199,199,199)]`}>{title}</p>
 
       {path === "/admin/restaurants" && <AdminRestaurants />}
+      {path === "/admin/category" && <AdminCategory />}
+      
     </div>
   );
 };
