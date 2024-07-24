@@ -25,10 +25,28 @@ interface IMyFormValues {
 const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
-  const t = useTranslations("Admin.Products.EditProduct.Sheet");
-  const t2 = useTranslations("Admin.Header.Sheet");
+  let t: any;
+  switch (whatIs) {
+    case "EditProduct":
+      t = useTranslations(`Admin.Products.EditProduct.Sheet`);
+      break;
+    case "AddProduct":
+      t = useTranslations(`Admin.Header.Sheet`);
+      break;
+    case "EditCategory":
+      t = useTranslations(`Admin.Category.EditCategory.Sheet`);
+      break;
+    case "AddCategory":
+      t = useTranslations(`Admin.Category.AddCategory.Sheet`);
+      break;
+    case "AddRestaurant":
+      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
+      break;
+    default:
+      t = useTranslations(`Admin.Header.Sheet`);
+      break;
+  }
 
-  
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -82,11 +100,22 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
             {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
               <>
-                <MyFormLabel form={form} name="name" inputType="text" />
-                <MyFormLabel form={form} name="description" inputType="text" />
-                <MyFormLabel form={form} name="price" inputType="number" />
-                <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="description" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="price" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
               </>
+            ) : whatIs === "AddRestaurant" || whatIs === "EditRestaurant" ? (
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="cuisine" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="price" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="deliveryMin" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="adress" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
+              </>
+            ) : whatIs === "AddCategory" || whatIs === "EditCategory" ? (
+              "buraya form gelecek"
             ) : (
               ""
             )}

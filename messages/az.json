@@ -170,7 +170,11 @@
 
         "InfoBlock": {
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+          "name": "Ad",
+          "description": "Təsvir",
+          "price": "Qiymət",
+          "restaurants": "Restoranlar"
         },
 
         "cancelBtn": "Ləğv etmək",
@@ -218,7 +222,45 @@
       "image": "Şəkil",
       "name": "Ad",
       "slug": "Slug",
-      "actions": "Əməliyyatlar"
+      "actions": "Əməliyyatlar",
+      "EditCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı redaktə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını redaktə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Kateqoriyanı yenilə"
+        }
+      },
+      "AddCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı əlavə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını əlavə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Kateqoriyanı əlavə et"
+        }
+      }
     }
   },
 
@@ -244,7 +286,7 @@
     "deliveryCost": "$5 Çatdırılma",
     "goBack": "Geri Qayıt"
   },
-"ProductList": {
+  "ProductList": {
     "title": "Məhsullar",
     "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"
   }

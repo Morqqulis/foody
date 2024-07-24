@@ -10,7 +10,7 @@ import { z } from "zod";
 import LoginFormField from "./LoginFormField";
 import { useEffect } from "react";
 
-const BASEURL = "https://foody-api.vercel.app";
+const BASEURL = "https://foody-api-seven.vercel.app";
 const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
 const SIGNUP_URL = `${BASEURL}/api/auth/signup`;
 
