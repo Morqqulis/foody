@@ -342,5 +342,14 @@
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
+  },
+  "OffersPage": {
+    "title": "Offers",
+    "addOffer": "+ Add Offer",
+    "id": "ID",
+    "image": "Image",
+    "titleColumn": "Title",
+    "description": "Description",
+    "actions": "Actions"
   }
 }

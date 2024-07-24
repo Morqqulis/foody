@@ -1,4 +1,3 @@
-import { mukta } from '@settings/fonts'
 import Text from '@ui/Text'
 import Title from '@ui/Title'
 import { NextPage } from 'next'
@@ -28,7 +27,7 @@ const HowItWorksPage: NextPage = (): JSX.Element => {
          <section className={`py-20`}>
             <div className="container">
                <Title
-                  className={`text-center text-black font-semibold text-[45px] leading-[30px] tracking-[0.15px] mb-6 ${mukta.className}`}
+                  className={`text-center text-black font-semibold text-[45px] leading-[30px] tracking-[0.15px] mb-6`}
                   tag={'h1'}
                   text={t('title')}
                />

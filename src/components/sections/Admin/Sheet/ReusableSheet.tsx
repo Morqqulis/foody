@@ -42,6 +42,7 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
           <div>
             <Myform whatIs={whatIs} />
           </div>
+          <SheetDescription></SheetDescription>
         </div>
       </SheetContent>
     </Sheet>
