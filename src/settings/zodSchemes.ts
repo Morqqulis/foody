@@ -58,7 +58,7 @@ export const SignInFormSchema = z.object({
 });
 
 export const ProductSchema = z.object({
-  Name: z
+  name: z
     .string({
       required_error: "Name is required.",
     })
@@ -66,14 +66,67 @@ export const ProductSchema = z.object({
       message: "Name must be at least 2 characters.",
     }),
 
-  Description: z.string().min(2, {
+  description: z.string().min(2, {
     message: "Description must be at least 2 characters.",
   }),
-  Price: z.number({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
-  File: z.any(),
-  Restaurants: z.string({ required_error: "Restaurants is required." }),
+  price: z.number({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
+  file: z.any(),
+  restaurants: z.string({ required_error: "Restaurants is required." }),
 });
 
+export const CategorySchema = z.object({
+  name: z
+    .string({
+      required_error: "Name is required.",
+    })
+    .min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+  slug: z
+    .string({
+      required_error: "Slug is required.",
+    })
+    .min(2, {
+      message: "Slug must be at least 2 characters.",
+    }),
+});
+
+export const RestuarantSchema = z.object({
+  name: z
+    .string({
+      required_error: "Name is required.",
+    })
+    .min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+  cuisine: z.string({
+    required_error: "Cuisine is required.",
+  }),
+  deliveryPrice: z
+    .number({
+      required_error: "DeliveryPrice is required.",
+    })
+    .min(2, {
+      message: "DeliveryPrice must be at least 2 characters.",
+    }),
+  deliveryMin: z
+    .number({
+      required_error: "DeliveryMin is required.",
+    })
+    .min(2, {
+      message: "DeliveryMin must be at least 2 characters.",
+    }),
+  adress: z
+    .string({
+      required_error: "Adress is required.",
+    })
+    .min(2, {
+      message: "Adress must be at least 2 characters.",
+    }),
+  category: z.string({
+    required_error: "Category is required.",
+  }),
+});
 export const AdminLoginSchema = z.object({
   email: z
     .string({

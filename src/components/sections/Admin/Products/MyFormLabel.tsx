@@ -29,6 +29,9 @@ const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options,what
     case "AddRestaurant":
       t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
       break;
+      case "EditRestaurant":
+      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet`);
+      break;
     default:
       t = useTranslations(`Admin.Header.Sheet`);
       break;

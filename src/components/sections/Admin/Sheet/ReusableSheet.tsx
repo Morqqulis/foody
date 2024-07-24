@@ -25,12 +25,14 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
     case "AddRestaurant":
       t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
       break;
+    case "EditRestaurant":
+      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet.imageBlock`);
+      break;
 
     default:
       t = useTranslations(`Admin.Header.Sheet.imageBlock`);
       break;
   }
-  
 
   return (
     <Sheet>
