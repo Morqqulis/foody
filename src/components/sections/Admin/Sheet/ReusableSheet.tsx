@@ -30,6 +30,7 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
       t = useTranslations(`Admin.Header.Sheet.imageBlock`);
       break;
   }
+  
 
   return (
     <Sheet>
