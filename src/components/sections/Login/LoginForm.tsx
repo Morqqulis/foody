@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import LoginFormField from "./LoginFormField";
 import { useEffect } from "react";
+import { multiFn } from "../../../utls/functions";
+import { auth } from "@settings/constants";
 
 const BASEURL = "https://foody-api-seven.vercel.app";
 const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
@@ -32,7 +34,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
   const setDefaultValues = () => (name === "login" ? { email: "", password: "" } : { fullName: "", userName: "", email: "", password: "" });
 
   const t = useTranslations("Login");
-  
+
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: setDefaultValues(),
@@ -47,9 +49,9 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
 
   const handleLogin = async (data: z.infer<typeof schema>) => {
     try {
-      const res = await axios.post(SIGNIN_URL, data);
-      console.log(await res.data);
+      const userdata = await multiFn("post", auth.signIn, data);
 
+      localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
       showToast();
       form.reset();
     } catch (error) {
@@ -61,10 +63,9 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
   const handleResigter = async (data: z.infer<typeof schema>) => {
     const user = { email: data.email, password: data.password };
     try {
-      const res = await axios.post(SIGNUP_URL, user);
-      showToast(`${res.data.message}`, "You have successfully signed up", "default", 3000);
+      multiFn("post", auth.signUp, user);
+
       form.reset();
-      console.log(await res.data);
     } catch (error) {
       console.log(error);
       showToast("Sign Up Failed", `You have some Error >: ${error}}`, "destructive", 3000);

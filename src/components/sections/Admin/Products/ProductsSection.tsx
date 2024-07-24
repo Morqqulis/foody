@@ -2,7 +2,9 @@
 import Pagination from "@sections/Paginations/AdminPagination";
 import ProductCard from "./ProductCard";
 import { FC, useState } from "react";
-import { productsData } from '@data/data'
+import { productsData } from "@data/data";
+import { multiFn } from "../../../../utls/functions";
+import { products } from "@settings/constants";
 
 const ProductsSection: FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,6 +14,7 @@ const ProductsSection: FC = (): JSX.Element => {
   const secondIndex = currentPage * productsPerPage;
 
   const newProducts = productsData.slice(firstIndex, secondIndex);
+  multiFn("get", products.get);
 
   return (
     <section className="flex w-[1124px] flex-col items-center justify-center   px-0 pt-[52px] ">
