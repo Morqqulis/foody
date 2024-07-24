@@ -1,6 +1,5 @@
-import AdminAside from "@sections/Aside/AdminAside";
-import SectionHeader from "@sections/Admin/Headers/SectionHeader";
-import { NextPage } from "next";
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
+import { NextPage } from "next"
 
 interface IOrderHistoryPage {}
 

@@ -1,8 +1,8 @@
 import { Eye } from "lucide-react";
 
-import { adminOrdersData } from "../../../../static/data";
 import Table from "../Table";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import { adminOrdersData } from '@data/data'
 interface IOrdersTable {}
 
 const OrdersTable: React.FC = (): JSX.Element => {

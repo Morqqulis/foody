@@ -1,4 +1,4 @@
-import SectionHeader from "@sections/Admin/Headers/SectionHeader";
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
 import OrdersTable from "@sections/Admin/Orders/OrdersTable";
 import { NextPage } from "next";
 
