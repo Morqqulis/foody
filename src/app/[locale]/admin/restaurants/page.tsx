@@ -1,4 +1,4 @@
-import SectionHeader from "@sections/Admin/Headers/SectionHeader"
+import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader"
 import RestaurantsSection from "@sections/Admin/Restaurants/RestaurantsSection"
 
 interface Ipage {}
