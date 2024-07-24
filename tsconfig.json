@@ -31,7 +31,8 @@
       "@providers/*": ["./src/components/providers/*"],
       "@libs/*": ["./src/libs/*"],
       "@icons": ["./src/components/icons/*"],
-      "@messages/*": ["./messages/*"]
+      "@messages/*": ["./messages/*"],
+      "@data/*": ["./src/static/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

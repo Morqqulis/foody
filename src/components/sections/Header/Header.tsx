@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import HeaderMenu from "./HeaderMenu";
 import HeaderInput from "./HeaderInput";
 import HeaderLanguages from "./HeaderLangs";
+import DrapDown from "@sections/DrapDown/DrapDown";
 interface IHeader {
   className?: string;
 }
@@ -33,6 +34,7 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
               >
                 {t("signUp")}
               </Link>
+              <DrapDown />
             </div>
           </nav>
         </div>
