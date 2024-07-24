@@ -1,4 +1,4 @@
-import { account, collection, databases, db } from "@appwrite/config";
+import { account, collectionId, databases, dbId } from "@appwrite/config";
 import { ID } from "appwrite";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const user = await account.create("unique()", email, password, userName);
 
-    const document = await databases.createDocument(db, collection, ID.unique(), {
+    const document = await databases.createDocument(dbId, collectionId, ID.unique(), {
       fullName,
       userName,
       email,

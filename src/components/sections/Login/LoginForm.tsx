@@ -35,7 +35,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
 
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     try {
-      const res = await axios.post("/api/signin", data);
+      const res = await axios.post("/api/auth/signin", data);
       console.log(await res.data);
 
       toast({ title: "Sign In Success", description: `You have successfully signed in`, variant: "dark", duration: 2000 });
@@ -53,7 +53,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     const user = { fullName: data.fullName, userName: data.userName, email: data.email, password: data.password };
 
     try {
-      const res = await axios.post("/api/signup", user);
+      const res = await axios.post("/api/auth/signup", user);
       toast({ title: `${res.data.message}`, description: `You have successfully signed up`, variant: "dark", duration: 2000 });
       form.reset();
       console.log(await res.data);

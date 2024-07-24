@@ -1,10 +1,13 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { account } from "@libs/appwrite/config";
 import { AdminLoginSchema } from "@settings/zodSchemes";
 import { Button } from "@ui/button";
 import { Form } from "@ui/form";
 import { Input } from "@ui/input";
+import axios from "axios";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -21,9 +24,12 @@ const AdminForm: React.FC = (): JSX.Element => {
       password: "",
     },
   });
-  function submit(v: IAdminForm) {
-    console.log(v);
-    form.reset();
+
+
+  async function submit(data: IAdminForm) {
+    const res = await axios.post("/api/auth/admin", data);
+    const answer = await res.data;
+    console.log(await answer);
   }
   const t = useTranslations("Admin.Login");
   return (
