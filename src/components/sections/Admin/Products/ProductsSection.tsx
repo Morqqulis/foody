@@ -14,7 +14,6 @@ const ProductsSection: FC = (): JSX.Element => {
   const secondIndex = currentPage * productsPerPage;
 
   const newProducts = productsData.slice(firstIndex, secondIndex);
-  multiFn("get", products.get);
 
   return (
     <section className="flex w-[1124px] flex-col items-center justify-center   px-0 pt-[52px] ">

@@ -1,4 +1,3 @@
-import { Button } from "@ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
 import Myform from "../Products/Myform";
@@ -27,6 +26,12 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
       break;
     case "EditRestaurant":
       t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet.imageBlock`);
+      break;
+    case "AddOffer":
+      t = useTranslations(`Admin.Offers.AddOffer.Sheet.imageBlock`);
+      break;
+    case "EditOffer":
+      t = useTranslations(`Admin.Offers.EditOffer.Sheet.imageBlock`);
       break;
 
     default:

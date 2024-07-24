@@ -20,11 +20,11 @@ const initialCategories: Category[] = [
     name: "Pizza",
     slug: "yummy-pizza",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
   {
@@ -33,11 +33,11 @@ const initialCategories: Category[] = [
     name: "Sandvic",
     slug: "sendvic",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
   {
@@ -46,11 +46,11 @@ const initialCategories: Category[] = [
     name: "Fries",
     slug: "fries",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
   {
@@ -59,11 +59,11 @@ const initialCategories: Category[] = [
     name: "Pizza",
     slug: "yummy-pizza",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
   {
@@ -72,11 +72,11 @@ const initialCategories: Category[] = [
     name: "Sandvic",
     slug: "sendvic",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
   {
@@ -85,11 +85,11 @@ const initialCategories: Category[] = [
     name: "Fries",
     slug: "fries",
     actions: (
-      <td className=" flex items-center gap-2 px-4 py-2">
+      <div className=" flex items-center gap-2 px-4 py-2">
         <ReusableSheet trigger={
           <Pencil size={16} className="text-[#00B2A9] cursor-pointer" />} whatIs="EditCategory" />
         <DeleteModal />
-      </td>
+      </div>
     ),
   },
 ];
