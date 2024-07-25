@@ -1,12 +1,13 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
-import Myform from "../Products/Myform";
+import Myform from "../../../ui/Myform";
 interface IAddProductSheet {
   trigger: any;
   whatIs: string;
+  id?: any;
 }
 
-const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
+const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs, id }): JSX.Element => {
   let str: string;
   switch (whatIs) {
     case "EditProduct":
@@ -49,7 +50,7 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
             <SheetTitle>{t("title")}</SheetTitle>
           </SheetHeader>
           <div>
-            <Myform whatIs={whatIs} />
+            <Myform whatIs={whatIs} actionId={id} />
           </div>
           <SheetDescription></SheetDescription>
         </div>

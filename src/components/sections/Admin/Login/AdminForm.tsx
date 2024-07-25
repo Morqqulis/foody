@@ -24,8 +24,9 @@ const AdminForm: React.FC = (): JSX.Element => {
     },
   });
 const access_token=localStorage.getItem("token")
+
   function submit(v: IAdminForm) {
-    multiFn("post", auth.signIn, v, access_token);
+    multiFn("post", auth.signIn, v);
     form.reset();
   }
 
