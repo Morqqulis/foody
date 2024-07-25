@@ -10,6 +10,7 @@ import { ProductSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import React from "react";
+import axios from "axios";
 
 interface IMyform {
   whatIs: string;
@@ -28,7 +29,6 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const t = useTranslations("Admin.Products.EditProduct.Sheet");
   const t2 = useTranslations("Admin.Header.Sheet");
 
-  
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -52,9 +52,11 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     },
   });
 
-  const submit = (v: IMyFormValues) => {
-    console.log(v);
-    form.reset();
+  const submit = async (v: IMyFormValues) => {
+    const res = axios.post("/api/products", v);
+    console.log(await res);
+    // console.log(v);
+    // form.reset();
   };
 
   return (
