@@ -1,43 +1,45 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
-import Myform from "../Products/Myform";
+import Myform from "../../../ui/Myform";
 interface IAddProductSheet {
   trigger: any;
   whatIs: string;
+  id?: any;
 }
 
-const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
-  let t: any;
+const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs, id }): JSX.Element => {
+  let str: string;
   switch (whatIs) {
     case "EditProduct":
-      t = useTranslations(`Admin.Products.EditProduct.Sheet.imageBlock`);
+      str = `Products.EditProduct`;
       break;
     case "AddProduct":
-      t = useTranslations(`Admin.Header.Sheet.imageBlock`);
+      str = `Header`;
       break;
     case "EditCategory":
-      t = useTranslations(`Admin.Category.EditCategory.Sheet.imageBlock`);
+      str = `Category.EditCategory`;
       break;
     case "AddCategory":
-      t = useTranslations(`Admin.Category.AddCategory.Sheet.imageBlock`);
+      str = `Category.AddCategory`;
       break;
     case "AddRestaurant":
-      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
+      str = `Restaurants.AddRestaurant`;
       break;
     case "EditRestaurant":
-      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet.imageBlock`);
+      str = `Restaurants.EditRestaurant`;
       break;
     case "AddOffer":
-      t = useTranslations(`Admin.Offers.AddOffer.Sheet.imageBlock`);
+      str = `Offers.AddOffer`;
       break;
     case "EditOffer":
-      t = useTranslations(`Admin.Offers.EditOffer.Sheet.imageBlock`);
+      str = `Offers.EditOffer`;
       break;
 
     default:
-      t = useTranslations(`Admin.Header.Sheet.imageBlock`);
+      str = `Header`;
       break;
   }
+  const t = useTranslations(`Admin.${str}.Sheet.imageBlock`);
 
   return (
     <Sheet>
@@ -48,7 +50,7 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
             <SheetTitle>{t("title")}</SheetTitle>
           </SheetHeader>
           <div>
-            <Myform whatIs={whatIs} />
+            <Myform whatIs={whatIs} actionId={id} />
           </div>
           <SheetDescription></SheetDescription>
         </div>

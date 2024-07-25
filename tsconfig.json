@@ -32,7 +32,8 @@
       "@libs/*": ["./src/libs/*"],
       "@icons": ["./src/components/icons/*"],
       "@messages/*": ["./messages/*"],
-      "@data/*": ["./src/static/*"],
+      "@appwrite/*": ["./src/libs/appwrite/*"],
+      "@data/*": ["./src/static/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

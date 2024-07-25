@@ -1,16 +1,14 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
-import { Button } from "@ui/button";
-import { Form } from "@ui/form";
-import { useToast } from "@ui/use-toast";
-import axios from "axios";
-import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import LoginFormField from "./LoginFormField";
-import { useEffect } from "react";
-import { multiFn } from "../../../utls/functions";
-import { auth } from "@settings/constants";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { auth } from "@settings/constants"
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
+import { Button } from "@ui/button"
+import { Form } from "@ui/form"
+import { useToast } from "@ui/use-toast"
+import { useTranslations } from "next-intl"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { multiFn } from "../../../utls/functions"
+import LoginFormField from "./LoginFormField"
 
 const BASEURL = "https://foody-api-seven.vercel.app";
 const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
@@ -20,15 +18,10 @@ interface ILoginForm {
   name: "login" | "register";
 }
 
-interface IShowToast {
-  title: string;
-  description?: string;
-  variant?: "default" | "destructive";
-  duration?: number;
-}
-
 const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.Element => {
-  let schema = name === "login" ? SignInFormSchema : SignUpFormSchema;
+  const setSchema = (name: "login" | "register") => (name === "login" ? SignInFormSchema : SignUpFormSchema);
+  const schema = setSchema(name);
+  const router = useRouter();
   const { toast } = useToast();
 
   const setDefaultValues = () => (name === "login" ? { email: "", password: "" } : { fullName: "", userName: "", email: "", password: "" });
@@ -40,35 +33,38 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     defaultValues: setDefaultValues(),
   });
 
-  const showToast = (title = "title", description = "description", variant = "default", duration = 3000): void => {
-    toast({
-      title,
-      description,
-    });
-  };
-
-  const handleLogin = async (data: z.infer<typeof schema>) => {
+  const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     try {
       const userdata = await multiFn("post", auth.signIn, data);
 
       localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
       showToast();
       form.reset();
+      setTimeout(() => {
+        router.push("/user");
+      }, 2000);
     } catch (error) {
-      showToast("Sign In Failed", `You have some Error >: ${error}}`, "destructive", 3000);
+      toast({ title: "Sign In Failed", description: `You have some Error >: ${error.message}}`, variant: "destructive", duration: 2000 });
       console.log(error);
     }
   };
 
-  const handleResigter = async (data: z.infer<typeof schema>) => {
-    const user = { email: data.email, password: data.password };
+  const handleResigter = async (data: z.infer<typeof SignUpFormSchema>) => {
+    const user = { fullName: data.fullName, userName: data.userName, email: data.email, password: data.password };
+
     try {
       multiFn("post", auth.signUp, user);
 
       form.reset();
     } catch (error) {
       console.log(error);
-      showToast("Sign Up Failed", `You have some Error >: ${error}}`, "destructive", 3000);
+
+      toast({
+        title: "Sign Up Failed",
+        description: `You have some Error...}`,
+        variant: "destructive",
+        duration: 2000,
+      });
     }
   };
 
@@ -81,7 +77,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
         handleResigter(values);
         break;
       default:
-        () => toast({ title: "Enter Valid data", description: "You have some Error", variant: "destructive", duration: 3000 });
+        () => toast({ title: "Enter Valid data", description: "You have some Error", variant: "destructive", duration: 2000 });
         form.reset();
         break;
     }

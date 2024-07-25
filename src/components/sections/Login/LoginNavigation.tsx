@@ -1,17 +1,16 @@
 "use client";
-import { cn } from "@libs/clsx"
-import { useLoginStore } from "@stores/Login"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs"
-import { Toaster } from "@ui/toaster"
-import { useTranslations } from "next-intl"
-import LoginForm from "./LoginForm"
+import { cn } from "@libs/clsx";
+import { useLoginStore } from "@stores/Login";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
+import { Toaster } from "@ui/toaster";
+import { useTranslations } from "next-intl";
+import LoginForm from "./LoginForm";
 
 interface ILoginNavigation {}
 
 const LoginNavigation: React.FC = (): JSX.Element => {
   const t = useTranslations("Login");
   const { defaultTab, setDefaultTab } = useLoginStore();
- 
 
   return (
     <>
@@ -39,6 +38,7 @@ const LoginNavigation: React.FC = (): JSX.Element => {
           <LoginForm name="register" />
         </TabsContent>
       </Tabs>
+
       <Toaster />
     </>
   );

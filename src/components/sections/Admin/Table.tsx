@@ -21,13 +21,19 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
         </thead>
         <tbody>
           {body.map((row) => (
-            <tr key={row.id} className="text-center">
+            <tr key={row.$id} className="text-center">
               {Object.entries(row).map(([key, value]) => (
                 <td key={key} className="border border-gray-200 px-4 py-2">
-                  {key === "image" ? <Image src={value as string} width={50} height={50} alt={key} /> : <> {value} </>}
+                  {key === "image" ? (
+                    <Image src={value as string} width={50} height={50} alt={key} />
+                  ) : key.toLocaleLowerCase() === "id" ? (
+                    <> {value.toString().slice(0, 4)}*** </>
+                  ) : (
+                    <> {value} </>
+                  )}
                 </td>
               ))}
-              
+
               {trigger}
             </tr>
           ))}

@@ -1,14 +1,14 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { AdminLoginSchema } from "@settings/zodSchemes";
-import { Button } from "@ui/button";
-import { Form } from "@ui/form";
-import { Input } from "@ui/input";
-import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { multiFn } from "../../../../utls/functions";
-import { auth } from "@settings/constants";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { auth } from "@settings/constants"
+import { AdminLoginSchema } from "@settings/zodSchemes"
+import { Button } from "@ui/button"
+import { Form } from "@ui/form"
+import { Input } from "@ui/input"
+import { useTranslations } from "next-intl"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { multiFn } from "../../../../utls/functions"
 
 interface IAdminForm {
   username: string;
@@ -24,8 +24,9 @@ const AdminForm: React.FC = (): JSX.Element => {
     },
   });
 const access_token=localStorage.getItem("token")
+
   function submit(v: IAdminForm) {
-    multiFn("post", auth.signIn, v, access_token);
+    multiFn("post", auth.signIn, v);
     form.reset();
   }
 

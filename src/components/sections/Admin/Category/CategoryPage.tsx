@@ -1,9 +1,12 @@
-import { FC } from "react";
-import {  Pencil } from "lucide-react";
+"use server";
+import { Pencil } from "lucide-react";
 import { useTranslations } from "next-intl";
 import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import Table from "../Table";
+import { getDocuments } from "../../../../utls/functions";
+import { getTranslations } from "next-intl/server";
+import { collections } from "@libs/appwrite/config";
 
 type Category = {
   id: number;
@@ -13,95 +16,34 @@ type Category = {
   actions: any;
 };
 
-const initialCategories: Category[] = [
-  {
-    id: 1,
-    image: "https://placehold.jp/150x150.png",
-    name: "Pizza",
-    slug: "yummy-pizza",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    image: "https://placehold.jp/150x150.png",
-    name: "Sandvic",
-    slug: "sendvic",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    image: "https://placehold.jp/150x150.png",
-    name: "Fries",
-    slug: "fries",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    image: "https://placehold.jp/150x150.png",
-    name: "Pizza",
-    slug: "yummy-pizza",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-  {
-    id: 5,
-    image: "https://placehold.jp/150x150.png",
-    name: "Sandvic",
-    slug: "sendvic",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer " />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    image: "https://placehold.jp/150x150.png",
-    name: "Fries",
-    slug: "fries",
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={
-          <Pencil size={16} className="text-[#00B2A9] cursor-pointer" />} whatIs="EditCategory" />
-        <DeleteModal />
-      </div>
-    ),
-  },
-];
+const filteredData = (data: any) => {
 
-const AdminRightSidebar: FC = () => {
-  const t = useTranslations("Admin.Category");
-
-  return (
-    <div className="flex h-screen w-full ">
-        <Table headers={["ID", "Image", "Name", "Slug",""]} body={initialCategories} />
-    </div>
-  );
+  return data.map((item: any) => ({
+    id: item.$id,
+    image: item.image,
+    name: item.name,
+    slug: item.slug,
+    actions: (
+      <div className=" flex items-center gap-2 px-4 py-2">
+        <ReusableSheet trigger={<Pencil size={16} className="cursor-pointer text-[#00B2A9]" />} whatIs="EditCategory" id={item.$id} />
+        <DeleteModal collectionId={item.$collectionId} deletedId={item.$id} />
+      </div>
+    ),
+  }));
 };
 
-export default AdminRightSidebar;
+const CategoryPage = async () => {
+  const t = getTranslations("Admin.Category");
+  const data = filteredData((await getDocuments(collections.categoriesId)).documents);
+  if (data.length > 0) {
+    return (
+      <div className="flex h-screen w-full ">
+        <Table headers={["ID", "Image", "Name", "Slug", ""]} body={data} />
+      </div>
+    );
+  } else {
+    return <div>Empty</div>;
+  }
+};
+
+export default CategoryPage;
