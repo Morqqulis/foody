@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const AdminRestaurants: React.FC = (): JSX.Element => {
   const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
+  const t2 = useTranslations(`Header`);
   const [open, setOpen] = useState(true);
   return (
     <div className="flex items-center justify-center gap-[15px]">
@@ -27,11 +28,16 @@ const AdminRestaurants: React.FC = (): JSX.Element => {
           onClick={() => setOpen(false)}
         >
           <>
-            <Search size={20} /> Search
+            <Search size={20} /> {t2("search")}
           </>
         </div>
       ) : (
-        <Input className={`w-[250px] border-none bg-[#5A5B70] text-white `} onBlur={() => setOpen(true)} />
+        <div className="flex gap-2 p-2 text-white">
+          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#C035A2]" onClick={() => setOpen(true)}>
+            <Search size={20} />
+          </div>
+          <Input className={`w-[250px] border-none bg-[#5A5B70] text-white`} />
+        </div>
       )}
     </div>
   );
