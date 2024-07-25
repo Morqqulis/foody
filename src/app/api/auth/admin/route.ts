@@ -1,4 +1,4 @@
-import { account, collectionId, databases, dbId, ID } from "@appwrite/config";
+import { account, databases, dbId, ID } from "@appwrite/config";
 import { Query } from "appwrite";
 import { NextRequest, NextResponse } from "next/server";
 

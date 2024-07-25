@@ -14,33 +14,35 @@ interface IFormLabel {
 }
 
 const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, whatIs }): JSX.Element => {
-  let t: any;
+  let str: string;
   switch (whatIs) {
     case "EditProduct":
-      t = useTranslations(`Admin.Products.EditProduct.Sheet`);
+      str = `Products.EditProduct.Sheet`;
       break;
     case "AddProduct":
-      t = useTranslations(`Admin.Header.Sheet`);
+      str = `Header.Sheet`;
       break;
     case "EditCategory":
-      t = useTranslations(`Admin.Category.EditCategory.Sheet`);
+      str = `Category.EditCategory.Sheet`;
       break;
     case "AddRestaurant":
-      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
+      str = `Restaurants.AddRestaurant.Sheet`;
       break;
     case "EditRestaurant":
-      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet`);
+      str = `Restaurants.EditRestaurant.Sheet`;
       break;
     case "AddOffer":
-      t = useTranslations(`Admin.Offers.AddOffer.Sheet`);
+      str = `Offers.AddOffer.Sheet`;
       break;
     case "EditOffer":
-      t = useTranslations(`Admin.Offers.EditOffer.Sheet`);
+      str = `Offers.EditOffer.Sheet`;
       break;
     default:
-      t = useTranslations(`Admin.Header.Sheet`);
+      str = `Header.Sheet`;
       break;
   }
+
+  const t = useTranslations(`Admin.${str}`);
 
   return (
     <FormField
@@ -58,7 +60,7 @@ const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, wha
                 {...field}
                 className="h-[110px] w-[450px] resize-none rounded-[14px] border-none  bg-[#5A5B70] p-3 text-[#F2F2F2] placeholder:text-[#C7C7C7] "
               />
-            ) : name === "restaurants"|| name==="category" ? (
+            ) : name === "restaurants" || name === "category" ? (
               <Select required onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <SelectTrigger className="h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] p-3 text-[#F2F2F2]">
                   <SelectValue placeholder={t(`InfoBlock.${name}`)} />

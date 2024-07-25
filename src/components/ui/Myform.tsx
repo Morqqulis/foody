@@ -11,7 +11,7 @@ import { z } from "zod";
 import MyFormLabel from "./MyFormLabel";
 import { getDefaultValues, getSchema } from "../../utls/getShema";
 
-import {  collections } from "@libs/appwrite/config";
+import { collections } from "@libs/appwrite/config";
 import { addDocuments, editDocuments } from "../../utls/functions";
 
 interface IMyform {
