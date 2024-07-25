@@ -1,151 +1,27 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form } from "@ui/form";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
-import { useForm } from "react-hook-form";
-import Image from "next/image";
-import MyFormLabel from "./MyFormLabel";
-import { Form } from "@ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { AddCategorySchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema, DefaultSchema } from "@settings/zodSchemes";
-import { z } from "zod";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import React from "react";
-import { multiFn } from "../../../../utls/functions";
-import { products } from "@settings/constants";
-import axios from "axios";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import MyFormLabel from "./MyFormLabel";
+import { getDefaultValues, getSchema } from "../../utls/getShema";
+
+import { collections } from "@libs/appwrite/config";
+import { addDocuments, editDocuments } from "../../utls/functions";
 
 interface IMyform {
   whatIs: string;
+  actionId?: string;
 }
 
-interface IMyFormValues {
-  file?: FileList;
-  name?: string;
-  description?: string;
-  price?: string;
-  restaurants?: string;
-  cuisine?: string;
-  deliveryPrice?: string;
-  deliveryMin?: string;
-  adress?: string;
-  category?: string;
-  title?: string;
-  slug?: string;
-}
-const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
+const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
-
-  function getSchema() {
-    switch (whatIs) {
-      case "EditProduct":
-        return ProductSchema;
-        break;
-      case "AddProduct":
-        return ProductSchema;
-        break;
-      case "EditCategory":
-        return EditCategorySchema;
-        break;
-      case "AddCategory":
-        return AddCategorySchema;
-        break;
-      case "AddRestaurant":
-        return RestuarantSchema;
-        break;
-      case "EditRestaurant":
-        return RestuarantSchema;
-        break;
-      case "AddOffer":
-        return OfferSchema;
-        break;
-      case "EditOffer":
-        return OfferSchema;
-        break;
-      default:
-        return DefaultSchema;
-        break;
-    }
-  }
-  const getDefaultValues = () => {
-    switch (whatIs) {
-      case "EditProduct":
-        return {
-          name: "",
-          description: "",
-          price: "00.00",
-          restaurants: "",
-        };
-        break;
-      case "AddProduct":
-        return {
-          name: "",
-          description: "",
-          price: "00.00",
-          restaurants: "",
-        };
-        break;
-      case "EditCategory":
-        return {
-          name: "",
-          slug: "",
-        };
-        break;
-      case "AddCategory":
-        return {
-          name: "",
-        };
-        break;
-      case "AddRestaurant":
-        return {
-          name: "",
-          cuisine: "",
-          deliveryMin: "",
-          deliveryPrice: "00.00",
-          adress: "",
-          category: "",
-        };
-        break;
-      case "EditRestaurant":
-        return {
-          name: "",
-          cuisine: "",
-          deliveryMin: "",
-          deliveryPrice: "00.00",
-          adress: "",
-          category: "",
-        };
-        break;
-      case "AddOffer":
-        return {
-          title: "",
-          description: "",
-        };
-        break;
-      case "EditOffer":
-        return {
-          title: "",
-          description: "",
-        };
-        break;
-      default:
-        return {
-          file: FileList,
-          name: "",
-          description: "",
-          price: "",
-          restaurants: "",
-          cuisine: "",
-          deliveryPrice: "",
-          deliveryMin: "",
-          adress: "",
-          category: "",
-          title: "",
-          slug: "",
-        };
-        break;
-    }
-  };
 
   let str: string;
   switch (whatIs) {
@@ -181,8 +57,8 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
 
   const t = useTranslations(`Admin.${str}.Sheet`);
 
-  const schema = getSchema();
-  const values = getDefaultValues();
+  const schema = getSchema(whatIs);
+  const values = getDefaultValues(whatIs);
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -201,14 +77,33 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     }
   }
 
-  const submit = async (v) => {
-    const data = { ...v, file };
-    // console.log(data);
-    const rest = await axios.post("/api/products", v);
-    console.log(await rest.data);
+  const submit = async (v: any) => {
+    if (whatIs.startsWith("Add") && !file) return;
 
-    // multiFn("post", products.post, v);
-    // multiFn("get", products.get);
+    switch (whatIs) {
+      case "EditProduct":
+        break;
+      case "AddProduct":
+        break;
+      case "EditCategory":
+        editDocuments(collections.categoriesId, v, file, actionId);
+        break;
+      case "AddCategory":
+        addDocuments(collections.categoriesId, v, file);
+        break;
+      case "AddRestaurant":
+        break;
+      case "EditRestaurant":
+        break;
+      case "AddOffer":
+        break;
+      case "EditOffer":
+        break;
+
+      default:
+        break;
+    }
+
     form.reset();
     setFileUrl(null);
     setFile(null);
