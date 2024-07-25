@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import { multiFn } from "../../../../utls/functions";
 import { products } from "@settings/constants";
+import axios from "axios";
 
 interface IMyform {
   whatIs: string;
@@ -200,8 +201,11 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     }
   }
 
-  const submit = (v: IMyFormValues) => {
-    console.log({ ...v, file });
+  const submit = async (v) => {
+    const data = { ...v, file };
+    // console.log(data);
+    const rest = await axios.post("/api/products", v);
+    console.log(await rest.data);
 
     // multiFn("post", products.post, v);
     // multiFn("get", products.get);
