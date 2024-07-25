@@ -164,7 +164,7 @@ export const OfferSchema = z.object({
     .min(2, {
       message: "Title must be at least 2 characters.",
     }),
-  descripton: z
+  description: z
     .string({
       required_error: "Description is required.",
     })

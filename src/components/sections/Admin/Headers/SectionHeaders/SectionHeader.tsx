@@ -2,7 +2,6 @@
 import { usePathname } from "next/navigation";
 import AdminRestaurants from "./HARestaurants";
 import AdminCategory from "./HACategory";
-import HAProducts from "./HAProducts";
 import HAOffers from "./HAOffers";
 
 interface ISectionHeader {

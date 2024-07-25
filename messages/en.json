@@ -267,7 +267,7 @@
             "labels": ["Name", "Cuisine", "Delivery Price", "Delivery min", "Adress", "Category"],
             "name": "Name",
             "cuisine": "Cuisine",
-            "price": "Delivery Price",
+            "deliveryPrice": "Delivery Price",
             "deliveryMin": "Delivery min",
             "adress": "Adress",
             "category": "Category"
@@ -288,7 +288,7 @@
             "labels": ["Name", "Cuisine", "Delivery Price", "Delivery min", "Adress", "Category"],
             "name": "Name",
             "cuisine": "Cuisine",
-            "price": "Delivery Price",
+            "deliveryPrice": "Delivery Price",
             "deliveryMin": "Delivery min",
             "adress": "Adress",
             "category": "Category"

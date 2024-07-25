@@ -92,7 +92,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           name: "",
           cuisine: "",
           deliveryMin: "",
-          deliveryPrice: "",
+          deliveryPrice: "00.00",
           adress: "",
           category: "",
         },
@@ -106,7 +106,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           name: "",
           cuisine: "",
           deliveryMin: "",
-          deliveryPrice: "",
+          deliveryPrice: "00.00",
           adress: "",
           category: "",
         },
@@ -118,7 +118,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
         resolver: zodResolver(OfferSchema),
         defaultValues: {
           title: "",
-          descripton: "",
+          description: "",
         },
       });
       break;
@@ -128,7 +128,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
         resolver: zodResolver(OfferSchema),
         defaultValues: {
           title: "",
-          descripton: "",
+          description: "",
         },
       });
       break;
@@ -207,7 +207,7 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
               <>
                 <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="cuisine" inputType="text" />
-                <MyFormLabel whatIs={whatIs} form={form} name="price" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="deliveryPrice" inputType="number" />
                 <MyFormLabel whatIs={whatIs} form={form} name="deliveryMin" inputType="number" />
                 <MyFormLabel whatIs={whatIs} form={form} name="adress" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
