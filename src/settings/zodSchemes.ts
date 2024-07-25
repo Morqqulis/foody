@@ -1,4 +1,4 @@
-import { any, z } from "zod";
+import { z } from "zod";
 
 export const SignUpFormSchema = z.object({
   fullName: z
@@ -69,12 +69,12 @@ export const ProductSchema = z.object({
   description: z.string().min(2, {
     message: "Description must be at least 2 characters.",
   }),
-  price: z.number({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
+  price: z.string({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
   file: z.any(),
   restaurants: z.string({ required_error: "Restaurants is required." }),
 });
 
-export const CategorySchema = z.object({
+export const EditCategorySchema = z.object({
   name: z
     .string({
       required_error: "Name is required.",
@@ -91,6 +91,16 @@ export const CategorySchema = z.object({
     }),
 });
 
+export const AddCategorySchema = z.object({
+  name: z
+    .string({
+      required_error: "Name is required.",
+    })
+    .min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+});
+
 export const RestuarantSchema = z.object({
   name: z
     .string({
@@ -99,23 +109,20 @@ export const RestuarantSchema = z.object({
     .min(2, {
       message: "Name must be at least 2 characters.",
     }),
-  cuisine: z.string({
-    required_error: "Cuisine is required.",
+
+  cuisine: z
+    .string({
+      required_error: "Cuisine is required.",
+    })
+    .min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+  deliveryMin: z.string({
+    required_error: "DeliveryMin is required.",
   }),
-  deliveryPrice: z
-    .number({
-      required_error: "DeliveryPrice is required.",
-    })
-    .min(2, {
-      message: "DeliveryPrice must be at least 2 characters.",
-    }),
-  deliveryMin: z
-    .number({
-      required_error: "DeliveryMin is required.",
-    })
-    .min(2, {
-      message: "DeliveryMin must be at least 2 characters.",
-    }),
+  deliveryPrice: z.string({
+    required_error: "DeliveryPrice is required.",
+  }),
   adress: z
     .string({
       required_error: "Adress is required.",
@@ -123,10 +130,15 @@ export const RestuarantSchema = z.object({
     .min(2, {
       message: "Adress must be at least 2 characters.",
     }),
-  category: z.string({
-    required_error: "Category is required.",
-  }),
+  category: z
+    .string({
+      required_error: "Category is required.",
+    })
+    .min(2, {
+      message: "Adress must be at least 2 characters.",
+    }),
 });
+
 export const AdminLoginSchema = z.object({
   email: z
     .string({
@@ -142,4 +154,36 @@ export const AdminLoginSchema = z.object({
     .min(2, {
       message: "Password must be at least 6 characters.",
     }),
+});
+
+export const OfferSchema = z.object({
+  title: z
+    .string({
+      required_error: "Title is required.",
+    })
+    .min(2, {
+      message: "Title must be at least 2 characters.",
+    }),
+  description: z
+    .string({
+      required_error: "Description is required.",
+    })
+    .min(2, {
+      message: "Description must be at least 2 characters.",
+    }),
+});
+
+export const DefaultSchema = z.object({
+  file: z.any(),
+  name: z.string(),
+  description: z.string(),
+  price: z.string(),
+  restaurants: z.string(),
+  cuisine: z.string(),
+  deliveryPrice: z.string(),
+  deliveryMin: z.string(),
+  adress: z.string(),
+  category: z.string(),
+  title: z.string(),
+  slug: z.string(),
 });
