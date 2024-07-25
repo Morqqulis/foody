@@ -1,18 +1,18 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
-import { Button } from "@ui/button";
-import { Form } from "@ui/form";
-import { useToast } from "@ui/use-toast";
-import axios from "axios";
-import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import LoginFormField from "./LoginFormField";
-import { useRouter } from "@settings/navigation";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { auth } from "@settings/constants"
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
+import { Button } from "@ui/button"
+import { Form } from "@ui/form"
+import { useToast } from "@ui/use-toast"
+import { useTranslations } from "next-intl"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { multiFn } from "../../../utls/functions"
+import LoginFormField from "./LoginFormField"
 
-// const BASEURL = "https://foody-api.vercel.app";
-// const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
-// const SIGNUP_URL = `${BASEURL}/api/auth/signup`;
+const BASEURL = "https://foody-api-seven.vercel.app";
+const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
+const SIGNUP_URL = `${BASEURL}/api/auth/signup`;
 
 interface ILoginForm {
   name: "login" | "register";
@@ -35,10 +35,10 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
 
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     try {
-      const res = await axios.post("/api/auth/signin", data);
-      console.log(await res.data);
+      const userdata = await multiFn("post", auth.signIn, data);
 
-      toast({ title: "Sign In Success", description: `You have successfully signed in`, variant: "dark", duration: 2000 });
+      localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
+      showToast();
       form.reset();
       setTimeout(() => {
         router.push("/user");
@@ -53,10 +53,9 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     const user = { fullName: data.fullName, userName: data.userName, email: data.email, password: data.password };
 
     try {
-      const res = await axios.post("/api/auth/signup", user);
-      toast({ title: `${res.data.message}`, description: `You have successfully signed up`, variant: "dark", duration: 2000 });
+      multiFn("post", auth.signUp, user);
+
       form.reset();
-      console.log(await res.data);
     } catch (error) {
       console.log(error);
 

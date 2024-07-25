@@ -170,7 +170,11 @@
 
         "InfoBlock": {
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"]
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+          "name": "Ad",
+          "description": "Təsvir",
+          "price": "Qiymət",
+          "restaurants": "Restoranlar"
         },
 
         "cancelBtn": "Ləğv etmək",
@@ -218,7 +222,137 @@
       "image": "Şəkil",
       "name": "Ad",
       "slug": "Slug",
-      "actions": "Əməliyyatlar"
+      "actions": "Əməliyyatlar",
+      "EditCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı redaktə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını redaktə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Kateqoriyanı yenilə"
+        }
+      },
+      "AddCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı əlavə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını əlavə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Kateqoriyanı əlavə et"
+        }
+      }
+    },
+    "Restaurants": {
+      "Title": "Restoranlar",
+      "AddRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoran əlavə et",
+            "description": "Şəkil yükləyin",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatlarınızı əlavə edin",
+            "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "deliveryPrice": "Çatdırılma qiyməti",
+            "deliveryMin": "Çatdırılma müddəti",
+            "adress": "Ünvan",
+            "category": "Kateqoriya"
+          },
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Əlavə et"
+        }
+      },
+      "EditRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoranı redaktə et",
+            "description": "Şəkil yükləyin",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatlarınızı redaktə edin",
+            "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "deliveryPrice": "Çatdırılma qiyməti",
+            "deliveryMin": "Çatdırılma müddəti",
+            "adress": "Ünvan",
+            "category": "Kateqoriya"
+          },
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Restoranı Yenilə"
+        }
+      }
+    },
+    "Offers": {
+      "title": "Təkliflər",
+      "addOffer": "Təklif əlavə et",
+      "id": "ID",
+      "image": "Şəkil",
+      "titleColumn": "Başlıq",
+      "description": "Təsvir",
+      "actions": "Əməliyyatlar",
+      "AddOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Təklif əlavə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Təklif məlumatlarını əlavə et",
+            "labels": ["Başlıq", "Açıqlama"],
+            "title": "Başlıq",
+            "description": "Açıqlama"
+          },
+
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Təklif əlavə et"
+        }
+      },
+      "EditOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Təklifi redaktə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Təklif məlumatlarını redaktə edin",
+            "labels": ["Başlıq", "Açıqlama"],
+            "title": "Başlıq",
+            "description": "Açıqlama"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Təklifi yenilə"
+        }
+      }
     }
   },
 
@@ -235,15 +369,6 @@
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
-  },
-  "OffersPage": {
-    "title": "Təkliflər",
-    "addOffer": "+ Təklif əlavə et",
-    "id": "ID",
-    "image": "Şəkil",
-    "titleColumn": "Başlıq",
-    "description": "Təsvir",
-    "actions": "Əməliyyatlar"
   },
   "Header-Restaurants": {
     "restaurantName": "Papa John's Pizza Restoranı",

@@ -2,7 +2,9 @@
 import Pagination from "@sections/Paginations/AdminPagination";
 import ProductCard from "./ProductCard";
 import { FC, useState } from "react";
-import { productsData } from '@data/data'
+import { productsData } from "@data/data";
+import { multiFn } from "../../../../utls/functions";
+import { products } from "@settings/constants";
 
 const ProductsSection: FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);

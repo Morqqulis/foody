@@ -1,33 +1,190 @@
 "use client";
-import { Input } from "@ui/input";
-import { Label } from "@ui/label";
-import { useForm } from "react-hook-form";
-import Image from "next/image";
-import MyFormLabel from "./MyFormLabel";
-import { Form } from "@ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ProductSchema } from "@settings/zodSchemes";
-import { z } from "zod";
-import { useTranslations } from "next-intl";
-import React from "react";
-import axios from "axios";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { AddCategorySchema, DefaultSchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema } from "@settings/zodSchemes"
+import { Form } from "@ui/form"
+import { Input } from "@ui/input"
+import { Label } from "@ui/label"
+import { useTranslations } from "next-intl"
+import Image from "next/image"
+import React from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import MyFormLabel from "./MyFormLabel"
 
 interface IMyform {
   whatIs: string;
 }
 
 interface IMyFormValues {
-  File: FileList;
-  Name: string;
-  Description: string;
-  Price: number;
-  Restaurants: string;
+  file?: FileList;
+  name?: string;
+  description?: string;
+  price?: string;
+  restaurants?: string;
+  cuisine?: string;
+  deliveryPrice?: string;
+  deliveryMin?: string;
+  adress?: string;
+  category?: string;
+  title?: string;
+  slug?: string;
 }
 const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
-  const t = useTranslations("Admin.Products.EditProduct.Sheet");
-  const t2 = useTranslations("Admin.Header.Sheet");
+
+  function getSchema() {
+    switch (whatIs) {
+      case "EditProduct":
+        return ProductSchema;
+        break;
+      case "AddProduct":
+        return ProductSchema;
+        break;
+      case "EditCategory":
+        return EditCategorySchema;
+        break;
+      case "AddCategory":
+        return AddCategorySchema;
+        break;
+      case "AddRestaurant":
+        return RestuarantSchema;
+        break;
+      case "EditRestaurant":
+        return RestuarantSchema;
+        break;
+      case "AddOffer":
+        return OfferSchema;
+        break;
+      case "EditOffer":
+        return OfferSchema;
+        break;
+      default:
+        return DefaultSchema;
+        break;
+    }
+  }
+  const getDefaultValues = () => {
+    switch (whatIs) {
+      case "EditProduct":
+        return {
+          name: "",
+          description: "",
+          price: "00.00",
+          restaurants: "",
+        };
+        break;
+      case "AddProduct":
+        return {
+          name: "",
+          description: "",
+          price: "00.00",
+          restaurants: "",
+        };
+        break;
+      case "EditCategory":
+        return {
+          name: "",
+          slug: "",
+        };
+        break;
+      case "AddCategory":
+        return {
+          name: "",
+        };
+        break;
+      case "AddRestaurant":
+        return {
+          name: "",
+          cuisine: "",
+          deliveryMin: "",
+          deliveryPrice: "00.00",
+          adress: "",
+          category: "",
+        };
+        break;
+      case "EditRestaurant":
+        return {
+          name: "",
+          cuisine: "",
+          deliveryMin: "",
+          deliveryPrice: "00.00",
+          adress: "",
+          category: "",
+        };
+        break;
+      case "AddOffer":
+        return {
+          title: "",
+          description: "",
+        };
+        break;
+      case "EditOffer":
+        return {
+          title: "",
+          description: "",
+        };
+        break;
+      default:
+        return {
+          file: FileList,
+          name: "",
+          description: "",
+          price: "",
+          restaurants: "",
+          cuisine: "",
+          deliveryPrice: "",
+          deliveryMin: "",
+          adress: "",
+          category: "",
+          title: "",
+          slug: "",
+        };
+        break;
+    }
+  };
+
+  let str: string;
+  switch (whatIs) {
+    case "EditProduct":
+      str = `Products.EditProduct`;
+      break;
+    case "AddProduct":
+      str = `Header`;
+      break;
+    case "EditCategory":
+      str = `Category.EditCategory`;
+      break;
+    case "AddCategory":
+      str = `Category.AddCategory`;
+      break;
+    case "AddRestaurant":
+      str = `Restaurants.AddRestaurant`;
+      break;
+    case "EditRestaurant":
+      str = `Restaurants.EditRestaurant`;
+      break;
+    case "AddOffer":
+      str = `Offers.AddOffer`;
+      break;
+    case "EditOffer":
+      str = `Offers.EditOffer`;
+      break;
+
+    default:
+      str = `Header`;
+      break;
+  }
+
+  const t = useTranslations(`Admin.${str}.Sheet`);
+
+  const schema = getSchema();
+  const values = getDefaultValues();
+
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: values,
+  });
 
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
@@ -41,22 +198,14 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     }
   }
 
-  const form = useForm<z.infer<typeof ProductSchema>>({
-    resolver: zodResolver(ProductSchema),
-    defaultValues: {
-      Name: "",
-      Description: "",
-      Price: 0,
-      Restaurants: "",
-      File: null,
-    },
-  });
+  const submit = (v: IMyFormValues) => {
+    console.log({ ...v, file });
 
-  const submit = async (v: IMyFormValues) => {
-    const res = axios.post("/api/products", v);
-    console.log(await res);
-    // console.log(v);
-    // form.reset();
+    // multiFn("post", products.post, v);
+    // multiFn("get", products.get);
+    form.reset();
+    setFileUrl(null);
+    setFile(null);
   };
 
   return (
@@ -67,12 +216,12 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
             <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
               {t("imageBlock.description")}
             </p>
-            {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" />}
+            {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" priority style={{ width: "154px", height: "125px" }} />}
           </div>
           <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
             <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
             <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {file ? file.name : t("imageBlock.label")}</p>
-            <Input type="file" className="hidden" {...form.register("File")} onChange={(e) => readerFile(e)} />
+            <Input type="file" className="hidden" onChange={(e) => readerFile(e)} />
           </Label>
         </div>
 
@@ -81,13 +230,36 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
             {t("InfoBlock.text")}
           </p>
 
-          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 rounded-[14px] bg-[#43445A] py-[10px]">
+          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 overflow-auto rounded-[14px] bg-[#43445A] py-[10px] ">
             {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
               <>
-                <MyFormLabel form={form} name="name" inputType="text" />
-                <MyFormLabel form={form} name="description" inputType="text" />
-                <MyFormLabel form={form} name="price" inputType="number" />
-                <MyFormLabel form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="description" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="price" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+              </>
+            ) : whatIs === "AddRestaurant" || whatIs === "EditRestaurant" ? (
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="cuisine" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="deliveryPrice" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="deliveryMin" inputType="number" />
+                <MyFormLabel whatIs={whatIs} form={form} name="adress" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
+              </>
+            ) : whatIs === "AddCategory" ? (
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+              </>
+            ) : whatIs === "AddOffer" || whatIs === "EditOffer" ? (
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="title" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="description" inputType="text" />
+              </>
+            ) : whatIs === "EditCategory" ? (
+              <>
+                <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="slug" inputType="text" />
               </>
             ) : (
               ""
