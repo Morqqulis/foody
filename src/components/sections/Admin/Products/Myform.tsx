@@ -1,15 +1,16 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { AddCategorySchema, DefaultSchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema } from "@settings/zodSchemes"
-import { Form } from "@ui/form"
-import { Input } from "@ui/input"
-import { Label } from "@ui/label"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import React from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import MyFormLabel from "./MyFormLabel"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AddCategorySchema, DefaultSchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema } from "@settings/zodSchemes";
+import { Form } from "@ui/form";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import MyFormLabel from "./MyFormLabel";
+import axios from "axios";
 
 interface IMyform {
   whatIs: string;
@@ -198,12 +199,13 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
     }
   }
 
-  const submit = (v: IMyFormValues) => {
-    console.log({ ...v, file });
-
+  const submit = async (v) => {
+    // console.log({ ...v, file });
+    const res = await axios.post("/api/products",  v);
+    console.log(res.data);
     // multiFn("post", products.post, v);
     // multiFn("get", products.get);
-    form.reset();
+    // form.reset();
     setFileUrl(null);
     setFile(null);
   };
