@@ -70,8 +70,9 @@ export const ProductSchema = z.object({
     message: "Description must be at least 2 characters.",
   }),
   price: z.string({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
-  file: z.any(),
+
   restaurants: z.string({ required_error: "Restaurants is required." }),
+  
 });
 
 export const EditCategorySchema = z.object({

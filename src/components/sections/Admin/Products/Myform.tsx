@@ -6,7 +6,7 @@ import Image from "next/image";
 import MyFormLabel from "./MyFormLabel";
 import { Form } from "@ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AddCategorySchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema,DefaultSchema } from "@settings/zodSchemes";
+import { AddCategorySchema, EditCategorySchema, OfferSchema, ProductSchema, RestuarantSchema, DefaultSchema } from "@settings/zodSchemes";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import React from "react";
@@ -35,108 +35,100 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
 
-  let t: any;
-  let form: any;
-
-  switch (whatIs) {
-    case "EditProduct":
-      t = useTranslations(`Admin.Products.EditProduct.Sheet`);
-      form = useForm<z.infer<typeof ProductSchema>>({
-        resolver: zodResolver(ProductSchema),
-        defaultValues: {
+  function getSchema() {
+    switch (whatIs) {
+      case "EditProduct":
+        return ProductSchema;
+        break;
+      case "AddProduct":
+        return ProductSchema;
+        break;
+      case "EditCategory":
+        return EditCategorySchema;
+        break;
+      case "AddCategory":
+        return AddCategorySchema;
+        break;
+      case "AddRestaurant":
+        return RestuarantSchema;
+        break;
+      case "EditRestaurant":
+        return RestuarantSchema;
+        break;
+      case "AddOffer":
+        return OfferSchema;
+        break;
+      case "EditOffer":
+        return OfferSchema;
+        break;
+      default:
+        return DefaultSchema;
+        break;
+    }
+  }
+  const getDefaultValues = () => {
+    switch (whatIs) {
+      case "EditProduct":
+        return {
           name: "",
           description: "",
           price: "00.00",
           restaurants: "",
-          file: null,
-        },
-      });
-      break;
-    case "AddProduct":
-      t = useTranslations(`Admin.Header.Sheet`);
-      form = useForm<z.infer<typeof ProductSchema>>({
-        resolver: zodResolver(ProductSchema),
-        defaultValues: {
+        };
+        break;
+      case "AddProduct":
+        return {
           name: "",
           description: "",
           price: "00.00",
           restaurants: "",
-          file: null,
-        },
-      });
-      break;
-    case "EditCategory":
-      t = useTranslations(`Admin.Category.EditCategory.Sheet`);
-      form = useForm<z.infer<typeof EditCategorySchema>>({
-        resolver: zodResolver(EditCategorySchema),
-        defaultValues: {
+        };
+        break;
+      case "EditCategory":
+        return {
           name: "",
           slug: "",
-        },
-      });
-      break;
-    case "AddCategory":
-      t = useTranslations(`Admin.Category.AddCategory.Sheet`);
-      form = useForm<z.infer<typeof AddCategorySchema>>({
-        resolver: zodResolver(AddCategorySchema),
-        defaultValues: {
+        };
+        break;
+      case "AddCategory":
+        return {
           name: "",
-        },
-      });
-      break;
-    case "AddRestaurant":
-      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet`);
-      form = useForm<z.infer<typeof RestuarantSchema>>({
-        resolver: zodResolver(RestuarantSchema),
-        defaultValues: {
+        };
+        break;
+      case "AddRestaurant":
+        return {
           name: "",
           cuisine: "",
           deliveryMin: "",
           deliveryPrice: "00.00",
           adress: "",
           category: "",
-        },
-      });
-      break;
-    case "EditRestaurant":
-      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet`);
-      form = useForm<z.infer<typeof RestuarantSchema>>({
-        resolver: zodResolver(RestuarantSchema),
-        defaultValues: {
+        };
+        break;
+      case "EditRestaurant":
+        return {
           name: "",
           cuisine: "",
           deliveryMin: "",
           deliveryPrice: "00.00",
           adress: "",
           category: "",
-        },
-      });
-      break;
-    case "AddOffer":
-      t = useTranslations(`Admin.Offers.AddOffer.Sheet`);
-      form = useForm<z.infer<typeof OfferSchema>>({
-        resolver: zodResolver(OfferSchema),
-        defaultValues: {
+        };
+        break;
+      case "AddOffer":
+        return {
           title: "",
           description: "",
-        },
-      });
-      break;
-    case "EditOffer":
-      t = useTranslations(`Admin.Offers.EditOffer.Sheet`);
-      form = useForm<z.infer<typeof OfferSchema>>({
-        resolver: zodResolver(OfferSchema),
-        defaultValues: {
+        };
+        break;
+      case "EditOffer":
+        return {
           title: "",
           description: "",
-        },
-      });
-      break;
-    default:
-      t = useTranslations(`Admin.Header.Sheet`);
-      form = useForm<z.infer<typeof DefaultSchema>>({
-        resolver: zodResolver(DefaultSchema),
-        defaultValues: {
+        };
+        break;
+      default:
+        return {
           file: FileList,
           name: "",
           description: "",
@@ -149,10 +141,52 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
           category: "",
           title: "",
           slug: "",
-        },
-      });
+        };
+        break;
+    }
+  };
+
+  let str: string;
+  switch (whatIs) {
+    case "EditProduct":
+      str = `Products.EditProduct`;
+      break;
+    case "AddProduct":
+      str = `Header`;
+      break;
+    case "EditCategory":
+      str = `Category.EditCategory`;
+      break;
+    case "AddCategory":
+      str = `Category.AddCategory`;
+      break;
+    case "AddRestaurant":
+      str = `Restaurants.AddRestaurant`;
+      break;
+    case "EditRestaurant":
+      str = `Restaurants.EditRestaurant`;
+      break;
+    case "AddOffer":
+      str = `Offers.AddOffer`;
+      break;
+    case "EditOffer":
+      str = `Offers.EditOffer`;
+      break;
+
+    default:
+      str = `Header`;
       break;
   }
+
+  const t = useTranslations(`Admin.${str}.Sheet`);
+
+  const schema = getSchema();
+  const values = getDefaultValues();
+
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: values,
+  });
 
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
@@ -167,10 +201,13 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
   }
 
   const submit = (v: IMyFormValues) => {
-    console.log(v);
+    console.log({ ...v, file });
+
     // multiFn("post", products.post, v);
     // multiFn("get", products.get);
     form.reset();
+    setFileUrl(null);
+    setFile(null);
   };
 
   return (
@@ -181,12 +218,12 @@ const Myform: React.FC<IMyform> = ({ whatIs }): JSX.Element => {
             <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
               {t("imageBlock.description")}
             </p>
-            {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" />}
+            {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" priority style={{ width: "154px", height: "125px" }} />}
           </div>
           <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
             <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
             <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {file ? file.name : t("imageBlock.label")}</p>
-            <Input type="file" className="hidden" {...form.register("File")} onChange={(e) => readerFile(e)} />
+            <Input type="file" className="hidden" onChange={(e) => readerFile(e)} />
           </Label>
         </div>
 

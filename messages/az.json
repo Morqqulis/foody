@@ -276,7 +276,7 @@
             "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
             "name": "Ad",
             "cuisine": "Mətbəx",
-            "price": "Çatdırılma qiyməti",
+            "deliveryPrice": "Çatdırılma qiyməti",
             "deliveryMin": "Çatdırılma müddəti",
             "adress": "Ünvan",
             "category": "Kateqoriya"
@@ -297,7 +297,7 @@
             "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
             "name": "Ad",
             "cuisine": "Mətbəx",
-            "price": "Çatdırılma qiyməti",
+            "deliveryPrice": "Çatdırılma qiyməti",
             "deliveryMin": "Çatdırılma müddəti",
             "adress": "Ünvan",
             "category": "Kateqoriya"

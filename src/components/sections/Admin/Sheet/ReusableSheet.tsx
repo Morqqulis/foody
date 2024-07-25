@@ -7,37 +7,38 @@ interface IAddProductSheet {
 }
 
 const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
-  let t: any;
+  let str: string;
   switch (whatIs) {
     case "EditProduct":
-      t = useTranslations(`Admin.Products.EditProduct.Sheet.imageBlock`);
+      str = `Products.EditProduct`;
       break;
     case "AddProduct":
-      t = useTranslations(`Admin.Header.Sheet.imageBlock`);
+      str = `Header`;
       break;
     case "EditCategory":
-      t = useTranslations(`Admin.Category.EditCategory.Sheet.imageBlock`);
+      str = `Category.EditCategory`;
       break;
     case "AddCategory":
-      t = useTranslations(`Admin.Category.AddCategory.Sheet.imageBlock`);
+      str = `Category.AddCategory`;
       break;
     case "AddRestaurant":
-      t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
+      str = `Restaurants.AddRestaurant`;
       break;
     case "EditRestaurant":
-      t = useTranslations(`Admin.Restaurants.EditRestaurant.Sheet.imageBlock`);
+      str = `Restaurants.EditRestaurant`;
       break;
     case "AddOffer":
-      t = useTranslations(`Admin.Offers.AddOffer.Sheet.imageBlock`);
+      str = `Offers.AddOffer`;
       break;
     case "EditOffer":
-      t = useTranslations(`Admin.Offers.EditOffer.Sheet.imageBlock`);
+      str = `Offers.EditOffer`;
       break;
 
     default:
-      t = useTranslations(`Admin.Header.Sheet.imageBlock`);
+      str = `Header`;
       break;
   }
+  const t = useTranslations(`Admin.${str}.Sheet.imageBlock`);
 
   return (
     <Sheet>
