@@ -249,6 +249,7 @@ export interface IProductsData {
   name?: string;
   price?: number | string;
   rest_id?: string;
+  
 }
 
 export const productsData: IProductsData[] = [

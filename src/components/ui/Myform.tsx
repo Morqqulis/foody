@@ -12,10 +12,9 @@ import MyFormLabel from "./MyFormLabel";
 // import { getDefaultValues, getSchema } from "../../utls/getShema";
 
 import { collections } from "@libs/appwrite/config";
-import { addDocuments, editDocuments, getDocuments } from "../../utls/functions";
+import { addDocuments, editDocuments, getListDocuments, getDocuments } from "../../utls/functions";
 // import { RestuarantSchema } from "@settings/zodSchemes";
 import { toast } from "./use-toast";
-import { restuarant } from "@settings/constants";
 
 interface IMyform {
   whatIs: string;
@@ -26,16 +25,29 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
   const [formatedSelectOption, setFormattedSelectOption] = useState<any[]>([]);
+  const [prevValue, setPrevValue] = useState<any>(null);
 
-  const getDocSelections = async (documentId: string) => {
-    const res = await getDocuments(documentId);
+  const getDocSelections = async (collectionId: string) => {
+    const res = await getListDocuments(collectionId);
     const data = res.documents.map((item: any) => ({ id: item.$id, name: item.name }));
     setFormattedSelectOption(data);
   };
 
+  const getDocItem = async (collectionId: string, docId: string) => {
+    const res = await getDocuments(collectionId, docId);
+    setPrevValue(res);
+  };
+
   useEffect(() => {
-    (whatIs === "EditProduct" || whatIs === "AddProduct") && getDocSelections(collections.restaurantsId);
-    (whatIs === "AddRestaurant" || whatIs === "EditRestaurant") && getDocSelections(collections.categoriesId);
+    if (whatIs === "EditProduct" || whatIs === "AddProduct") {
+      getDocSelections(collections.restaurantsId);
+      getDocItem(collections.productsId, actionId);
+    }
+
+    if (whatIs === "AddRestaurant" || whatIs === "EditRestaurant") {
+      getDocSelections(collections.categoriesId);
+      getDocItem(collections.categoriesId, actionId);
+    }
   }, []);
 
   let str: string;
@@ -115,20 +127,23 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       };
     };
 
-    const productData = (data: any) => {
+    const productData = () => {
       return {
-        name: data.name,
-        description: data.description,
-        price: +data.price,
-        restaurant: data.restaurant,
+        name: prevValue.name,
+        description: prevValue.description,
+        price: prevValue.price,
+        restaurant: prevValue.restaurant,
       };
     };
 
     switch (whatIs) {
       case "EditProduct":
+        const obj = productData();
+        editDocuments(collections.productsId, { ...obj, ...v }, file, actionId);
+
         break;
       case "AddProduct":
-        addDocuments(collections.productsId, productData(v), file);
+        addDocuments(collections.productsId, v, file);
         break;
       case "EditCategory":
         editDocuments(collections.categoriesId, v, file, actionId);
@@ -164,7 +179,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     });
   };
 
-  // console.log(getDocuments(collections.categoriesId), getDocuments(collections.restaurantsId));
+  // console.log(getListDocuments(collections.categoriesId), getListDocuments(collections.restaurantsId));
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">

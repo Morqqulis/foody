@@ -4,7 +4,7 @@ import Myform from "../../../ui/Myform";
 interface IReusableSheet {
   trigger: any;
   whatIs: string;
-  id?: any;
+  id: any;
 }
 
 const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
