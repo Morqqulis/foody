@@ -7,7 +7,7 @@ interface IOrdersTable {}
 
 const OrdersTable: React.FC = (): JSX.Element => {
   const data = adminOrdersData;
-  const header = ["ID", "Customer ID", "Time", "Delivery Adress", "Amount", "Payment Method", "Contact"];
+  const header = ["ID", "Customer ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
 
   return (
     <Table

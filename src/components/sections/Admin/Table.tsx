@@ -20,8 +20,8 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {body.map((row) => (
-            <tr key={row.$id} className="text-center">
+          {body.map((row, index) => (
+            <tr key={row.$id + index} className="text-center">
               {Object.entries(row).map(([key, value]) => (
                 <td key={key} className="border border-gray-200 px-4 py-2">
                   {key === "image" ? (

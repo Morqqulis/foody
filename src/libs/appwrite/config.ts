@@ -6,7 +6,9 @@ const endpoint = `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}`;
 const apikey = `${process.env.NEXT_APPWRITE_API_KEY}`;
 const projectId = `${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}`;
 
-const avatarId = `${process.env.NEXT_PUBLIC_APPWRITE_AVATAR_ID}`;
+// stogage ID
+const avatarId = `${process.env.NEXT_PUBLIC_APPWRITE_AVATAR}`;
+
 //=============================================
 
 const client = new Client().setEndpoint(endpoint).setProject(projectId);
@@ -17,8 +19,12 @@ const storage = new Storage(client);
 //=============================================
 
 const collections = {
+  userId: `${process.env.NEXT_PUBLIC_APPWRITE_USERS_ID}`,
+  productsId: `${process.env.NEXT_PUBLIC_APPWRITE_PRODUCTS_ID}`,
   categoriesId: `${process.env.NEXT_PUBLIC_APPWRITE_CATAGORIES_ID}`,
-  userId: `${process.env.NEXT_PUBLIC_APPWRITE_USER_ID}`,
+  restaurantsId: `${process.env.NEXT_PUBLIC_APPWRITE_RESTAURANTS_ID}`,
+  ordersId: `${process.env.NEXT_PUBLIC_APPWRITE_ORDERS_ID}`,
+  offersId: `${process.env.NEXT_PUBLIC_APPWRITE_OFFERS_ID}`,
 };
 
 //=============================================

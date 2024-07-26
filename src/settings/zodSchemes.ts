@@ -127,7 +127,7 @@ export const RestuarantSchema = z.object({
   deliveryPrice: z.string({
     required_error: "DeliveryPrice is required.",
   }),
-  adress: z
+  address: z
     .string({
       required_error: "Adress is required.",
     })
@@ -186,7 +186,7 @@ export const DefaultSchema = z.object({
   cuisine: z.string(),
   deliveryPrice: z.string(),
   deliveryMin: z.string(),
-  adress: z.string(),
+  address: z.string(),
   category: z.string(),
   title: z.string(),
   slug: z.string(),

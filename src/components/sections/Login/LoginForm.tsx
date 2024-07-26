@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { multiFn } from "../../../utls/functions"
 import LoginFormField from "./LoginFormField"
+import { useRouter } from 'next/navigation'
 
 const BASEURL = "https://foody-api-seven.vercel.app";
 const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
@@ -38,7 +39,6 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
       const userdata = await multiFn("post", auth.signIn, data);
 
       localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
-      showToast();
       form.reset();
       setTimeout(() => {
         router.push("/user");

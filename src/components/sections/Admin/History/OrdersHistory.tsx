@@ -4,7 +4,7 @@ import { FC } from "react";
 interface IOrderHistoryPage {}
 
 const OrderHistoryPage: FC = (): JSX.Element => {
-  const header = ["ID", "Customer ID", "Time", "Delivery Adress", "Amount", "Payment Method", "Contact"];
+  const header = ["ID", "Customer ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
 
   const body = [
     { id: 1, customer_id: 1, time: "2020-01-01", delivery_adress: "test", amount: 100, payment_method: "Card", contact: "123456789" },

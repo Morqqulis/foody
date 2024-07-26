@@ -263,6 +263,10 @@
       }
     },
     "Restaurants": {
+      "Metadata": {
+        "title": "Admin - Restoranlar",
+        "description": "Restoranlar əlavə edin, redaktə edin, silin"
+      },
       "Title": "Restoranlar",
       "AddRestaurant": {
         "Sheet": {
@@ -278,7 +282,7 @@
             "cuisine": "Mətbəx",
             "deliveryPrice": "Çatdırılma qiyməti",
             "deliveryMin": "Çatdırılma müddəti",
-            "adress": "Ünvan",
+            "address": "Ünvan",
             "category": "Kateqoriya"
           },
           "cancelBtn": "Ləgv etmək",
@@ -299,7 +303,7 @@
             "cuisine": "Mətbəx",
             "deliveryPrice": "Çatdırılma qiyməti",
             "deliveryMin": "Çatdırılma müddəti",
-            "adress": "Ünvan",
+            "address": "Ünvan",
             "category": "Kateqoriya"
           },
           "cancelBtn": "Ləgv etmək",

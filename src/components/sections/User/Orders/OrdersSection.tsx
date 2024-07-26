@@ -15,66 +15,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
   const perPage = 10;
   const data = userOrdersData;
 
-  const headers = ["ID", "Time", "Delivery Adress", "Amount", "Payment Method", "Contact"];
-  const headerModal = ["Image", "Name", "Price $", "Count", "Amount"];
-  const filteredDataModal = [
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-    {
-      image: "https://placehold.jp/150x150.png",
-      name: "Hamburger",
-      price: 5.9,
-      count: 1,
-      amount: 5.9,
-    },
-  ];
+  const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
   const filteredData = data.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => ({
     ...order,
     actions: (

@@ -5,6 +5,7 @@
     "more": "More",
     "signUp": "Sign Up"
   },
+
   "Footer": {
     "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
     "popular": {
@@ -86,6 +87,7 @@
       "buttonText": "Explore"
     }
   },
+
   "Restaurants": {
     "Metadata": {
       "title": "Restaurants",
@@ -254,6 +256,10 @@
       }
     },
     "Restaurants": {
+        "Metadata": {
+          "title": "Admin - Restaurants",
+          "description": "Add restaurants, edit them, delete them"
+        },
       "Title": "Restaurants",
       "AddRestaurant": {
         "Sheet": {
@@ -269,7 +275,7 @@
             "cuisine": "Cuisine",
             "deliveryPrice": "Delivery Price",
             "deliveryMin": "Delivery min",
-            "adress": "Adress",
+            "address": "Adress",
             "category": "Category"
           },
           "cancelBtn": "Cancel",
@@ -290,7 +296,7 @@
             "cuisine": "Cuisine",
             "deliveryPrice": "Delivery Price",
             "deliveryMin": "Delivery min",
-            "adress": "Adress",
+            "address": "Adress",
             "category": "Category"
           },
           "cancelBtn": "Cancel",

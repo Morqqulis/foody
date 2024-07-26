@@ -13,6 +13,7 @@ import { getDefaultValues, getSchema } from "../../utls/getShema";
 
 import { collections } from "@libs/appwrite/config";
 import { addDocuments, editDocuments } from "../../utls/functions";
+import { RestuarantSchema } from "@settings/zodSchemes";
 
 interface IMyform {
   whatIs: string;
@@ -77,8 +78,19 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     }
   }
 
-  const submit = async (v: any) => {
+  const submit = async (v: z.infer<typeof schema>) => {
     if (whatIs.startsWith("Add") && !file) return;
+
+    const restaurantData = (data: any) => {
+      return {
+        name: data.name,
+        cuisine: data.cuisine,
+        deliveryMin: +data.deliveryMin,
+        deliveryPrice: +data.deliveryPrice,
+        address: data.address,
+        // category: data.category,
+      };
+    };
 
     switch (whatIs) {
       case "EditProduct":
@@ -92,8 +104,14 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         addDocuments(collections.categoriesId, v, file);
         break;
       case "AddRestaurant":
+        // @ts-ignore
+        const data = restaurantData(v);
+        addDocuments(collections.restaurantsId, data, file);
         break;
       case "EditRestaurant":
+        // @ts-ignore
+        const d = restaurantData(v);
+        editDocuments(collections.restaurantsId, d, file, actionId);
         break;
       case "AddOffer":
         break;
@@ -145,7 +163,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
                 <MyFormLabel whatIs={whatIs} form={form} name="cuisine" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="deliveryPrice" inputType="number" />
                 <MyFormLabel whatIs={whatIs} form={form} name="deliveryMin" inputType="number" />
-                <MyFormLabel whatIs={whatIs} form={form} name="adress" inputType="text" />
+                <MyFormLabel whatIs={whatIs} form={form} name="address" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
               </>
             ) : whatIs === "AddCategory" ? (

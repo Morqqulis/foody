@@ -1,12 +1,18 @@
 import { NextPage } from "next";
-import data from "./data";
+// import data from "./data";
+import { collections } from "@libs/appwrite/config";
+import { getDocuments } from "../../../../utls/functions";
 import RestaurantCard from "./RestaurantCard";
+interface IRestaurantsSection {}
 
-const RestaurantsSection: NextPage = (): JSX.Element => {
+const RestaurantsSection: NextPage = async (): Promise<JSX.Element> => {
+  const { documents } = await getDocuments(collections.restaurantsId);
+
   return (
     <section className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
-      <div className=" flex flex-wrap justify-around  gap-[25px] ">
-        {data.map((restaurant) => (
+      <div className=" flex flex-wrap justify-around  gap-[25px]">
+        {documents.length === 0 && <p>No data</p>}
+        {documents.map((restaurant) => (
           <RestaurantCard key={restaurant.cuisine} prop={restaurant} />
         ))}
       </div>
