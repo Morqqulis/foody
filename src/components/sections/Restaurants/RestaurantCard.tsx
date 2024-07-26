@@ -1,42 +1,41 @@
-import Image from 'next/image'
-import React, { FC } from 'react'
+import Image from "next/image";
+import React, { FC } from "react";
 
 interface IRestCard {
-    data: {
-        id: number;
-        image: string;
-        title: string;
-        description: string;
-        deliveryPrice: number;
-        deliveryMin: number;
-        new_item?: boolean;
-    }
+  data: {
+    id: number;
+    image: string;
+    name: string;
+    description: string;
+    deliveryPrice: number;
+    deliveryMin: number;
+    // new_item?: boolean;
+  };
 }
 
 const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
-    const { image, title, deliveryMin, deliveryPrice, description, new_item } = data
-    return (
-        <div className="flex  h-[345px] w-[200px] relative justify-center rounded-[5px] bg-white" style={{ boxShadow: '0px 0px 5px 3px #00000040' }}>
-            {new_item && 
-                <div className='w-[53px] h-[27px] bg-[#D63626] absolute top-0 left-0 text-white flex items-center justify-center text-[12px]'>New</div>
-            }
-            <div className="h-full w-[163px] flex justify-between flex-col pt-4 pb-4">
-                <Image src={image} alt="image" width={160} height={158} />
-                <div className="mt-2  w-[100%] whitespace-nowrap ">
+  // const { image, title, deliveryMin, deliveryPrice, description, new_item } = data
 
-                    <p className=" h-[32px] w-full   text-lg font-medium leading-[24px] text-[#1E1E30]">{title}</p>
-                    <p className=" h-[32px] w-full text-sm overflow-hidden  font-medium leading-[24px]  text-[#8E8E93]">{description.substring(0, 40) }</p>
-                </div>
-                <div className="flex items-center justify-between">
-                    <div className='flex justify-items-start w-2/4 gap-2'>
-                        <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px]">${deliveryPrice}</p>
-                        <p>Delivery</p>
-                    </div>
-                    <div className=" bg-[#D63626] text-white rounded-[30px] p-1 flex items-center gap-[10px]">{deliveryMin} Min</div>
-                </div>
-            </div>
+  return (
+    <div className="relative  flex h-[345px] w-[200px] justify-center rounded-[5px] bg-white" style={{ boxShadow: "0px 0px 5px 3px #00000040" }}>
+      <div className="absolute left-0 top-0 flex h-[27px] w-[53px] items-center justify-center bg-[#D63626] text-[12px] text-white">New</div>
+
+      <div className="flex h-full w-[163px] flex-col justify-between pb-4 pt-4">
+        <Image src={data.image} alt="image" width={160} height={158} />
+        <div className="mt-2  w-[100%] whitespace-nowrap ">
+          <p className=" h-[32px] w-full   text-lg font-medium leading-[24px] text-[#1E1E30]">{data.name}</p>
+          <p className=" h-[32px] w-full overflow-hidden text-sm  font-medium leading-[24px]  text-[#8E8E93]">asdasd</p>
         </div>
-    )
-}
+        <div className="flex items-center justify-between">
+          <div className="flex w-2/4 justify-items-start gap-2">
+            <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px]">${data.deliveryPrice}</p>
+            <p>Delivery</p>
+          </div>
+          <div className=" flex items-center gap-[10px] rounded-[30px] bg-[#D63626] p-1 text-white">{data.deliveryMin} Min</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default RestaurantCard
+export default RestaurantCard;
