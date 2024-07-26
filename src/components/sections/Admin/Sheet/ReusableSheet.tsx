@@ -1,13 +1,13 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
 import Myform from "../../../ui/Myform";
-interface IAddProductSheet {
+interface IReusableSheet {
   trigger: any;
   whatIs: string;
   id?: any;
 }
 
-const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs, id }): JSX.Element => {
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
   let str: string;
   switch (whatIs) {
     case "EditProduct":
@@ -59,4 +59,4 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs, id }): J
   );
 };
 
-export default AddProductSheet;
+export default ReusableSheet;

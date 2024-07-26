@@ -4,13 +4,18 @@ import { Textarea } from "@ui/textarea";
 import { HTMLInputTypeAttribute } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
 import { useTranslations } from "next-intl";
+import { inflate } from "zlib";
 
 interface IFormLabel {
   name: string;
   form: any;
   inputType?: HTMLInputTypeAttribute;
-  options?: string[];
+  options?: IOption[];
   whatIs: string;
+}
+interface IOption {
+  name: string;
+  id: string;
 }
 
 const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, whatIs }): JSX.Element => {
@@ -60,15 +65,15 @@ const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, wha
                 {...field}
                 className="h-[110px] w-[450px] resize-none rounded-[14px] border-none  bg-[#5A5B70] p-3 text-[#F2F2F2] placeholder:text-[#C7C7C7] "
               />
-            ) : name === "restaurants" || name === "category" ? (
+            ) : name === "restaurant" || name === "category" ? (
               <Select required onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <SelectTrigger className="h-[46px] w-[450px] appearance-none rounded-[14px] border-none bg-[#5A5B70] p-3 text-[#F2F2F2]">
                   <SelectValue placeholder={t(`InfoBlock.${name}`)} />
                 </SelectTrigger>
                 <SelectContent>
                   {options.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
+                    <SelectItem key={option.id} value={option.id}>
+                      {option.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

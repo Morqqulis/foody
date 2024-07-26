@@ -16,7 +16,7 @@ const OrdersTable: React.FC = (): JSX.Element => {
       trigger={
         <td className="flex gap-2">
           <Eye className="h-6 w-6 cursor-pointer" />
-          <DeleteModal />
+          <DeleteModal collectionId="" deletedId="" />
         </td>
       }
     />

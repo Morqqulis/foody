@@ -167,7 +167,7 @@
           "name": "Name",
           "description": "Description",
           "price": "Price",
-          "restaurants": "Restaurants"
+          "restaurant": "Restaurants"
         },
 
         "cancelBtn": "Cancel",
@@ -196,7 +196,7 @@
             "name": "Name",
             "description": "Description",
             "price": "Price",
-            "restaurants": "Restaurants"
+            "restaurant": "Restaurants"
           },
 
           "cancelBtn": "Cancel",

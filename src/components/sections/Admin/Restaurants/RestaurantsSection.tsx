@@ -1,11 +1,11 @@
-import { NextPage } from "next";
 // import data from "./data";
 import { collections } from "@libs/appwrite/config";
 import { getDocuments } from "../../../../utls/functions";
 import RestaurantCard from "./RestaurantCard";
+import { FC } from "react";
 interface IRestaurantsSection {}
 
-const RestaurantsSection: NextPage = async (): Promise<JSX.Element> => {
+const RestaurantsSection: FC = async (): Promise<JSX.Element> => {
   const { documents } = await getDocuments(collections.restaurantsId);
 
   return (

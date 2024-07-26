@@ -174,7 +174,7 @@
           "name": "Ad",
           "description": "Təsvir",
           "price": "Qiymət",
-          "restaurants": "Restoranlar"
+          "restaurant": "Restoranlar"
         },
 
         "cancelBtn": "Ləğv etmək",
@@ -203,7 +203,7 @@
             "name": "Ad",
             "description": "Təsvir",
             "price": "Qiymət",
-            "restaurants": "Restoranlar"
+            "restaurant": "Restoranlar"
           },
 
           "cancelBtn": "Ləğv etmək",

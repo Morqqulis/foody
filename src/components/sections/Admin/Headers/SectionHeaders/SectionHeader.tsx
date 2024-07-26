@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import AdminRestaurants from "./HARestaurants";
 import AdminCategory from "./HACategory";
 import HAOffers from "./HAOffers";
+import HAProducts from "./HAProducts";
 
 interface ISectionHeader {
   title: string;
@@ -17,6 +18,7 @@ const SectionHeader: React.FC<ISectionHeader> = ({ title }): JSX.Element => {
       {path === "/admin/restaurants" && <AdminRestaurants />}
       {path === "/admin/category" && <AdminCategory />}
       {path === "/admin/offers" && <HAOffers />}
+      {path === "/admin/products" && <HAProducts />}
     </div>
   );
 };

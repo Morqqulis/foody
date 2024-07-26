@@ -174,7 +174,7 @@
           "name": "Имя",
           "description": "Описание",
           "price": "Цена",
-          "restaurants": "Рестораны"
+          "restaurant": "Рестораны"
         },
 
         "cancelBtn": "Отмена",
@@ -203,7 +203,7 @@
             "name": "Имя",
             "description": "Описание",
             "price": "Цена",
-            "restaurants": "Рестораны"
+            "restaurant": "Рестораны"
           },
 
           "cancelBtn": "Отмена",
