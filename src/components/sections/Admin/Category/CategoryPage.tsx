@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import Table from "../Table";
-import { getDocuments } from "../../../../utls/functions";
+import { getListDocuments } from "../../../../utls/functions";
 import { getTranslations } from "next-intl/server";
 import { collections } from "@libs/appwrite/config";
 
@@ -34,7 +34,7 @@ const filteredData = (data: any) => {
 
 const CategoryPage = async () => {
   const t = getTranslations("Admin.Category");
-  const data = filteredData((await getDocuments(collections.categoriesId)).documents);
+  const data = filteredData((await getListDocuments(collections.categoriesId)).documents);
   if (data.length > 0) {
     return (
       <div className="flex h-screen w-full ">
