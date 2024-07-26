@@ -47,7 +47,7 @@ export const addDocuments = async (collectionsId: string, v: any, file: File) =>
   databases.createDocument(dbId, collectionsId, ID.unique(), { ...v, ...fileUrl });
 };
 
-export const editDocuments = async (collectionsId, v?: any, file?: File, id?: string) => {
+export const editDocuments = async (collectionsId: string, v?: any, file?: File, id?: string) => {
   const { imageId } = await databases.getDocument(dbId, collectionsId, id);
 
   if (file) await deleteImage(imageId);

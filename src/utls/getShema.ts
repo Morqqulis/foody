@@ -69,7 +69,7 @@ export  const getDefaultValues = (whatIs: string) => {
           cuisine: "",
           deliveryMin: "",
           deliveryPrice: "00.00",
-          adress: "",
+          address: "",
           category: "",
         };
         break;
@@ -79,7 +79,7 @@ export  const getDefaultValues = (whatIs: string) => {
           cuisine: "",
           deliveryMin: "",
           deliveryPrice: "00.00",
-          adress: "",
+          address: "",
           category: "",
         };
         break;
@@ -105,7 +105,7 @@ export  const getDefaultValues = (whatIs: string) => {
           cuisine: "",
           deliveryPrice: "",
           deliveryMin: "",
-          adress: "",
+          address: "",
           category: "",
           title: "",
           slug: "",

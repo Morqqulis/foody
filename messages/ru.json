@@ -263,6 +263,10 @@
       }
     },
     "Restaurants": {
+      "Metadata": {
+        "title": "Админ - Рестораны",
+        "description": "Добавляйте рестораны, редактируйте их, удаляйте"
+      },
       "Title": "Рестораны",
       "AddRestaurant": {
         "Sheet": {
@@ -278,7 +282,7 @@
             "cuisine": "Кухня",
             "deliveryPrice": "Цена доставки",
             "deliveryMin": "Время доставки",
-            "adress": "Адрес",
+            "address": "Адрес",
             "category": "Категория"
           },
           "cancelBtn": "Отмена",
@@ -299,7 +303,7 @@
             "cuisine": "Кухня",
             "deliveryPrice": "Цена доставки",
             "deliveryMin": "Время доставки",
-            "adress": "Адрес",
+            "address": "Адрес",
             "category": "Категория"
           },
           "cancelBtn": "Отмена",

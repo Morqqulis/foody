@@ -16,7 +16,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
   const perPage = 10;
   const data = userOrdersData;
 
-  const headers = ["ID", "Time", "Delivery Adress", "Amount", "Payment Method", "Contact"];
+  const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
   const filteredData = data.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => ({
     ...order,
     actions: (
