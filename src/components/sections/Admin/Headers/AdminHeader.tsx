@@ -30,7 +30,7 @@ const AdminHeader: React.FC = (): JSX.Element => {
 
           <HeaderLanguages />
           <div className={`flex items-center gap-2 text-white`}>
-            <Image className={``} src="/Admin/Header/admin.svg" alt={"admin icon"} width={40} height={40} />
+            <Image className={``} src="/Admin/Header/admin.svg" alt={"admin icon"} width={40} height={40} priority />
             <span className={`translate-y-[10px]`}>{t("admin")}</span>
           </div>
         </div>

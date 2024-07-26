@@ -1,3 +1,4 @@
+"use client";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,10 +12,18 @@ import {
 } from "@ui/alert-dialog";
 import { Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { deleteDocument } from "../../../../utls/functions";
+interface IProps {
+  collectionId: string;
+  deletedId: string;
+}
 
-
-const DeleteModal: React.FC = (): JSX.Element => {
+const DeleteModal: React.FC<IProps> = ({ collectionId, deletedId }): JSX.Element => {
   const t = useTranslations("Admin.Products.Modal");
+
+  const deleting = async () => {
+    await deleteDocument(collectionId, deletedId);
+  };
 
   return (
     <AlertDialog>
@@ -28,7 +37,9 @@ const DeleteModal: React.FC = (): JSX.Element => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>{t("cancelBtn")}</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-600">{t("deleteBtn")}</AlertDialogAction>
+          <AlertDialogAction onClick={deleting} className="bg-red-600">
+            {t("deleteBtn")}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

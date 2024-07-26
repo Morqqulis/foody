@@ -1,39 +1,62 @@
-import { Button } from "@ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
-import Myform from "../Products/Myform";
-interface IAddProductSheet {
+import Myform from "../../../ui/Myform";
+interface IReusableSheet {
   trigger: any;
   whatIs: string;
+  id: any;
 }
 
-const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
-  let t: any;
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
+  let str: string;
+  switch (whatIs) {
+    case "EditProduct":
+      str = `Products.EditProduct`;
+      break;
+    case "AddProduct":
+      str = `Header`;
+      break;
+    case "EditCategory":
+      str = `Category.EditCategory`;
+      break;
+    case "AddCategory":
+      str = `Category.AddCategory`;
+      break;
+    case "AddRestaurant":
+      str = `Restaurants.AddRestaurant`;
+      break;
+    case "EditRestaurant":
+      str = `Restaurants.EditRestaurant`;
+      break;
+    case "AddOffer":
+      str = `Offers.AddOffer`;
+      break;
+    case "EditOffer":
+      str = `Offers.EditOffer`;
+      break;
 
-  if (whatIs === "EditProduct") {
-    t = useTranslations("Admin.Products.EditProduct.Sheet.imageBlock");
+    default:
+      str = `Header`;
+      break;
   }
-  if (whatIs === "AddProduct") {
-    t = useTranslations("Admin.Header.Sheet.imageBlock");
-  }
-  
-  
+  const t = useTranslations(`Admin.${str}.Sheet.imageBlock`);
 
   return (
     <Sheet>
-      <SheetTrigger>{trigger}</SheetTrigger>
+      <SheetTrigger asChild>{trigger}</SheetTrigger>
       <SheetContent>
         <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           <SheetHeader>
             <SheetTitle>{t("title")}</SheetTitle>
           </SheetHeader>
           <div>
-            <Myform whatIs={whatIs} />
+            <Myform whatIs={whatIs} actionId={id} />
           </div>
+          <SheetDescription></SheetDescription>
         </div>
       </SheetContent>
     </Sheet>
   );
 };
 
-export default AddProductSheet;
+export default ReusableSheet;

@@ -1,4 +1,4 @@
-import { RestaurantSection } from '@sections/Restaurants/RestaurantSection';
+import { RestaurantSection } from '@sections/Restaurants/RestaurantSection'
 import { NextPage } from 'next'
 import { getTranslations } from 'next-intl/server'
 
@@ -21,4 +21,4 @@ const RestaurantsPage: NextPage = (): JSX.Element => {
   )
 }
 
-export default RestaurantsPage
+export default RestaurantsPage;

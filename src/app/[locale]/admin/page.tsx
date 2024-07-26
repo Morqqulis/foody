@@ -1,6 +1,11 @@
+import DashboardSection from '@sections/Admin/Dashboard/dashboard'
 import { NextPage } from "next";
 import { getTranslations } from "next-intl/server";
-
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
+export const runtime = 'nodejs'
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslations({ locale, namespace: "Admin.Metadata" });
 
@@ -13,7 +18,13 @@ export async function generateMetadata({ params: { locale } }) {
 interface IAdminPage {}
 
 const AdminPage: NextPage = async (): Promise<JSX.Element> => {
-  return <main></main>;
+  return (
+    <main className=" flex gap-[28px] overflow-y-scroll bg-[#1E1E30] p-[1px]">
+      <section className="w-full">
+        <DashboardSection />
+      </section>
+    </main>
+  );
 };
 
 export default AdminPage;

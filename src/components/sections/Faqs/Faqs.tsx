@@ -1,27 +1,17 @@
-import { useTranslations } from "next-intl";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@ui/accordion";
-import { memo } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@ui/accordion"
+import { getTranslations } from "next-intl/server"
 
-const FaqsSection = () => {
-  const t = useTranslations("FAQs");
+const FaqsSection = async () => {
+  const t = await getTranslations("FAQs");
 
   return (
     <div className={"container"}>
-      <div className="card mt-20">
-        <h1 className="text-center text-5xl font-medium leading-8 text-[#000000]">
-          {t("title")}
-        </h1>
+      <div className="card py-20">
+        <h1 className="text-center text-5xl font-medium leading-8 text-[#000000]">{t("title")}</h1>
         <div className="m-auto mx-8 mt-10 p-6 text-base font-medium text-[#000000] shadow-lg lg:mx-32 lg:text-2xl">
           <Accordion type="single" collapsible>
             <AccordionItem value="faqFirst">
-              <AccordionTrigger>
-                {t("items.faqFirst.question")}
-              </AccordionTrigger>
+              <AccordionTrigger>{t("items.faqFirst.question")}</AccordionTrigger>
               <AccordionContent>
                 <div
                   key="faqFirst"
@@ -34,9 +24,7 @@ const FaqsSection = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faqSecond">
-              <AccordionTrigger>
-                {t("items.faqSecond.question")}
-              </AccordionTrigger>
+              <AccordionTrigger>{t("items.faqSecond.question")}</AccordionTrigger>
               <AccordionContent>
                 <div
                   key="faqSecond"
@@ -49,9 +37,7 @@ const FaqsSection = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faqThird">
-              <AccordionTrigger>
-                {t("items.faqThird.question")}
-              </AccordionTrigger>
+              <AccordionTrigger>{t("items.faqThird.question")}</AccordionTrigger>
               <AccordionContent>
                 <div
                   key="faqThird"
@@ -64,9 +50,7 @@ const FaqsSection = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faqFourth">
-              <AccordionTrigger>
-                {t("items.faqFourth.question")}
-              </AccordionTrigger>
+              <AccordionTrigger>{t("items.faqFourth.question")}</AccordionTrigger>
               <AccordionContent>
                 <div
                   key="faqFourth"
@@ -79,9 +63,7 @@ const FaqsSection = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faqFifth">
-              <AccordionTrigger>
-                {t("items.faqFifth.question")}
-              </AccordionTrigger>
+              <AccordionTrigger>{t("items.faqFifth.question")}</AccordionTrigger>
               <AccordionContent>
                 <div
                   key="faqFifth"
@@ -100,4 +82,4 @@ const FaqsSection = () => {
   );
 };
 
-export default memo(FaqsSection);
+export default FaqsSection;

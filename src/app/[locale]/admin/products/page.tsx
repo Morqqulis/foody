@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import SectionHeader from "../../../../components/sections/Admin/Headers/SectionHeader";
+import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
 import ProductsSection from "../../../../components/sections/Admin/Products/ProductsSection";
 
 const ProductsPage: NextPage = (): JSX.Element => {
