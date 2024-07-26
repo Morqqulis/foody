@@ -9,12 +9,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import MyFormLabel from "./MyFormLabel";
-// import { getDefaultValues, getSchema } from "../../utls/getShema";
+import { getDefaultValues, getSchema } from "../../utls/getShema";
 
 import { collections } from "@libs/appwrite/config";
 import { addDocuments, editDocuments, getListDocuments, getDocuments } from "../../utls/functions";
-// import { RestuarantSchema } from "@settings/zodSchemes";
 import { toast } from "./use-toast";
+import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
 
 interface IMyform {
   whatIs: string;
@@ -29,7 +29,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
 
   const getDocSelections = async (collectionId: string) => {
     const res = await getListDocuments(collectionId);
-    const data = res.documents.map((item: any) => ({ id: item.$id, name: item.name }));
+    const data = res.documents?.map((item: any) => ({ id: item.$id, name: item.name }));
     setFormattedSelectOption(data);
   };
 
@@ -39,70 +39,37 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   };
 
   useEffect(() => {
-    if (whatIs === "EditProduct" || whatIs === "AddProduct") {
-      getDocSelections(collections.restaurantsId);
-      getDocItem(collections.productsId, actionId);
+    switch (whatIs) {
+      case "EditProduct":
+        getDocSelections(collections.restaurantsId);
+        getDocItem(collections.productsId, actionId);
+        break;
+      case "AddProduct":
+        getDocSelections(collections.restaurantsId);
+        break;
+      case "EditCategory":
+        getDocItem(collections.categoriesId, actionId);
+        break;
+      case "AddRestaurant":
+        getDocSelections(collections.categoriesId);
+        break;
+      case "EditRestaurant":
+        getDocSelections(collections.categoriesId);
+        getDocItem(collections.restaurantsId, actionId);
+        break;
+      default:
+        break;
     }
 
-    if (whatIs === "AddRestaurant" || whatIs === "EditRestaurant") {
-      getDocSelections(collections.categoriesId);
-      getDocItem(collections.categoriesId, actionId);
-    }
   }, []);
 
-  let str: string;
+  const schema = getSchema(whatIs);
+  const values = getDefaultValues(whatIs);
 
-  switch (whatIs) {
-    case "EditProduct":
-      str = `Products.EditProduct`;
-      break;
-    case "AddProduct":
-      str = `Header`;
-      break;
-    case "EditCategory":
-      str = `Category.EditCategory`;
-      break;
-    case "AddCategory":
-      str = `Category.AddCategory`;
-      break;
-    case "AddRestaurant":
-      str = `Restaurants.AddRestaurant`;
-      break;
-    case "EditRestaurant":
-      str = `Restaurants.EditRestaurant`;
-      break;
-    case "AddOffer":
-      str = `Offers.AddOffer`;
-      break;
-    case "EditOffer":
-      str = `Offers.EditOffer`;
-      break;
-    default:
-      str = `Header`;
-      break;
-  }
-  const t = useTranslations(`Admin.${str}.Sheet`);
-
-  // const schema = getSchema(whatIs);
-  // const values = getDefaultValues(whatIs);
-
-  // const form = useForm<z.infer<typeof schema>>({
-  //   resolver: zodResolver(schema),
-  //   defaultValues: values,
-  // });
-  const form = useForm();
-  const { reset } = form;
-  function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = function () {
-        setFileUrl(reader.result as string);
-      };
-      reader.readAsDataURL(selectedFile);
-      setFile(selectedFile);
-    }
-  }
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: values,
+  });
 
   const submit = async (v: any) => {
     if (whatIs.startsWith("Add") && !file) {
@@ -112,51 +79,38 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         variant: "destructive",
         duration: 2000,
       });
-      reset();
+      form.reset();
       return;
     }
 
-    const restaurantData = (data: any) => {
-      return {
-        name: data.name,
-        cuisine: data.cuisine,
-        deliveryMin: +data.deliveryMin,
-        deliveryPrice: +data.deliveryPrice,
-        address: data.address,
-        category: data.category,
-      };
-    };
-
-    const productData = () => {
-      return {
-        name: prevValue.name,
-        description: prevValue.description,
-        price: prevValue.price,
-        restaurant: prevValue.restaurant,
-      };
-    };
-
     switch (whatIs) {
       case "EditProduct":
-        const obj = productData();
-        editDocuments(collections.productsId, { ...obj, ...v }, file, actionId);
+        const objpp = productData(prevValue);
+        const objcp = productData(v);
+
+        editDocuments(collections.productsId, { ...objpp, ...objcp }, file, actionId);
 
         break;
       case "AddProduct":
         addDocuments(collections.productsId, v, file);
         break;
       case "EditCategory":
-        editDocuments(collections.categoriesId, v, file, actionId);
+        const objpc = categoryData(prevValue);
+        const objcc = categoryData(prevValue);
+        editDocuments(collections.productsId, { ...objpc, ...objcc }, file, actionId);
         break;
       case "AddCategory":
         addDocuments(collections.categoriesId, v, file);
+
         break;
       case "AddRestaurant":
-        addDocuments(collections.restaurantsId, restaurantData(v), file);
+        addDocuments(collections.restaurantsId, v, file);
         break;
       case "EditRestaurant":
-        const d = restaurantData(v);
-        editDocuments(collections.restaurantsId, d, file, actionId);
+        const objpr = restaurantData(prevValue);
+        const objcr = restaurantData(prevValue);
+
+        editDocuments(collections.productsId, { ...objpr, ...objcr }, file, actionId);
         break;
       case "AddOffer":
         break;
@@ -178,8 +132,8 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       duration: 2000,
     });
   };
+  const t = useTranslations(`Admin.${translateUrl(whatIs)}.Sheet`);
 
-  // console.log(getListDocuments(collections.categoriesId), getListDocuments(collections.restaurantsId));
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
@@ -193,7 +147,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
           <Label className="mt-8 flex h-[100px] w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A]">
             <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
             <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {file ? file.name : t("imageBlock.label")}</p>
-            <Input type="file" className="hidden" onChange={(e) => readerFile(e)} />
+            <Input type="file" className="hidden" onChange={(e) => readerFile(e, setFile, setFileUrl)} />
           </Label>
         </div>
 

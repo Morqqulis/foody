@@ -1,20 +1,25 @@
-// import data from "./data";
+"use client";
 import { collections } from "@libs/appwrite/config";
 import { getListDocuments } from "../../../../utls/functions";
+import { FC, useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { FC } from "react";
 interface IRestaurantsSection {}
 
-const RestaurantsSection: FC = async (): Promise<JSX.Element> => {
-  const { documents } = await getListDocuments(collections.restaurantsId);
+const RestaurantsSection: FC = (): JSX.Element => {
+  const [restaurans, setRestaurans] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const { documents } = await getListDocuments(collections.restaurantsId);
+      setRestaurans(documents);
+    })();
+  }, []);
 
   return (
     <section className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
       <div className=" flex flex-wrap justify-around  gap-[25px]">
-        {documents.length === 0 && <p>No data</p>}
-        {documents.map((restaurant) => (
-          <RestaurantCard key={restaurant.cuisine} prop={restaurant} />
-        ))}
+        {restaurans.length === 0 && <p>No data</p>}
+        {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
       </div>
     </section>
   );
