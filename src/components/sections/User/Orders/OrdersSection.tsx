@@ -30,7 +30,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
                 <div className="w-[79px] cursor-pointer text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
               </DialogTrigger>
               <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white">
-                <Table headers={headerModal} body={filteredDataModal} />
+                <Table headers={headers} body={filteredData} />
                 <UserPagination setCurrentPage={setCurrentPage} dataCount={data.length} currentPage={currentPage} perPage={perPage} />
               </DialogContent>
             </Dialog>

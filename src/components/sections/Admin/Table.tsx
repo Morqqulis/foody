@@ -20,10 +20,10 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {body.map((row, index) => (
-            <tr key={row.$id + index} className="text-center">
+          {body?.map((row) => (
+            <tr key={row.$id} className="text-center">
               {Object.entries(row).map(([key, value]) => (
-                <td key={key} className="border border-gray-200 px-4 py-2">
+                <td key={row.$id} className="border border-gray-200 px-4 py-2">
                   {key === "image" ? (
                     <Image src={value as string} width={50} height={50} alt={key} />
                   ) : key.toLocaleLowerCase() === "id" ? (

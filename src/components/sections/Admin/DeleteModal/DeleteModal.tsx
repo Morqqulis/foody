@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,8 +22,9 @@ const DeleteModal: React.FC<IProps> = ({ collectionId, deletedId }): JSX.Element
   const t = useTranslations("Admin.Products.Modal");
 
   const deleting = async () => {
-  await  deleteDocument(collectionId, deletedId);
+    await deleteDocument(collectionId, deletedId);
   };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger>

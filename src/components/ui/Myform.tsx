@@ -5,15 +5,17 @@ import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import MyFormLabel from "./MyFormLabel";
-import { getDefaultValues, getSchema } from "../../utls/getShema";
+// import { getDefaultValues, getSchema } from "../../utls/getShema";
 
 import { collections } from "@libs/appwrite/config";
-import { addDocuments, editDocuments } from "../../utls/functions";
-import { RestuarantSchema } from "@settings/zodSchemes";
+import { addDocuments, editDocuments, getDocuments } from "../../utls/functions";
+// import { RestuarantSchema } from "@settings/zodSchemes";
+import { toast } from "./use-toast";
+import { restuarant } from "@settings/constants";
 
 interface IMyform {
   whatIs: string;
@@ -23,8 +25,21 @@ interface IMyform {
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+  const [formatedSelectOption, setFormattedSelectOption] = useState<any[]>([]);
+
+  const getDocSelections = async (documentId: string) => {
+    const res = await getDocuments(documentId);
+    const data = res.documents.map((item: any) => ({ id: item.$id, name: item.name }));
+    setFormattedSelectOption(data);
+  };
+
+  useEffect(() => {
+    (whatIs === "EditProduct" || whatIs === "AddProduct") && getDocSelections(collections.restaurantsId);
+    (whatIs === "AddRestaurant" || whatIs === "EditRestaurant") && getDocSelections(collections.categoriesId);
+  }, []);
 
   let str: string;
+
   switch (whatIs) {
     case "EditProduct":
       str = `Products.EditProduct`;
@@ -50,22 +65,21 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     case "EditOffer":
       str = `Offers.EditOffer`;
       break;
-
     default:
       str = `Header`;
       break;
   }
-
   const t = useTranslations(`Admin.${str}.Sheet`);
 
-  const schema = getSchema(whatIs);
-  const values = getDefaultValues(whatIs);
+  // const schema = getSchema(whatIs);
+  // const values = getDefaultValues(whatIs);
 
-  const form = useForm<z.infer<typeof schema>>({
-    resolver: zodResolver(schema),
-    defaultValues: values,
-  });
-
+  // const form = useForm<z.infer<typeof schema>>({
+  //   resolver: zodResolver(schema),
+  //   defaultValues: values,
+  // });
+  const form = useForm();
+  const { reset } = form;
   function readerFile(e: React.ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -78,8 +92,17 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     }
   }
 
-  const submit = async (v: z.infer<typeof schema>) => {
-    if (whatIs.startsWith("Add") && !file) return;
+  const submit = async (v: any) => {
+    if (whatIs.startsWith("Add") && !file) {
+      toast({
+        title: "Enter all sections",
+        description: "Form fields must not be empty",
+        variant: "destructive",
+        duration: 2000,
+      });
+      reset();
+      return;
+    }
 
     const restaurantData = (data: any) => {
       return {
@@ -88,7 +111,16 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         deliveryMin: +data.deliveryMin,
         deliveryPrice: +data.deliveryPrice,
         address: data.address,
-        // category: data.category,
+        category: data.category,
+      };
+    };
+
+    const productData = (data: any) => {
+      return {
+        name: data.name,
+        description: data.description,
+        price: +data.price,
+        restaurant: data.restaurant,
       };
     };
 
@@ -96,6 +128,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       case "EditProduct":
         break;
       case "AddProduct":
+        addDocuments(collections.productsId, productData(v), file);
         break;
       case "EditCategory":
         editDocuments(collections.categoriesId, v, file, actionId);
@@ -104,12 +137,9 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         addDocuments(collections.categoriesId, v, file);
         break;
       case "AddRestaurant":
-        // @ts-ignore
-        const data = restaurantData(v);
-        addDocuments(collections.restaurantsId, data, file);
+        addDocuments(collections.restaurantsId, restaurantData(v), file);
         break;
       case "EditRestaurant":
-        // @ts-ignore
         const d = restaurantData(v);
         editDocuments(collections.restaurantsId, d, file, actionId);
         break;
@@ -125,8 +155,16 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     form.reset();
     setFileUrl(null);
     setFile(null);
+
+    toast({
+      title: "Success",
+      description: "Form request is succesfully sent",
+      variant: "dark",
+      duration: 2000,
+    });
   };
 
+  // console.log(getDocuments(collections.categoriesId), getDocuments(collections.restaurantsId));
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
@@ -155,7 +193,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
                 <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="description" inputType="text" />
                 <MyFormLabel whatIs={whatIs} form={form} name="price" inputType="number" />
-                <MyFormLabel whatIs={whatIs} form={form} name="restaurants" inputType="text" options={["Mc Donalds", "Papa Johns", "Pizza Mizza"]} />
+                <MyFormLabel whatIs={whatIs} form={form} name="restaurant" inputType="text" options={formatedSelectOption} />
               </>
             ) : whatIs === "AddRestaurant" || whatIs === "EditRestaurant" ? (
               <>
@@ -164,7 +202,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
                 <MyFormLabel whatIs={whatIs} form={form} name="deliveryPrice" inputType="number" />
                 <MyFormLabel whatIs={whatIs} form={form} name="deliveryMin" inputType="number" />
                 <MyFormLabel whatIs={whatIs} form={form} name="address" inputType="text" />
-                <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={["Fast food", "Pizza", "Steak", "Coffee"]} />
+                <MyFormLabel whatIs={whatIs} form={form} name="category" inputType="text" options={formatedSelectOption} />
               </>
             ) : whatIs === "AddCategory" ? (
               <>

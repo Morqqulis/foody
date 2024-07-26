@@ -5,7 +5,7 @@ import ReusableSheet from "../Sheet/ReusableSheet";
 
 import { useTranslations } from "next-intl";
 import DeleteModal from "../DeleteModal/DeleteModal";
-import { IProductsData } from '@data/data'
+import { IProductsData } from "@data/data";
 
 interface DetailPageProps {
   prod: IProductsData;
@@ -28,7 +28,7 @@ const DetailPage: FC<DetailPageProps> = ({ prod, index }): JSX.Element => {
           <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
           <div className="flex items-center gap-[10px]">
             <ReusableSheet trigger={<Pencil size={20} color="#00B2A9" className="cursor-pointer" />} whatIs="EditProduct" />
-            <DeleteModal />
+            <DeleteModal collectionId={prod.id} deletedId={prod.id} />
           </div>
         </div>
       </div>
