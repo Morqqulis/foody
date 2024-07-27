@@ -1,10 +1,13 @@
-import React from "react";
 import { Pencil } from "lucide-react";
-
 import Image from "next/image";
 import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
 import DeleteModal from "../DeleteModal/DeleteModal";
-const RestaurantCard = ({ prop }) => {
+
+interface IRestCard {
+  prop: any;
+}
+
+const RestaurantCard: React.FC<IRestCard> = ({ prop }): JSX.Element => {
   return (
     <div className="relative flex h-[83px] w-[290px] items-center justify-center rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">
       {prop?.image && <Image src={prop.image} alt="image" width={80} height={80} className="ml-5px" />}

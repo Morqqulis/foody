@@ -6,10 +6,10 @@ import ReusableSheet from "../Sheet/ReusableSheet";
 import { useTranslations } from "next-intl";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-interface DetailPageProps {
+interface IProdCard {
   prod: any;
 }
-const DetailPage: FC<DetailPageProps> = ({ prod }): JSX.Element => {
+const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
   const t = useTranslations("Admin.Products");
 
   return (
@@ -34,4 +34,4 @@ const DetailPage: FC<DetailPageProps> = ({ prod }): JSX.Element => {
   );
 };
 
-export default DetailPage;
+export default ProductCard;
