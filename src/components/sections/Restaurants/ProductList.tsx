@@ -1,12 +1,12 @@
 "use client";
 
-import { Plus } from "lucide-react";
-import Image from "next/image";
-import styles from "./Scroll.module.css";
-import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { collections, databases, dbId } from "@libs/appwrite/config";
-import { Query } from "appwrite";
+import { collections, databases, dbId } from "@libs/appwrite/config"
+import { Query } from "appwrite"
+import { Plus } from "lucide-react"
+import { useTranslations } from "next-intl"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import styles from "./Scroll.module.css"
 
 const products = [
   { id: 1, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
@@ -32,7 +32,7 @@ const ProductList: React.FC = ({ slug }: { slug: string }) => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [slug]);
 
   return (
     <div className=" basis-3.5/6 w-full">
