@@ -44,7 +44,13 @@ export const deleteImage = async (id: string) => {
 
 export const addDocuments = async (collectionsId: string, v: any, file: File) => {
   const fileUrl = await uploadImage(file);
-  databases.createDocument(dbId, collectionsId, ID.unique(), { ...v, ...fileUrl });
+  const aa = await databases.createDocument(dbId, collectionsId, ID.unique(), { ...v, ...fileUrl });
+  return aa;
+};
+
+export const addUsers = async (id: string, v: any) => {
+  const aa = await databases.createDocument(dbId, collections.userId, id, v);
+  return aa;
 };
 
 export const editDocuments = async (collectionsId: string, v?: any, file?: File, id?: string) => {
@@ -67,4 +73,15 @@ export const getDocuments = async (collectionsId: string, docId: string) => {
 
 export const deleteDocument = async (collectionsId: string, deletedId: string) => {
   await databases.deleteDocument(dbId, collectionsId, deletedId);
+};
+
+export const checkUser = async (email: string, password?: string) => {
+  const users = await databases.listDocuments(dbId, collections.userId);
+  // console.log(users);
+
+  const isExist = users.documents.some((user: any) => user.email === email);
+
+  const [{ $id }] = users.documents.filter((user: any) => user.password === password && user.email === email);
+
+  return { isExist, $id };
 };
