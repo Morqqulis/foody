@@ -1,8 +1,6 @@
-import { NextPage } from "next";
-import { getTranslations } from "next-intl/server";
-import RestaurantsHeader from "../../../../components/sections/Restaurants/RestaurantsHeader";
-import ProductList from "../../../../components/sections/Restaurants/ProductList";
-import Cart from "../../../../components/sections/Restaurants/Cart";
+import { RestaurantSection } from '@sections/Restaurants/RestaurantSection'
+import { NextPage } from 'next'
+import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslations({ locale, namespace: "Restaurants.Metadata" });
@@ -13,8 +11,14 @@ export async function generateMetadata({ params: { locale } }) {
   };
 }
 
+interface IRestaurants {}
+
 const RestaurantsPage: NextPage = (): JSX.Element => {
-  return <main>Pakize Restaurants !</main>;
-};
+  return (
+    <main className='wrapper'>
+      <RestaurantSection/>
+    </main>
+  )
+}
 
 export default RestaurantsPage;

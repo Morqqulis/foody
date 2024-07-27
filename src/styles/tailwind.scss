@@ -53,3 +53,16 @@ input:-webkit-autofill:focus {
     background-color 0s 600000s,
     color 0s 600000s !important;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e60023;
+  border-radius: 4px;
+}

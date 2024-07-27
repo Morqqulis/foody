@@ -1,4 +1,5 @@
 import { avatarId, collections, databases, dbId, ID, storage } from "@libs/appwrite/config";
+
 import axios from "axios";
 
 interface IMultiFn {
@@ -31,7 +32,10 @@ export const uploadImage = async (file: File) => {
   if (!file) return;
 
   const fileUploaded = await storage.createFile(avatarId, ID.unique(), file);
-  const image = storage.getFilePreview(avatarId, fileUploaded.$id).toString();
+  // @ts-ignore
+
+  const image = storage.getFilePreview(avatarId, fileUploaded.$id, 200, 200);
+
   const imageId = fileUploaded.$id;
 
   return { image, imageId };
