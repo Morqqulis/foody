@@ -35,17 +35,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     resolver: zodResolver(schema),
     defaultValues: setDefaultValues(),
   });
-  // const deleteuser = await getListDocuments(collections.userId);
-  // deleteuser.documents.map( async (item: any) => await deleteDocument(collections.userId, item.$id))
-  // account.deleteSessions()
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const currentSession = await account.get();
-  //     setSession(currentSession.status);
-  //   })();
-  // }, []);
-
+  
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     // setIsLoading(true);
 
@@ -77,26 +67,14 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     //   router.push("/user");
     //   setSession(false)
     // } else {
-
-    try {
-      const { email, password } = data;
-      const response = await account.createEmailPasswordSession(email, password);
-      console.log(response);
-
-      // response && router.push("/user");
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Login failed:", error);
-      toast({ title: "Sign In Failed", description: error.message, variant: "destructive", duration: 3000 });
-      setIsLoading(false);
-    }
-    // }
   };
 
   const handleResigter = async (data: z.infer<typeof SignUpFormSchema>) => {
-    setIsLoading(true);
+    console.log(data);
+    
+    // setIsLoading(true);
 
-    // const { isExist } = await checkUser(data.email, data.password);
+    const { isExist } = await checkUser(data.email, data.password);
 
     // if (!isExist) {
     //   addDocuments(collections.userId, { ...data, enter: false }, null);
@@ -116,34 +94,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     //     duration: 2000,
     //   });
     // }
-    // setIsLoading(false);
-
-    const { email, password, userName } = data;
-
-    try {
-      const user = await account.create(ID.unique(), email, password, userName);
-      await addUsers(user.$id, data);
-
-      console.log(user);
-
-      form.reset();
-
-      toast({
-        title: "Congratulations",
-        description: `Sign Up Succesfull`,
-        variant: "dark",
-        duration: 2000,
-      });
-      setIsLoading(false);
-    } catch (error) {
-      toast({
-        title: "Sign Up Failed",
-        description: error.message,
-        variant: "destructive",
-        duration: 2000,
-      });
-      setIsLoading(false);
-    }
+    // setIsLoading(false);   
   };
 
   const onSubmit = async (values: z.infer<typeof schema>) => {

@@ -1,3 +1,4 @@
+import { basket } from "@settings/constants";
 import { Account, Client, Databases, ID, Storage } from "appwrite";
 
 //=============================================
@@ -25,6 +26,7 @@ const collections = {
   restaurantsId: `${process.env.NEXT_PUBLIC_APPWRITE_RESTAURANTS_ID}`,
   ordersId: `${process.env.NEXT_PUBLIC_APPWRITE_ORDERS_ID}`,
   offersId: `${process.env.NEXT_PUBLIC_APPWRITE_OFFERS_ID}`,
+  basketId: `${process.env.NEXT_PUBLIC_APPWRITE_BASKET_ID}`,
 };
 
 //=============================================

@@ -1,57 +1,74 @@
 "use client";
+import { collections } from "@libs/appwrite/config";
+import { Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import styles from "./Scroll.module.css";
+import { getDocuments } from "../../../utls/functions";
 
-import { collections, databases, dbId } from "@libs/appwrite/config"
-import { Query } from "appwrite"
-import { Plus } from "lucide-react"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import styles from "./Scroll.module.css"
+interface CartItem {
+  $collectionId: string;
+  $createdAt: string;
+  $updatedAt: string;
+  $permissions: string[];
+  name: string;
+  price: string | number;
+  quantity: number;
+  image: string;
+  imageId: string;
+  $databaseId: string;
+  $id: string;
+  $tenant: string;
+  description: string;
+}
 
-const products = [
-  { id: 1, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 2, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 3, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 4, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
-  { id: 5, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
-  { id: 6, name: "Coca Cola", price: 1.0, img_url: "https://via.placeholder.com/150" },
-  { id: 7, name: "Papa Coffee", price: 0.79, img_url: "https://via.placeholder.com/150" },
-];
-
-const ProductList: React.FC = ({ slug }: { slug: string }) => {
+interface IProductList {
+  restId: string;
+  setBasket: React.Dispatch<React.SetStateAction<CartItem[]>>;
+}
+const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
   const t = useTranslations("ProductList");
-  const [restaurant, setRestaurant] = useState(null);
-  console.log(restaurant);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const { documents } = await databases.listDocuments(dbId, collections.restaurantsId, [Query.equal("name", slug)]);
-        setRestaurant(documents);
+        const { products } = await getDocuments(collections.restaurantsId, restId);
+        setProducts(products);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [slug]);
+  }, [restId]);
+
+  
+  const addToBasket = (product: CartItem) => {
+    setBasket((prev: any) =>
+      prev?.some((item: any) => item.$id === product.$id)
+        ? prev.map((item: any) => (item.$id === product.$id ? { ...item, quantity: item.quantity + 1 } : item))
+        : [...prev, { ...product, quantity: 1 }],
+    );
+  };
 
   return (
     <div className=" basis-3.5/6 w-full">
       <div className="ml-50 mr-6 mt-4 flex-1 bg-gray-100 p-10">
         <h2 className="mb-6 text-center text-2xl font-semibold text-gray-950">{t("title")}</h2>
         <div className={`${styles.customScrollbar} space-y-4`}>
-          {restaurant?.products?.length > 0 &&
-            restaurant?.products?.map((product: any) => (
-              <div key={product.id} className="flex items-center justify-between rounded bg-white p-4 shadow">
+          {products.length > 0 &&
+            products.map((product: any) => (
+              <div key={product.$id} className="flex items-center justify-between rounded bg-white p-4 shadow">
                 <div className="flex items-center">
-                  <Image className="h-20 w-20 rounded-lg" src={product.img_url} alt={product.name} width={80} height={80} />
+                  <Image className="h-20 w-20 rounded-lg" src={product.image} alt={product.name} width={80} height={80} />
                   <div className="ml-4">
                     <h3 className="text-md font-semibold">{product.name}</h3>
-                    <p className="text-sm text-gray-500">{t("description")}</p>
+                    <p className="text-sm text-gray-500">{product.description}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-lg font-semibold">${product.price.toFixed(2)}</span>
-                  <button className="ml-4 text-green-500">
+                  <span className="text-lg font-semibold">${product.price}</span>
+                  <button className="ml-4 text-green-500" onClick={() => addToBasket(product)}>
                     <Plus />
                   </button>
                 </div>
