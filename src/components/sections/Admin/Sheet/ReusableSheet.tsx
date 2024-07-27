@@ -8,6 +8,7 @@ interface IReusableSheet {
 }
 
 const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.
+
 Element => {
   let str: string;
   switch (whatIs) {

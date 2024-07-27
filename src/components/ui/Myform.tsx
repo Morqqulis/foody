@@ -22,6 +22,8 @@ interface IMyform {
 }
 
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
+  console.log(actionId);
+
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
   const [formatedSelectOption, setFormattedSelectOption] = useState<any[]>([]);
@@ -96,8 +98,8 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         break;
       case "EditCategory":
         const objpc = categoryData(prevValue);
-        const objcc = categoryData(prevValue);
-        editDocuments(collections.productsId, { ...objpc, ...objcc }, file, actionId);
+        const objcc = categoryData(v);
+        editDocuments(collections.categoriesId, { ...objpc, ...objcc }, file, actionId);
         break;
       case "AddCategory":
         addDocuments(collections.categoriesId, v, file);
@@ -108,9 +110,9 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         break;
       case "EditRestaurant":
         const objpr = restaurantData(prevValue);
-        const objcr = restaurantData(prevValue);
+        const objcr = restaurantData(v);
 
-        editDocuments(collections.productsId, { ...objpr, ...objcr }, file, actionId);
+        editDocuments(collections.restaurantsId, { ...objpr, ...objcr }, file, actionId);
         break;
       case "AddOffer":
         break;
