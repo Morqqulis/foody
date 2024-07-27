@@ -22,7 +22,6 @@ interface IMyform {
 }
 
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
-  console.log(actionId);
 
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
