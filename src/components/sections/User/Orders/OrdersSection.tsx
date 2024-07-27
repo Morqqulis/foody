@@ -6,7 +6,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import UserPagination from "../../Paginations/UserPagination";
 import { useState } from "react";
 
-import { Dialog, DialogContent, DialogTrigger } from "@ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@ui/dialog";
 
 const OrdersSection: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   const perPage = 10;
   const data = userOrdersData;
-
+  console.log(data.slice((1 - 1) * perPage, currentPage * perPage));
   const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
   const filteredData = data.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => ({
     ...order,
@@ -27,11 +27,13 @@ const OrdersSection: React.FC = (): JSX.Element => {
           <Content className="shadow-custom h-[47px] w-[79px] bg-white">
             <Dialog>
               <DialogTrigger>
-                <div className="w-[79px] cursor-pointer text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
+                <div className="w-[79px] cursor-pointer py-2 text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
               </DialogTrigger>
               <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white">
-                <Table headers={headers} body={filteredData} />
+                <Table headers={headers} body={data} />
+                <DialogTitle></DialogTitle>
                 <UserPagination setCurrentPage={setCurrentPage} dataCount={data.length} currentPage={currentPage} perPage={perPage} />
+                <DialogDescription></DialogDescription>
               </DialogContent>
             </Dialog>
             <Item

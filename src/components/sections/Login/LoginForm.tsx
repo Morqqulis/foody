@@ -1,15 +1,16 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { auth } from "@settings/constants"
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
-import { Button } from "@ui/button"
-import { Form } from "@ui/form"
-import { useToast } from "@ui/use-toast"
-import { useTranslations } from "next-intl"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { multiFn } from "../../../utls/functions"
-import LoginFormField from "./LoginFormField"
-import { useRouter } from 'next/navigation'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { auth } from "@settings/constants";
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
+import { Button } from "@ui/button";
+import { Form } from "@ui/form";
+import { useToast } from "@ui/use-toast";
+import { useTranslations } from "next-intl";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { addDocuments, multiFn } from "../../../utls/functions";
+import LoginFormField from "./LoginFormField";
+import { useRouter } from "next/navigation";
+import { account, collections, databases, dbId, ID } from "@libs/appwrite/config";
 
 const BASEURL = "https://foody-api-seven.vercel.app";
 const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
@@ -34,11 +35,19 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     defaultValues: setDefaultValues(),
   });
 
+
+
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     try {
-      const userdata = await multiFn("post", auth.signIn, data);
+      //   const userdata = await multiFn("post", auth.signIn, data);
+      const data = {
+        productsList: "test",
+      };
 
-      localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
+      //   await account.createEmailPasswordSession(data.email, data.password);
+      const addToBasket = await databases.createDocument(dbId, "66a50de6000e29ef71c7", ID.unique(), { salam: true });
+      console.log(addToBasket);
+      //   localStorage.setItem("token", JSON.stringify(userdata.user.access_token));
       form.reset();
       setTimeout(() => {
         router.push("/user");
