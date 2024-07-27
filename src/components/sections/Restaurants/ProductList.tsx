@@ -8,15 +8,15 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import styles from "./Scroll.module.css"
 
-const products = [
-  { id: 1, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 2, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 3, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
-  { id: 4, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
-  { id: 5, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
-  { id: 6, name: "Coca Cola", price: 1.0, img_url: "https://via.placeholder.com/150" },
-  { id: 7, name: "Papa Coffee", price: 0.79, img_url: "https://via.placeholder.com/150" },
-];
+// const products = [
+//   { id: 1, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
+//   { id: 2, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
+//   { id: 3, name: "Papa John's Pizza Restaurant", price: 7.0, img_url: "https://via.placeholder.com/150" },
+//   { id: 4, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
+//   { id: 5, name: "Papa John's Pepper Roll", price: 4.29, img_url: "https://via.placeholder.com/150" },
+//   { id: 6, name: "Coca Cola", price: 1.0, img_url: "https://via.placeholder.com/150" },
+//   { id: 7, name: "Papa Coffee", price: 0.79, img_url: "https://via.placeholder.com/150" },
+// ];
 
 const ProductList: React.FC = ({ slug }: { slug: string }) => {
   const t = useTranslations("ProductList");
@@ -33,6 +33,9 @@ const ProductList: React.FC = ({ slug }: { slug: string }) => {
       }
     })();
   }, [slug]);
+
+
+  
 
   return (
     <div className=" basis-3.5/6 w-full">

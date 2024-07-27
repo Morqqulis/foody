@@ -55,7 +55,7 @@ const HeaderMenu: React.FC<IHeaderMenu> = ({
                className={`w-full`}
             >
                <Link
-                  className={`block whitespace-nowrap px-5 text-lg font-medium hover:text-mainRed ${path === item.href ? 'text-mainRed' : 'text-foreground'}`}
+                  className={`block whitespace-nowrap px-3 text-lg font-medium hover:text-mainRed ${path === item.href ? 'text-mainRed' : 'text-foreground'}`}
                   href={item.href}
                >
                   {t(`${item.id}`)}

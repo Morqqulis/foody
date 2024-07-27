@@ -34,21 +34,10 @@ export const IconInsta = () => (
   >
     <defs>
       <clipPath id="clip139_6373">
-        <rect
-          id="akar-icons:instagram-fill"
-          width="33.000000"
-          height="33.000000"
-          fill="white"
-          fillOpacity="0"
-        />
+        <rect id="akar-icons:instagram-fill" width="33.000000" height="33.000000" fill="white" fillOpacity="0" />
       </clipPath>
     </defs>
-    <rect
-      id="akar-icons:instagram-fill"
-      width="33.000000"
-      height="33.000000"
-      fillOpacity="0"
-    />
+    <rect id="akar-icons:instagram-fill" width="33.000000" height="33.000000" fillOpacity="0" />
     <g clipPath="url(#clip139_6373)">
       <path
         id="Vector"
@@ -72,13 +61,7 @@ export const IconFacebook = () => (
   >
     <defs>
       <clipPath id="clip139_6369">
-        <rect
-          id="facebook"
-          width="43.000000"
-          height="38.000000"
-          fill="white"
-          fillOpacity="0"
-        />
+        <rect id="facebook" width="43.000000" height="38.000000" fill="white" fillOpacity="0" />
       </clipPath>
     </defs>
     <g clipPath="url(#clip139_6369)">
@@ -94,19 +77,28 @@ export const IconFacebook = () => (
 
 export const IconBasket = () => (
   <svg
-    viewBox="0 0 31.4333 28"
-    fill="currentColor"
+    width="40.000000"
+    height="41.000000"
+    viewBox="0 0 40 41"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <defs />
-    <path
-      id="Vector"
-      d="M30 10.29L23.16 10.29L16.9 0.61C16.63 0.2 16.17 0 15.71 0C15.25 0 14.8 0.2 14.53 0.63L8.27 10.29L1.42 10.29C0.64 10.29 0 10.96 0 11.77C0 11.9 0.01 12.03 0.05 12.16L3.68 25.84C4.01 27.08 5.11 28 6.42 28L25 28C26.31 28 27.41 27.08 27.76 25.84L31.39 12.16L31.43 11.77C31.43 10.96 30.79 10.29 30 10.29ZM15.71 4.1L19.71 10.29L11.71 10.29L15.71 4.1ZM25 25.04L6.44 25.06L3.3 13.24L28.14 13.24L25 25.04ZM15.71 16.19C14.14 16.19 12.85 17.52 12.85 19.14C12.85 20.77 14.14 22.09 15.71 22.09C17.28 22.09 18.57 20.77 18.57 19.14C18.57 17.52 17.28 16.19 15.71 16.19Z"
-      fill="#FFFFFF"
-      fillOpacity="1.000000"
-      fillRule="nonzero"
-    />
+    <defs>
+      <clipPath id="clip152_2363">
+        <rect id="shopping_basket" width="32.000000" height="32.000000" transform="translate(3.000000 1.000000)" fill="white" fillOpacity="0" />
+      </clipPath>
+    </defs>
+    <rect id="Rectangle 72" rx="20.000000" width="40.000000" height="41.000000" fill="#EB5757" fillOpacity="1.000000" />
+    <g clipPath="url(#clip152_2363)">
+      <path
+        id="Vector"
+        d="M33.6 15.29L26.92 15.29L20.82 5.61C20.55 5.2 20.11 5 19.66 5C19.22 5 18.77 5.2 18.5 5.63L12.4 15.29L5.72 15.29C4.96 15.29 4.33 15.96 4.33 16.77C4.33 16.9 4.34 17.03 4.38 17.16L7.92 30.84C8.25 32.08 9.32 33 10.6 33L28.72 33C30 33 31.08 32.08 31.41 30.84L34.95 17.16L35 16.77C35 15.96 34.37 15.29 33.6 15.29ZM19.66 9.1L23.56 15.29L15.76 15.29L19.66 9.1ZM28.72 30.04L10.62 30.06L7.55 18.24L31.79 18.24L28.72 30.04ZM19.66 21.19C18.13 21.19 16.87 22.52 16.87 24.14C16.87 25.77 18.13 27.09 19.66 27.09C21.2 27.09 22.45 25.77 22.45 24.14C22.45 22.52 21.2 21.19 19.66 21.19Z"
+        fill="#FFFFFF"
+        fillOpacity="1.000000"
+        fillRule="nonzero"
+      />
+    </g>
   </svg>
 );
 
@@ -120,13 +112,7 @@ export const IconEye = ({ className }: { className?: string }) => (
   >
     <defs>
       <clipPath id="clip151_2403">
-        <rect
-          id="remove_red_eye"
-          width="35.000000"
-          height="32.000000"
-          fill="white"
-          fillOpacity="0"
-        />
+        <rect id="remove_red_eye" width="35.000000" height="32.000000" fill="white" fillOpacity="0" />
       </clipPath>
     </defs>
     <g clipPath="url(#clip151_2403)">

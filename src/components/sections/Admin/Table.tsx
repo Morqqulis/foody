@@ -21,9 +21,9 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
         </thead>
         <tbody>
           {body?.map((row) => (
-            <tr key={row.$id} className="text-center">
+            <tr key={Math.random() * 10000} className="text-center">
               {Object.entries(row).map(([key, value]) => (
-                <td key={row.$id} className="border border-gray-200 px-4 py-2">
+                <td key={Math.random() * 10000} className="border border-gray-200 px-4 py-2">
                   {key === "image" ? (
                     <Image src={value as string} width={50} height={50} alt={key} />
                   ) : key.toLocaleLowerCase() === "id" ? (

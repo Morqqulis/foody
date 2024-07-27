@@ -1,19 +1,18 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { auth } from "@settings/constants";
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
-import { Button } from "@ui/button";
-import { Form } from "@ui/form";
-import { useToast } from "@ui/use-toast";
-import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { addDocuments, addUsers, checkUser, deleteDocument, editDocuments, getListDocuments, multiFn } from "../../../utls/functions";
-import LoginFormField from "./LoginFormField";
-import { useRouter } from "next/navigation";
-import { account, collections, databases, dbId, ID } from "@libs/appwrite/config";
-import { useEffect, useState } from "react";
-import Loader from "./Loader";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { account, ID } from "@libs/appwrite/config"
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
+import { Button } from "@ui/button"
+import { Form } from "@ui/form"
+import { useToast } from "@ui/use-toast"
+import { useTranslations } from "next-intl"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { addUsers } from "../../../utls/functions"
+import Loader from "./Loader"
+import LoginFormField from "./LoginFormField"
 // const BASEURL = "https://foody-api-seven.vercel.app";
 // const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
 // const SIGNUP_URL = `${BASEURL}/api/auth/signup`;
