@@ -1,17 +1,18 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
-import { Button } from "@ui/button"
-import { Form } from "@ui/form"
-import { useToast } from "@ui/use-toast"
-import { useTranslations } from "next-intl"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { checkUser } from "../../../utls/functions"
-import Loader from "./Loader"
-import LoginFormField from "./LoginFormField"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes";
+import { Button } from "@ui/button";
+import { Form } from "@ui/form";
+import { useToast } from "@ui/use-toast";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { checkUser, getDocuments } from "../../../utls/functions";
+import Loader from "./Loader";
+import LoginFormField from "./LoginFormField";
+import { account, collections, databases, dbId } from "@libs/appwrite/config";
 
 interface ILoginForm {
   name: "login" | "register";
@@ -33,20 +34,16 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     resolver: zodResolver(schema),
     defaultValues: setDefaultValues(),
   });
-  
+
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     // setIsLoading(true);
-
     // try {
     //   const { email, password } = data;
     //   const { $id } = await checkUser(email, password);
-
     //   $id && (await editDocuments(collections.userId, { enter: true }, null, $id));
-
     //   setTimeout(() => {
     //     router.push("/user");
     //   }, 2000);
-
     //   form.reset();
     //   toast({
     //     title: "Congratulations",
@@ -59,20 +56,21 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     //   toast({ title: "Sign In Failed", description: `You have some Error >: ${error.message}}`, variant: "destructive", duration: 2000 });
     //   setIsLoading(false);
     // }
-
     // if (session) {
-
     //   router.push("/user");
     //   setSession(false)
     // } else {
+
+    const loggedIn = await account.createEmailPasswordSession(data.email, data.password);
+    
   };
 
   const handleResigter = async (data: z.infer<typeof SignUpFormSchema>) => {
     console.log(data);
-    
+
     // setIsLoading(true);
 
-    const { isExist } = await checkUser(data.email, data.password);
+    // const { isExist } = await checkUser(data.email, data.password);
 
     // if (!isExist) {
     //   addDocuments(collections.userId, { ...data, enter: false }, null);
@@ -92,7 +90,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     //     duration: 2000,
     //   });
     // }
-    // setIsLoading(false);   
+    // setIsLoading(false);
   };
 
   const onSubmit = async (values: z.infer<typeof schema>) => {

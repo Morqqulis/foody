@@ -32,16 +32,15 @@ function CheckoutHome() {
 
   const handleCheckOut = () => {
     setShowDoneIcon(true);
-    
+
     const order = JSON.stringify({
       user,
       basket,
     });
-    
+
     // databases.createDocument(dbId, collections.ordersId, ID.unique(), order);
     // Ordersde duzelisler edib bunlari acacagiq
   };
-
 
   const handlePrefixChange = (event: FormEvent<HTMLSelectElement>) => {
     setPrefix(event.currentTarget.value);
