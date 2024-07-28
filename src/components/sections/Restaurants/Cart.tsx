@@ -1,11 +1,11 @@
 "use client";
 
-import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import Link from "next/link"
-import { FC, useEffect, useState } from "react"
-import styles from "./Scroll.module.css"
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
+import { FC, useEffect, useState } from "react";
+import styles from "./Scroll.module.css";
 
 interface CartItem {
   $collectionId: string;
@@ -49,9 +49,9 @@ const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
   const totalPrice = cartItems?.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
 
   return (
-    <div className="mt-4 flex w-full basis-2/5">
-      <div className="w-full h-547px mb-8 bg-gray-7 p-10">
-        <div className="mb-6 flex flex-col">
+    <div className="mt-4 flex h-[550px] w-full basis-2/5">
+      <div className="h-547px mb-8 flex w-full flex-col bg-gray-7 p-4">
+        <div className="mb-6 flex flex-col ">
           <div className="mt-2 flex items-center text-xl">
             <ShoppingCart className="h-7 w-7 text-red-600 " />
             <h5 className="ml-2 text-red-600">
@@ -59,7 +59,16 @@ const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
             </h5>
           </div>
         </div>
-        <div className={styles.customScrollbar}>
+        <div className={`${styles.customScrollbar} grow overflow-auto`}>
+          {!cartItems?.length && (
+            <div className={`flex h-full w-full flex-col items-center justify-center gap-2`}>
+              <Image className={`w-full max-w-[150px]`} src={"/Basket/empty-small.png"} alt={"empty backet"} width={263} height={236} />
+              <span className={`text-center text-4xl font-medium`}>
+                Opps! <br /> Basket empty
+              </span>
+            </div>
+          )}
+
           {cartItems?.map((item) => (
             <div key={item.$id} className="mb-4 flex items-center justify-between rounded-lg bg-white p-1 shadow-md">
               <div className="flex items-center">
@@ -86,7 +95,7 @@ const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
             </div>
           ))}
         </div>
-        <Link href="/user/checkout" className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
+        <Link href="/user/checkout" className="flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
           <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t("checkout")}</div>
           <span className="rounded-3xl bg-white px-4 py-2 text-xl font-semibold text-red-600">$ {totalPrice}</span>
         </Link>
