@@ -1,19 +1,17 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { collections, databases, dbId, ID } from "@libs/appwrite/config"
-import DoneIconComponent from "@sections/Checkout/LottieAnimation"
-import { Button } from "@ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
-import { Input } from "@ui/input"
-import { RadioGroup, RadioGroupItem } from "@ui/radio-group"
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { getDocuments } from "../../../utls/functions"
-import CheckoutOrder from "./CheckoutOrder"
-
-// const phonePrefixes = ["050", "051", "055", "070", "010", "099", "077"];
+import { zodResolver } from "@hookform/resolvers/zod";
+import { collections, databases, dbId, ID } from "@libs/appwrite/config";
+import DoneIconComponent from "@sections/Checkout/LottieAnimation";
+import { Button } from "@ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
+import { Input } from "@ui/input";
+import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { getDocuments } from "../../../utls/functions";
+import CheckoutOrder from "./CheckoutOrder";
 
 const formSchema = z.object({
   address: z
@@ -41,13 +39,11 @@ function CheckoutHome() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       address: "",
-      phone: '',
+      phone: "",
       payment: "Cash",
     },
   });
 
-  //   const [prefix, setPrefix] = useState(phonePrefixes[0]);
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [showDoneIcon, setShowDoneIcon] = useState(false);
 
   const [basket, setBasket] = useState([]);
@@ -70,7 +66,7 @@ function CheckoutHome() {
     })();
   }, [userId]);
 
-  const handleCheckOut = async (v: any) => {
+  const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
     const orderInfo = JSON.stringify({
       time: new Date().toLocaleDateString(),
       address: v.address,
@@ -90,37 +86,17 @@ function CheckoutHome() {
     setShowDoneIcon(true);
   };
 
-  //   const handlePrefixChange = (event: FormEvent<HTMLSelectElement>) => {
-  //     // setPrefix(event.currentTarget.value);
-  //   };
-
-  //   const handlePhoneNumberChange = (event: FormEvent<HTMLInputElement>) => {
-  //     const input = event.currentTarget;
-  //     input.value = input.value.replace(/[^0-9]/g, "");
-  //     setPhoneNumber(input.value);
-  //   };
-
-  //   const handleSubmit = (event: FormEvent) => {
-  //     event.preventDefault();
-  //     // alert(`Phone Number: ${prefix}${phoneNumber}`);
-  //   };
-
   useEffect(() => {
+    let timer;
     if (showDoneIcon) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setShowDoneIcon(false);
       }, 3000);
     }
-}, [showDoneIcon]);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [showDoneIcon]);
+    return () => clearTimeout(timer);
+  }, [showDoneIcon]);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+
 
   return showDoneIcon ? (
     <DoneIconComponent />
@@ -130,7 +106,7 @@ function CheckoutHome() {
         <div className={`w-full basis-2/3 rounded-md bg-gray-7 p-10 pb-11`}>
           <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>Checkout</h1>
           <Form {...form}>
-            <form className={`flex flex-col gap-8`} onSubmit={form.handleSubmit(onSubmit)}>
+            <form className={`flex flex-col gap-8`} onSubmit={form.handleSubmit(handleCheckOut)}>
               <FormField
                 control={form.control}
                 name="address"
