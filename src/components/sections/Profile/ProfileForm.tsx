@@ -18,6 +18,7 @@ const ProfileSchema = z.object({
   contacts: z.string({ message: "Please enter your contact" }),
   email: z.string({ message: "Please enter your email" }),
   userName: z.string({ message: "Please enter your username" }),
+  userName: z.string({ message: "Please enter your username" }),
   fullName: z.string({ message: "Please enter your full name" }),
   address: z.string({ message: "Please enter your address" }),
 });
@@ -31,7 +32,9 @@ const ProfileForm: React.FC = (): JSX.Element => {
     defaultValues: {
       avatar: "",
       contacts: "",
+      contacts: "",
       email: "",
+      userName: "",
       userName: "",
       fullName: "",
       address: "",
@@ -91,6 +94,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
         <div className={`grid h-fit grid-cols-2 gap-12`}>
           <FormField
             name={"contacts"}
+            name={"contacts"}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -126,6 +130,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
+            name={"userName"}
             name={"userName"}
             control={form.control}
             render={({ field }) => (
