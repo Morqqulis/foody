@@ -35,6 +35,13 @@ const formSchema = z.object({
 });
 
 function CheckoutHome() {
+  const [showDoneIcon, setShowDoneIcon] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [basket, setBasket] = useState([]);
+  const [user, setUser] = useState({});
+
+  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,16 +51,12 @@ function CheckoutHome() {
     },
   });
 
-  const [showDoneIcon, setShowDoneIcon] = useState(false);
-
-  const [basket, setBasket] = useState([]);
-  const [user, setUser] = useState({});
-
-  const userId = localStorage.getItem("userId");
-
-  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
-
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    setUserId(userId || "");
+
+    if (!userId) return;
+
     (async () => {
       const userInfo = await getDocuments(collections.userId, userId);
       setUser(userInfo);
@@ -64,7 +67,7 @@ function CheckoutHome() {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, [userId]);
+  }, []);
 
   const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
     const orderInfo = JSON.stringify({
@@ -76,6 +79,7 @@ function CheckoutHome() {
       basket,
     });
 
+    if (!userId) return;
     // @ts-ignore
     const basketId = await user.basket[0].$id;
     await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
@@ -87,7 +91,7 @@ function CheckoutHome() {
   };
 
   useEffect(() => {
-    let timer;
+    let timer: any;
     if (showDoneIcon) {
       timer = setTimeout(() => {
         setShowDoneIcon(false);
@@ -95,8 +99,6 @@ function CheckoutHome() {
     }
     return () => clearTimeout(timer);
   }, [showDoneIcon]);
-
-
 
   return showDoneIcon ? (
     <DoneIconComponent />
@@ -184,7 +186,7 @@ function CheckoutHome() {
                   </FormItem>
                 )}
               />
-              <Button className={`bg-[#6FCF97] py-7`} type="submit">
+              <Button className={`bg-[#6FCF97] py-7 duration-300 hover:bg-mainRed`} type="submit">
                 Submit
               </Button>
             </form>
