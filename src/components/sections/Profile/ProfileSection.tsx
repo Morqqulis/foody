@@ -1,5 +1,4 @@
-import { Form } from "@ui/form";
-import ProfileForm from "./ProfileForm";
+import ProfileForm from "./ProfileForm"
 
 interface IProfileSection {}
 
