@@ -88,6 +88,9 @@ function CheckoutHome() {
     });
     await databases.deleteDocument(dbId, collections.basketId, basketId);
     setShowDoneIcon(true);
+
+    form.reset();
+    setBasket([]);
   };
 
   useEffect(() => {
@@ -165,7 +168,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === "Card" ? "font-bold text-[#6FCF97]" : "text-foreground"} cursor-pointer text-base`}
                           >
-                            pay at the door
+                            Pay at the door by credit card
                           </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -178,7 +181,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === "Cash" ? "font-bold text-[#6FCF97]" : "border-slate-600"} text-base} cursor-pointer`}
                           >
-                            pay at the door by credit card
+                            Pay at the door
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
@@ -199,15 +202,3 @@ function CheckoutHome() {
 }
 
 export default CheckoutHome;
-
-{
-  /* <CheckoutOrder basket={basket} /> */
-}
-// <button
-//   onClick={() => handleCheckOut({ deliveryAddress: "baku", paymentMethod: "card", contact: "0555859885" })}
-//   className={
-//     "mt-[20px] h-[53px] w-[546px] rounded border-2 bg-lime-600 text-white duration-500 hover:border-lime-600  hover:bg-white hover:text-lime-600"
-//   }
-// >
-//   Checkout
-// </button>;

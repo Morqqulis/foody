@@ -1,41 +1,70 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconUpload } from "@icons";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { IconUpload } from "@icons"
+import { collections, databases, dbId } from "@libs/appwrite/config"
+import { Button } from "@ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
+import { Input } from "@ui/input"
+import React from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions"
+import { readerFile } from "../../helper/helper"
 
 interface IProfileForm {}
 
 const ProfileSchema = z.object({
-  avatar: z
-    .any(),
-    // .refine((files) => {
-    //   return files?.[0]?.size <= 1024 * 1024 * 5;
-    // }, `Max image size is 5MB.`)
-    // .refine(
-    //   (files) => ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(files?.[0]?.type),
-    //   "Only .jpg, .jpeg, .png and .webp formats are supported.",
-    // ),
-  contact: z.string({ message: "Please enter your contact" }),
+  avatar: z.any(),
+  contacts: z.string({ message: "Please enter your contact" }),
   email: z.string({ message: "Please enter your email" }),
-  username: z.string({ message: "Please enter your username" }),
+  userName: z.string({ message: "Please enter your username" }),
   fullName: z.string({ message: "Please enter your full name" }),
   address: z.string({ message: "Please enter your address" }),
 });
 
 const ProfileForm: React.FC = (): JSX.Element => {
+  const [file, setFile] = React.useState<File | null>(null);
+  const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
       avatar: "",
+      contacts: "",
+      email: "",
+      userName: "",
+      fullName: "",
+      address: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof ProfileSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof ProfileSchema>) {
+    const userId = localStorage.getItem("userId");
+    const user = await getDocuments(collections.userId, userId);
+    console.log(user);
+    const userCurrentInfo = JSON.parse(user.userInfo);
+
+    if (file) {
+      const url = userCurrentInfo.avatarId;
+      url != "" && deleteImage(url);
+    }
+    const { image, imageId } = await uploadImage(file);
+
+    const updatedInfo = {
+      email: values.email || userCurrentInfo.email,
+      userInfo: JSON.stringify({
+        address: values.address || userCurrentInfo.address,
+        avatar: image.href || userCurrentInfo.avatar,
+        avatarId: imageId || userCurrentInfo.avatarId,
+        contacts: values.contacts || userCurrentInfo.contacts,
+        fullName: values.fullName || userCurrentInfo.fullName,
+        userName: values.userName || userCurrentInfo.userName,
+      }),
+    };
+
+    await databases.updateDocument(dbId, collections.userId, userId, updatedInfo);
+    const users = await getDocuments(collections.userId, userId);
+    console.log(users);
   }
 
   return (
@@ -53,16 +82,15 @@ const ProfileForm: React.FC = (): JSX.Element => {
                 <span>Upload</span>
               </FormLabel>
               <FormControl>
-                <Input className={`hidden`} placeholder="Upload" type={"file"} {...field} />
+                <Input className={`hidden`} placeholder="Upload" type={"file"} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />
               </FormControl>
-              {/* <FormDescription>This is your avatar image.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
         />
         <div className={`grid h-fit grid-cols-2 gap-12`}>
           <FormField
-            name={"contact"}
+            name={"contacts"}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -98,7 +126,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"username"}
+            name={"userName"}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>

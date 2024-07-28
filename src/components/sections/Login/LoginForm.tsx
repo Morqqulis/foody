@@ -74,6 +74,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
       contacts: "",
       address: "",
       avatar: "",
+      avatarId:""
     });
 
     const userData: any = {

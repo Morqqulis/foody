@@ -15,13 +15,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@ui/dialog";
+import OrdersModal from "@sections/User/Orders/OrdersModal";
 import { deleteDocument, getDocuments } from "../../../../utls/functions";
-import { collections, databases } from "@libs/appwrite/config";
+import { collections } from "@libs/appwrite/config";
 import { useTranslations } from "next-intl";
 
 const OrdersSection: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(5);
   const [orders, setOrders] = useState([]);
   const [userId, setUserId] = useState("");
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu;
@@ -54,7 +55,6 @@ const OrdersSection: React.FC = (): JSX.Element => {
     })();
   }, [userId]);
 
-  const perPage = 10;
   const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact", ""];
 
   const filteredData = orders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
@@ -88,21 +88,18 @@ const OrdersSection: React.FC = (): JSX.Element => {
           </DropdownMenuTrigger>
           <Portal>
             <Content className="shadow-custom h-fit w-[79px] bg-white">
-              <Dialog>
-                <DialogTrigger>
+              
+              <OrdersModal
+                trigger={
                   <div className="w-[79px] cursor-pointer py-2 text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
-                </DialogTrigger>
-                <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white">
-                  <Table headers={basketHeader} body={updatesBasket} />
-                  <DialogTitle></DialogTitle>
-                  <UserPagination setCurrentPage={setCurrentPage} dataCount={orders.length} currentPage={currentPage} perPage={perPage} />
-                  <DialogDescription></DialogDescription>
-                </DialogContent>
-              </Dialog>
+                }
+                header={basketHeader}
+                body={updatesBasket}
+              />
 
               <AlertDialog>
                 <AlertDialogTrigger className="w-[79px] cursor-pointer py-2 text-center font-bold text-red-700 outline-none hover:bg-slate-300">
-                  Delete
+                  {t("deleteBtn")}
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
@@ -134,7 +131,13 @@ const OrdersSection: React.FC = (): JSX.Element => {
       <h2 className="font-mukta text-[30px] font-semibold leading-[24px] tracking-[3%] text-black">Your Orders</h2>
       <Table headers={headers} body={filteredData} />
       {orders.length > perPage && (
-        <UserPagination setCurrentPage={setCurrentPage} dataCount={orders.length} currentPage={currentPage} perPage={perPage} />
+        <UserPagination
+          setCurrentPage={setCurrentPage}
+          dataCount={orders.length}
+          currentPage={currentPage}
+          perPage={perPage}
+          setPerPage={setPerPage}
+        />
       )}
     </div>
   );

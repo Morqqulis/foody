@@ -3,14 +3,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 interface IPagination {
   setCurrentPage: (prev: number) => void;
-  currentPage: number; 
+  currentPage: number;
   dataCount: number;
   perPage: number;
+  setPerPage: (prev: number) => void;
 }
-const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage }): JSX.Element => {
+const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage, setPerPage }): JSX.Element => {
   const pageCount = [];
 
-  for (let i = 1; i <= Math.ceil(dataCount / perPage); i++) {
+  for (let i = 1; i <= 10; i++) {
     pageCount.push(i);
   }
 
@@ -22,9 +23,9 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
           onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
         />
         <p className="flex h-[32px] w-[32px] items-center justify-center border ">{currentPage}</p> /
-        <p className="flex h-[32px] w-[32px] items-center justify-center ">{pageCount.length}</p>
+        <p className="flex h-[32px] w-[32px] items-center justify-center ">{Math.ceil(dataCount / perPage)}</p>
         <ChevronRight
-          onClick={() => currentPage < pageCount.length && setCurrentPage(currentPage + 1)}
+          onClick={() => currentPage < Math.ceil(dataCount / perPage) && setCurrentPage(currentPage + 1)}
           className="flex h-[32px] w-[32px] items-center justify-center rounded-[20%] border"
         />
       </div>
@@ -33,11 +34,11 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         <Select
           onValueChange={(value) => {
             const currentPage = parseFloat(value);
-            setCurrentPage(currentPage);
+            setPerPage(currentPage);
           }}
         >
           <SelectTrigger className="w-[60px]">
-            <SelectValue placeholder={currentPage} />
+            <SelectValue placeholder={perPage} />
           </SelectTrigger>
           <SelectContent>
             {pageCount.map((num) => (

@@ -50,7 +50,7 @@ const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
 
   return (
     <div className="mt-4 flex w-full basis-2/5">
-      <div className="w-397px h-547px mb-8 bg-gray-7 p-10">
+      <div className="w-full h-547px mb-8 bg-gray-7 p-10">
         <div className="mb-6 flex flex-col">
           <div className="mt-2 flex items-center text-xl">
             <ShoppingCart className="h-7 w-7 text-red-600 " />
