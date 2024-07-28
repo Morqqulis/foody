@@ -23,11 +23,17 @@ import { useTranslations } from "next-intl";
 const OrdersSection: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
   const [orders, setOrders] = useState([]);
+  const [userId, setUserId] = useState("");
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu;
-  const userId = localStorage.getItem("userId");
+
   const t = useTranslations("Admin.Products.Modal");
 
   useEffect(() => {
+    const token = localStorage.getItem("userId");
+    setUserId(token || "");
+
+    if (!token) return;
+
     (async () => {
       const user = await getDocuments(collections.userId, userId);
 

@@ -7,13 +7,12 @@ interface IUserLayout {
 
 const UserLayout: React.FC = ({ children, params: { locale } }: IUserLayout) => {
   return (
-    <div className={`wrapper`}>
-      <div className="container pt-4">
-        <div className={`flex items-start gap-4`}>
-          <UserAside />
-          {children}</div>
+    <main>
+      <div className={`container flex items-start gap-4 pt-4`}>
+        <UserAside />
+        {children}
       </div>
-    </div>
+    </main>
   );
 };
 

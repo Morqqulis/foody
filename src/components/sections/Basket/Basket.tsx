@@ -1,24 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
-import Image from "next/image";
-import styles from "./basket.module.css";
-import { useTranslations } from "next-intl";
-import { getDocuments } from "../../../utls/functions";
 import { collections, databases, dbId } from "@libs/appwrite/config";
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getDocuments } from "../../../utls/functions";
+import styles from "./basket.module.css";
 
 const Basket = () => {
   const [basket, setBasket] = useState([]);
   const [basketId, setBasketId] = useState("");
+  const [userId, setUserId] = useState("");
   const t = useTranslations("Basket");
-  let userId: string | null;
-  if (localStorage) {
-    userId = localStorage.getItem("userId");
-  }
 
   useEffect(() => {
+    const token = localStorage.getItem("userId");
+    setUserId(token || "");
+
+    if (!userId) return;
+
     (async () => {
       const user = await getDocuments(collections.userId, userId);
 
@@ -37,7 +39,7 @@ const Basket = () => {
       const strBasket = JSON.stringify(basket);
       (async () => await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket }))();
     }
-  }, [basket]);
+  }, [basket, basketId]);
 
   const incrementQuantity = (id: string) => {
     setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)));
@@ -55,8 +57,8 @@ const Basket = () => {
 
   return (
     <section>
-      <div className="w-full bg-gray-7">
-        <div className=" w-full p-10 pr-0 ">
+      <div className=" h-full w-full bg-gray-7">
+        <div className=" flex min-h-[735px] w-full flex-col p-10">
           <div className="mb-6  flex flex-col pb-0 ">
             <div className="flex items-center">
               <h1 className="text-2xl font-semibold text-gray-950">{t("title")}</h1>
@@ -68,7 +70,7 @@ const Basket = () => {
               </h5>
             </div>
           </div>
-          <div className={`${styles.customScrollbar} `}>
+          <div className={`${styles.customScrollbar} h-full grow`}>
             {basket.map((item) => (
               <div key={item.$id} className="mb-4 flex items-center justify-between border-t border-gray-300 pt-6 last:border-b last:pb-6">
                 <div className="flex items-center">
