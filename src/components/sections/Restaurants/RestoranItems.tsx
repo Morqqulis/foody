@@ -47,7 +47,7 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   }, [basket, userId, basketId]);
 
   return (
-    <div className="flex ">
+    <div className="flex pt-6 pb-20">
       <ProductList restId={restId} setBasket={setBasket} />
       <Cart setBasket={setBasket} initialCartItems={basket} />
     </div>
