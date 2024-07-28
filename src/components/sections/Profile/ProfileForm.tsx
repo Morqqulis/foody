@@ -1,15 +1,15 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconUpload } from "@icons";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { readerFile } from "../../helper/helper";
-import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions";
-import { collections, databases, dbId } from "@libs/appwrite/config";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { IconUpload } from "@icons"
+import { collections, databases, dbId } from "@libs/appwrite/config"
+import { Button } from "@ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
+import { Input } from "@ui/input"
+import React from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions"
+import { readerFile } from "../../helper/helper"
 
 interface IProfileForm {}
 

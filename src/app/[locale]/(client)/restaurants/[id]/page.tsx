@@ -3,7 +3,6 @@ import RestoranItems from "@sections/Restaurants/RestoranItems";
 import { NextPage } from "next";
 import { getTranslations } from "next-intl/server";
 
-
 export async function generateMetadata({ params: { locale, id } }) {
   const t = await getTranslations({ locale, namespace: "Restaurants.Metadata" });
 
@@ -19,10 +18,9 @@ interface IRestaurantPage {
 }
 
 const RestaurantPage: NextPage = ({ params: { locale, id } }: IRestaurantPage): JSX.Element => {
-
   return (
     <main>
-      <section className={`py-2`}>
+      <section className={``}>
         <div className="container">
           <RestaurantsHeader  restId={id}/>
           <RestoranItems restId={id} />
