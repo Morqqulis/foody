@@ -1,24 +1,23 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconUpload } from "@icons";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { IconUpload } from "@icons"
+import { Button } from "@ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
+import { Input } from "@ui/input"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 interface IProfileForm {}
 
 const ProfileSchema = z.object({
-  avatar: z
-    .any(),
-    // .refine((files) => {
-    //   return files?.[0]?.size <= 1024 * 1024 * 5;
-    // }, `Max image size is 5MB.`)
-    // .refine(
-    //   (files) => ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(files?.[0]?.type),
-    //   "Only .jpg, .jpeg, .png and .webp formats are supported.",
-    // ),
+  avatar: z.any(),
+  // .refine((files) => {
+  //   return files?.[0]?.size <= 1024 * 1024 * 5;
+  // }, `Max image size is 5MB.`)
+  // .refine(
+  //   (files) => ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(files?.[0]?.type),
+  //   "Only .jpg, .jpeg, .png and .webp formats are supported.",
+  // ),
   contact: z.string({ message: "Please enter your contact" }),
   email: z.string({ message: "Please enter your email" }),
   username: z.string({ message: "Please enter your username" }),
@@ -31,6 +30,11 @@ const ProfileForm: React.FC = (): JSX.Element => {
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
       avatar: "",
+      contact: "",
+      email: "",
+      username: "",
+      fullName: "",
+      address: "",
     },
   });
 

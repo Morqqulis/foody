@@ -12,9 +12,13 @@ interface IproductsSection {
 const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   const [basket, setBasket] = useState([]);
   const [basketId, setBasketId] = useState("");
-  const userId = localStorage.getItem("userId");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
+    const token = localStorage.getItem("userId");
+    setUserId(token || "");
+    if (!userId) return;
+
     (async () => {
       const user = await getDocuments(collections.userId, userId);
 
@@ -26,7 +30,7 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (basket.length > 0) {
@@ -40,7 +44,7 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
         }
       })();
     }
-  }, [basket]);
+  }, [basket, userId, basketId]);
 
   return (
     <div className="flex p-4">
