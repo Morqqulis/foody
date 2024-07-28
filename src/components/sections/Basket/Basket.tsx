@@ -13,7 +13,12 @@ const Basket = () => {
   const [basket, setBasket] = useState([]);
   const [basketId, setBasketId] = useState("");
   const t = useTranslations("Basket");
-  const userId = localStorage.getItem("userId");
+  let userId: string | null;
+  if (localStorage) {
+    userId = localStorage.getItem("userId");
+  }
+
+  
 
   useEffect(() => {
     (async () => {
@@ -26,7 +31,7 @@ const Basket = () => {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (basket.length > 0) {
@@ -92,9 +97,7 @@ const Basket = () => {
             ))}
           </div>
           <Link href="/user/checkout" className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
-            <div className="rounded-lg bg-red-600 px-4 py-2 text-white">
-              {t("checkout")}
-            </div>
+            <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t("checkout")}</div>
             <span className="rounded-3xl bg-white px-4 py-2 text-xl font-semibold text-red-600">$ {totalAmount.toFixed(2)}</span>
           </Link>
         </div>
