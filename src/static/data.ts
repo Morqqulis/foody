@@ -250,7 +250,7 @@ export const headerUserData: IHeaderUserData[] = [
   {
     id: "1",
     label: "Profile",
-    path: "/user/profile",
+    path: "/user",
   },
   {
     id: "2",

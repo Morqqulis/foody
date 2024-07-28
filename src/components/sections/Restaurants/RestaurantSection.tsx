@@ -51,7 +51,7 @@ export const RestaurantSection: FC = (): JSX.Element => {
 
 
   
-  const handleSetAllRestaurants = async () => {
+  const handleGetAllRestaurants = async () => {
     try {
       const { documents } = await getListDocuments(collections.restaurantsId);
       setRestaurants(documents);
@@ -75,7 +75,7 @@ export const RestaurantSection: FC = (): JSX.Element => {
           type={"button"}
           aria-label={"food category"}
           variant={"ghost"}
-          onClick={handleSetAllRestaurants}
+          onClick={handleGetAllRestaurants}
         >
           All
         </Button>
