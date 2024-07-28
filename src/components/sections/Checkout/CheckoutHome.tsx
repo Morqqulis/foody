@@ -110,7 +110,8 @@ function CheckoutHome() {
       const timer = setTimeout(() => {
         setShowDoneIcon(false);
       }, 3000);
-
+    }
+}, [showDoneIcon]);
   //     return () => clearTimeout(timer);
   //   }
   // }, [showDoneIcon]);
