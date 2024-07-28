@@ -68,14 +68,14 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     try {
       const { email, password } = data;
 
-      const currentSession = await account.get();
-      console.log(currentSession);
+    //   const currentSession = await account.get();
+    //   console.log(currentSession);
 
-      if (currentSession.email === email) {
-        return router.push("/");
-      } else {
-        account.deleteSessions();
-      }
+    //   if (currentSession.email === email) {
+    //     return router.push("/");
+    //   } else {
+    //     account.deleteSessions();
+    //   }
 
       const response = await account.createEmailPasswordSession(email, password);
       response && router.push("/user");

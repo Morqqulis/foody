@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IconBasket } from "../../icons/index";
+import { IconBasket } from "../../icons";
 
 interface IHeaderBasket {}
 

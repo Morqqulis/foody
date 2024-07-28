@@ -241,6 +241,39 @@ export const headerModalData: IHeaderModalData[] = [
   },
 ];
 
+interface IHeaderUserData {
+  id: string;
+  label: string;
+  path: string;
+}
+export const headerUserData: IHeaderUserData[] = [
+  {
+    id: "1",
+    label: "Profile",
+    path: "/user/profile",
+  },
+  {
+    id: "2",
+    label: "Your Basket",
+    path: "/user/basket",
+  },
+  {
+    id: "3",
+    label: "Your Orders",
+    path: "/user/orders",
+  },
+  {
+    id: "4",
+    label: "Checkout",
+    path: "/user/checkout",
+  },
+  {
+    id: "5",
+    label: "Logout",
+    path: "/",
+  },
+];
+
 export interface IProductsData {
   created?: number;
   description?: string;
@@ -249,7 +282,6 @@ export interface IProductsData {
   name?: string;
   price?: number | string;
   rest_id?: string;
-  
 }
 
 export const productsData: IProductsData[] = [
@@ -559,7 +591,6 @@ export const userOrdersData: IUserOrders[] = [
     amount: 100,
     payment_method: "Card",
     contact: "123456789",
-    
   },
   {
     id: "2",
