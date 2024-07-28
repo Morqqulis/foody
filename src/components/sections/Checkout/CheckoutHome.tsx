@@ -52,9 +52,9 @@ function CheckoutHome() {
   });
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    setUserId(userId || "");
-
+    const token = localStorage.getItem("userId");
+    setUserId(token || "");
+    
     if (!userId) return;
 
     (async () => {
