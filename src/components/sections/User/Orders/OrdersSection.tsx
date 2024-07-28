@@ -5,18 +5,17 @@ import { EllipsisVertical, Eye } from "lucide-react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import UserPagination from "../../Paginations/UserPagination";
 import { useState } from "react";
-interface IOrdersSection {}
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@ui/dialog";
+
 const OrdersSection: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
-
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu;
 
   const perPage = 10;
   const data = userOrdersData;
-
-  const headers = ["ID", "Time", "Delivery Adress", "Amount", "Payment Method", "Contact"];
+  console.log(data.slice((1 - 1) * perPage, currentPage * perPage));
+  const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
   const filteredData = data.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => ({
     ...order,
     actions: (
@@ -26,12 +25,17 @@ const OrdersSection: React.FC = (): JSX.Element => {
         </DropdownMenuTrigger>
         <Portal>
           <Content className="shadow-custom h-[47px] w-[79px] bg-white">
-            <Item
-              className="cursor-pointer text-center font-bold text-green-600 outline-none hover:bg-slate-300"
-              onClick={() => console.log(order.id, "show")}
-            >
-              Show
-            </Item>
+            <Dialog>
+              <DialogTrigger>
+                <div className="w-[79px] cursor-pointer py-2 text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
+              </DialogTrigger>
+              <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white">
+                <Table headers={headers} body={data} />
+                <DialogTitle></DialogTitle>
+                <UserPagination setCurrentPage={setCurrentPage} dataCount={data.length} currentPage={currentPage} perPage={perPage} />
+                <DialogDescription></DialogDescription>
+              </DialogContent>
+            </Dialog>
             <Item
               className="cursor-pointer text-center font-bold text-red-700 outline-none hover:bg-slate-300"
               onClick={() => console.log(order.id, "delete")}
