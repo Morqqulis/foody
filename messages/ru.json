@@ -380,7 +380,7 @@
     "address": "улица Низами 19, Сабаиль, Баку",
     "cuisine": "Кухня",
     "cuisineList": "пицца, напиток, хот-дог, сэндвич, ролл",
-    "deliveryCost": "$5 Доставка",
+    "deliveryCost": "Доставка",
     "goBack": "Назад"
   },
   "ProductList": {

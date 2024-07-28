@@ -24,7 +24,6 @@ export const multiFn: IMultiFn = async (method, api, data, token) => {
       data,
     });
   }
-  console.log(await response.data);
   return await response.data;
 };
 
@@ -76,7 +75,7 @@ export const getDocuments = async (collectionsId: string, docId: string) => {
 };
 
 export const deleteDocument = async (collectionsId: string, deletedId: string) => {
-  await databases.deleteDocument(dbId, collectionsId, deletedId);
+ await databases.deleteDocument(dbId, collectionsId, deletedId);
 };
 
 export const checkUser = async (email: string, password?: string, userName?: string) => {

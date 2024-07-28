@@ -1,25 +1,40 @@
+"use client";
 import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
 import { useTranslations } from "next-intl";
-interface IAdminRestaurants {}
+import { useEffect, useState } from "react";
+import { getListDocuments } from "../../../../../utls/functions";
+import { collections } from "@libs/appwrite/config";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
 
-const AdminRestaurants: React.FC = (): JSX.Element => {
+interface IAdminRestaurants {
+  setSelected?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const AdminRestaurants: React.FC<IAdminRestaurants> = ({ setSelected }): JSX.Element => {
+  const [categories, setCategories] = useState<any>();
+  useEffect(() => {
+    (async () => {
+      const categories = await getListDocuments(collections.categoriesId);
+      setCategories(categories.documents);
+    })();
+  }, []);
+
   const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
   return (
     <div className="flex items-center justify-center gap-[15px]">
-      <select name="" id="" className="w-[200px] rounded-full border-none bg-[#5A5B70] px-3 py-2 text-white ">
-        <option value="" className="bg-white text-black">
-          Fast Food
-        </option>
-        <option value="" className="bg-white text-black">
-          Pizza
-        </option>
-        <option value="" className="bg-white text-black">
-          Steak
-        </option>
-        <option value="" className="bg-white text-black">
-          Coffee
-        </option>
-      </select>
+      <Select onValueChange={setSelected}>
+        <SelectTrigger className="w-[180px] border-none bg-[#5A5B70] text-white">
+          <SelectValue placeholder="Category Type" />
+        </SelectTrigger>
+        <SelectContent className="bg-[#5A5B70] text-white">
+          <SelectItem value={"All"}>All</SelectItem>
+          {categories?.map((restaurant: any) => (
+            <SelectItem key={restaurant.$id} value={restaurant.$id}>
+              {restaurant.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
 
       <ReusableSheet trigger={<div className={`flex rounded-full bg-[#C035A2] p-2 text-white`}>{t("title")}</div>} whatIs="AddRestaurant" />
     </div>

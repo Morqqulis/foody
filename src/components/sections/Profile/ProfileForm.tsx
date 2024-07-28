@@ -41,7 +41,6 @@ const ProfileForm: React.FC = (): JSX.Element => {
   async function onSubmit(values: z.infer<typeof ProfileSchema>) {
     const userId = localStorage.getItem("userId");
     const user = await getDocuments(collections.userId, userId);
-    console.log(user);
     const userCurrentInfo = JSON.parse(user.userInfo);
 
     if (file) {
@@ -64,7 +63,6 @@ const ProfileForm: React.FC = (): JSX.Element => {
 
     await databases.updateDocument(dbId, collections.userId, userId, updatedInfo);
     const users = await getDocuments(collections.userId, userId);
-    console.log(users);
   }
 
   return (

@@ -373,7 +373,7 @@
     "address": "19 Nizami street, Sabail, Baku",
     "cuisine": "Cuisine",
     "cuisineList": "pizza, drink, hotdog, sandwich, roll",
-    "deliveryCost": "$5 Delivery",
+    "deliveryCost": "Delivery",
     "goBack": "Go Back"
   },
 

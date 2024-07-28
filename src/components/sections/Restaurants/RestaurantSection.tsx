@@ -30,8 +30,6 @@ export const RestaurantSection: FC = (): JSX.Element => {
   const [restaurants, setRestaurants] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  //   console.log("Categories: >", categories);
-  //   console.log("Restaurans: >", restaurants);
 
   useEffect(() => {
     (async () => {
@@ -105,7 +103,6 @@ export const RestaurantSection: FC = (): JSX.Element => {
             ariaLabel="vortex-loading"
             wrapperStyle={{}}
             colors={["#D63626", "green", "blue", "yellow", "orange", "purple"]}
-            // color={"#D63626"}
           />
         )}
         {restaurants?.map((restaurant) => <RestaurantCard key={restaurant.$id} data={restaurant} />)}
