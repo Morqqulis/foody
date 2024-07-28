@@ -54,7 +54,7 @@ function CheckoutHome() {
   useEffect(() => {
     const token = localStorage.getItem("userId");
     setUserId(token || "");
-    
+
     if (!userId) return;
 
     (async () => {
@@ -67,7 +67,7 @@ function CheckoutHome() {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, []);
+  }, [userId]);
 
   const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
     const orderInfo = JSON.stringify({

@@ -32,7 +32,7 @@ const Basket = () => {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (basket.length > 0) {
