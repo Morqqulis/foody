@@ -108,7 +108,7 @@ export const RestaurantSection: FC = (): JSX.Element => {
             // color={"#D63626"}
           />
         )}
-        {restaurants?.map((restaurant) => <RestaurantCard key={restaurant.name} data={restaurant} />)}
+        {restaurants?.map((restaurant) => <RestaurantCard key={restaurant.$id} data={restaurant} />)}
       </div>
     </div>
   );

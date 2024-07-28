@@ -60,7 +60,7 @@ const AdminAside: React.FC = (): JSX.Element => {
 
   return (
     <aside
-      className={`flex h-[474px] w-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}
+      className={`flex h-[474px] basis-[256px] w-full flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}
     >
       {AsideElements.map((element) => (
         <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
