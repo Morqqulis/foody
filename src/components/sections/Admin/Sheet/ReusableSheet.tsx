@@ -7,7 +7,9 @@ interface IReusableSheet {
   id?: any;
 }
 
-const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.
+
+Element => {
   let str: string;
   switch (whatIs) {
     case "EditProduct":

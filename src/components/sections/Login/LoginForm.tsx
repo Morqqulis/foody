@@ -1,6 +1,5 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { account, ID } from "@libs/appwrite/config"
 import { SignInFormSchema, SignUpFormSchema } from "@settings/zodSchemes"
 import { Button } from "@ui/button"
 import { Form } from "@ui/form"
@@ -10,12 +9,9 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { addUsers } from "../../../utls/functions"
+import { checkUser } from "../../../utls/functions"
 import Loader from "./Loader"
 import LoginFormField from "./LoginFormField"
-// const BASEURL = "https://foody-api-seven.vercel.app";
-// const SIGNIN_URL = `${BASEURL}/api/auth/signin`;
-// const SIGNUP_URL = `${BASEURL}/api/auth/signup`;
 
 interface ILoginForm {
   name: "login" | "register";
@@ -27,8 +23,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
   const schema = setSchema(name);
   const router = useRouter();
   const { toast } = useToast();
-
-  // console.log((async () => await getListDocuments(collections.userId))());
+  const [session, setSession] = useState(false);
 
   const setDefaultValues = () => (name === "login" ? { email: "", password: "" } : { fullName: "", userName: "", email: "", password: "" });
 
@@ -38,72 +33,57 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     resolver: zodResolver(schema),
     defaultValues: setDefaultValues(),
   });
-  // deleteDocument(collections.userId, "66a3c94d00250bfb62dc");
-  // users.documents.map((user: any) => deleteDocument(collections.userId, user.$id));
-  // account.deleteSessions()
-
+  
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
-    setIsLoading(true);
-    // const { $id } = await checkUser(data.email, data.password);
-
-    // $id && (await editDocuments(collections.userId, { enter: true }, null, $id));
+    // setIsLoading(true);
 
     // try {
     //   const { email, password } = data;
+    //   const { $id } = await checkUser(email, password);
+
+    //   $id && (await editDocuments(collections.userId, { enter: true }, null, $id));
+
+    //   setTimeout(() => {
+    //     router.push("/user");
+    //   }, 2000);
 
     //   form.reset();
-    //   setTimeout(() => {
-    //     // router.push("/user");
-    //   }, 2000);
     //   toast({
     //     title: "Congratulations",
     //     description: `Sign In Succesfull`,
     //     variant: "dark",
     //     duration: 2000,
     //   });
+    //   setIsLoading(false);
     // } catch (error) {
     //   toast({ title: "Sign In Failed", description: `You have some Error >: ${error.message}}`, variant: "destructive", duration: 2000 });
-    //   console.log(error);
+    //   setIsLoading(false);
     // }
-    try {
-      const { email, password } = data;
 
-    //   const currentSession = await account.get();
-    //   console.log(currentSession);
+    // if (session) {
 
-    //   if (currentSession.email === email) {
-    //     return router.push("/");
-    //   } else {
-    //     account.deleteSessions();
-    //   }
-
-      const response = await account.createEmailPasswordSession(email, password);
-      response && router.push("/user");
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Login failed:", error);
-
-      toast({ title: "Sign In Failed", description: error.message, variant: "destructive", duration: 3000 });
-      setIsLoading(false);
-    }
+    //   router.push("/user");
+    //   setSession(false)
+    // } else {
   };
 
   const handleResigter = async (data: z.infer<typeof SignUpFormSchema>) => {
-    setIsLoading(true);
-    const { email, password, userName } = data;
+    console.log(data);
+    
+    // setIsLoading(true);
 
-    // const { isExist } = await checkUser(data.email, data.password);
+    const { isExist } = await checkUser(data.email, data.password);
 
     // if (!isExist) {
-    // addDocuments(collections.userId, { ...data, enter: false }, null);
+    //   addDocuments(collections.userId, { ...data, enter: false }, null);
 
-    //   form.reset();
     //   toast({
     //     title: "Congratulations",
     //     description: `Sign Up Succesfull`,
     //     variant: "dark",
     //     duration: 2000,
     //   });
+    //   form.reset();
     // } else {
     //   toast({
     //     title: "Sign Up Failed",
@@ -112,31 +92,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     //     duration: 2000,
     //   });
     // }
-
-    try {
-      const user = await account.create(ID.unique(), email, password, userName);
-      await addUsers(user.$id, data);
-
-      console.log(user);
-
-      form.reset();
-
-      toast({
-        title: "Congratulations",
-        description: `Sign Up Succesfull`,
-        variant: "dark",
-        duration: 2000,
-      });
-      setIsLoading(false);
-    } catch (error) {
-      toast({
-        title: "Sign Up Failed",
-        description: error.message,
-        variant: "destructive",
-        duration: 2000,
-      });
-      setIsLoading(false);
-    }
+    // setIsLoading(false);   
   };
 
   const onSubmit = async (values: z.infer<typeof schema>) => {

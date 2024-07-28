@@ -22,7 +22,7 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
       <Link
         className={`group/rest-card relative flex h-fit w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl `}
         style={{ boxShadow: "0px 0px 5px 3px rgba(0, 0, 0, 0.25)" }}
-        href={`/restaurants/${data.name}`}
+        href={`/restaurants/${data.$id}`}
       >
         <Image
           className={`mb-10 h-[160px] w-full rounded-md group-hover/rest-card:scale-105`}
