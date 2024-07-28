@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useState, FormEvent, useEffect } from "react";
-import CheckoutOrder from "./CheckoutOrder";
-import DoneIconComponent from "@sections/Checkout/LottieAnimation";
-import { getDocuments } from "../../../utls/functions";
-import { collections, databases, dbId, ID } from "@libs/appwrite/config";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Label } from "@ui/label";
-import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { collections, databases, dbId, ID } from "@libs/appwrite/config"
+import DoneIconComponent from "@sections/Checkout/LottieAnimation"
+import { Button } from "@ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
+import { Input } from "@ui/input"
+import { RadioGroup, RadioGroupItem } from "@ui/radio-group"
+import { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { getDocuments } from "../../../utls/functions"
+import CheckoutOrder from "./CheckoutOrder"
 
 // const phonePrefixes = ["050", "051", "055", "070", "010", "099", "077"];
 
@@ -63,7 +62,7 @@ function CheckoutHome() {
       const userInfo = await getDocuments(collections.userId, userId);
       setUser(userInfo);
 
-      const basketIdinUser = userInfo.basket && userInfo.basket[0].$id;
+      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id;
       if (basketIdinUser) {
         let prevBasket = userInfo.basket[0].productsList;
         setBasket(JSON.parse(prevBasket));
@@ -72,14 +71,12 @@ function CheckoutHome() {
   }, [userId]);
 
   const handleCheckOut = async (v: any) => {
-    setShowDoneIcon(true);
-
     const orderInfo = JSON.stringify({
       time: new Date().toLocaleDateString(),
-      deliveryAddress: v.deliveryAddress,
+      address: v.address,
       amount: totalAmount,
-      paymentMethod: v.paymentMethod,
-      contact: v.contact,
+      payment: v.payment,
+      phone: v.phone,
       basket,
     });
 
@@ -90,7 +87,7 @@ function CheckoutHome() {
       orderInfo,
     });
     await databases.deleteDocument(dbId, collections.basketId, basketId);
-    setShowDoneIcon(false);
+    setShowDoneIcon(true);
   };
 
   //   const handlePrefixChange = (event: FormEvent<HTMLSelectElement>) => {
@@ -108,11 +105,11 @@ function CheckoutHome() {
   //     // alert(`Phone Number: ${prefix}${phoneNumber}`);
   //   };
 
-  // useEffect(() => {
-  //   if (showDoneIcon) {
-  //     const timer = setTimeout(() => {
-  //       setShowDoneIcon(false);
-  //     }, 3000);
+  useEffect(() => {
+    if (showDoneIcon) {
+      const timer = setTimeout(() => {
+        setShowDoneIcon(false);
+      }, 3000);
 
   //     return () => clearTimeout(timer);
   //   }
