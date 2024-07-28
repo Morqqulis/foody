@@ -1,9 +1,16 @@
 import { NextPage } from "next";
-
-interface IProductsPage {}
+import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
+import ProductsSection from "../../../../components/sections/Admin/Products/ProductsSection";
 
 const ProductsPage: NextPage = (): JSX.Element => {
-  return <main>AdminProducts</main>;
+  return (
+    <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
+      <section>
+        <SectionHeader title="Products" />
+        <ProductsSection />
+      </section>
+    </main>
+  );
 };
 
 export default ProductsPage;

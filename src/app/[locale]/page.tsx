@@ -1,11 +1,10 @@
-import Discover from "@sections/Home/Discover"
-import Features from "@sections/Home/Features"
-import Food from "@sections/Home/Food"
-import Hero from "@sections/Home/Hero"
-import Popular from "@sections/Home/Popular"
-import { NextPage } from "next"
-import { getTranslations } from "next-intl/server"
-import { memo } from "react"
+import Discover from "@sections/Home/Discover";
+import Features from "@sections/Home/Features";
+import Food from "@sections/Home/Food";
+import Hero from "@sections/Home/Hero";
+import Popular from "@sections/Home/Popular";
+import { NextPage } from "next";
+import { getTranslations } from "next-intl/server";
 //----------------------------------------------
 
 export async function generateMetadata({ params: { locale } }) {
@@ -31,4 +30,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default memo(Home);
+export default Home;

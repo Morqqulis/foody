@@ -1,25 +1,37 @@
-import createNextIntlPlugin from 'next-intl/plugin'
-const withNextIntl = createNextIntlPlugin()
+import createNextIntlPlugin from "next-intl/plugin"
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   swcMinify: true,
+  swcMinify: true,
+  reactStrictMode: false,
 
-   webpack(config) {
-      config.module.rules.push({
-         test: /\.svg$/,
-         use: [
-            {
-               loader: '@svgr/webpack',
-               options: {
-                  icon: true
-               }
-            }
-         ]
-      })
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https" || "http",
+        hostname: "**",
+        pathname: "/**",
+      },
+    ],
+  },
 
-      return config
-   }
-}
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
 
-export default withNextIntl(nextConfig)
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            icon: true,
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
+};
+
+export default withNextIntl(nextConfig);

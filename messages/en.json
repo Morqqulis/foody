@@ -2,8 +2,10 @@
   "Header": {
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
+    "more": "More",
     "signUp": "Sign Up"
   },
+
   "Footer": {
     "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
     "popular": {
@@ -85,12 +87,14 @@
       "buttonText": "Explore"
     }
   },
+
   "Restaurants": {
     "Metadata": {
       "title": "Restaurants",
       "description": "Find the best restaurants in your area. Compare menus, prices, and reviews to make the right choice."
     }
   },
+
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
@@ -139,6 +143,213 @@
     "Metadata": {
       "title": "Admin",
       "description": "Access the admin dashboard to manage the website."
+    },
+
+    "Login": {
+      "title": "Welcome Admin",
+      "btn": "Sign In",
+      "username": "Username",
+      "password": "Password"
+    },
+    "Header": {
+      "btn": "Add Product",
+      "admin": "Admin",
+      "Sheet": {
+        "imageBlock": {
+          "title": "Add product",
+          "description": "Upload your product image",
+          "label": "upload"
+        },
+
+        "InfoBlock": {
+          "text": "Add your Product description and necessary information",
+          "labels": ["Name", "Description", "Price", "Restaurants"],
+          "name": "Name",
+          "description": "Description",
+          "price": "Price",
+          "restaurant": "Restaurants"
+        },
+
+        "cancelBtn": "Cancel",
+        "submitBtn": "Create  Product"
+      }
+    },
+
+    "Products": {
+      "Modal": {
+        "title": "Are you sure it’s deleted ?",
+        "text": "Attention! If you delete this product, it will not come back",
+        "cancelBtn": "Cancel",
+        "deleteBtn": "Delete"
+      },
+      "EditProduct": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit product",
+            "description": "Upload your product image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your Product description and necessary information",
+            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "restaurant": "Restaurants"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update  Product"
+        }
+      }
+    },
+    "Aside": {
+      "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
+    },
+    "Category": {
+      "title": "Category",
+      "id": "ID",
+      "image": "Image",
+      "name": "Name",
+      "slug": "Slug",
+      "actions": "Actions",
+      "addCategory": "Add Category",
+
+      "EditCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit category",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your category information",
+            "labels": ["Name", "Slug"],
+            "name": "Name",
+            "slug": "Slug"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update  Category"
+        }
+      },
+      "AddCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Add category",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Add your category information",
+            "labels": ["Name", "Slug"],
+            "name": "Name",
+            "slug": "Slug"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Create  Category"
+        }
+      }
+    },
+    "Restaurants": {
+        "Metadata": {
+          "title": "Admin - Restaurants",
+          "description": "Add restaurants, edit them, delete them"
+        },
+      "Title": "Restaurants",
+      "AddRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Add Restaurant",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+          "InfoBlock": {
+            "text": "Add Your Restaurants information",
+            "labels": ["Name", "Cuisine", "Delivery Price", "Delivery min", "Adress", "Category"],
+            "name": "Name",
+            "cuisine": "Cuisine",
+            "deliveryPrice": "Delivery Price",
+            "deliveryMin": "Delivery min",
+            "address": "Adress",
+            "category": "Category"
+          },
+          "cancelBtn": "Cancel",
+          "submitBtn": "Create"
+        }
+      },
+      "EditRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit Restaurant",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+          "InfoBlock": {
+            "text": "Edit Your Restaurants information",
+            "labels": ["Name", "Cuisine", "Delivery Price", "Delivery min", "Adress", "Category"],
+            "name": "Name",
+            "cuisine": "Cuisine",
+            "deliveryPrice": "Delivery Price",
+            "deliveryMin": "Delivery min",
+            "address": "Adress",
+            "category": "Category"
+          },
+          "cancelBtn": "Cancel",
+          "submitBtn": "Update Restaurant"
+        }
+      }
+    },
+    "Offers": {
+      "title": "Offers",
+      "addOffer": "Add Offer",
+      "id": "ID",
+      "image": "Image",
+      "titleColumn": "Title",
+      "description": "Description",
+      "actions": "Actions",
+      "AddOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Add Offer",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Add your Offer information",
+            "labels": ["Title", "Description"],
+            "title": "Title",
+            "description": "Description"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Create  Offer"
+        }
+      },
+      "EditOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Edit Offer",
+            "description": "Upload image",
+            "label": "Upload"
+          },
+
+          "InfoBlock": {
+            "text": "Edit your offer information",
+            "labels": ["Title", "Description"],
+            "title": "Title",
+            "description": "Description"
+          },
+
+          "cancelBtn": "Cancel",
+          "submitBtn": "Edit Offer"
+        }
+      }
     }
   },
 
@@ -146,6 +357,28 @@
     "Metadata": {
       "title": "User",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Aside": {
+      "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
+  },
+  "Basket": {
+    "title": "Your Basket",
+    "items": "Items",
+    "checkout": "Checkout"
+  },
+  "Header-Restaurants": {
+    "restaurantName": "Papa John’s Pizza Restaurant",
+    "address": "19 Nizami street, Sabail, Baku",
+    "cuisine": "Cuisine",
+    "cuisineList": "pizza, drink, hotdog, sandwich, roll",
+    "deliveryCost": "$5 Delivery",
+    "goBack": "Go Back"
+  },
+
+  "ProductList": {
+    "title": "Products",
+    "description": "Prepared with quality, a slice of cheese and special sauce"
   }
 }
