@@ -79,16 +79,16 @@ export const deleteDocument = async (collectionsId: string, deletedId: string) =
   await databases.deleteDocument(dbId, collectionsId, deletedId);
 };
 
-export const checkUser = async (email: string, password?: string) => {
+export const checkUser = async (email: string, password?: string, userName?: string) => {
+  const users: any = await databases.listDocuments(dbId, collections.userId);
 
-  const users:any = await databases.listDocuments(dbId, collections.userId);
-  
-  const isExist = users.documents.some( async (user: any) => JSON.parse(await user.info).email === email);
+  const isExist =
+    users.documents.length > 0 ? users.documents.find((user: any) => user.email === email || JSON.parse(user.userInfo).userName === userName) : false;
 
   let $id: any;
-  // if (isExist) {
-  //   $id = users.documents.find((user: any) => user.password === password && user.email === email).$id;
-  // }
 
+  if (isExist) {
+    $id = isExist.email === email && isExist.password === password ? isExist.$id : false;
+  }
   return { isExist, $id };
 };

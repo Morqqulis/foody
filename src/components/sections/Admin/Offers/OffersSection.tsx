@@ -38,7 +38,7 @@ const OffersPage: NextPage = (): JSX.Element => {
     actions: (
       <div className="flex items-center gap-2">
         <ReusableSheet whatIs="EditOffer" trigger={<Pencil size={21} className="cursor-pointer text-green-500" />} />
-        <DeleteModal />
+        {/* <DeleteModal  /> */} 
       </div>
     ),
   }));

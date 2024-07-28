@@ -1,7 +1,8 @@
 "use client";
+import { collections, databases, dbId } from "@libs/appwrite/config";
 import { usePathname } from "@settings/navigation";
 import Link from "next/link";
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 
 type AsideElements = {
   element: {
@@ -16,10 +17,19 @@ type AsideElements = {
 const AdminAsideElement: FC<AsideElements> = ({ element, title, whatIs }): JSX.Element => {
   const path = usePathname();
 
+  function asideElementAction() {
+    if (whatIs === "user" && element.href === "/login") {
+
+      (async () => await databases.updateDocument(dbId, collections.userId, localStorage.getItem("userId"), { enter: false }))();
+      localStorage.removeItem("userId");
+    }
+  }
+
   return (
     <Link
       href={element.href}
       className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px] pl-[18px] ${path === element.href && ((whatIs === "admin" && "bg-[#d578f2] ") || (whatIs === "user" && "bg-[#ffb6af] hover:bg-[#ffb6af]"))} ${whatIs.startsWith("admin") ? "hover:bg-[#d578f2]" : "hover:bg-[#ffb6af]"}`}
+      onClick={asideElementAction}
     >
       {element.icon}
       <p
