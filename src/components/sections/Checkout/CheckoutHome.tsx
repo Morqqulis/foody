@@ -25,9 +25,9 @@ function CheckoutHome() {
       const userInfo = await getDocuments(collections.userId, userId);
       setUser(userInfo);
 
-      const basketIdinUser = userInfo.basket && userInfo.basket.$id;
+      const basketIdinUser = userInfo.basket && userInfo.basket[0].$id;
       if (basketIdinUser) {
-        let prevBasket = userInfo.basket.productsList;
+        let prevBasket = userInfo.basket[0].productsList;
         setBasket(JSON.parse(prevBasket));
       }
     })();
@@ -46,12 +46,12 @@ function CheckoutHome() {
     });
 
     // @ts-ignore
-    console.log(user.basket);
-
-    // await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
-    //   user: userId,
-    //   orderInfo,
-    // });
+    const basketId = await user.basket[0].$id;
+    await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
+      user: userId,
+      orderInfo,
+    });
+    await databases.deleteDocument(dbId, collections.basketId, basketId);
     setShowDoneIcon(false);
   };
 

@@ -18,17 +18,15 @@ const Basket = () => {
     userId = localStorage.getItem("userId");
   }
 
-  
-
   useEffect(() => {
     (async () => {
       const user = await getDocuments(collections.userId, userId);
 
-      const basketIdinUser = user.basket && (await user.basket.$id);
+      const basketIdinUser = user.basket && (await user.basket[0].$id);
 
       if (basketIdinUser) {
         setBasketId(basketIdinUser);
-        const prevBasket = user.basket.productsList;
+        const prevBasket = user.basket[0].productsList;
         setBasket(JSON.parse(prevBasket));
       }
     })();
