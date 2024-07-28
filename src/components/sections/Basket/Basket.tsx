@@ -59,7 +59,7 @@ const Basket = () => {
     <section>
       <div className=" h-full w-full bg-gray-7">
         <div className=" flex min-h-[735px] w-full flex-col p-10">
-          <div className="mb-6  flex flex-col pb-0 ">
+          <div className="mb-6 flex flex-col pb-0 ">
             <div className="flex items-center">
               <h1 className="text-2xl font-semibold text-gray-950">{t("title")}</h1>
             </div>

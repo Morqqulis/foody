@@ -1,15 +1,15 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconUpload } from "@icons";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { readerFile } from "../../helper/helper";
-import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions";
-import { collections, databases, dbId } from "@libs/appwrite/config";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { IconUpload } from "@icons"
+import { collections, databases, dbId } from "@libs/appwrite/config"
+import { Button } from "@ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
+import { Input } from "@ui/input"
+import React from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions"
+import { readerFile } from "../../helper/helper"
 
 interface IProfileForm {}
 
@@ -17,7 +17,6 @@ const ProfileSchema = z.object({
   avatar: z.any(),
   contacts: z.string({ message: "Please enter your contact" }),
   email: z.string({ message: "Please enter your email" }),
-  userName: z.string({ message: "Please enter your username" }),
   userName: z.string({ message: "Please enter your username" }),
   fullName: z.string({ message: "Please enter your full name" }),
   address: z.string({ message: "Please enter your address" }),
@@ -32,9 +31,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
     defaultValues: {
       avatar: "",
       contacts: "",
-      contacts: "",
       email: "",
-      userName: "",
       userName: "",
       fullName: "",
       address: "",
@@ -94,7 +91,6 @@ const ProfileForm: React.FC = (): JSX.Element => {
         <div className={`grid h-fit grid-cols-2 gap-12`}>
           <FormField
             name={"contacts"}
-            name={"contacts"}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -130,7 +126,6 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"userName"}
             name={"userName"}
             control={form.control}
             render={({ field }) => (
