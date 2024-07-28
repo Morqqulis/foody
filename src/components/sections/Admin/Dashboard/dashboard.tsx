@@ -1,13 +1,35 @@
-import { NextPage } from 'next'
-import React from 'react'
-import OrderChart from '../../../Charts/OrderChart/OrderChart'
-import AmountChart from '../../../Charts/AmountChart/AmountChart'
-import LineCharts from '../../../Charts/LineChart/Linechart'
+import { NextPage } from "next";
+import React from "react";
+import AmountChart from "../../../Charts/AmountChart/AmountChart";
+import LineCharts from "../../../Charts/LineChart/Linechart";
+import OrdersChart from "./OrdersChart";
+import SalaryChart from "./SalaryChart";
 
-const DashboardSection: NextPage = (): JSX.Element => {
-    return (
-        <section className='pl-3 h-min flex flex-col'>
-            <div className="flex">
+const DashboardSection: React.FC = (): JSX.Element => {
+  return (
+    <section className="flex min-h-[calc(100vh-90px)] h-full flex-col gap-6">
+      <div className={`flex  items-start justify-between gap-[30px] `}>
+        <OrdersChart />
+        <SalaryChart />
+      </div>
+      <div className={`flex h-full items-start gap-[30px]`}>
+        <div className={`h-full max-h-[470px] w-full rounded-xl bg-[#27283C] p-10`}>
+          <h3 className={`text-left text-xl font-medium text-[#c7c7c7]`}>Assigned risk</h3>
+          <p className={`flex h-full items-center justify-center`}>There are no risks assigned.</p>
+        </div>
+        <div className={`h-full max-h-[470px] w-full rounded-xl bg-[#27283C] p-10`}>
+          <h3 className={`text-left text-xl font-medium text-[#c7c7c7]`}>Assigned Action Items</h3>
+          <p className={`flex h-full items-center justify-center`}>There are no risks assigned.</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default DashboardSection;
+
+{
+  /* <div className="flex">
                 <div className="card bg-gray-800 w-7/12 p-1 m-1 rounded-3xl">
                     <div className=' text-gray-400 p-3 font-thin'>Products</div>
                     <AmountChart/>
@@ -23,9 +45,5 @@ const DashboardSection: NextPage = (): JSX.Element => {
                     <LineCharts/>
                 </div>
                 <div className="card bg-gray-800 w-7/12 p-1 m-1 rounded-3xl"></div>
-            </div>
-        </section>
-    )
+            </div> */
 }
-
-export default DashboardSection

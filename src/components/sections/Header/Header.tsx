@@ -17,15 +17,6 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
   const path = usePathname();
   const t = useTranslations("Header");
-  const [haveSession, sethaveSession] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-        const ses = (await account.get()).status;
-        sethaveSession(ses);
-    })();
-  }, []);
-  
 
   return (
     <header className={`${className || ""} ${path.startsWith("/admin") ? "hidden" : "block"} `}>
