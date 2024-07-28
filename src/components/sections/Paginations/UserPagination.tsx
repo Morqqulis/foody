@@ -6,10 +6,10 @@ interface IPagination {
   currentPage: number;
   dataCount: number;
   perPage: number;
+  setPerPage: (prev: number) => void;
 }
-const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage }): JSX.Element => {
+const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage, setPerPage }): JSX.Element => {
   const pageCount = [];
-  const [perPages, setPerPages] = React.useState(perPage);
 
   for (let i = 1; i <= 10; i++) {
     pageCount.push(i);
@@ -23,9 +23,9 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
           onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
         />
         <p className="flex h-[32px] w-[32px] items-center justify-center border ">{currentPage}</p> /
-        <p className="flex h-[32px] w-[32px] items-center justify-center ">{pageCount.length}</p>
+        <p className="flex h-[32px] w-[32px] items-center justify-center ">{Math.ceil(dataCount / perPage)}</p>
         <ChevronRight
-          onClick={() => currentPage < pageCount.length && setCurrentPage(currentPage + 1)}
+          onClick={() => currentPage < Math.ceil(dataCount / perPage) && setCurrentPage(currentPage + 1)}
           className="flex h-[32px] w-[32px] items-center justify-center rounded-[20%] border"
         />
       </div>
@@ -34,11 +34,11 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         <Select
           onValueChange={(value) => {
             const currentPage = parseFloat(value);
-            setPerPages(currentPage);
+            setPerPage(currentPage);
           }}
         >
           <SelectTrigger className="w-[60px]">
-            <SelectValue placeholder={perPages} />
+            <SelectValue placeholder={perPage} />
           </SelectTrigger>
           <SelectContent>
             {pageCount.map((num) => (
