@@ -3,14 +3,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 interface IPagination {
   setCurrentPage: (prev: number) => void;
-  currentPage: number; 
+  currentPage: number;
   dataCount: number;
   perPage: number;
 }
 const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage }): JSX.Element => {
   const pageCount = [];
+  const [perPages, setPerPages] = React.useState(perPage);
 
-  for (let i = 1; i <= Math.ceil(dataCount / perPage); i++) {
+  for (let i = 1; i <= 10; i++) {
     pageCount.push(i);
   }
 
@@ -33,11 +34,11 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         <Select
           onValueChange={(value) => {
             const currentPage = parseFloat(value);
-            setCurrentPage(currentPage);
+            setPerPages(currentPage);
           }}
         >
           <SelectTrigger className="w-[60px]">
-            <SelectValue placeholder={currentPage} />
+            <SelectValue placeholder={perPages} />
           </SelectTrigger>
           <SelectContent>
             {pageCount.map((num) => (
