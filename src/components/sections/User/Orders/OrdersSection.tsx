@@ -31,7 +31,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
   useEffect(() => {
     const token = localStorage.getItem("userId");
     setUserId(token || "");
-    
+
     if (!token) return;
 
     (async () => {
