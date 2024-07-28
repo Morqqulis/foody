@@ -32,7 +32,7 @@
       "@sections/*": ["./src/components/sections/*"],
       "@providers/*": ["./src/components/providers/*"],
       "@libs/*": ["./src/libs/*"],
-      "@icons": ["./src/components/icons/*"],
+      "@icons": ["./src/components/icons/index.tsx"],
       "@messages/*": ["./messages/*"],
       "@appwrite/*": ["./src/libs/appwrite/*"],
       "@data/*": ["./src/static/*"]

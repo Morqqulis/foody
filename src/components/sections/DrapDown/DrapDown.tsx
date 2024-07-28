@@ -6,26 +6,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
-import React, { FC } from "react";
 import Image from "next/image";
-import { account } from '@libs/appwrite/config'
+import { account } from "@libs/appwrite/config";
+import { headerUserData } from "@data/data";
+import Link from "next/link";
 
-const DrapDown: FC = () => {
-    
-    
+const DrapDown: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={"text-black"}>
-        <Image className={`min-w-[50px] h-auto`} src={"/Header/profileIcon.png"} width={60} height={40} alt="Icon" />
+        <Image className={`h-auto min-w-[50px]`} src={"/Header/profileIcon.png"} width={60} height={40} alt="Icon" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className={`flex flex-col px-5 py-5`}>
         {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer border-b">Profile</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer border-b">Your Basket</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer  border-b">Your Orders</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer  border-b">Checkout</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Logout</DropdownMenuItem>
+        {/* <DropdownMenuSeparator /> */}
+        {headerUserData.map(({ id, label, path }) => (
+          <DropdownMenuItem key={id} className="cursor-pointer border-b border-b-gray-7 last:border-b-0 text-black text-base w-full py-2">
+            <Link href={path}>{label}</Link>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

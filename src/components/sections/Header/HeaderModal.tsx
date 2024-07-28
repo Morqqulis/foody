@@ -1,5 +1,5 @@
 "use client";
-import { headerModalData } from '@data/data'
+import { headerModalData } from "@data/data";
 import { Button } from "@ui/button";
 import { MoveRight } from "lucide-react";
 import { useTranslations } from "next-intl";
