@@ -15,7 +15,7 @@ const DrapDown: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={"text-black"}>
-        <Image className={`h-auto min-w-[50px]`} src={"/Header/profileIcon.png"} width={60} height={40} alt="Icon" />
+        <Image className={`h-auto min-w-[50px]`} src={"/Header/profileIcon.png"} width={60} height={40} alt="Icon" style={{width: "60px", height: "40px"}}/>
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`flex flex-col px-5 py-5`}>
         {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}

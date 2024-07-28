@@ -13,7 +13,12 @@ const Basket = () => {
   const [basket, setBasket] = useState([]);
   const [basketId, setBasketId] = useState("");
   const t = useTranslations("Basket");
-  const userId = localStorage.getItem("userId");
+  let userId: string | null;
+  if (localStorage) {
+    userId = localStorage.getItem("userId");
+  }
+
+  
 
   useEffect(() => {
     (async () => {
@@ -27,7 +32,7 @@ const Basket = () => {
         setBasket(JSON.parse(prevBasket));
       }
     })();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (basket.length > 0) {

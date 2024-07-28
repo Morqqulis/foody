@@ -35,6 +35,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = "login" }: ILoginForm): JSX.El
     defaultValues: setDefaultValues(),
   });
 
+
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     setIsLoading(true);
     const { email, password } = data;
