@@ -4,7 +4,7 @@ import React, { useState, FormEvent, useEffect } from "react";
 import CheckoutOrder from "./CheckoutOrder";
 import DoneIconComponent from "@sections/Checkout/LottieAnimation";
 import { getDocuments } from "../../../utls/functions";
-import { collections } from "@libs/appwrite/config";
+import { collections, databases, dbId, ID } from "@libs/appwrite/config";
 
 const phonePrefixes = ["050", "051", "055", "070", "010", "099", "077"];
 
@@ -18,11 +18,14 @@ function CheckoutHome() {
 
   const userId = localStorage.getItem("userId");
 
+  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+
   useEffect(() => {
     (async () => {
       const userInfo = await getDocuments(collections.userId, userId);
       setUser(userInfo);
-      const basketIdinUser = userInfo.basket.$id;
+
+      const basketIdinUser = userInfo.basket && userInfo.basket.$id;
       if (basketIdinUser) {
         let prevBasket = userInfo.basket.productsList;
         setBasket(JSON.parse(prevBasket));
@@ -30,18 +33,27 @@ function CheckoutHome() {
     })();
   }, []);
 
-  const handleCheckOut = () => {
+  const handleCheckOut = async (v: any) => {
     setShowDoneIcon(true);
-    
-    const order = JSON.stringify({
-      user,
+
+    const orderInfo = JSON.stringify({
+      time: new Date().toLocaleDateString(),
+      deliveryAddress: v.deliveryAddress,
+      amount: totalAmount,
+      paymentMethod: v.paymentMethod,
+      contact: v.contact,
       basket,
     });
-    
-    // databases.createDocument(dbId, collections.ordersId, ID.unique(), order);
-    // Ordersde duzelisler edib bunlari acacagiq
-  };
 
+    // @ts-ignore
+    console.log(user.basket);
+
+    // await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
+    //   user: userId,
+    //   orderInfo,
+    // });
+    setShowDoneIcon(false);
+  };
 
   const handlePrefixChange = (event: FormEvent<HTMLSelectElement>) => {
     setPrefix(event.currentTarget.value);
@@ -58,15 +70,15 @@ function CheckoutHome() {
     alert(`Phone Number: ${prefix}${phoneNumber}`);
   };
 
-  useEffect(() => {
-    if (showDoneIcon) {
-      const timer = setTimeout(() => {
-        setShowDoneIcon(false);
-      }, 3000);
+  // useEffect(() => {
+  //   if (showDoneIcon) {
+  //     const timer = setTimeout(() => {
+  //       setShowDoneIcon(false);
+  //     }, 3000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [showDoneIcon]);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [showDoneIcon]);
 
   return showDoneIcon ? (
     <DoneIconComponent />
@@ -123,7 +135,7 @@ function CheckoutHome() {
             </div>
           </div>
           <button
-            onClick={handleCheckOut}
+            onClick={() => handleCheckOut({ deliveryAddress: "baku", paymentMethod: "card", contact: "0555859885" })}
             className={
               "mt-[20px] h-[53px] w-[546px] rounded border-2 bg-lime-600 text-white duration-500 hover:border-lime-600  hover:bg-white hover:text-lime-600"
             }

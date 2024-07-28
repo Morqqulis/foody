@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import ProductList from "./ProductList";
-import { collections, databases, dbId } from "@libs/appwrite/config";
+import { collections, databases, dbId, ID } from "@libs/appwrite/config";
 import { getDocuments } from "../../../utls/functions";
 
 interface IproductsSection {
@@ -17,9 +17,12 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   useEffect(() => {
     (async () => {
       const user = await getDocuments(collections.userId, userId);
-      const basketIdinUser = await user.basket.$id;
+      const basketIdinUser = user.basket && (await user.basket.$id);
 
+      console.log("user", user);
       if (basketIdinUser) {
+        console.log("basketIdinUser", basketIdinUser);
+
         setBasketId(basketIdinUser);
         const prevBasket = user.basket.productsList;
         setBasket(JSON.parse(prevBasket));
@@ -30,7 +33,16 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   useEffect(() => {
     if (basket.length > 0) {
       const strBasket = JSON.stringify(basket);
-      (async () => await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket }))();
+      console.log("basketId", basketId);
+
+      (async () => {
+        if (basketId) {
+          await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket });
+        } else {
+          const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { users: userId, productsList: strBasket });
+          setBasketId(newBasket.$id);
+        }
+      })();
     }
   }, [basket]);
 

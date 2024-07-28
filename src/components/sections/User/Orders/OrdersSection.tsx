@@ -1,7 +1,7 @@
 "use client";
 import { userOrdersData } from "@data/data";
 import Table from "@sections/Admin/Table";
-import { EllipsisVertical, Eye } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import UserPagination from "../../Paginations/UserPagination";
 import { useState } from "react";
@@ -14,7 +14,6 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   const perPage = 10;
   const data = userOrdersData;
-  console.log(data.slice((1 - 1) * perPage, currentPage * perPage));
   const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
   const filteredData = data.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => ({
     ...order,

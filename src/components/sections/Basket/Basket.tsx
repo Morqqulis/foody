@@ -18,7 +18,8 @@ const Basket = () => {
   useEffect(() => {
     (async () => {
       const user = await getDocuments(collections.userId, userId);
-      const basketIdinUser = await user.basket.$id;
+
+      const basketIdinUser = user.basket && (await user.basket.$id);
 
       if (basketIdinUser) {
         setBasketId(basketIdinUser);
@@ -92,9 +93,7 @@ const Basket = () => {
             ))}
           </div>
           <Link href="/user/checkout" className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
-            <div className="rounded-lg bg-red-600 px-4 py-2 text-white">
-              {t("checkout")}
-            </div>
+            <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t("checkout")}</div>
             <span className="rounded-3xl bg-white px-4 py-2 text-xl font-semibold text-red-600">$ {totalAmount.toFixed(2)}</span>
           </Link>
         </div>
