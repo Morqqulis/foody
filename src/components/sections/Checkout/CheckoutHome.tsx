@@ -25,7 +25,7 @@ function CheckoutHome() {
       const userInfo = await getDocuments(collections.userId, userId);
       setUser(userInfo);
 
-      const basketIdinUser = userInfo.basket && userInfo.basket[0].$id;
+      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id;
       if (basketIdinUser) {
         let prevBasket = userInfo.basket[0].productsList;
         setBasket(JSON.parse(prevBasket));
@@ -34,14 +34,12 @@ function CheckoutHome() {
   }, []);
 
   const handleCheckOut = async (v: any) => {
-    setShowDoneIcon(true);
-
     const orderInfo = JSON.stringify({
       time: new Date().toLocaleDateString(),
-      deliveryAddress: v.deliveryAddress,
+      address: v.address,
       amount: totalAmount,
-      paymentMethod: v.paymentMethod,
-      contact: v.contact,
+      payment: v.payment,
+      phone: v.phone,
       basket,
     });
 
@@ -52,7 +50,7 @@ function CheckoutHome() {
       orderInfo,
     });
     await databases.deleteDocument(dbId, collections.basketId, basketId);
-    setShowDoneIcon(false);
+    setShowDoneIcon(true);
   };
 
   const handlePrefixChange = (event: FormEvent<HTMLSelectElement>) => {
@@ -70,15 +68,15 @@ function CheckoutHome() {
     alert(`Phone Number: ${prefix}${phoneNumber}`);
   };
 
-  // useEffect(() => {
-  //   if (showDoneIcon) {
-  //     const timer = setTimeout(() => {
-  //       setShowDoneIcon(false);
-  //     }, 3000);
+  useEffect(() => {
+    if (showDoneIcon) {
+      const timer = setTimeout(() => {
+        setShowDoneIcon(false);
+      }, 3000);
 
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [showDoneIcon]);
+      return () => clearTimeout(timer);
+    }
+  }, [showDoneIcon]);
 
   return showDoneIcon ? (
     <DoneIconComponent />
@@ -135,7 +133,7 @@ function CheckoutHome() {
             </div>
           </div>
           <button
-            onClick={() => handleCheckOut({ deliveryAddress: "baku", paymentMethod: "card", contact: "0555859885" })}
+            onClick={() => handleCheckOut({ address: "baku", payment: "card", phone: "0555859885" })}
             className={
               "mt-[20px] h-[53px] w-[546px] rounded border-2 bg-lime-600 text-white duration-500 hover:border-lime-600  hover:bg-white hover:text-lime-600"
             }

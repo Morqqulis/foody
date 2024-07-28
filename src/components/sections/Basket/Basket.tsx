@@ -22,7 +22,7 @@ const Basket = () => {
     (async () => {
       const user = await getDocuments(collections.userId, userId);
 
-      const basketIdinUser = user.basket && (await user.basket[0].$id);
+      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id);
 
       if (basketIdinUser) {
         setBasketId(basketIdinUser);

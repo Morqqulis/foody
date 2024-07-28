@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 
 interface ITable {
@@ -7,6 +8,7 @@ interface ITable {
 }
 
 const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
+  
   return (
     <div className="w-full pt-[52px]">
       <table className="min-w-full overflow-y-auto bg-gray-100 text-gray-800">
