@@ -407,6 +407,23 @@
     "yourOrder": "Ваш заказ",
     "total": "Итого"
   },
+  "ProfileSection": {
+    "profile": "Профиль"
+  },
+  "ProfileForm": {
+    "upload": "Загрузить аватар",
+    "contact": "Контактный номер",
+    "email": "Адрес электронной почты",
+    "username": "Имя пользователя",
+    "address": "Адрес",
+    "fullName": "Полное имя",
+    "save": "Сохранить",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Ататюрк 45 Ганчлик Баку",
+    "fullNamePlaceholder": "Фуад Пашаев"
+  },
   "ProductList": {
     "title": "Продукты",
     "description": "Приготовлено с качеством, кусочек сыра и специальный соус"

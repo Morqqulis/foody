@@ -400,7 +400,25 @@
   "CheckoutOrder": {
     "yourOrder": "Your Order",
     "total": "Total"
+
   },
+ "ProfileSection": {
+    "profile": "Profile"
+  },
+"ProfileForm": {
+    "upload": "Upload Avatar",
+    "contact": "Contact Number",
+    "email": "Email Address",
+    "username": "Username",
+    "address": "Address",
+    "fullName": "Full Name",
+    "save": "Save",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Ataturk 45 Ganclik Baku",
+    "fullNamePlaceholder": "Fuad Pashayev"
+  } ,
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"

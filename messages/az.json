@@ -397,6 +397,23 @@
     "yourOrder": "Sifarişiniz",
     "total": "Cəmi"
   },
+  "ProfileSection": {
+    "profile": "Profil"
+  },
+  "ProfileForm": {
+    "upload": "Avatar Yükle",
+    "contact": "Əlaqə Nömrəsi",
+    "email": "E-poçt Ünvanı",
+    "username": "İstifadəçi Adı",
+    "address": "Ünvan",
+    "fullName": "Tam Ad",
+    "save": "Yadda Saxla",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "fullNamePlaceholder": "Fuad Paşayev"
+  },
   "Checkout": {
     "checkoutTitle": "Yoxlama",
     "addressLabel": "Çatdırılma ünvanı",
