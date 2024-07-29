@@ -4,6 +4,7 @@ import { Textarea } from "@ui/textarea";
 import { HTMLInputTypeAttribute } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
 import { useTranslations } from "next-intl";
+import { translateUrl } from "../helper/helper";
 
 interface IFormLabel {
   name: string;
@@ -18,35 +19,7 @@ interface IOption {
 }
 
 const MyFormLabel: React.FC<IFormLabel> = ({ form, name, inputType, options, whatIs }): JSX.Element => {
-  let str: string;
-  switch (whatIs) {
-    case "EditProduct":
-      str = `Products.EditProduct.Sheet`;
-      break;
-    case "AddProduct":
-      str = `Header.Sheet`;
-      break;
-    case "EditCategory":
-      str = `Category.EditCategory.Sheet`;
-      break;
-    case "AddRestaurant":
-      str = `Restaurants.AddRestaurant.Sheet`;
-      break;
-    case "EditRestaurant":
-      str = `Restaurants.EditRestaurant.Sheet`;
-      break;
-    case "AddOffer":
-      str = `Offers.AddOffer.Sheet`;
-      break;
-    case "EditOffer":
-      str = `Offers.EditOffer.Sheet`;
-      break;
-    default:
-      str = `Header.Sheet`;
-      break;
-  }
-
-  const t = useTranslations(`Admin.${str}`);
+  const t = useTranslations(`Admin.${translateUrl(whatIs)}.Sheet`);
 
   return (
     <FormField

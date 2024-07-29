@@ -1,49 +1,20 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
 import { useTranslations } from "next-intl";
 import Myform from "../../../ui/Myform";
+import { translateUrl } from "../../../helper/helper";
 interface IReusableSheet {
   trigger: any;
   whatIs: string;
   id?: any;
+  restore?: any;
 }
 
-const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
-  let str: string;
-  switch (whatIs) {
-    case "EditProduct":
-      str = `Products.EditProduct`;
-      break;
-    case "AddProduct":
-      str = `Header`;
-      break;
-    case "EditCategory":
-      str = `Category.EditCategory`;
-      break;
-    case "AddCategory":
-      str = `Category.AddCategory`;
-      break;
-    case "AddRestaurant":
-      str = `Restaurants.AddRestaurant`;
-      break;
-    case "EditRestaurant":
-      str = `Restaurants.EditRestaurant`;
-      break;
-    case "AddOffer":
-      str = `Offers.AddOffer`;
-      break;
-    case "EditOffer":
-      str = `Offers.EditOffer`;
-      break;
-
-    default:
-      str = `Header`;
-      break;
-  }
-  const t = useTranslations(`Admin.${str}.Sheet.imageBlock`);
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id, restore }): JSX.Element => {
+  const t = useTranslations(`Admin.${translateUrl(whatIs)}.Sheet.imageBlock`);
 
   return (
     <Sheet>
-      <SheetTrigger className={`cursor-pointer duration-300  hover:bg-slate-900`} asChild>
+      <SheetTrigger className={`cursor-pointer duration-300 ${whatIs.startsWith("Add") && "hover:bg-slate-900"}`} asChild>
         {trigger}
       </SheetTrigger>
       <SheetContent>

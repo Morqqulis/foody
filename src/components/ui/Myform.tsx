@@ -14,7 +14,7 @@ import { getDefaultValues, getSchema } from "../../utls/getShema";
 import { collections, databases, dbId, ID } from "@libs/appwrite/config";
 import { addDocuments, editDocuments, getListDocuments, getDocuments, deleteDocument, uploadImage, deleteImage } from "../../utls/functions";
 import { toast } from "./use-toast";
-import { categoryData, offersData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
+import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
 import { deleteCache } from "next/dist/server/lib/render-server";
 
 interface IMyform {
@@ -85,13 +85,14 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       return;
     }
 
+    if (Object.values(v).filter((item: any) => item != "").length === 0 && !file) return;
+
     switch (whatIs) {
       case "EditProduct":
         const objpp = productData(prevValue);
         const objcp = productData(v);
-
         editDocuments(collections.productsId, { ...objpp, ...objcp }, file, actionId);
-
+        
         break;
       case "AddProduct":
         addDocuments(collections.productsId, v, file);
