@@ -25,26 +25,20 @@ const restuarant = {
   getById: (id: string) => `${baseUrl}/api/restuarants/${id}`,
 };
 
-
-
-
 const basket = {
   get: `${baseUrl}/api/basket`,
   post: `${baseUrl}/api/basket/add`,
   delete: `${baseUrl}/api/basket/delete`,
   clear: `${baseUrl}/api/basket/clear`,
-}
+};
 
-
-
-const order={
+const order = {
   get: `${baseUrl}/api/order`,
   post: `${baseUrl}/api/order`,
   delete: `${baseUrl}/api/order`,
   getUser: `${baseUrl}/api/order/user`,
   getHistory: `${baseUrl}/api/order/history`,
-}
-
+};
 
 const category = {
   get: `${baseUrl}/api/category`,
@@ -54,7 +48,6 @@ const category = {
   deleteById: (id: string) => `${baseUrl}/api/category/${id}`,
 };
 
-
 const offer = {
   get: `${baseUrl}/api/offer`,
   post: `${baseUrl}/api/offer`,
@@ -62,6 +55,5 @@ const offer = {
   putById: (id: string) => `${baseUrl}/api/offer/${id}`,
   deleteById: (id: string) => `${baseUrl}/api/offer/${id}`,
 };
-
 
 export { auth, upload, products, restuarant, basket, order, category, offer };

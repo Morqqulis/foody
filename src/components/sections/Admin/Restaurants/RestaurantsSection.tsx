@@ -1,28 +1,37 @@
 "use client";
-import { collections } from "@libs/appwrite/config";
-import { getListDocuments } from "../../../../utls/functions";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import SectionHeader from "../Headers/SectionHeaders/SectionHeader";
 import RestaurantCard from "./RestaurantCard";
-interface IRestaurantsSection {}
+import { getListDocuments } from "../../../../utls/functions";
+import { collections } from "@libs/appwrite/config";
 
-const RestaurantsSection: FC = (): JSX.Element => {
+interface Ia {}
+
+const a: React.FC = (): JSX.Element => {
   const [restaurans, setRestaurans] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
+
     (async () => {
+
       const { documents } = await getListDocuments(collections.restaurantsId);
-      setRestaurans(documents);
+      selectedCategory === "All" ? setRestaurans(documents) : setRestaurans(documents.filter((doc) => doc.category.$id === selectedCategory));
+
     })();
-  }, []);
+  }, [selectedCategory]);
 
   return (
-    <section className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
-      <div className=" flex flex-wrap justify-around  gap-[25px]">
-        {restaurans.length === 0 && <p>No data</p>}
-        {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
+    <section>
+      <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
+      <div className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
+        <div className=" flex flex-wrap justify-around  gap-[25px]">
+          {restaurans.length === 0 && <p>No data</p>}
+          {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
+        </div>
       </div>
     </section>
   );
 };
 
-export default RestaurantsSection;
+export default a;

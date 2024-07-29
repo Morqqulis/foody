@@ -1,9 +1,6 @@
-import { NextPage } from "next";
-import React from "react";
-import AmountChart from "../../../Charts/AmountChart/AmountChart";
-import LineCharts from "../../../Charts/LineChart/Linechart";
-import OrdersChart from "./OrdersChart";
-import SalaryChart from "./SalaryChart";
+import React from "react"
+import OrdersChart from "./OrdersChart"
+import SalaryChart from "./SalaryChart"
 
 const DashboardSection: React.FC = (): JSX.Element => {
   return (
@@ -13,11 +10,11 @@ const DashboardSection: React.FC = (): JSX.Element => {
         <SalaryChart />
       </div>
       <div className={`flex h-full items-start gap-[30px]`}>
-        <div className={`h-full max-h-[470px] w-full rounded-xl bg-[#27283C] p-10`}>
+        <div className={`h-full max-h-[470px] basis-3/5 w-full rounded-xl bg-[#27283C] p-10`}>
           <h3 className={`text-left text-xl font-medium text-[#c7c7c7]`}>Assigned risk</h3>
           <p className={`flex h-full items-center justify-center`}>There are no risks assigned.</p>
         </div>
-        <div className={`h-full max-h-[470px] w-full rounded-xl bg-[#27283C] p-10`}>
+        <div className={`h-full max-h-[470px] basis-2/5 w-full rounded-xl bg-[#27283C] p-10`}>
           <h3 className={`text-left text-xl font-medium text-[#c7c7c7]`}>Assigned Action Items</h3>
           <p className={`flex h-full items-center justify-center`}>There are no risks assigned.</p>
         </div>
