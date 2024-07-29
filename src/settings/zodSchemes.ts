@@ -86,12 +86,14 @@ export const AddProductSchema = z.object({
       message: "Name must be at least 2 characters.",
     }),
 
-  description: z.string().min(2, {
+  description: z.string({ required_error: "Description is required." }).min(2, {
     message: "Description must be at least 2 characters.",
   }),
   price: z.string({ required_error: "Price is required.", invalid_type_error: "Price must be a number" }),
 
-  restaurant: z.string({ required_error: "Restaurants is required." }),
+  restaurant: z.string({ required_error: "Restaurants is required." }).min(1, {
+    message: "You must choose 1 restaurant",
+  }),
 });
 
 export const EditProductSchema = z.object({
@@ -134,9 +136,13 @@ export const AddRestuarantSchema = z.object({
     }),
   deliveryMin: z.string({
     required_error: "DeliveryMin is required.",
+  }).min(1, {
+    message: "Enter delivery minute",
   }),
   deliveryPrice: z.string({
-    required_error: "DeliveryPrice is required.",
+    required_error: "Delivery price is required.",
+  }).min(1, {
+    message: "Enter delivery price",
   }),
   address: z
     .string({
@@ -150,7 +156,7 @@ export const AddRestuarantSchema = z.object({
       required_error: "Category is required.",
     })
     .min(2, {
-      message: "Adress must be at least 2 characters.",
+      message: "You must choose 1 category",
     }),
 });
 export const EditRestuarantSchema = z.object({

@@ -7,9 +7,7 @@ interface IReusableSheet {
   id?: any;
 }
 
-const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.
-
-Element => {
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id }): JSX.Element => {
   let str: string;
   switch (whatIs) {
     case "EditProduct":
@@ -45,15 +43,15 @@ Element => {
 
   return (
     <Sheet>
-      <SheetTrigger className={`cursor-pointer duration-300 hover:bg-slate-900`} asChild>
+      <SheetTrigger className={`cursor-pointer duration-300  hover:bg-slate-900`} asChild>
         {trigger}
       </SheetTrigger>
       <SheetContent>
-        <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          <SheetHeader>
+        <div className="flex h-screen flex-col justify-between overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <SheetHeader className="h-[40px]">
             <SheetTitle>{t("title")}</SheetTitle>
           </SheetHeader>
-          <div>
+          <div className="h-[calc(100vh-40px)] ">
             <Myform whatIs={whatIs} actionId={id} />
           </div>
           <SheetDescription></SheetDescription>
