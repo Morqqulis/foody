@@ -26,7 +26,7 @@ interface ICategory {
   imageId: string;
 }
 
-export const RestaurantSection: React.FC = (): JSX.Element => {
+const RestaurantSection: React.FC = (): JSX.Element => {
   const [restaurants, setRestaurants] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -108,3 +108,5 @@ export const RestaurantSection: React.FC = (): JSX.Element => {
     </div>
   );
 };
+
+export default RestaurantSection;
