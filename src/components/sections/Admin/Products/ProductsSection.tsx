@@ -37,7 +37,7 @@ const ProductsSection: FC = (): JSX.Element => {
     selectedRestaurant === "All"
       ? setFilteredProducts(productsData)
       : setFilteredProducts(productsData.filter((doc) => doc.restaurant.$id === selectedRestaurant));
-  }, [searchValue, selectedRestaurant]);
+  }, [searchValue, selectedRestaurant, productsData]);
 
   const productsPerPage = 10;
   const firstIndex = (currentPage - 1) * productsPerPage;
