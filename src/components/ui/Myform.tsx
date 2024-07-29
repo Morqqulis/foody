@@ -22,7 +22,6 @@ interface IMyform {
 }
 
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
-
   const [file, setFile] = React.useState<File | null>(null);
   const [fileUrl, setFileUrl] = React.useState<string | null>(null);
   const [formatedSelectOption, setFormattedSelectOption] = useState<any[]>([]);
@@ -61,8 +60,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       default:
         break;
     }
-
-  }, []);
+  }, [whatIs, actionId]);
 
   const schema = getSchema(whatIs);
   const values = getDefaultValues(whatIs);

@@ -2,7 +2,7 @@
 import { collections } from "@libs/appwrite/config";
 import { Button } from "@ui/button";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Vortex } from "react-loader-spinner";
 import { getListDocuments } from "../../../utls/functions";
 import RestaurantCard from "./RestaurantCard";
@@ -26,7 +26,7 @@ interface ICategory {
   imageId: string;
 }
 
-export const RestaurantSection: FC = (): JSX.Element => {
+export const RestaurantSection: React.FC = (): JSX.Element => {
   const [restaurants, setRestaurants] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -47,8 +47,6 @@ export const RestaurantSection: FC = (): JSX.Element => {
     })();
   }, [selectedCategory]);
 
-
-  
   const handleGetAllRestaurants = async () => {
     try {
       const { documents } = await getListDocuments(collections.restaurantsId);
