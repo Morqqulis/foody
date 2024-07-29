@@ -377,7 +377,16 @@
     "deliveryCost": "Delivery",
     "goBack": "Go Back"
   },
-
+"RestaurantSection": {
+    "all": "All",
+    "ariaLabelFoodCategory": "food category",
+    "ariaLabelVortexLoading": "vortex-loading"
+  },
+  "RestaurantCard": {
+    "delivery": "Delivery",
+    "new": "New",
+    "minutes": "min"
+  },
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"

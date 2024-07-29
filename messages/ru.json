@@ -375,7 +375,16 @@
     "items": "Продуктов",
     "checkout": "Подтвердить"
   },
-
+  "RestaurantSection": {
+    "all": "Все",
+    "ariaLabelFoodCategory": "категория еды",
+    "ariaLabelVortexLoading": "воронка-загрузка"
+  },
+  "RestaurantCard": {
+    "delivery": "Доставка",
+    "new": "Новый",
+    "minutes": "мин"
+  },
   "Header-Restaurants": {
     "restaurantName": "Ресторан Папа Джонс Пицца",
     "address": "улица Низами 19, Сабаиль, Баку",
