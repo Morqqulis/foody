@@ -438,6 +438,20 @@
     "yourOrders": "Ваши заказы",
     "show": "Показать"
     },
+    "DashboardSection": {
+      "assignedRisk": "Назначенные риски",
+      "noRisksAssigned": "Риски не назначены.",
+      "assignedActionItems": "Назначенные действия",
+      "noActionItems": "Действия не назначены."
+    },
+    "SalaryChart": {
+    "totalSalary": "Общий доход"
+  },
+  "OrdersChart": {
+    "orders": "Заказы",
+    "projectsByAccount": "Проекты по аккаунтам",
+    "totalProjects": "Всего проектов"
+  },
   "ProductList": {
     "title": "Продукты",
     "description": "Приготовлено с качеством, кусочек сыра и специальный соус"

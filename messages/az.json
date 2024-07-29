@@ -438,6 +438,20 @@
     "paymentCash": "Qapıda ödəmə",
     "submitButton": "Təqdim"
   },
+  "DashboardSection": {
+    "assignedRisk": "Təyin olunmuş risk",
+    "noRisksAssigned": "Təyin olunmuş risklər yoxdur.",
+    "assignedActionItems": "Təyin olunmuş tədbirlər",
+    "noActionItems": "Təyin olunmuş tədbirlər yoxdur."
+  },
+  "SalaryChart": {
+    "totalSalary": "Ümumi gəlir"
+  },
+  "OrdersChart": {
+    "orders": "Sifarişlər",
+    "projectsByAccount": "Hesab üzrə layihələr",
+    "totalProjects": "Ümumi layihələr"
+  },
   "ProductList": {
     "title": "Məhsullar",
     "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"
