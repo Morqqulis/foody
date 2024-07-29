@@ -3,7 +3,8 @@
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
     "more": "More",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "dropdown": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
   },
 
   "Footer": {
@@ -256,10 +257,10 @@
       }
     },
     "Restaurants": {
-        "Metadata": {
-          "title": "Admin - Restaurants",
-          "description": "Add restaurants, edit them, delete them"
-        },
+      "Metadata": {
+        "title": "Admin - Restaurants",
+        "description": "Add restaurants, edit them, delete them"
+      },
       "Title": "Restaurants",
       "AddRestaurant": {
         "Sheet": {
