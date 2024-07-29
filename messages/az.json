@@ -393,6 +393,20 @@
     "new": "Yeni",
     "minutes": "dəq"
   },
+  "CheckoutOrder": {
+    "yourOrder": "Sifarişiniz",
+    "total": "Cəmi"
+  },
+  "Checkout": {
+    "checkoutTitle": "Yoxlama",
+    "addressLabel": "Çatdırılma ünvanı",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "phoneLabel": "Əlaqə nömrəsi",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Qapıda kredit kartı ilə ödəmə",
+    "paymentCash": "Qapıda ödəmə",
+    "submitButton": "Təqdim"
+  },
   "ProductList": {
     "title": "Məhsullar",
     "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"

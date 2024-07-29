@@ -393,6 +393,20 @@
     "deliveryCost": "Доставка",
     "goBack": "Назад"
   },
+  "Checkout": {
+    "checkoutTitle": "Оформление заказа",
+    "addressLabel": "Адрес доставки",
+    "addressPlaceholder": "Ататюрк 45 Гянджлик Баку",
+    "phoneLabel": "Контактный номер",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Оплата при доставке кредитной картой",
+    "paymentCash": "Оплата при доставке",
+    "submitButton": "Отправить"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Ваш заказ",
+    "total": "Итого"
+  },
   "ProductList": {
     "title": "Продукты",
     "description": "Приготовлено с качеством, кусочек сыра и специальный соус"

@@ -387,6 +387,20 @@
     "new": "New",
     "minutes": "min"
   },
+  "Checkout": {
+    "checkoutTitle": "Checkout",
+    "addressLabel": "Delivery Address",
+    "addressPlaceholder": "Ataturk 45 Ganclik Baku",
+    "phoneLabel": "Contact Number",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Pay at the door by credit card",
+    "paymentCash": "Pay at the door",
+    "submitButton": "Submit"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Your Order",
+    "total": "Total"
+  },
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
