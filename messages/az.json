@@ -413,6 +413,20 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
     "fullNamePlaceholder": "Fuad Paşayev"
+    } ,
+    "AdminOrders": {
+      "Products": {
+        "Modal": {
+          "deleteBtn": "Sil",
+          "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+          "text": "Bu əməliyyat geri qaytarıla bilməz.",
+          "cancelBtn": "Ləğv et"
+        }
+      }
+    },
+    "OrdersSection": {
+      "yourOrders": "Sizin Sifarişləriniz",
+      "show": "Göstər"
   },
   "Checkout": {
     "checkoutTitle": "Yoxlama",

@@ -423,7 +423,21 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Ататюрк 45 Ганчлик Баку",
     "fullNamePlaceholder": "Фуад Пашаев"
+    } ,
+    "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Удалить",
+        "title": "Вы уверены, что хотите удалить этот заказ?",
+        "text": "Это действие нельзя отменить.",
+        "cancelBtn": "Отмена"
+      }
+    }
   },
+  "OrdersSection": {
+    "yourOrders": "Ваши заказы",
+    "show": "Показать"
+    },
   "ProductList": {
     "title": "Продукты",
     "description": "Приготовлено с качеством, кусочек сыра и специальный соус"

@@ -419,6 +419,20 @@
     "addressPlaceholder": "Ataturk 45 Ganclik Baku",
     "fullNamePlaceholder": "Fuad Pashayev"
   } ,
+  "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Delete",
+        "title": "Are you sure you want to delete this order?",
+        "text": "This action cannot be undone.",
+        "cancelBtn": "Cancel"
+      }
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Your Orders",
+    "show": "Show"
+  },
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
