@@ -1,23 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import SectionHeader from "../Headers/SectionHeaders/SectionHeader";
-import RestaurantCard from "./RestaurantCard";
-import { getListDocuments } from "../../../../utls/functions";
-import { collections } from "@libs/appwrite/config";
+import { collections } from "@libs/appwrite/config"
+import { useEffect, useState } from "react"
+import { getListDocuments } from "../../../../utls/functions"
+import SectionHeader from "../Headers/SectionHeaders/SectionHeader"
+import RestaurantCard from "./RestaurantCard"
 
 interface Ia {}
 
-const a: React.FC = (): JSX.Element => {
+const RestaurantsSection: React.FC = (): JSX.Element => {
   const [restaurans, setRestaurans] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
-
     (async () => {
-
       const { documents } = await getListDocuments(collections.restaurantsId);
       selectedCategory === "All" ? setRestaurans(documents) : setRestaurans(documents.filter((doc) => doc.category.$id === selectedCategory));
-
     })();
   }, [selectedCategory]);
 
@@ -34,4 +31,4 @@ const a: React.FC = (): JSX.Element => {
   );
 };
 
-export default a;
+export default RestaurantsSection;

@@ -17,7 +17,7 @@ const RestaurantsHeader = ({ restId }) => {
       setRestaurant(rest);
     };
     getRest();
-  }, []);
+  }, [restId]);
 
   return (
     <>

@@ -8,11 +8,12 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import MyFormLabel from "./MyFormLabel";
 import { getDefaultValues, getSchema } from "../../utls/getShema";
+import MyFormLabel from "./MyFormLabel";
 
 import { collections, databases, dbId, ID } from "@libs/appwrite/config";
-import { addDocuments, editDocuments, getListDocuments, getDocuments, deleteDocument, uploadImage, deleteImage } from "../../utls/functions";
+import { addDocuments, deleteImage, editDocuments, getDocuments, getListDocuments, uploadImage } from "../../utls/functions";
+import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
 import { toast } from "./use-toast";
 import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
 import { deleteCache } from "next/dist/server/lib/render-server";
@@ -23,8 +24,8 @@ interface IMyform {
 }
 
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
-  const [file, setFile] = React.useState<File | null>(null);
-  const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [formatedSelectOption, setFormattedSelectOption] = useState<any[]>([]);
   const [prevValue, setPrevValue] = useState<any>(null);
 
@@ -64,7 +65,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       default:
         break;
     }
-  }, []);
+  }, [whatIs, actionId]);
 
   const schema = getSchema(whatIs);
   const values = getDefaultValues(whatIs);
