@@ -1,20 +1,20 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@ui/form";
-import { Input } from "@ui/input";
-import { Label } from "@ui/label";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import MyFormLabel from "./MyFormLabel";
-import { getDefaultValues, getSchema } from "../../utls/getShema";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Form } from "@ui/form"
+import { Input } from "@ui/input"
+import { Label } from "@ui/label"
+import { useTranslations } from "next-intl"
+import Image from "next/image"
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { getDefaultValues, getSchema } from "../../utls/getShema"
+import MyFormLabel from "./MyFormLabel"
 
-import { collections } from "@libs/appwrite/config";
-import { addDocuments, editDocuments, getListDocuments, getDocuments } from "../../utls/functions";
-import { toast } from "./use-toast";
-import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
+import { collections, databases, dbId, ID } from "@libs/appwrite/config"
+import { addDocuments, deleteImage, editDocuments, getDocuments, getListDocuments, uploadImage } from "../../utls/functions"
+import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper"
+import { toast } from "./use-toast"
 
 interface IMyform {
   whatIs: string;
@@ -57,6 +57,9 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         getDocSelections(collections.categoriesId);
         getDocItem(collections.restaurantsId, actionId);
         break;
+      case "EditOffer":
+        getDocItem(collections.offersId, actionId);
+        break;
       default:
         break;
     }
@@ -73,12 +76,11 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   const submit = async (v: any) => {
     if (whatIs.startsWith("Add") && !file) {
       toast({
-        title: "Enter all sections",
-        description: "Form fields must not be empty",
+        title: "Upload image",
+        description: "Add Form fields must not be empty",
         variant: "destructive",
         duration: 2000,
       });
-      form.reset();
       return;
     }
 
@@ -112,10 +114,24 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
         editDocuments(collections.restaurantsId, { ...objpr, ...objcr }, file, actionId);
         break;
       case "AddOffer":
-        break;
-      case "EditOffer":
+        const imageInfo = await uploadImage(file);
+        const strValue = JSON.stringify({ ...v, ...imageInfo });
+        databases.createDocument(dbId, collections.offersId, ID.unique(), { offer: strValue });
         break;
 
+      case "EditOffer":
+        const prev = JSON.parse(prevValue.offer);
+        const img = await uploadImage(file);
+        const updatedData = {
+          description: v.decription ? v.decription : prev.description,
+          image: img ? img.image : prev.image,
+          imageId: img ? img.imageId : prev.imageId,
+          title: v.title ? v.title : prev.title,
+        };
+
+        databases.updateDocument(dbId, collections.offersId, actionId, { offer: JSON.stringify(updatedData) });
+        img && deleteImage(prev.imageId);
+        break;
       default:
         break;
     }
@@ -123,6 +139,8 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     form.reset();
     setFileUrl(null);
     setFile(null);
+    setFormattedSelectOption([]);
+    setPrevValue(null);
 
     toast({
       title: "Success",
@@ -135,7 +153,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8 overflow-auto">
+      <form onSubmit={form.handleSubmit(submit)} className="flex h-full flex-col justify-between gap-8  ">
         <div className="flex gap-10">
           <div className="flex flex-col gap-2">
             <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
@@ -150,12 +168,12 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
           </Label>
         </div>
 
-        <div className="flex gap-10">
+        <div className="flex h-fit gap-10">
           <p className="flex h-[30px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7]">
             {t("InfoBlock.text")}
           </p>
 
-          <div className="mt-8 flex h-[450px] w-[526px] flex-col items-center  gap-2 overflow-auto rounded-[14px] bg-[#43445A] py-[10px] ">
+          <div className="mt-8 flex h-fit max-h-[500px] w-[526px]  flex-col items-center gap-2  overflow-auto  rounded-[14px] bg-[#43445A] py-[20px] ">
             {whatIs === "EditProduct" || whatIs === "AddProduct" ? (
               <>
                 <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />

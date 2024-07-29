@@ -59,6 +59,12 @@ export const categoryData = (data: any) => {
   };
 };
 
+export const offersData = (data: any) => {
+  return {
+    title: data.title != "" && data.title,
+    description: data.description != "" ? data.description : undefined,
+  };
+};
 
 export function readerFile(e: React.ChangeEvent<HTMLInputElement>, setFile: any, setFileUrl: any) {
   const selectedFile = e.target.files?.[0];
