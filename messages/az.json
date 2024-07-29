@@ -3,7 +3,8 @@
     "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
     "more": "Daha çox",
     "search": "Axtar...",
-    "signUp": "Qeydiyyat"
+    "signUp": "Qeydiyyat",
+    "dropdown": ["Profil", "Səbət", "Sifarişlər", "Ödəniş", "Cixis"]
   },
 
   "Footer": {
