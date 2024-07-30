@@ -6,7 +6,7 @@ interface IOrderHistoryPage {}
 
 const OrderHistoryPage: NextPage = (): JSX.Element => {
   return (
-    <main className="flex flex-col gap-[10px] bg-[#1E1E30]">
+    <main className="flex flex-col bg-[#1E1E30]">
       <SectionHeader title="History" />
       <OrderHistory />
     </main>

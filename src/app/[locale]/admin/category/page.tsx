@@ -9,7 +9,7 @@ interface ICategoryPage {}
 const CategoryPage: NextPage = (): JSX.Element => {
   return (
     <main className="flex gap-[28px] bg-[#1E1E30]">
-      <div className="container">
+      <div className={`flex flex-col w-full`}>
         <SectionHeader title="Category" />
         <Suspense fallback={<div>Loading...</div>}>
           <AdminRightSidebar />
