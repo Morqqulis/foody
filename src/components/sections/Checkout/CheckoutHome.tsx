@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { getDocuments } from '../../../utls/functions'
 import CheckoutOrder from './CheckoutOrder'
+import { useTranslations } from "next-intl";
 
 const formSchema = z.object({
   address: z
@@ -35,10 +36,11 @@ const formSchema = z.object({
 })
 
 function CheckoutHome() {
-  const [showDoneIcon, setShowDoneIcon] = useState(false)
-  const [userId, setUserId] = useState('')
-  const [basket, setBasket] = useState([])
-  const [user, setUser] = useState({})
+  const t = useTranslations("Checkout");
+  const [showDoneIcon, setShowDoneIcon] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [basket, setBasket] = useState([]);
+  const [user, setUser] = useState({});
 
   const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
 
@@ -109,7 +111,7 @@ function CheckoutHome() {
     <section className={`w-full`}>
       <div className={`flex items-start gap-4`}>
         <div className={`w-full basis-2/3 rounded-md bg-gray-7 p-10 pb-11`}>
-          <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>Checkout</h1>
+          <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>{t("checkoutTitle")}</h1>
           <Form {...form}>
             <form className={`flex flex-col gap-8`} onSubmit={form.handleSubmit(handleCheckOut)}>
               <FormField
@@ -117,11 +119,11 @@ function CheckoutHome() {
                 name="address"
                 render={({ field }) => (
                   <FormItem className={`flex flex-col gap-1`}>
-                    <FormLabel className={`text-lg font-semibold text-gray-2`}>Delivery Address</FormLabel>
+                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t("addressLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
-                        placeholder="Ataturk 45 Ganclik Baku"
+                        placeholder={t("addressPlaceholder")}
                         {...field}
                         type={'text'}
                         autoComplete={'address-level1 webauthn'}
@@ -136,11 +138,11 @@ function CheckoutHome() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className={`flex flex-col gap-1`}>
-                    <FormLabel className={`text-lg font-semibold text-gray-2`}>Contact Number</FormLabel>
+                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t("phoneLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
-                        placeholder="+994"
+                        placeholder={t("phonePlaceholder")}
                         {...field}
                         type={'tel'}
                         autoComplete={'tel webauthn'}
@@ -168,7 +170,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === 'Card' ? 'font-bold text-[#6FCF97]' : 'text-foreground'} cursor-pointer text-base`}
                           >
-                            Pay at the door by credit card
+                            {t("paymentCard")}
                           </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -181,7 +183,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === 'Cash' ? 'font-bold text-[#6FCF97]' : 'border-slate-600'} text-base} cursor-pointer`}
                           >
-                            Pay at the door
+                            {t("paymentCash")}
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
@@ -190,7 +192,7 @@ function CheckoutHome() {
                 )}
               />
               <Button className={`bg-[#6FCF97] py-7 duration-300 hover:bg-mainRed`} type="submit">
-                Submit
+                {t("submitButton")}
               </Button>
             </form>
           </Form>

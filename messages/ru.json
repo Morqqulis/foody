@@ -375,7 +375,16 @@
     "items": "Продуктов",
     "checkout": "Подтвердить"
   },
-
+  "RestaurantSection": {
+    "all": "Все",
+    "ariaLabelFoodCategory": "категория еды",
+    "ariaLabelVortexLoading": "воронка-загрузка"
+  },
+  "RestaurantCard": {
+    "delivery": "Доставка",
+    "new": "Новый",
+    "minutes": "мин"
+  },
   "Header-Restaurants": {
     "restaurantName": "Ресторан Папа Джонс Пицца",
     "address": "улица Низами 19, Сабаиль, Баку",
@@ -383,6 +392,65 @@
     "cuisineList": "пицца, напиток, хот-дог, сэндвич, ролл",
     "deliveryCost": "Доставка",
     "goBack": "Назад"
+  },
+  "Checkout": {
+    "checkoutTitle": "Оформление заказа",
+    "addressLabel": "Адрес доставки",
+    "addressPlaceholder": "Ататюрк 45 Гянджлик Баку",
+    "phoneLabel": "Контактный номер",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Оплата при доставке кредитной картой",
+    "paymentCash": "Оплата при доставке",
+    "submitButton": "Отправить"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Ваш заказ",
+    "total": "Итого"
+  },
+  "ProfileSection": {
+    "profile": "Профиль"
+  },
+  "ProfileForm": {
+    "upload": "Загрузить аватар",
+    "contact": "Контактный номер",
+    "email": "Адрес электронной почты",
+    "username": "Имя пользователя",
+    "address": "Адрес",
+    "fullName": "Полное имя",
+    "save": "Сохранить",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Ататюрк 45 Ганчлик Баку",
+    "fullNamePlaceholder": "Фуад Пашаев"
+    } ,
+    "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Удалить",
+        "title": "Вы уверены, что хотите удалить этот заказ?",
+        "text": "Это действие нельзя отменить.",
+        "cancelBtn": "Отмена"
+      }
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Ваши заказы",
+    "show": "Показать"
+    },
+    "DashboardSection": {
+      "assignedRisk": "Назначенные риски",
+      "noRisksAssigned": "Риски не назначены.",
+      "assignedActionItems": "Назначенные действия",
+      "noActionItems": "Действия не назначены."
+    },
+    "SalaryChart": {
+    "totalSalary": "Общий доход"
+  },
+  "OrdersChart": {
+    "orders": "Заказы",
+    "projectsByAccount": "Проекты по аккаунтам",
+    "totalProjects": "Всего проектов"
   },
   "ProductList": {
     "title": "Продукты",
