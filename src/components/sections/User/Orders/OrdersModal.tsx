@@ -1,19 +1,19 @@
-import Table from "@sections/Admin/Table";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@ui/dialog";
-import UserPagination from "../../Paginations/UserPagination";
-import { useState } from "react";
+import Table from '@sections/Admin/Table'
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@ui/dialog'
+import UserPagination from '../../Paginations/UserPagination'
+import { useState } from 'react'
 
 interface IOrdersModal {
-  trigger: any;
-  header: string[];
-  body: any[];
+  trigger: any
+  header: string[]
+  body: any[]
 }
 
 const OrdersModal: React.FC<IOrdersModal> = ({ trigger, header, body }): JSX.Element => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [perPage, setPerPage] = useState(5)
 
-  const filteredData = body.slice((currentPage - 1) * perPage, currentPage * perPage);
+  const filteredData = body.slice((currentPage - 1) * perPage, currentPage * perPage)
 
   return (
     <Dialog>
@@ -25,7 +25,7 @@ const OrdersModal: React.FC<IOrdersModal> = ({ trigger, header, body }): JSX.Ele
         <DialogDescription></DialogDescription>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default OrdersModal;
+export default OrdersModal

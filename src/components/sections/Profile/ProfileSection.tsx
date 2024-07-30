@@ -1,4 +1,4 @@
-import ProfileForm from "./ProfileForm"
+import ProfileForm from './ProfileForm'
 
 interface IProfileSection {}
 
@@ -10,7 +10,7 @@ const ProfileSection: React.FC = (): JSX.Element => {
         <ProfileForm />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProfileSection;
+export default ProfileSection

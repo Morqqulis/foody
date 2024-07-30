@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { IconBasket } from "../../icons";
+import Link from 'next/link'
+import { IconBasket } from '../../icons'
 
 interface IHeaderBasket {}
 
 const HeaderBasket: React.FC = (): JSX.Element => {
   return (
-    <Link className={``} href={"/user/basket"}>
+    <Link className={``} href={'/user/basket'}>
       <IconBasket />
     </Link>
-  );
-};
+  )
+}
 
-export default HeaderBasket;
+export default HeaderBasket

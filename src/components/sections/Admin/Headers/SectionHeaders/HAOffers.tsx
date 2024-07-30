@@ -8,6 +8,7 @@ const HAOffers: React.FC = (): JSX.Element => {
   const t = useTranslations("Admin.Offers");
 
   return (
+    
     <ResusableSheet
       whatIs="AddOffer"
       trigger={

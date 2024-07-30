@@ -1,14 +1,13 @@
-import React from 'react';
-import styles from './AboutUsPage.module.css';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import styles from './AboutUsPage.module.css'
 
 const foodItems = [
-  { name: 'Hamburger', price: 5.90, image: '/About/hamburger.png', rating: 5 },
-  { name: 'Sausage Pizza', price: 7.90, image: '/About/sausage-pizza.png', rating: 4 },
-  { name: 'Tomato Soup', price: 7.90, image: '/About/tomato-soup.png', rating: 4 },
-  { name: 'Papa Coffee', price: 1.40, image: '/About/papa-coffee.png', rating: 5 },
-];
+  { name: 'Hamburger', price: 5.9, image: '/About/hamburger.png', rating: 5 },
+  { name: 'Sausage Pizza', price: 7.9, image: '/About/sausage-pizza.png', rating: 4 },
+  { name: 'Tomato Soup', price: 7.9, image: '/About/tomato-soup.png', rating: 4 },
+  { name: 'Papa Coffee', price: 1.4, image: '/About/papa-coffee.png', rating: 5 }
+]
 
 const FoodItem = ({ name, price, image, rating }) => (
   <div className={styles.foodItem}>
@@ -17,10 +16,10 @@ const FoodItem = ({ name, price, image, rating }) => (
     <p className={styles.star}>{'⭐'.repeat(rating)}</p>
     <p className={styles.foodPrice}>${price}</p>
   </div>
-);
+)
 
 const AboutUsPage = () => {
-  const t = useTranslations("AboutUs.Metadata")
+  const t = useTranslations('AboutUs.Metadata')
   return (
     <div className="container">
       <div className={styles.aboutUsPage}>
@@ -36,7 +35,7 @@ const AboutUsPage = () => {
         </div>
       </div>
     </div>
-  );
-} 
+  )
+}
 
-export default AboutUsPage;
+export default AboutUsPage

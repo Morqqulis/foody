@@ -1,18 +1,18 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import React from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import React from 'react'
 interface IPagination {
-  setCurrentPage: (prev: number) => void;
-  currentPage: number;
-  dataCount: number;
-  perPage: number;
-  setPerPage: (prev: number) => void;
+  setCurrentPage: (prev: number) => void
+  currentPage: number
+  dataCount: number
+  perPage: number
+  setPerPage: (prev: number) => void
 }
 const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage, setPerPage }): JSX.Element => {
-  const pageCount = [];
+  const pageCount = []
 
   for (let i = 1; i <= 10; i++) {
-    pageCount.push(i);
+    pageCount.push(i)
   }
 
   return (
@@ -33,8 +33,8 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         <p>Rows per page</p>
         <Select
           onValueChange={(value) => {
-            const currentPage = parseFloat(value);
-            setPerPage(currentPage);
+            const currentPage = parseFloat(value)
+            setPerPage(currentPage)
           }}
         >
           <SelectTrigger className="w-[60px]">
@@ -50,7 +50,7 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         </Select>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

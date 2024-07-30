@@ -14,7 +14,7 @@ interface ISectionHeader {
 const SectionHeader: React.FC<ISectionHeader> = ({ title, setSelected,setSearchValue }): JSX.Element => {
   const path = usePathname();
   return (
-    <div className="flex h-[73px] w-[1124px] justify-between rounded-[14px] bg-[#27283C] p-[22px]">
+    <div className="flex h-[73px] w-full justify-between rounded-[14px] bg-[#27283C] p-[22px]">
       <p className={`text-[20px] font-medium leading-[24px] text-[rgb(199,199,199)]`}>{title}</p>
 
       {path === "/admin/restaurants" && <AdminRestaurants setSelected={setSelected} />}

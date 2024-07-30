@@ -1,53 +1,53 @@
-"use client";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { IconUpload } from "@icons"
-import { collections, databases, dbId } from "@libs/appwrite/config"
-import { Button } from "@ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form"
-import { Input } from "@ui/input"
-import React from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { deleteImage, getDocuments, uploadImage } from "../../../utls/functions"
-import { readerFile } from "../../helper/helper"
+'use client'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { IconUpload } from '@icons'
+import { collections, databases, dbId } from '@libs/appwrite/config'
+import { Button } from '@ui/button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
+import { Input } from '@ui/input'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { deleteImage, getDocuments, uploadImage } from '../../../utls/functions'
+import { readerFile } from '../../helper/helper'
 
 interface IProfileForm {}
 
 const ProfileSchema = z.object({
   avatar: z.any(),
-  contacts: z.string({ message: "Please enter your contact" }),
-  email: z.string({ message: "Please enter your email" }),
-  userName: z.string({ message: "Please enter your username" }),
-  fullName: z.string({ message: "Please enter your full name" }),
-  address: z.string({ message: "Please enter your address" }),
-});
+  contacts: z.string({ message: 'Please enter your contact' }),
+  email: z.string({ message: 'Please enter your email' }),
+  userName: z.string({ message: 'Please enter your username' }),
+  fullName: z.string({ message: 'Please enter your full name' }),
+  address: z.string({ message: 'Please enter your address' })
+})
 
 const ProfileForm: React.FC = (): JSX.Element => {
-  const [file, setFile] = React.useState<File | null>(null);
-  const [fileUrl, setFileUrl] = React.useState<string | null>(null);
+  const [file, setFile] = React.useState<File | null>(null)
+  const [fileUrl, setFileUrl] = React.useState<string | null>(null)
 
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
-      avatar: "",
-      contacts: "",
-      email: "",
-      userName: "",
-      fullName: "",
-      address: "",
-    },
-  });
+      avatar: '',
+      contacts: '',
+      email: '',
+      userName: '',
+      fullName: '',
+      address: ''
+    }
+  })
 
   async function onSubmit(values: z.infer<typeof ProfileSchema>) {
-    const userId = localStorage.getItem("userId");
-    const user = await getDocuments(collections.userId, userId);
-    const userCurrentInfo = JSON.parse(user.userInfo);
+    const userId = localStorage.getItem('userId')
+    const user = await getDocuments(collections.userId, userId)
+    const userCurrentInfo = JSON.parse(user.userInfo)
 
     if (file) {
-      const url = userCurrentInfo.avatarId;
-      url != "" && deleteImage(url);
+      const url = userCurrentInfo.avatarId
+      url != '' && deleteImage(url)
     }
-    const { image, imageId } = await uploadImage(file);
+    const { image, imageId } = await uploadImage(file)
 
     const updatedInfo = {
       email: values.email || userCurrentInfo.email,
@@ -57,12 +57,12 @@ const ProfileForm: React.FC = (): JSX.Element => {
         avatarId: imageId || userCurrentInfo.avatarId,
         contacts: values.contacts || userCurrentInfo.contacts,
         fullName: values.fullName || userCurrentInfo.fullName,
-        userName: values.userName || userCurrentInfo.userName,
-      }),
-    };
+        userName: values.userName || userCurrentInfo.userName
+      })
+    }
 
-    await databases.updateDocument(dbId, collections.userId, userId, updatedInfo);
-    const users = await getDocuments(collections.userId, userId);
+    await databases.updateDocument(dbId, collections.userId, userId, updatedInfo)
+    const users = await getDocuments(collections.userId, userId)
   }
 
   return (
@@ -80,7 +80,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
                 <span>Upload</span>
               </FormLabel>
               <FormControl>
-                <Input className={`hidden`} placeholder="Upload" type={"file"} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />
+                <Input className={`hidden`} placeholder="Upload" type={'file'} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,7 +88,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
         />
         <div className={`grid h-fit grid-cols-2 gap-12`}>
           <FormField
-            name={"contacts"}
+            name={'contacts'}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -97,7 +97,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
                     placeholder="+994"
-                    type={"tel"}
+                    type={'tel'}
                     {...field}
                   />
                 </FormControl>
@@ -106,7 +106,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"email"}
+            name={'email'}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -116,7 +116,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
                     placeholder="rahimlisarkhan@gmail.com"
                     {...field}
-                    type={"email"}
+                    type={'email'}
                   />
                 </FormControl>
                 <FormMessage />
@@ -124,7 +124,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"userName"}
+            name={'userName'}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -134,7 +134,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
                     placeholder="rahimlisarkhan"
                     {...field}
-                    type={"text"}
+                    type={'text'}
                   />
                 </FormControl>
                 <FormMessage />
@@ -142,7 +142,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"address"}
+            name={'address'}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -151,7 +151,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
                     placeholder="Ataturk 45 Ganclik Baku"
-                    type={"text"}
+                    type={'text'}
                     {...field}
                   />
                 </FormControl>
@@ -160,7 +160,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
             )}
           />
           <FormField
-            name={"fullName"}
+            name={'fullName'}
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
@@ -178,7 +178,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
           />
           <Button
             className={`self-end bg-[#6FCF97] py-[25px] text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-mainRed`}
-            variant={"ghost"}
+            variant={'ghost'}
             type="submit"
           >
             Save
@@ -200,7 +200,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
         /> */}
       </form>
     </Form>
-  );
-};
+  )
+}
 
-export default ProfileForm;
+export default ProfileForm

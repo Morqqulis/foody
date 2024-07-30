@@ -1,54 +1,60 @@
-import React from "react";
-import { NextPage } from "next";
-import { Pencil } from "lucide-react";
-import Table from "@sections/Admin/Table";
-import { useTranslations } from "next-intl";
-import SectionHeader from "../Headers/SectionHeaders/SectionHeader";
-import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
-import DeleteModal from "../DeleteModal/DeleteModal";
+'use client'
+import React, { useEffect } from 'react'
+import { NextPage } from 'next'
+import { Pencil } from 'lucide-react'
+import Table from '@sections/Admin/Table'
+import { useTranslations } from 'next-intl'
+import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
+import ReusableSheet from '@sections/Admin/Sheet/ReusableSheet'
+import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
+import DeleteModal from '../DeleteModal/DeleteModal'
+
 interface Offer {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
+  id: string
+  title: string
+  description: string
+  image: string
 }
 
 const OffersPage: NextPage = (): JSX.Element => {
-  const t = useTranslations("Admin.Offers");
+  const [offers, setOffers] = React.useState<Offer[]>([])
 
-  const offers = [
-    {
-      id: 1145,
-      image: "https://via.placeholder.com/150",
-      title: "test3",
-      description: "descriptions",
-    },
-    {
-      id: 1456,
-      image: "https://via.placeholder.com/150",
-      title: "test2",
-      description: "description",
-    },
-  ];
+  const t = useTranslations('Admin.Offers')
 
-  const header = [t("id"), t("image"), t("titleColumn"), t("description"), t("actions")];
+  useEffect(() => {
+    ;(async () => {
+      const data: any = await subscribeToCollection(collections.offersId, setOffers)
+      setOffers(data)
+    })()
+  }, [])
 
-  const body = offers.map((offer) => ({
-    ...offer,
-    actions: (
-      <div className="flex items-center gap-2">
-        <ReusableSheet whatIs="EditOffer" trigger={<Pencil size={21} className="cursor-pointer text-green-500" />} />
-        {/* <DeleteModal  /> */} 
-      </div>
-    ),
-  }));
+  const header = [t('id'), t('image'), t('titleColumn'), t('description'), t('actions')]
+
+  const body = offers.map((offer: any) => {
+    const { title, description, image } = JSON.parse(offer.offer)
+    const { $id: id } = offer
+
+    return {
+      id,
+      image,
+      title,
+      description,
+      actions: (
+        <div className="flex items-center gap-2">
+          <ReusableSheet whatIs="EditOffer" trigger={<Pencil size={21} className="cursor-pointer text-green-500" />} id={id} />
+          <DeleteModal collectionId={collections.offersId} deletedId={id} />
+        </div>
+      )
+    }
+  })
 
   return (
-    <section>
-      <SectionHeader title={t("title")} />
+    <section className={`w-full`}>
+      <SectionHeader title={t('title')} />
       <Table headers={header} body={body} />
     </section>
-  );
-};
+  )
+}
 
-export default OffersPage;
+export default OffersPage

@@ -1,13 +1,13 @@
-import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 
 interface IFooterBlock {
-  blockName: string;
-  linksCount: number;
+  blockName: string
+  linksCount: number
 }
 
 const FooterBlock: React.FC<IFooterBlock> = ({ blockName, linksCount }: IFooterBlock): JSX.Element => {
-  const t = useTranslations("Footer");
+  const t = useTranslations('Footer')
 
   return (
     <div className={`max-w-[150px]`}>
@@ -15,14 +15,14 @@ const FooterBlock: React.FC<IFooterBlock> = ({ blockName, linksCount }: IFooterB
       <ul className={`flex flex-col gap-1`}>
         {[...Array(linksCount)].map((_, index) => (
           <li key={index}>
-            <Link className={`text-[13px] text-[#bdbdbd] hover:text-white`} href={"/"} aria-label={"link to"}>
+            <Link className={`text-[13px] text-[#bdbdbd] hover:text-white`} href={'/'} aria-label={'link to'}>
               {t(`${blockName}.links.${index}`)}
             </Link>
           </li>
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default FooterBlock;
+export default FooterBlock
