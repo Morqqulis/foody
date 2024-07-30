@@ -2,6 +2,7 @@
 import { client, collections, dbId } from '@libs/appwrite/config'
 import { useEffect, useState } from 'react'
 import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
+import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import RestaurantCard from './RestaurantCard'
 
@@ -16,6 +17,9 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
       selectedCategory === 'All' ? setRestaurans(data) : setRestaurans(data.filter((doc) => doc.category.$id === selectedCategory))
     })()
   }, [selectedCategory])
+
+  //   if (isPending) return <p>Loading...</p>
+  //   if (error) return <p>Error</p>
 
   return (
     <section>

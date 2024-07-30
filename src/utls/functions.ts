@@ -1,4 +1,5 @@
 import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
+import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
 
 import axios from 'axios'
 
