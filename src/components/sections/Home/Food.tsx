@@ -38,21 +38,27 @@ const Food: React.FC = (): JSX.Element => {
   const t = useTranslations('Home.Food')
 
   return (
-    <section className={`py-20`}>
+    <section className="py-20">
       <div className="container">
-        <div className={`flex flex-col gap-12`}>
+        <div className="flex flex-col gap-12">
           {FoodCardsData.map((item) => (
-            <div className={`flex items-start justify-between gap-8 even:flex-row-reverse`} key={item.id}>
+            <div className="flex items-start justify-between gap-8 even:flex-row-reverse" key={item.id}>
               <div>
                 <Title
-                  className={`mb-[30px] max-w-[653px] text-balance text-[50px] font-black leading-[70px]`}
+                  className="mb-[30px] max-w-[653px] text-balance text-[50px] font-black leading-[70px]"
                   tag={'h3'}
                   text={t(`titles.${item.id}`)}
                 />
-                <p className={`max-w-[500px] text-[22px] leading-[30px]`}>{t(`texts.${item.id}`)}</p>
+                <p className="max-w-[500px] text-[22px] leading-[30px]">{t(`texts.${item.id}`)}</p>
               </div>
-              <div className={``}>
-                <Image src={item.imagePath} alt={item.alt} width={item.imageWidth} height={item.imageHeight} />
+              <div>
+                <Image
+                  className="animate-wiggle-more"
+                  src={item.imagePath}
+                  alt={item.alt}
+                  width={item.imageWidth}
+                  height={item.imageHeight}
+                />
               </div>
             </div>
           ))}
