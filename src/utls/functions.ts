@@ -1,6 +1,4 @@
 import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
-import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
-
 import axios from 'axios'
 
 interface IMultiFn {
@@ -27,6 +25,7 @@ export const multiFn: IMultiFn = async (method, api, data, token) => {
   }
   return await response.data
 }
+
 
 export const uploadImage = async (file: File) => {
   if (!file) return
@@ -92,9 +91,6 @@ export const checkUser = async (email: string, password?: string, userName?: str
   }
   return { isExist, $id }
 }
-
-
-
 
 export const subscribeToCollection = async (collectionId: string, callback: (data: any[]) => void) => {
   const { documents } = await databases.listDocuments(dbId, collectionId)
