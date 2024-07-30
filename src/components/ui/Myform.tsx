@@ -84,13 +84,14 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
       return;
     }
 
+    if (Object.values(v).filter((item: any) => item != "").length === 0 && !file) return;
+
     switch (whatIs) {
       case "EditProduct":
         const objpp = productData(prevValue);
         const objcp = productData(v);
-
         editDocuments(collections.productsId, { ...objpp, ...objcp }, file, actionId);
-
+        
         break;
       case "AddProduct":
         addDocuments(collections.productsId, v, file);
