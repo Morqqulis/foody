@@ -6,7 +6,7 @@ import Table from '@sections/Admin/Table'
 import { useTranslations } from 'next-intl'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import ReusableSheet from '@sections/Admin/Sheet/ReusableSheet'
-import { getListDocuments } from '../../../../utls/functions'
+import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
 import DeleteModal from '../DeleteModal/DeleteModal'
 
@@ -24,8 +24,8 @@ const OffersPage: NextPage = (): JSX.Element => {
 
   useEffect(() => {
     ;(async () => {
-      const offers: any = await getListDocuments(collections.offersId)
-      setOffers(offers.documents)
+      const data: any = await subscribeToCollection(collections.offersId, setOffers)
+      setOffers(data)
     })()
   }, [])
 

@@ -1,4 +1,4 @@
-import { avatarId, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
+import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
 
 import axios from 'axios'
 
@@ -90,4 +90,35 @@ export const checkUser = async (email: string, password?: string, userName?: str
     $id = isExist.email === email && isExist.password === password ? isExist.$id : false
   }
   return { isExist, $id }
+}
+
+
+
+
+export const subscribeToCollection = async (collectionId: string, callback: (data: any[]) => void) => {
+  const { documents } = await databases.listDocuments(dbId, collectionId)
+  let data = documents
+
+  client.subscribe(`databases.${dbId}.collections.${collectionId}.documents`, async (res: any) => {
+    const eventType = res.events[0].split('.').pop()
+    const payload = res.payload
+
+    switch (eventType) {
+      case 'create':
+        data = [...data, payload]
+        break
+      case 'update':
+        data = data.map((doc) => (doc.$id === payload.$id ? payload : doc))
+        break
+      case 'delete':
+        data = data.filter((doc) => doc.$id !== payload.$id)
+        break
+      default:
+        data = documents
+        break
+    }
+    callback(data)
+  })
+
+  return data
 }
