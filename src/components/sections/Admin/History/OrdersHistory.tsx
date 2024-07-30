@@ -1,18 +1,62 @@
-import Table from "@sections/Admin/Table";
-import { FC } from "react";
-
+'use client'
+import Table from '../Table'
+import { FC, useEffect, useState } from 'react'
+import { getListDocuments } from '../../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
+import Pagination from '@sections/Paginations/AdminPagination'
 interface IOrderHistoryPage {}
 
 const OrderHistoryPage: FC = (): JSX.Element => {
-  const header = ["ID", "Customer ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact"];
+  const [currentPage, setCurrentPage] = useState(1)
+  const perPage = 5
+  const [orders, setOrders] = useState([])
 
-  const body = [
-    { id: 1, customer_id: 1, time: "2020-01-01", delivery_adress: "test", amount: 100, payment_method: "Card", contact: "123456789" },
-    { id: 2, customer_id: 2, time: "2020-01-01", delivery_adress: "test", amount: 100, payment_method: "Card", contact: "123456789" },
-    { id: 3, customer_id: 3, time: "2020-01-01", delivery_adress: "test", amount: 100, payment_method: "Cash on delivery", contact: "123456789" },
-  ];
+  useEffect(() => {
+    ;(async () => {
+      const orders = await getListDocuments(collections.ordersId)
 
-  return <Table headers={header} body={body} />;
-};
+      const filteredOrders = orders.documents.map((order: any) => {
+        const { amount, phone, address, payment, time } = JSON.parse(order.orderInfo)
+        return {
+          id: order.$id,
+          userId: order.user.$id,
+          time,
+          address,
+          amount,
+          payment,
+          phone
+        }
+      })
+      setOrders(filteredOrders)
+    })()
+  }, [])
 
-export default OrderHistoryPage;
+  const header = ['ID', 'Customer ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact']
+
+  const filteredData = orders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
+    const { id, userId, amount, phone, address, payment, time } = order
+    const updatesOrder = {
+      id,
+      userId,
+      time,
+      address,
+      amount,
+      payment,
+      phone
+    }
+
+    return updatesOrder
+  })
+
+  return (
+    <div className="flex  w-full flex-col items-center gap-5">
+      <Table headers={header} body={filteredData} />
+
+      {orders.length > perPage && (
+        <Pagination setCurrentPage={setCurrentPage} dataCount={orders.length} currentPage={currentPage} perPage={perPage} />
+      )}
+    </div>
+  )
+}
+
+export default OrderHistoryPage

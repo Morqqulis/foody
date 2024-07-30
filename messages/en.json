@@ -3,7 +3,8 @@
     "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
     "more": "More",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "dropdown": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
   },
 
   "Footer": {
@@ -256,10 +257,10 @@
       }
     },
     "Restaurants": {
-        "Metadata": {
-          "title": "Admin - Restaurants",
-          "description": "Add restaurants, edit them, delete them"
-        },
+      "Metadata": {
+        "title": "Admin - Restaurants",
+        "description": "Add restaurants, edit them, delete them"
+      },
       "Title": "Restaurants",
       "AddRestaurant": {
         "Sheet": {
@@ -373,10 +374,79 @@
     "address": "19 Nizami street, Sabail, Baku",
     "cuisine": "Cuisine",
     "cuisineList": "pizza, drink, hotdog, sandwich, roll",
-    "deliveryCost": "$5 Delivery",
+    "deliveryCost": "Delivery",
     "goBack": "Go Back"
   },
+"RestaurantSection": {
+    "all": "All",
+    "ariaLabelFoodCategory": "food category",
+    "ariaLabelVortexLoading": "vortex-loading"
+  },
+  "RestaurantCard": {
+    "delivery": "Delivery",
+    "new": "New",
+    "minutes": "min"
+  },
+  "Checkout": {
+    "checkoutTitle": "Checkout",
+    "addressLabel": "Delivery Address",
+    "addressPlaceholder": "Ataturk 45 Ganclik Baku",
+    "phoneLabel": "Contact Number",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Pay at the door by credit card",
+    "paymentCash": "Pay at the door",
+    "submitButton": "Submit"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Your Order",
+    "total": "Total"
 
+  },
+ "ProfileSection": {
+    "profile": "Profile"
+  },
+"ProfileForm": {
+    "upload": "Upload Avatar",
+    "contact": "Contact Number",
+    "email": "Email Address",
+    "username": "Username",
+    "address": "Address",
+    "fullName": "Full Name",
+    "save": "Save",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Ataturk 45 Ganclik Baku",
+    "fullNamePlaceholder": "Fuad Pashayev"
+  } ,
+  "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Delete",
+        "title": "Are you sure you want to delete this order?",
+        "text": "This action cannot be undone.",
+        "cancelBtn": "Cancel"
+      }
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Your Orders",
+    "show": "Show"
+  },
+  "DashboardSection": {
+    "assignedRisk": "Assigned Risk",
+    "noRisksAssigned": "There are no risks assigned.",
+    "assignedActionItems": "Assigned Action Items",
+    "noActionItems": "There are no action items assigned."
+  },
+  "SalaryChart": {
+    "totalSalary": "Total Salary"
+  },
+  "OrdersChart": {
+    "orders": "Orders",
+    "projectsByAccount": "Projects by Account",
+    "totalProjects": "Total Projects"
+  },
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"

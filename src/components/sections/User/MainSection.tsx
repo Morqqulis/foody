@@ -1,8 +1,5 @@
-
 const MainSection = () => {
-  return (
-    <section className={``}>MainSection</section>
-  )
+  return <section className={``}>MainSection</section>
 }
 
 export default MainSection

@@ -1,44 +1,43 @@
-"use client";
-import { collections, databases, dbId } from "@libs/appwrite/config";
-import { usePathname } from "@settings/navigation";
-import Link from "next/link";
-import { FC } from "react";
+'use client'
+import { collections, databases, dbId } from '@libs/appwrite/config'
+import { usePathname } from '@settings/navigation'
+import Link from 'next/link'
+import { FC } from 'react'
 
 type AsideElements = {
   element: {
-    icon: JSX.Element;
-    mt?: string;
-    href: string;
-  };
-  title: string;
-  whatIs: string;
-};
+    icon: JSX.Element
+    mt?: string
+    href: string
+  }
+  title: string
+  whatIs: string
+}
 
 const AdminAsideElement: FC<AsideElements> = ({ element, title, whatIs }): JSX.Element => {
-  const path = usePathname();
+  const path = usePathname()
 
   function asideElementAction() {
-    if (whatIs === "user" && element.href === "/login") {
-
-      (async () => await databases.updateDocument(dbId, collections.userId, localStorage.getItem("userId"), { enter: false }))();
-      localStorage.removeItem("userId");
+    if (whatIs === 'user' && element.href === '/login') {
+      ;(async () => await databases.updateDocument(dbId, collections.userId, localStorage.getItem('userId'), { enter: false }))()
+      localStorage.removeItem('userId')
     }
   }
 
   return (
     <Link
       href={element.href}
-      className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px] pl-[18px] ${path === element.href && ((whatIs === "admin" && "bg-[#d578f2] ") || (whatIs === "user" && "bg-[#ffb6af] hover:bg-[#ffb6af]"))} ${whatIs.startsWith("admin") ? "hover:bg-[#d578f2]" : "hover:bg-[#ffb6af]"}`}
+      className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px] pl-[18px] ${path === element.href && ((whatIs === 'admin' && 'bg-[#d578f2] ') || (whatIs === 'user' && 'bg-[#ffb6af] hover:bg-[#ffb6af]'))} ${whatIs.startsWith('admin') ? 'hover:bg-[#d578f2]' : 'hover:bg-[#ffb6af]'}`}
       onClick={asideElementAction}
     >
       {element.icon}
       <p
-        className={`h-[18px] w-[138px]  text-sm font-medium leading-[21px]   ${whatIs === "admin" ? "text-[#F2F2F2DE]" : "text-[#828282]"} ${path === element.href && whatIs === "user" && "text-[red]"}`}
+        className={`h-[18px] w-[138px]  text-sm font-medium leading-[21px]   ${whatIs === 'admin' ? 'text-[#F2F2F2DE]' : 'text-[#828282]'} ${path === element.href && whatIs === 'user' && 'text-[red]'}`}
       >
         {title}
       </p>
     </Link>
-  );
-};
+  )
+}
 
-export default AdminAsideElement;
+export default AdminAsideElement

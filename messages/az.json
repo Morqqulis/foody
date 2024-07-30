@@ -3,7 +3,8 @@
     "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
     "more": "Daha çox",
     "search": "Axtar...",
-    "signUp": "Qeydiyyat"
+    "signUp": "Qeydiyyat",
+    "dropdown": ["Profil", "Səbət", "Sifarişlər", "Ödəniş", "Cixis"]
   },
 
   "Footer": {
@@ -379,8 +380,77 @@
     "address": "Nizami küçəsi 19, Səbail, Bakı",
     "cuisine": "Mətbəx",
     "cuisineList": "pizza, içki, hotdog, sendviç, roll",
-    "deliveryCost": "$5 Çatdırılma",
+    "deliveryCost": "Çatdırılma",
     "goBack": "Geri Qayıt"
+  },
+  "RestaurantSection": {
+    "all": "Hamısı",
+    "ariaLabelFoodCategory": "qida kateqoriyası",
+    "ariaLabelVortexLoading": "voronka-yükləmə"
+  },
+  "RestaurantCard": {
+    "delivery": "Çatdırılma",
+    "new": "Yeni",
+    "minutes": "dəq"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Sifarişiniz",
+    "total": "Cəmi"
+  },
+  "ProfileSection": {
+    "profile": "Profil"
+  },
+  "ProfileForm": {
+    "upload": "Avatar Yükle",
+    "contact": "Əlaqə Nömrəsi",
+    "email": "E-poçt Ünvanı",
+    "username": "İstifadəçi Adı",
+    "address": "Ünvan",
+    "fullName": "Tam Ad",
+    "save": "Yadda Saxla",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "fullNamePlaceholder": "Fuad Paşayev"
+    } ,
+    "AdminOrders": {
+      "Products": {
+        "Modal": {
+          "deleteBtn": "Sil",
+          "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+          "text": "Bu əməliyyat geri qaytarıla bilməz.",
+          "cancelBtn": "Ləğv et"
+        }
+      }
+    },
+    "OrdersSection": {
+      "yourOrders": "Sizin Sifarişləriniz",
+      "show": "Göstər"
+  },
+  "Checkout": {
+    "checkoutTitle": "Yoxlama",
+    "addressLabel": "Çatdırılma ünvanı",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "phoneLabel": "Əlaqə nömrəsi",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Qapıda kredit kartı ilə ödəmə",
+    "paymentCash": "Qapıda ödəmə",
+    "submitButton": "Təqdim"
+  },
+  "DashboardSection": {
+    "assignedRisk": "Təyin olunmuş risk",
+    "noRisksAssigned": "Təyin olunmuş risklər yoxdur.",
+    "assignedActionItems": "Təyin olunmuş tədbirlər",
+    "noActionItems": "Təyin olunmuş tədbirlər yoxdur."
+  },
+  "SalaryChart": {
+    "totalSalary": "Ümumi gəlir"
+  },
+  "OrdersChart": {
+    "orders": "Sifarişlər",
+    "projectsByAccount": "Hesab üzrə layihələr",
+    "totalProjects": "Ümumi layihələr"
   },
   "ProductList": {
     "title": "Məhsullar",

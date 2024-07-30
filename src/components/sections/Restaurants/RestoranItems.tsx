@@ -1,53 +1,56 @@
-"use client";
-import { useEffect, useState } from "react";
-import Cart from "./Cart";
-import ProductList from "./ProductList";
-import { collections, databases, dbId, ID } from "@libs/appwrite/config";
-import { getDocuments } from "../../../utls/functions";
+'use client'
+import { useEffect, useState } from 'react'
+import Cart from './Cart'
+import ProductList from './ProductList'
+import { collections, databases, dbId, ID } from '@libs/appwrite/config'
+import { getDocuments } from '../../../utls/functions'
 
 interface IproductsSection {
-  restId: string;
+  restId: string
 }
 
 const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
-  const [basket, setBasket] = useState([]);
-  const [basketId, setBasketId] = useState("");
-  const userId = localStorage.getItem("userId");
+  const [basket, setBasket] = useState([])
+  const [basketId, setBasketId] = useState('')
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
-    (async () => {
-      const user = await getDocuments(collections.userId, userId);
+    const token = localStorage.getItem('userId')
+    setUserId(token || '')
+    if (!userId) return
+    ;(async () => {
+      const user = await getDocuments(collections.userId, userId)
 
-      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id);
+      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id)
 
       if (basketIdinUser) {
-        setBasketId(basketIdinUser);
-        const prevBasket = user.basket[0].productsList;
-        setBasket(JSON.parse(prevBasket));
+        setBasketId(basketIdinUser)
+        const prevBasket = user.basket[0].productsList
+        setBasket(JSON.parse(prevBasket))
       }
-    })();
-  }, []);
+    })()
+  }, [userId])
 
   useEffect(() => {
     if (basket.length > 0) {
-      const strBasket = JSON.stringify(basket);
-      (async () => {
+      const strBasket = JSON.stringify(basket)
+      ;(async () => {
         if (basketId) {
-          await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket });
+          await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket })
         } else {
-          const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: userId, productsList: strBasket });
-          setBasketId(newBasket.$id);
+          const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: userId, productsList: strBasket })
+          setBasketId(newBasket.$id)
         }
-      })();
+      })()
     }
-  }, [basket]);
+  }, [basket, userId, basketId])
 
   return (
-    <div className="flex p-4">
+    <div className="flex pb-20 pt-6">
       <ProductList restId={restId} setBasket={setBasket} />
       <Cart setBasket={setBasket} initialCartItems={basket} />
     </div>
-  );
-};
+  )
+}
 
-export default RestoranItems;
+export default RestoranItems

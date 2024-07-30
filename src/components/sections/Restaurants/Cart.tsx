@@ -1,65 +1,74 @@
-"use client";
+'use client'
 
-import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import Link from "next/link"
-import { FC, useEffect, useState } from "react"
-import styles from "./Scroll.module.css"
+import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC, useEffect, useState } from 'react'
+import styles from './Scroll.module.css'
 
 interface CartItem {
-  $collectionId: string;
-  $createdAt: string;
-  $updatedAt: string;
-  $permissions: string[];
-  name: string;
-  price: string | number;
-  quantity: number;
-  image: string;
-  imageId: string;
-  $databaseId: string;
-  $id: string;
-  $tenant: string;
-  description: string;
+  $collectionId: string
+  $createdAt: string
+  $updatedAt: string
+  $permissions: string[]
+  name: string
+  price: string | number
+  quantity: number
+  image: string
+  imageId: string
+  $databaseId: string
+  $id: string
+  $tenant: string
+  description: string
 }
 
 interface IBasket {
-  initialCartItems: CartItem[];
-  setBasket: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  initialCartItems: CartItem[]
+  setBasket: React.Dispatch<React.SetStateAction<CartItem[]>>
 }
 
 const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const t = useTranslations("Basket");
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const t = useTranslations('Basket')
 
   useEffect(() => {
-    setCartItems(initialCartItems);
-  }, [initialCartItems]);
+    setCartItems(initialCartItems)
+  }, [initialCartItems])
 
   const incrementQuantity = (id: string) => {
-    setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)));
-  };
+    setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)))
+  }
   const decrementQuantity = (id: string) => {
-    setBasket((prevItems) => prevItems.map((item) => (item.$id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item)));
-  };
+    setBasket((prevItems) => prevItems.map((item) => (item.$id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item)))
+  }
   const handleDelete = (id: string) => {
-    setBasket((prevItems) => prevItems.filter((item) => item.$id !== id));
-  };
+    setBasket((prevItems) => prevItems.filter((item) => item.$id !== id))
+  }
 
-  const totalPrice = cartItems?.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+  const totalPrice = cartItems?.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0)
 
   return (
-    <div className="mt-4 flex w-full basis-2/5">
-      <div className="w-397px h-547px mb-8 bg-gray-7 p-10">
-        <div className="mb-6 flex flex-col">
+    <div className="mt-4 flex h-[550px] w-full basis-2/5">
+      <div className="h-547px mb-8 flex w-full flex-col bg-gray-7 p-4">
+        <div className="mb-6 flex flex-col ">
           <div className="mt-2 flex items-center text-xl">
             <ShoppingCart className="h-7 w-7 text-red-600 " />
             <h5 className="ml-2 text-red-600">
-              {cartItems?.length} {t("items")}
+              {cartItems?.length} {t('items')}
             </h5>
           </div>
         </div>
-        <div className={styles.customScrollbar}>
+        <div className={`${styles.customScrollbar} grow overflow-auto`}>
+          {!cartItems?.length && (
+            <div className={`flex h-full w-full flex-col items-center justify-center gap-2`}>
+              <Image className={`w-full max-w-[150px]`} src={'/Basket/empty-small.png'} alt={'empty backet'} width={263} height={236} />
+              <span className={`text-center text-4xl font-medium`}>
+                Opps! <br /> Basket empty
+              </span>
+            </div>
+          )}
+
           {cartItems?.map((item) => (
             <div key={item.$id} className="mb-4 flex items-center justify-between rounded-lg bg-white p-1 shadow-md">
               <div className="flex items-center">
@@ -86,13 +95,13 @@ const Cart: FC<IBasket> = ({ initialCartItems, setBasket }) => {
             </div>
           ))}
         </div>
-        <Link href="/user/checkout" className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
-          <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t("checkout")}</div>
+        <Link href="/user/checkout" className="flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md">
+          <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t('checkout')}</div>
           <span className="rounded-3xl bg-white px-4 py-2 text-xl font-semibold text-red-600">$ {totalPrice}</span>
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

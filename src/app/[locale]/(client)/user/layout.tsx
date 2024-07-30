@@ -1,8 +1,8 @@
-import UserAside from "@sections/Aside/UserAside";
+import UserAside from '@sections/Aside/UserAside'
 
 interface IUserLayout {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: React.ReactNode
+  params: { locale: string }
 }
 
 const UserLayout: React.FC = ({ children, params: { locale } }: IUserLayout) => {
@@ -13,7 +13,7 @@ const UserLayout: React.FC = ({ children, params: { locale } }: IUserLayout) => 
         {children}
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default UserLayout;
+export default UserLayout

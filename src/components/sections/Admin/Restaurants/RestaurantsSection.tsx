@@ -1,28 +1,31 @@
-"use client";
-import { collections } from "@libs/appwrite/config";
-import { getListDocuments } from "../../../../utls/functions";
-import { FC, useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
-interface IRestaurantsSection {}
+'use client'
+import { collections } from '@libs/appwrite/config'
+import { useEffect, useState } from 'react'
+import { subscribeToCollection } from '../../../../utls/functions'
+import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
+import RestaurantCard from './RestaurantCard'
 
-const RestaurantsSection: FC = (): JSX.Element => {
-  const [restaurans, setRestaurans] = useState([]);
+const RestaurantsSection: React.FC = (): JSX.Element => {
+  const [restaurans, setRestaurans] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('All')
 
   useEffect(() => {
-    (async () => {
-      const { documents } = await getListDocuments(collections.restaurantsId);
-      setRestaurans(documents);
-    })();
-  }, []);
-
+    ;(async () => {
+      const data = await subscribeToCollection(collections.restaurantsId, setRestaurans)
+      setRestaurans(data)
+      selectedCategory === 'All' ? setRestaurans(data) : setRestaurans(data.filter((doc) => doc.category.$id === selectedCategory))
+    })()
+  }, [selectedCategory])
   return (
-    <section className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
-      <div className=" flex flex-wrap justify-around  gap-[25px]">
-        {restaurans.length === 0 && <p>No data</p>}
-        {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
+    <section>
+      <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
+      <div className="mt-12 flex">
+        <div className={`grid grid-cols-4 items-center !gap-6 `}>
+          {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default RestaurantsSection;
+export default RestaurantsSection

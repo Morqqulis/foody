@@ -1,16 +1,16 @@
-import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
-import OrderHistory from "@sections/Admin/History/OrdersHistory";
-import { NextPage } from "next";
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
+import OrderHistory from '@sections/Admin/History/OrdersHistory'
+import { NextPage } from 'next'
 
 interface IOrderHistoryPage {}
 
 const OrderHistoryPage: NextPage = (): JSX.Element => {
   return (
-    <main className="flex flex-col gap-[10px] bg-[#1E1E30] p-[16px]">
+    <main className="flex flex-col bg-[#1E1E30]">
       <SectionHeader title="History" />
       <OrderHistory />
     </main>
-  );
-};
+  )
+}
 
-export default OrderHistoryPage;
+export default OrderHistoryPage

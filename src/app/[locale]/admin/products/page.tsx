@@ -1,16 +1,12 @@
-import { NextPage } from "next";
-import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
-import ProductsSection from "../../../../components/sections/Admin/Products/ProductsSection";
+import { NextPage } from 'next'
+import ProductsSection from '../../../../components/sections/Admin/Products/ProductsSection'
 
 const ProductsPage: NextPage = (): JSX.Element => {
   return (
-    <main className="flex gap-[28px] bg-[#1E1E30] p-[16px]">
-      <section>
-        <SectionHeader title="Products" />
-        <ProductsSection />
-      </section>
+    <main className="flex gap-[28px] bg-[#1E1E30]">
+      <ProductsSection />
     </main>
-  );
-};
+  )
+}
 
-export default ProductsPage;
+export default ProductsPage

@@ -1,64 +1,63 @@
-"use client";
-import { collections } from "@libs/appwrite/config";
-import { Plus } from "lucide-react";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import styles from "./Scroll.module.css";
-import { getDocuments } from "../../../utls/functions";
+'use client'
+import { collections } from '@libs/appwrite/config'
+import { Plus } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import styles from './Scroll.module.css'
+import { getDocuments } from '../../../utls/functions'
 
 interface CartItem {
-  $collectionId: string;
-  $createdAt: string;
-  $updatedAt: string;
-  $permissions: string[];
-  name: string;
-  price: string | number;
-  quantity: number;
-  image: string;
-  imageId: string;
-  $databaseId: string;
-  $id: string;
-  $tenant: string;
-  description: string;
+  $collectionId: string
+  $createdAt: string
+  $updatedAt: string
+  $permissions: string[]
+  name: string
+  price: string | number
+  quantity: number
+  image: string
+  imageId: string
+  $databaseId: string
+  $id: string
+  $tenant: string
+  description: string
 }
 
 interface IProductList {
-  restId: string;
-  setBasket: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  restId: string
+  setBasket: React.Dispatch<React.SetStateAction<CartItem[]>>
 }
 const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
-  const t = useTranslations("ProductList");
-  const [products, setProducts] = useState([]);
+  const t = useTranslations('ProductList')
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
-        const { products } = await getDocuments(collections.restaurantsId, restId);
-        setProducts(products);
+        const { products } = await getDocuments(collections.restaurantsId, restId)
+        setProducts(products)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    })();
-  }, [restId]);
+    })()
+  }, [restId])
 
-  
   const addToBasket = (product: CartItem) => {
     setBasket((prev: any) =>
       prev?.some((item: any) => item.$id === product.$id)
         ? prev.map((item: any) => (item.$id === product.$id ? { ...item, quantity: item.quantity + 1 } : item))
-        : [...prev, { ...product, quantity: 1 }],
-    );
-  };
+        : [...prev, { ...product, quantity: 1 }]
+    )
+  }
 
   return (
-    <div className=" basis-3.5/6 w-full">
-      <div className="ml-50 mr-6 mt-4 flex-1 bg-gray-100 p-10">
-        <h2 className="mb-6 text-center text-2xl font-semibold text-gray-950">{t("title")}</h2>
-        <div className={`${styles.customScrollbar} space-y-4`}>
+    <div className="basis-3.5/6 w-full">
+      <div className="mr-6 mt-4 flex-1 bg-gray-100 p-10">
+        <h2 className="mb-6 text-center text-2xl font-semibold text-gray-950">{t('title')}</h2>
+        <div className={`${styles.customScrollbar} h-[60vh] space-y-4 overflow-auto`}>
           {products.length > 0 &&
             products.map((product: any) => (
-              <div key={product.$id} className="flex items-center justify-between rounded bg-white p-4 shadow">
+              <div key={product.$id} className="flex items-center justify-between rounded border-y-2 border-[#e0e0e0] bg-white p-4 shadow">
                 <div className="flex items-center">
                   <Image className="h-20 w-20 rounded-lg" src={product.image} alt={product.name} width={80} height={80} />
                   <div className="ml-4">
@@ -68,8 +67,11 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
                 </div>
                 <div className="flex items-center">
                   <span className="text-lg font-semibold">${product.price}</span>
-                  <button className="ml-4 text-green-500" onClick={() => addToBasket(product)}>
-                    <Plus />
+                  <button
+                    className="group/plus ml-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#BDBDBD] text-green-500 hover:border-0 hover:bg-green-500"
+                    onClick={() => addToBasket(product)}
+                  >
+                    <Plus className={`text-[#BDBDBD] duration-300 group-hover/plus:text-white`} />
                   </button>
                 </div>
               </div>
@@ -77,7 +79,7 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList

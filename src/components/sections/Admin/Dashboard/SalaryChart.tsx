@@ -1,10 +1,10 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import React from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
-
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@ui/chart";
+import { useTranslations } from "next-intl";
 
 const chartData = [
   { year: "2019", KFC: 25, McDonalds: 5, FishHouse: 12 },
@@ -14,6 +14,7 @@ const chartData = [
   { year: "2023", KFC: 5, McDonalds: 25, FishHouse: 5 },
   { year: "2024", KFC: 30, McDonalds: 15, FishHouse: 22 },
 ];
+
 const chartConfig = {
   KFC: {
     label: "KFC",
@@ -30,11 +31,12 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const SalaryChart: React.FC = () => {
+  const t = useTranslations("SalaryChart");
+
   return (
     <Card className={`flex w-full basis-[60%] h-full flex-col border-none bg-[#27283C] px-5 pb-12 pt-5`}>
       <CardHeader className={``}>
-        <CardTitle className={`text-left text-xl font-medium text-[#c7c7c7]`}>Total Salary</CardTitle>
-        {/* <CardDescription>Showing total visitors for the last 6 years</CardDescription> */}
+        <CardTitle className={`text-left text-xl font-medium text-[#c7c7c7]`}>{t("totalSalary")}</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -51,7 +53,6 @@ const SalaryChart: React.FC = () => {
             <YAxis tickLine={false} axisLine={false} tickMargin={5} tickCount={4} />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Area dataKey="McDonalds" type="linear" fill="#914DF0" fillOpacity={1} stroke="white" strokeWidth={2} stackId="a" />
-            <Area dataKey="McDonalds" type="linear" fill="#3FAEA3" fillOpacity={1} stroke="white" strokeWidth={2} stackId="a" />
             <Area dataKey="KFC" type="linear" fill="#F4A26C" fillOpacity={1} stroke="white" strokeWidth={2} stackId="a" />
           </AreaChart>
         </ChartContainer>
