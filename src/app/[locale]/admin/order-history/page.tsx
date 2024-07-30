@@ -1,6 +1,6 @@
-import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
-import OrderHistory from "@sections/Admin/History/OrdersHistory";
-import { NextPage } from "next";
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
+import OrderHistory from '@sections/Admin/History/OrdersHistory'
+import { NextPage } from 'next'
 
 interface IOrderHistoryPage {}
 
@@ -10,7 +10,7 @@ const OrderHistoryPage: NextPage = (): JSX.Element => {
       <SectionHeader title="History" />
       <OrderHistory />
     </main>
-  );
-};
+  )
+}
 
-export default OrderHistoryPage;
+export default OrderHistoryPage

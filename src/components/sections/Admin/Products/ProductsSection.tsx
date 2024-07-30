@@ -48,7 +48,7 @@ const ProductsSection: FC = (): JSX.Element => {
   return (
     <section>
       <SectionHeader title="Products" setSelected={setSelectedRestaurant} setSearchValue={setSearchValue} />
-      <div className="flex w-[1124px] flex-col items-center justify-center   px-0 pt-[52px] ">
+      <div className="flex max-w-[1124px] w-full flex-col items-center justify-center   px-0 pt-[52px] ">
         <div className="flex w-full flex-wrap gap-[35px]">
           {newProducts.map((product) => (
             <ProductCard prod={product} key={product.$id} />

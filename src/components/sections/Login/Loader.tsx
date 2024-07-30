@@ -7,7 +7,7 @@ const Loader: React.FC = (): JSX.Element => {
       <div className="ml-3 h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-red-500 ease-linear"></div>
       <div className="ml-3 h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-green-500 ease-linear"></div>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

@@ -1,72 +1,74 @@
-"use client";
-import { useTranslations } from "next-intl";
-import AsideElement from "./AsideElement";
-import { usePathname } from "next/navigation";
-import { ClipboardList, History, LayoutDashboard, ListOrdered, LogOut, Percent, SquareStack, Store } from "lucide-react";
+'use client'
+import { useTranslations } from 'next-intl'
+import AsideElement from './AsideElement'
+import { usePathname } from 'next/navigation'
+import { ClipboardList, History, LayoutDashboard, ListOrdered, LogOut, Percent, SquareStack, Store } from 'lucide-react'
 type IAsideElements = {
-  id: number;
-  icon: JSX.Element;
-  href: string;
-  mt?: string;
-};
+  id: number
+  icon: JSX.Element
+  href: string
+  mt?: string
+}
 
 const AsideElements: IAsideElements[] = [
   {
     id: 0,
     icon: <LayoutDashboard className="text-[#F2F2F2DE]" />,
-    href: "/admin",
+    href: '/admin'
   },
   {
     id: 1,
     icon: <Store className="text-[#F2F2F2DE]" />,
-    href: "/admin/products",
+    href: '/admin/products'
   },
   {
     id: 2,
     icon: <ClipboardList className="text-[#F2F2F2DE]" />,
-    href: "/admin/restaurants",
+    href: '/admin/restaurants'
   },
   {
     id: 3,
     icon: <SquareStack className="text-[#F2F2F2DE]" />,
-    href: "/admin/category",
+    href: '/admin/category'
   },
   {
     id: 4,
     icon: <ListOrdered className="text-[#F2F2F2DE]" />,
-    href: "/admin/orders",
+    href: '/admin/orders'
   },
   {
     id: 5,
     icon: <History className="text-[#F2F2F2DE]" />,
-    href: "/admin/order-history",
+    href: '/admin/order-history'
   },
   {
     id: 6,
     icon: <Percent className="text-[#F2F2F2DE]" />,
-    href: "/admin/offers",
+    href: '/admin/offers'
   },
   {
     id: 7,
     icon: <LogOut className="text-[#F2F2F2DE]" />,
-    href: "/",
-    mt: "mt-[20px] ",
-  },
-];
+    href: '/',
+    mt: 'mt-[20px] '
+  }
+]
 
 const AdminAside: React.FC = (): JSX.Element => {
-  const t = useTranslations("Admin.Aside.title");
-  const pasthname = usePathname();
+  const t = useTranslations('Admin.Aside.title')
+  const pasthname = usePathname()
 
   return (
     <aside
-      className={`flex h-[474px] basis-[256px] w-full flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith("/admin/login") ? "hidden" : "block"}`}
+      className={`flex h-full max-h-[50%] w-full basis-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${pasthname.startsWith('/admin/login') ? 'hidden' : 'flex'}`}
     >
-      {AsideElements.map((element) => (
-        <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
-      ))}
+      <nav>
+        {AsideElements.map((element) => (
+          <AsideElement whatIs="admin" key={element.id} element={element} title={t(`${element.id}`)} />
+        ))}
+      </nav>
     </aside>
-  );
-};
+  )
+}
 
-export default AdminAside;
+export default AdminAside

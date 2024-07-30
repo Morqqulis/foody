@@ -1,20 +1,18 @@
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { account } from "@libs/appwrite/config";
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { account } from '@libs/appwrite/config'
 
-export const useAuth = () => {
-  const router = useRouter();
+export const useAuth = async () => {
+  const router = useRouter()
   useEffect(() => {
     const checkAuth = async () => {
-      
       try {
-        await account.get();
-
+        await account.get()
       } catch (error) {
-        router.push("/login");
+        router.push('/login')
       }
-    };
+    }
 
-    checkAuth();
-  }, [router]);
-};
+    checkAuth()
+  }, [router])
+}

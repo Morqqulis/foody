@@ -1,8 +1,8 @@
-import AdminRightSidebar from "@sections/Admin/Category/CategoryPage";
+import AdminRightSidebar from '@sections/Admin/Category/CategoryPage'
 
-import SectionHeader from "@sections/Admin/Headers/SectionHeaders/SectionHeader";
-import { NextPage } from "next";
-import { Suspense } from "react";
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
+import { NextPage } from 'next'
+import { Suspense } from 'react'
 
 interface ICategoryPage {}
 
@@ -16,7 +16,7 @@ const CategoryPage: NextPage = (): JSX.Element => {
         </Suspense>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default CategoryPage;
+export default CategoryPage

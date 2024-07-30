@@ -1,20 +1,20 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@ui/form";
-import { Input } from "@ui/input";
-import { Label } from "@ui/label";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { getDefaultValues, getSchema } from "../../utls/getShema";
-import MyFormLabel from "./MyFormLabel";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Form } from "@ui/form"
+import { Input } from "@ui/input"
+import { Label } from "@ui/label"
+import { useTranslations } from "next-intl"
+import Image from "next/image"
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { getDefaultValues, getSchema } from "../../utls/getShema"
+import MyFormLabel from "./MyFormLabel"
 
-import { collections, databases, dbId, ID } from "@libs/appwrite/config";
-import { addDocuments, deleteImage, editDocuments, getDocuments, getListDocuments, uploadImage } from "../../utls/functions";
-import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper";
-import { toast } from "./use-toast";
+import { collections, databases, dbId, ID } from "@libs/appwrite/config"
+import { addDocuments, deleteImage, editDocuments, getDocuments, getListDocuments, uploadImage } from "../../utls/functions"
+import { categoryData, productData, readerFile, restaurantData, translateUrl } from "../helper/helper"
+import { toast } from "./use-toast"
 
 interface IMyform {
   whatIs: string;

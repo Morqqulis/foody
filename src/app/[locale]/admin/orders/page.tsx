@@ -1,6 +1,6 @@
 import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
-import OrdersTable from "@sections/Admin/Orders/OrdersTable";
-import { NextPage } from "next";
+import OrdersTable from '@sections/Admin/Orders/OrdersTable'
+import { NextPage } from 'next'
 
 interface IOrdersPage {}
 
@@ -12,7 +12,7 @@ const OrdersPage: NextPage = (): JSX.Element => {
         <OrdersTable />
       </section>
     </main>
-  );
-};
+  )
+}
 
-export default OrdersPage;
+export default OrdersPage
