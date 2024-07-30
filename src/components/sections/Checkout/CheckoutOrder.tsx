@@ -1,15 +1,15 @@
-import React from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl"
+import React from "react"
 
 interface IProps {
-  basket: any;
+  basket: any
 }
 
 const CheckoutOrder: React.FC<IProps> = ({ basket }): JSX.Element => {
   const t = useTranslations("CheckoutOrder");
 
   function getTotal() {
-    return basket.reduce((total: number, data: any) => total + Number(data.price) * Number(data.quantity), 0);
+    return basket.reduce((total: number, data: any) => total + Number(data.price) * Number(data.quantity), 0)
   }
 
   return (
@@ -32,7 +32,7 @@ const CheckoutOrder: React.FC<IProps> = ({ basket }): JSX.Element => {
         <span className={``}>${getTotal().toFixed(2)}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CheckoutOrder;
+export default CheckoutOrder

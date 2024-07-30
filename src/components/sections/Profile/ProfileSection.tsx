@@ -1,6 +1,6 @@
-import React from "react";
-import { useTranslations } from "next-intl";
-import ProfileForm from "./ProfileForm";
+import { useTranslations } from "next-intl"
+import React from "react"
+import ProfileForm from "./ProfileForm"
 
 interface IProfileSection {}
 
@@ -14,7 +14,7 @@ const ProfileSection: React.FC = (): JSX.Element => {
         <ProfileForm />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProfileSection;
+export default ProfileSection

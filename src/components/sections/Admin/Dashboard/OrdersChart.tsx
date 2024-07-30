@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { Pie, PieChart, Label } from "recharts";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@ui/card";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@ui/chart";
-import { useTranslations } from "next-intl";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@ui/card"
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@ui/chart"
+import { useTranslations } from "next-intl"
+import React, { useMemo } from "react"
+import { Label, Pie, PieChart } from "recharts"
 
 const chartData = [
   { restaurant: "Fish House", ProjectsByAccount: 173, fill: "#00B2A9" },
@@ -63,7 +63,7 @@ const OrdersChart: React.FC = ({ className }: { className?: string }): JSX.Eleme
   }, []);
 
   return (
-    <Card className={`flex w-full basis-[40%] flex-col border-none bg-[#27283C] px-5 pb-20 pt-5`}>
+    <Card className={`flex w-full basis-[40%] h-full flex-col border-none bg-[#27283C] px-5 pb-20   pt-5 `}>
       <CardHeader>
         <CardTitle className={`text-left text-[#c7c7c7]`}>{t("orders")}</CardTitle>
       </CardHeader>

@@ -1,21 +1,21 @@
-import { basket } from "@settings/constants";
-import { Account, Client, Databases, ID, Storage } from "appwrite";
+import { basket } from '@settings/constants'
+import { Account, Client, Databases, ID, Storage } from 'appwrite'
 
 //=============================================
-const dbId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`;
-const endpoint = `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}`;
-const apikey = `${process.env.NEXT_APPWRITE_API_KEY}`;
-const projectId = `${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}`;
+const dbId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`
+const endpoint = `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}`
+const apikey = `${process.env.NEXT_APPWRITE_API_KEY}`
+const projectId = `${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}`
 
 // stogage ID
-const avatarId = `${process.env.NEXT_PUBLIC_APPWRITE_AVATAR}`;
+const avatarId = `${process.env.NEXT_PUBLIC_APPWRITE_AVATAR}`
 
 //=============================================
 
-const client = new Client().setEndpoint(endpoint).setProject(projectId);
-const account = new Account(client);
-const databases = new Databases(client);
-const storage = new Storage(client);
+const client = new Client().setEndpoint(endpoint).setProject(projectId)
+const account = new Account(client)
+const databases = new Databases(client)
+const storage = new Storage(client)
 
 //=============================================
 
@@ -26,9 +26,9 @@ const collections = {
   restaurantsId: `${process.env.NEXT_PUBLIC_APPWRITE_RESTAURANTS_ID}`,
   ordersId: `${process.env.NEXT_PUBLIC_APPWRITE_ORDERS_ID}`,
   offersId: `${process.env.NEXT_PUBLIC_APPWRITE_OFFERS_ID}`,
-  basketId: `${process.env.NEXT_PUBLIC_APPWRITE_BASKET_ID}`,
-};
+  basketId: `${process.env.NEXT_PUBLIC_APPWRITE_BASKET_ID}`
+}
 
 //=============================================
 
-export { account, apikey, client, databases, dbId, endpoint, storage, avatarId, ID, projectId, collections };
+export { account, apikey, client, databases, dbId, endpoint, storage, avatarId, ID, projectId, collections }

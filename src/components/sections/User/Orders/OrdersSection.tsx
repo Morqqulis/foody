@@ -1,9 +1,9 @@
-"use client";
-import Table from "@sections/Admin/Table";
-import { EllipsisVertical } from "lucide-react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import UserPagination from "../../Paginations/UserPagination";
-import { useEffect, useState } from "react";
+'use client'
+import Table from '@sections/Admin/Table'
+import { EllipsisVertical } from 'lucide-react'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import UserPagination from '../../Paginations/UserPagination'
+import { useEffect, useState } from 'react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,34 +13,34 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@ui/alert-dialog";
-import OrdersModal from "@sections/User/Orders/OrdersModal";
-import { deleteDocument, getDocuments } from "../../../../utls/functions";
-import { collections } from "@libs/appwrite/config";
-import { useTranslations } from "next-intl";
+  AlertDialogTrigger
+} from '@ui/alert-dialog'
+import OrdersModal from '@sections/User/Orders/OrdersModal'
+import { deleteDocument, getDocuments } from '../../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
+import { useTranslations } from 'next-intl'
 
 const OrdersSection: React.FC = (): JSX.Element => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(5);
-  const [orders, setOrders] = useState([]);
-  const [userId, setUserId] = useState("");
-  const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu;
+  const [currentPage, setCurrentPage] = useState(1)
+  const [perPage, setPerPage] = useState(5)
+  const [orders, setOrders] = useState([])
+  const [userId, setUserId] = useState('')
+  const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu
 
   const t = useTranslations("Admin.Products.Modal");
   const tOrdersSection = useTranslations("OrdersSection");
 
   useEffect(() => {
-    const token = localStorage.getItem("userId");
-    setUserId(token || "");
+    const token = localStorage.getItem('userId')
+    setUserId(token || '')
 
-    if (!token) return;
+    if (!token) return
 
-    (async () => {
-      const user = await getDocuments(collections.userId, userId);
+    ;(async () => {
+      const user = await getDocuments(collections.userId, userId)
 
       const filteredOrders = user.orders.map((order: any) => {
-        const { amount, phone, basket, address, payment, time } = JSON.parse(order.orderInfo);
+        const { amount, phone, basket, address, payment, time } = JSON.parse(order.orderInfo)
 
         return {
           id: order.$id,
@@ -49,37 +49,37 @@ const OrdersSection: React.FC = (): JSX.Element => {
           address,
           amount,
           payment,
-          phone,
-        };
-      });
-      setOrders(filteredOrders);
-    })();
-  }, [userId]);
+          phone
+        }
+      })
+      setOrders(filteredOrders)
+    })()
+  }, [userId])
 
-  const headers = ["ID", "Time", "Delivery Address", "Amount", "Payment Method", "Contact", ""];
+  const headers = ['ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact', '']
 
   const filteredData = orders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
-    const { id, amount, phone, basket, address, payment, time } = order;
+    const { id, amount, phone, basket, address, payment, time } = order
     const updatesOrder = {
       id,
       time,
       address,
       amount,
       payment,
-      phone,
-    };
+      phone
+    }
 
-    const basketHeader = ["Image", "Name", "Price $", "Count", "Amount"];
+    const basketHeader = ['Image', 'Name', 'Price $', 'Count', 'Amount']
     const updatesBasket = basket.map((item: any) => {
-      const { image, name, price, quantity } = item;
+      const { image, name, price, quantity } = item
       return {
         image,
         name,
         price,
         quantity,
-        amount: Number(price) * Number(quantity),
-      };
-    });
+        amount: Number(price) * Number(quantity)
+      }
+    })
     return {
       ...updatesOrder,
       actions: (
@@ -89,7 +89,6 @@ const OrdersSection: React.FC = (): JSX.Element => {
           </DropdownMenuTrigger>
           <Portal>
             <Content className="shadow-custom h-fit w-[79px] bg-white">
-              
               <OrdersModal
                 trigger={
                   <div className="w-[79px] cursor-pointer py-2 text-center font-bold text-green-600 outline-none hover:bg-slate-300">
@@ -102,17 +101,17 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
               <AlertDialog>
                 <AlertDialogTrigger className="w-[79px] cursor-pointer py-2 text-center font-bold text-red-700 outline-none hover:bg-slate-300">
-                  {t("deleteBtn")}
+                  {t('deleteBtn')}
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>{t("title")}</AlertDialogTitle>
-                    <AlertDialogDescription>{t("text")}</AlertDialogDescription>
+                    <AlertDialogTitle>{t('title')}</AlertDialogTitle>
+                    <AlertDialogDescription>{t('text')}</AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>{t("cancelBtn")}</AlertDialogCancel>
+                    <AlertDialogCancel>{t('cancelBtn')}</AlertDialogCancel>
                     <AlertDialogAction onClick={() => deleteOrder(id)} className="bg-red-600">
-                      {t("deleteBtn")}
+                      {t('deleteBtn')}
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
@@ -120,14 +119,14 @@ const OrdersSection: React.FC = (): JSX.Element => {
             </Content>
           </Portal>
         </Root>
-      ),
-    };
-  });
+      )
+    }
+  })
 
   const deleteOrder = async (id: string) => {
-    await deleteDocument(collections.ordersId, id);
-    setOrders((prev) => prev.filter((order) => order.id !== id));
-  };
+    await deleteDocument(collections.ordersId, id)
+    setOrders((prev) => prev.filter((order) => order.id !== id))
+  }
 
   return (
     <div className="flex h-full min-h-[500px] flex-col gap-7 bg-[#F3F4F6] p-8">
@@ -145,7 +144,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default OrdersSection;
+export default OrdersSection

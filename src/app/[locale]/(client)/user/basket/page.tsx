@@ -1,5 +1,5 @@
-import Basket from "@sections/Basket/Basket";
-import { NextPage } from "next";
+import Basket from '@sections/Basket/Basket'
+import { NextPage } from 'next'
 
 interface IUserBasketPage {}
 
@@ -8,7 +8,7 @@ const UserBasketPage: NextPage = (): JSX.Element => {
     <main>
       <Basket />
     </main>
-  );
-};
+  )
+}
 
-export default UserBasketPage;
+export default UserBasketPage

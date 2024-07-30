@@ -1,20 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { FC } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl"
+import Image from "next/image"
+import Link from "next/link"
+import { FC } from "react"
 
 interface IRestCard {
   data: {
-    id: number;
-    image: string;
-    name: string;
-    cuisine: string;
-    deliveryPrice: number;
-    deliveryMin: number;
-    new?: boolean;
-    $id: string;
+    id: number
+    image: string
+    name: string
+    cuisine: string
+    deliveryPrice: number
+    deliveryMin: number
+    new?: boolean
+    $id: string
     // description: string;
-  };
+  }
 }
 
 const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
@@ -53,4 +53,4 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
   );
 };
 
-export default RestaurantCard;
+export default RestaurantCard

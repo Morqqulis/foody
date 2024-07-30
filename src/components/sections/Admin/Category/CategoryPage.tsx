@@ -1,49 +1,52 @@
-"use server";
-import { Pencil } from "lucide-react";
-import { useTranslations } from "next-intl";
-import ReusableSheet from "@sections/Admin/Sheet/ReusableSheet";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import Table from "../Table";
-import { getListDocuments } from "../../../../utls/functions";
-import { getTranslations } from "next-intl/server";
-import { collections } from "@libs/appwrite/config";
+'use client'
+import { collections } from '@libs/appwrite/config'
+import ReusableSheet from '@sections/Admin/Sheet/ReusableSheet'
+import { Pencil } from 'lucide-react'
+import { subscribeToCollection } from '../../../../utls/functions'
+import DeleteModal from '../DeleteModal/DeleteModal'
+import Table from '../Table'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import Pagination from '@sections/Paginations/AdminPagination'
 
-type Category = {
-  id: number;
-  image: string;
-  name: string;
-  slug: string;
-  actions: any;
-};
+const CategoryPage = () => {
+  const [categories, setCategories] = useState([])
+  const [filteredCategories, setFilteredCategories] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const perPage = 5
 
-const filteredData = (data: any) => {
+  const t = useTranslations('Admin.Category')
+  useEffect(() => {
+    ;(async () => {
+      const data = await subscribeToCollection(collections.categoriesId, setCategories)
 
-  return data.map((item: any) => ({
-    id: item.$id,
-    image: item.image,
-    name: item.name,
-    slug: item.slug,
-    actions: (
-      <div className=" flex items-center gap-2 px-4 py-2">
-        <ReusableSheet trigger={<Pencil size={16} className="cursor-pointer text-[#00B2A9]" />} whatIs="EditCategory" id={item.$id} />
-        <DeleteModal collectionId={item.$collectionId} deletedId={item.$id} />
-      </div>
-    ),
-  }));
-};
+      const filteredData = data
+        .map((item: any) => ({
+          id: item.$id,
+          image: item.image,
+          name: item.name,
+          slug: item.slug,
+          actions: (
+            <div className=" flex items-center gap-2 px-4 py-2">
+              <ReusableSheet trigger={<Pencil size={16} className="cursor-pointer text-[#00B2A9]" />} whatIs="EditCategory" id={item.$id} />
+              <DeleteModal collectionId={item.$collectionId} deletedId={item.$id} />
+            </div>
+          )
+        }))
+        .slice((currentPage - 1) * perPage, currentPage * perPage)
 
-const CategoryPage = async () => {
-  const t = getTranslations("Admin.Category");
-  const data = filteredData((await getListDocuments(collections.categoriesId)).documents);
-  if (data.length > 0) {
-    return (
-      <div className="flex h-screen w-full ">
-        <Table headers={["ID", "Image", "Name", "Slug", ""]} body={data} />
-      </div>
-    );
-  } else {
-    return <div>Empty</div>;
-  }
-};
+      setFilteredCategories(filteredData)
+    })()
+  }, [categories, currentPage])
 
-export default CategoryPage;
+  return (
+    <div className=" h-full w-full ">
+      <Table headers={['ID', 'Image', 'Name', 'Slug', '']} body={filteredCategories} />
+      {categories.length > perPage && (
+        <Pagination dataCount={categories.length} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      )}
+    </div>
+  )
+}
+
+export default CategoryPage

@@ -59,7 +59,6 @@ export const categoryData = (data: any) => {
   };
 };
 
-
 export function readerFile(e: React.ChangeEvent<HTMLInputElement>, setFile: any, setFileUrl: any) {
   const selectedFile = e.target.files?.[0];
   if (selectedFile) {

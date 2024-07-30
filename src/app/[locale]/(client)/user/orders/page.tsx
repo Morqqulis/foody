@@ -1,5 +1,5 @@
-import OrdersSection from "@sections/User/Orders/OrdersSection";
-import { NextPage } from "next";
+import OrdersSection from '@sections/User/Orders/OrdersSection'
+import { NextPage } from 'next'
 interface IUserOrdersPage {}
 
 const UserOrdersPage: NextPage = (): JSX.Element => {
@@ -7,7 +7,7 @@ const UserOrdersPage: NextPage = (): JSX.Element => {
     <main>
       <OrdersSection />
     </main>
-  );
-};
+  )
+}
 
-export default UserOrdersPage;
+export default UserOrdersPage

@@ -1,39 +1,39 @@
-"use client";
+'use client'
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { collections, databases, dbId, ID } from "@libs/appwrite/config";
-import DoneIconComponent from "@sections/Checkout/LottieAnimation";
-import { Button } from "@ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { getDocuments } from "../../../utls/functions";
-import CheckoutOrder from "./CheckoutOrder";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { collections, databases, dbId, ID } from '@libs/appwrite/config'
+import DoneIconComponent from '@sections/Checkout/LottieAnimation'
+import { Button } from '@ui/button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
+import { Input } from '@ui/input'
+import { RadioGroup, RadioGroupItem } from '@ui/radio-group'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { getDocuments } from '../../../utls/functions'
+import CheckoutOrder from './CheckoutOrder'
 import { useTranslations } from "next-intl";
 
 const formSchema = z.object({
   address: z
     .string({
-      required_error: "Delivery address is required.",
+      required_error: 'Delivery address is required.'
     })
     .min(2, {
-      message: "Username must be at least 2 characters.",
+      message: 'Username must be at least 2 characters.'
     }),
   phone: z
     .string({
-      required_error: "Contact number is required.",
-      invalid_type_error: "Contact number must be a number.",
+      required_error: 'Contact number is required.',
+      invalid_type_error: 'Contact number must be a number.'
     })
     .min(2, {
-      message: "Username must be at least 11 characters.",
+      message: 'Username must be at least 11 characters.'
     }),
-  payment: z.enum(["Cash", "Card"], {
-    required_error: "Payment method is required.",
-  }),
-});
+  payment: z.enum(['Cash', 'Card'], {
+    required_error: 'Payment method is required.'
+  })
+})
 
 function CheckoutHome() {
   const t = useTranslations("Checkout");
@@ -42,34 +42,34 @@ function CheckoutHome() {
   const [basket, setBasket] = useState([]);
   const [user, setUser] = useState({});
 
-  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      address: "",
-      phone: "",
-      payment: "Cash",
-    },
-  });
+      address: '',
+      phone: '',
+      payment: 'Cash'
+    }
+  })
 
   useEffect(() => {
-    const token = localStorage.getItem("userId");
-    setUserId(token || "");
+    const token = localStorage.getItem('userId')
+    setUserId(token || '')
 
-    if (!userId) return;
+    if (!userId) return
 
-    (async () => {
-      const userInfo = await getDocuments(collections.userId, userId);
-      setUser(userInfo);
+    ;(async () => {
+      const userInfo = await getDocuments(collections.userId, userId)
+      setUser(userInfo)
 
-      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id;
+      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id
       if (basketIdinUser) {
-        let prevBasket = userInfo.basket[0].productsList;
-        setBasket(JSON.parse(prevBasket));
+        let prevBasket = userInfo.basket[0].productsList
+        setBasket(JSON.parse(prevBasket))
       }
-    })();
-  }, [userId]);
+    })()
+  }, [userId])
 
   const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
     const orderInfo = JSON.stringify({
@@ -78,32 +78,32 @@ function CheckoutHome() {
       amount: totalAmount,
       payment: v.payment,
       phone: v.phone,
-      basket,
-    });
+      basket
+    })
 
-    if (!userId) return;
+    if (!userId) return
     // @ts-ignore
-    const basketId = await user.basket[0].$id;
+    const basketId = await user.basket[0].$id
     await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
       user: userId,
-      orderInfo,
-    });
-    await databases.deleteDocument(dbId, collections.basketId, basketId);
-    setShowDoneIcon(true);
+      orderInfo
+    })
+    await databases.deleteDocument(dbId, collections.basketId, basketId)
+    setShowDoneIcon(true)
 
-    form.reset();
-    setBasket([]);
-  };
+    form.reset()
+    setBasket([])
+  }
 
   useEffect(() => {
-    let timer: any;
+    let timer: any
     if (showDoneIcon) {
       timer = setTimeout(() => {
-        setShowDoneIcon(false);
-      }, 3000);
+        setShowDoneIcon(false)
+      }, 3000)
     }
-    return () => clearTimeout(timer);
-  }, [showDoneIcon]);
+    return () => clearTimeout(timer)
+  }, [showDoneIcon])
 
   return showDoneIcon ? (
     <DoneIconComponent />
@@ -125,8 +125,8 @@ function CheckoutHome() {
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
                         placeholder={t("addressPlaceholder")}
                         {...field}
-                        type={"text"}
-                        autoComplete={"address-level1 webauthn"}
+                        type={'text'}
+                        autoComplete={'address-level1 webauthn'}
                       />
                     </FormControl>
                     <FormMessage />
@@ -144,8 +144,8 @@ function CheckoutHome() {
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
                         placeholder={t("phonePlaceholder")}
                         {...field}
-                        type={"tel"}
-                        autoComplete={"tel webauthn"}
+                        type={'tel'}
+                        autoComplete={'tel webauthn'}
                       />
                     </FormControl>
                     <FormMessage />
@@ -163,12 +163,12 @@ function CheckoutHome() {
                         <FormItem className="flex items-center space-x-3 space-y-0">
                           <FormControl>
                             <RadioGroupItem
-                              className={` h-[30px] w-[30px]  first:fill-[#6FCF97] ${field.value === "Card" ? "border-[#6FCF97] text-[#6FCF97]" : "border-foreground text-foreground"}`}
+                              className={` h-[30px] w-[30px]  first:fill-[#6FCF97] ${field.value === 'Card' ? 'border-[#6FCF97] text-[#6FCF97]' : 'border-foreground text-foreground'}`}
                               value="Card"
                             />
                           </FormControl>
                           <FormLabel
-                            className={`${field.value === "Card" ? "font-bold text-[#6FCF97]" : "text-foreground"} cursor-pointer text-base`}
+                            className={`${field.value === 'Card' ? 'font-bold text-[#6FCF97]' : 'text-foreground'} cursor-pointer text-base`}
                           >
                             {t("paymentCard")}
                           </FormLabel>
@@ -176,12 +176,12 @@ function CheckoutHome() {
                         <FormItem className="flex items-center space-x-3 space-y-0">
                           <FormControl>
                             <RadioGroupItem
-                              className={`h-[30px] w-[30px] first:fill-[#6FCF97] ${field.value === "Cash" ? "!border-[#6FCF97] text-[#6FCF97]" : "border-foreground text-foreground"}`}
+                              className={`h-[30px] w-[30px] first:fill-[#6FCF97] ${field.value === 'Cash' ? '!border-[#6FCF97] text-[#6FCF97]' : 'border-foreground text-foreground'}`}
                               value="Cash"
                             />
                           </FormControl>
                           <FormLabel
-                            className={`${field.value === "Cash" ? "font-bold text-[#6FCF97]" : "border-slate-600"} text-base} cursor-pointer`}
+                            className={`${field.value === 'Cash' ? 'font-bold text-[#6FCF97]' : 'border-slate-600'} text-base} cursor-pointer`}
                           >
                             {t("paymentCash")}
                           </FormLabel>
@@ -200,7 +200,7 @@ function CheckoutHome() {
         <CheckoutOrder basket={basket} />
       </div>
     </section>
-  );
+  )
 }
 
-export default CheckoutHome;
+export default CheckoutHome

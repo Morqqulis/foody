@@ -1,37 +1,31 @@
-"use client";
-import { useEffect, useState } from "react";
-import SectionHeader from "../Headers/SectionHeaders/SectionHeader";
-import RestaurantCard from "./RestaurantCard";
-import { getListDocuments } from "../../../../utls/functions";
-import { collections } from "@libs/appwrite/config";
+'use client'
+import { collections } from '@libs/appwrite/config'
+import { useEffect, useState } from 'react'
+import { subscribeToCollection } from '../../../../utls/functions'
+import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
+import RestaurantCard from './RestaurantCard'
 
-interface Ia {}
-
-const a: React.FC = (): JSX.Element => {
-  const [restaurans, setRestaurans] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+const RestaurantsSection: React.FC = (): JSX.Element => {
+  const [restaurans, setRestaurans] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('All')
 
   useEffect(() => {
-
-    (async () => {
-
-      const { documents } = await getListDocuments(collections.restaurantsId);
-      selectedCategory === "All" ? setRestaurans(documents) : setRestaurans(documents.filter((doc) => doc.category.$id === selectedCategory));
-
-    })();
-  }, [selectedCategory]);
-
+    ;(async () => {
+      const data = await subscribeToCollection(collections.restaurantsId, setRestaurans)
+      setRestaurans(data)
+      selectedCategory === 'All' ? setRestaurans(data) : setRestaurans(data.filter((doc) => doc.category.$id === selectedCategory))
+    })()
+  }, [selectedCategory])
   return (
     <section>
       <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
-      <div className="flex w-[1124px] flex-col items-center justify-center px-0 pt-[52px]  ">
-        <div className=" flex flex-wrap justify-around  gap-[25px]">
-          {restaurans.length === 0 && <p>No data</p>}
+      <div className="mt-12 flex">
+        <div className={`grid grid-cols-4 items-center !gap-6 `}>
           {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default a;
+export default RestaurantsSection
