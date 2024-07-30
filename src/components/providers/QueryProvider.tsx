@@ -11,7 +11,9 @@ const QueryProvider: React.FC = ({ children }: { children: React.ReactNode }): J
       new QueryClient({
         defaultOptions: {
           queries: {
-            gcTime: 1000 * 60 * 60 * 24
+            // gcTime: 1000 * 60 * 60 * 24
+            // gcTime: 1
+
           }
         }
       })
@@ -19,7 +21,7 @@ const QueryProvider: React.FC = ({ children }: { children: React.ReactNode }): J
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ReactQueryDevtools buttonPosition={'top-left'} initialIsOpen={true} />
     </QueryClientProvider>
   )
 }

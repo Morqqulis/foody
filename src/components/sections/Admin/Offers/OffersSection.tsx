@@ -50,7 +50,7 @@ const OffersPage: NextPage = (): JSX.Element => {
   })
 
   return (
-    <section>
+    <section className={`w-full`}>
       <SectionHeader title={t('title')} />
       <Table headers={header} body={body} />
     </section>
