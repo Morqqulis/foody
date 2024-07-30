@@ -11,6 +11,7 @@ interface IProdCard {
 }
 const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
   const t = useTranslations("Admin.Products");
+  
 
   return (
     <div className="flex h-[273px] w-[196px] items-center justify-center rounded-[5px]  bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">

@@ -26,7 +26,6 @@ export const multiFn: IMultiFn = async (method, api, data, token) => {
   return await response.data
 }
 
-
 export const uploadImage = async (file: File) => {
   if (!file) return
 
@@ -94,28 +93,11 @@ export const checkUser = async (email: string, password?: string, userName?: str
 
 export const subscribeToCollection = async (collectionId: string, callback: (data: any[]) => void) => {
   const { documents } = await databases.listDocuments(dbId, collectionId)
-  let data = documents
 
-  client.subscribe(`databases.${dbId}.collections.${collectionId}.documents`, async (res: any) => {
-    const eventType = res.events[0].split('.').pop()
-    const payload = res.payload
-
-    switch (eventType) {
-      case 'create':
-        data = [...data, payload]
-        break
-      case 'update':
-        data = data.map((doc) => (doc.$id === payload.$id ? payload : doc))
-        break
-      case 'delete':
-        data = data.filter((doc) => doc.$id !== payload.$id)
-        break
-      default:
-        data = documents
-        break
-    }
-    callback(data)
+  client.subscribe(`databases.${dbId}.collections.${collectionId}.documents`, async () => {
+    const { documents } = await databases.listDocuments(dbId, collectionId)
+    callback(documents)
   })
 
-  return data
+  return documents
 }
