@@ -37,12 +37,23 @@ const config = {
                '0%, 100%': { transform: 'rotate(-3deg)' },
                '50%': { transform: 'rotate(3deg)' },
              },
+             'fade-down': {
+               '0%': {
+                 transform: 'translateY(-10px)',
+                 opacity: '0',
+               },
+               '100%': {
+                 transform: 'translateY(0)',
+                 opacity: '1',
+               }, 
+             }
              
           },
           animation: {
             "accordion-down": "accordion-down 0.2s ease-out",
             "accordion-up": "accordion-up 0.2s ease-out",
             'wiggle-more': 'wiggleMore 1s ease-in-out infinite',
+            'fade-down': 'fade-down 0.5s ease-in-out',
           },
       }
    },
