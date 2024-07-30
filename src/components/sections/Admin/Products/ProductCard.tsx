@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import Image from 'next/image'
 import { Pencil } from 'lucide-react'
+import Image from 'next/image'
+import { FC } from 'react'
 import ReusableSheet from '../Sheet/ReusableSheet'
 
 import { useTranslations } from 'next-intl'
@@ -10,8 +10,9 @@ interface IProdCard {
   prod: any
 }
 const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
-  const t = useTranslations('Admin.Products')
-  console.log(prod)
+  const t = useTranslations("Admin.Products");
+  
+
   return (
     <div className="flex h-[273px] w-[196px] items-center justify-center rounded-[5px]  bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">
       <div className="flex h-[90%] w-[90%] flex-col justify-between">
