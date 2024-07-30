@@ -1,39 +1,38 @@
-"use client";
-import { useTranslations } from "next-intl";
-interface IAdminRestaurants {}
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
-import { Search } from "lucide-react";
-import { Input } from "@ui/input";
-import { useEffect, useState } from "react";
-import { getListDocuments } from "../../../../../utls/functions";
-import { collections } from "@libs/appwrite/config";
+'use client'
+import { useTranslations } from 'next-intl'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select'
+import { Search } from 'lucide-react'
+import { Input } from '@ui/input'
+import { useEffect, useState } from 'react'
+import { getListDocuments } from '../../../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
 
 interface IProducts {
-  setSelected?: React.Dispatch<React.SetStateAction<string>>;
-  setSearchValue?: React.Dispatch<React.SetStateAction<string>>;
+  setSelected?: React.Dispatch<React.SetStateAction<string>>
+  setSearchValue?: React.Dispatch<React.SetStateAction<string>>
 }
 
 const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JSX.Element => {
-  const [restaurants, setRestaurants] = useState([]);
-  const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`);
-  const t2 = useTranslations(`Header`);
-  const [open, setOpen] = useState(true);
+  const [restaurants, setRestaurants] = useState([])
+  const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`)
+  const t2 = useTranslations(`Header`)
+  const [open, setOpen] = useState(true)
 
   useEffect(() => {
-    (async () => {
-      const res = await getListDocuments(collections.restaurantsId);
-      setRestaurants(res.documents);
-    })();
-  }, []);
+    ;(async () => {
+      const res = await getListDocuments(collections.restaurantsId)
+      setRestaurants(res.documents)
+    })()
+  }, [])
 
   return (
-    <div className="flex items-center justify-center gap-[15px]">
+    <div className="flex items-center  gap-[15px]">
       <Select onValueChange={setSelected}>
         <SelectTrigger className="w-[180px] border-none bg-[#5A5B70] text-white">
           <SelectValue placeholder="Restaurant Type" />
         </SelectTrigger>
         <SelectContent className="bg-[#5A5B70] text-white">
-          <SelectItem value={"All"}>All</SelectItem>
+          <SelectItem value={'All'}>All</SelectItem>
 
           {restaurants?.map((restaurant: any) => (
             <SelectItem key={restaurant.$id} value={restaurant.$id}>
@@ -48,7 +47,7 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
           onClick={() => setOpen(false)}
         >
           <>
-            <Search size={20} /> {t2("search")}
+            <Search size={20} /> {t2('search')}
           </>
         </div>
       ) : (
@@ -60,7 +59,7 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default AdminProducts;
+export default AdminProducts

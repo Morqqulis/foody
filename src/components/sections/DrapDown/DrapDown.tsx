@@ -11,6 +11,8 @@ import { account } from '@libs/appwrite/config'
 // import { headerUserData } from "@data/data";
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface IHeaderUserData {
   id: number
@@ -47,10 +49,15 @@ const headerUserData: IHeaderUserData[] = [
 
 const DrapDown: React.FC = () => {
   const t = useTranslations('Header.dropdown')
+  const router = useRouter()
+  const [goTo, setGoTo] = useState('/user')
+  const handleClick = () => {
+    
+  }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className={'text-black'}>
+      <DropdownMenuTrigger asChild className={'text-black'}>
         <Image
           className={`h-auto min-w-[50px]`}
           src={'/Header/profileIcon.png'}

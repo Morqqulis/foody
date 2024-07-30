@@ -1,17 +1,15 @@
-import LanguageProvider from './LanguageProvider'
-import QueryProvider from './QueryProvider'
+import LanguageProvider from "./LanguageProvider";
 
 interface IProvider {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const Provider = ({ children }: IProvider): JSX.Element => {
   return (
-    <LanguageProvider>
-      {/* @ts-ignore */}
-      <QueryProvider>{children}</QueryProvider>
-    </LanguageProvider>
-  )
-}
+    <>
+      <LanguageProvider>{children}</LanguageProvider>
+    </>
+  );
+};
 
-export default Provider
+export default Provider;
