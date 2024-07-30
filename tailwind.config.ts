@@ -46,7 +46,11 @@ const config = {
                  transform: 'translateY(0)',
                  opacity: '1',
                }, 
-             }
+             },
+             wiggle: {
+               '0%, 100%': { transform: 'rotate(0deg)' },
+               '50%': { transform: 'rotate(15deg)' },
+             },
              
           },
           animation: {
@@ -54,6 +58,7 @@ const config = {
             "accordion-up": "accordion-up 0.2s ease-out",
             'wiggle-more': 'wiggleMore 1s ease-in-out infinite',
             'fade-down': 'fade-down 0.5s ease-in-out',
+            wiggle: 'wiggle 1s ease-in-out forwards',
           },
       }
    },
