@@ -15,8 +15,9 @@ const ProductsSection: FC = (): JSX.Element => {
 
   useEffect(() => {
     ;(async () => {
-      //   const res = await getListDocuments(collections.productsId)
+        // const res = await getListDocuments(collections.productsId)
       const data = await subscribeToCollection(collections.productsId, setProductsData)
+    //   console.log(data);
       setProductsData(data)
       setFilteredProducts(data)
     })()

@@ -1,17 +1,17 @@
-import { FC } from "react";
-import Image from "next/image";
-import { Pencil } from "lucide-react";
-import ReusableSheet from "../Sheet/ReusableSheet";
+import { FC } from 'react'
+import Image from 'next/image'
+import { Pencil } from 'lucide-react'
+import ReusableSheet from '../Sheet/ReusableSheet'
 
-import { useTranslations } from "next-intl";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import { useTranslations } from 'next-intl'
+import DeleteModal from '../DeleteModal/DeleteModal'
 
 interface IProdCard {
-  prod: any;
+  prod: any
 }
 const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
-  const t = useTranslations("Admin.Products");
-
+  const t = useTranslations('Admin.Products')
+  console.log(prod)
   return (
     <div className="flex h-[273px] w-[196px] items-center justify-center rounded-[5px]  bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">
       <div className="flex h-[90%] w-[90%] flex-col justify-between">
@@ -23,7 +23,7 @@ const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
         </div>
 
         <div className="flex h-[10%] items-center justify-between">
-          <p className=" h-[21px] w-[50.77px]  text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
+          <p className=" h-[21px] w-[50.77px] text-[12px] font-medium leading-[24px] text-[#00B2A9]">${prod.price}</p>
           <div className="flex items-center gap-[10px]">
             <ReusableSheet trigger={<Pencil size={20} color="#00B2A9" className="cursor-pointer" />} whatIs="EditProduct" id={prod.$id} />
             <DeleteModal collectionId={prod.$collectionId} deletedId={prod.$id} />
@@ -31,7 +31,7 @@ const ProductCard: FC<IProdCard> = ({ prod }): JSX.Element => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard
