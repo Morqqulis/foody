@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { deleteImage, getDocuments, uploadImage } from '../../../utls/functions'
 import { readerFile } from '../../helper/helper'
+import Image from 'next/image'
 
 interface IProfileForm {}
 
@@ -62,9 +63,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
     }
 
     await databases.updateDocument(dbId, collections.userId, userId, updatedInfo)
-    const users = await getDocuments(collections.userId, userId)
   }
-
   return (
     <Form {...form}>
       <form className={`flex w-full flex-col`} onSubmit={form.handleSubmit(onSubmit)}>
@@ -76,8 +75,14 @@ const ProfileForm: React.FC = (): JSX.Element => {
               <FormLabel
                 className={`flex h-[145px] w-[145px] flex-col items-center justify-center gap-4 rounded-full bg-white text-center duration-300 hover:cursor-pointer hover:bg-gray-2`}
               >
-                <IconUpload />
-                <span>Upload</span>
+                {fileUrl ? (
+                  <Image src={fileUrl} alt="avatar" width={145} height={145} className="h-full w-full rounded-full" />
+                ) : (
+                  <>
+                    <IconUpload />
+                    <span>Upload</span>
+                  </>
+                )}
               </FormLabel>
               <FormControl>
                 <Input className={`hidden`} placeholder="Upload" type={'file'} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />

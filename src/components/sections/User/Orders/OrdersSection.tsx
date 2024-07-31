@@ -34,10 +34,9 @@ const OrdersSection: React.FC = (): JSX.Element => {
     setUserId(token || '')
 
     if (!token) return
-
     ;(async () => {
-      const user = await getDocuments(collections.userId, userId)
-
+      const user: any = await getDocuments(collections.userId, userId)
+      if (!user.orders) return
       const filteredOrders = user.orders.map((order: any) => {
         const { amount, phone, basket, address, payment, time } = JSON.parse(order.orderInfo)
 

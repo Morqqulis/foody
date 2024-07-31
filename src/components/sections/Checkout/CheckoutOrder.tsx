@@ -14,7 +14,7 @@ const CheckoutOrder: React.FC<IProps> = ({ basket }): JSX.Element => {
       <h2 className={` pr-10 text-center text-lg font-medium`}>Your Order</h2>
       <div className={`flex h-full grow flex-col gap-2 overflow-auto pr-10`}>
         {basket.length > 0 &&
-          basket.map((item) => (
+          basket.map((item:any) => (
             <div className={`flex items-start justify-between gap-4`} key={item.$id}>
               <div className={`flex items-center gap-2 text-sm font-normal`}>
                 <span className={`text-lg font-medium`}>{item.quantity} x</span>
