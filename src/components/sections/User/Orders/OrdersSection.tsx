@@ -28,6 +28,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu
 
   const t = useTranslations('Admin.Products.Modal')
+  const t2 = useTranslations('OrdersSection')
 
   useEffect(() => {
     const token = localStorage.getItem('userId')
@@ -35,8 +36,10 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
     if (!token) return
     ;(async () => {
-      const user: any = await getDocuments(collections.userId, userId)
+      const user:any = await getDocuments(collections.userId, userId)
+
       if (!user.orders) return
+
       const filteredOrders = user.orders.map((order: any) => {
         const { amount, phone, basket, address, payment, time } = JSON.parse(order.orderInfo)
 
@@ -89,7 +92,9 @@ const OrdersSection: React.FC = (): JSX.Element => {
             <Content className="shadow-custom h-fit w-[79px] bg-white">
               <OrdersModal
                 trigger={
-                  <div className="w-[79px] cursor-pointer py-2 text-center  font-bold text-green-600 outline-none hover:bg-slate-300">Show</div>
+                  <div className="w-[79px] cursor-pointer py-2 text-center font-bold text-green-600 outline-none hover:bg-slate-300">
+                    {t2('show')}
+                  </div>
                 }
                 header={basketHeader}
                 body={updatesBasket}
@@ -126,7 +131,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   return (
     <div className="flex h-full min-h-[500px] flex-col gap-7 bg-[#F3F4F6] p-8">
-      <h2 className="font-mukta text-[30px] font-semibold leading-[24px] tracking-[3%] text-black">Your Orders</h2>
+      <h2 className="font-mukta text-[30px] font-semibold leading-[24px] tracking-[3%] text-black">{t2('yourOrders')}</h2>
       <Table headers={headers} body={filteredData} />
       {orders.length > perPage && (
         <UserPagination

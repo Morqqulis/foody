@@ -53,7 +53,7 @@ const Food: React.FC = (): JSX.Element => {
   console.log(offers)
 
   return (
-    <section className={`py-20`}>
+    <section className="py-20">
       <div className="container">
         <div className={`flex flex-col gap-12`}>
           {offers.map((item, index) => {
@@ -68,7 +68,7 @@ const Food: React.FC = (): JSX.Element => {
 
                 <div className={`relative h-[550px] w-[450px] rounded-[50px] bg-mainRed ${index % 2 === 0 ? 'rotate-[23deg] ' : 'rotate-[-23deg] '}`}>
                   <Image
-                    className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 rotate-[-25deg]"
+                    className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 rotate-[-25deg] animate-wiggle-more"
                     src={image}
                     alt={title}
                     width={630}

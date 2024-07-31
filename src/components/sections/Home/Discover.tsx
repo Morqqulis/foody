@@ -13,7 +13,7 @@ const Discover: React.FC = (): JSX.Element => {
   const t = useTranslations('Home.Discover')
 
   return (
-    <section className={`translate-y-[90px] ${path === '/' ? 'block' : 'hidden'}`}>
+    <section className={`translate-y-[90px] ${path === '/' ? 'block animate-fade-down' : 'hidden'}`}>
       <div className="container">
         <div className={`mx-auto flex max-w-[1060px] items-center justify-between rounded-[50px] bg-[#272727] px-11 py-[72px]`}>
           <Image className={`max-w-full`} src={'/Home/Discover/1.png'} alt={'Food image'} width={200} height={200} />

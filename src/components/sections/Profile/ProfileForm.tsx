@@ -5,27 +5,30 @@ import { collections, databases, dbId } from '@libs/appwrite/config'
 import { Button } from '@ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
 import { Input } from '@ui/input'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { deleteImage, getDocuments, uploadImage } from '../../../utls/functions'
 import { readerFile } from '../../helper/helper'
-import Image from 'next/image'
 
 interface IProfileForm {}
 
 const ProfileSchema = z.object({
   avatar: z.any(),
-  contacts: z.string({ message: 'Please enter your contact' }),
-  email: z.string({ message: 'Please enter your email' }),
-  userName: z.string({ message: 'Please enter your username' }),
-  fullName: z.string({ message: 'Please enter your full name' }),
-  address: z.string({ message: 'Please enter your address' })
-})
+  contacts: z.string().nonempty({ message: "Please enter your contact" }),
+  email: z.string().email({ message: "Please enter a valid email" }),
+  userName: z.string().nonempty({ message: "Please enter your username" }),
+  fullName: z.string().nonempty({ message: "Please enter your full name" }),
+  address: z.string().nonempty({ message: "Please enter your address" }),
+});
 
 const ProfileForm: React.FC = (): JSX.Element => {
-  const [file, setFile] = React.useState<File | null>(null)
-  const [fileUrl, setFileUrl] = React.useState<string | null>(null)
+    const t = useTranslations("ProfileForm");
+  const [file, setFile] = React.useState<File | null>(null);
+  const [fileUrl, setFileUrl] = React.useState<string | null>(null);
 
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
@@ -40,9 +43,10 @@ const ProfileForm: React.FC = (): JSX.Element => {
   })
 
   async function onSubmit(values: z.infer<typeof ProfileSchema>) {
-    const userId = localStorage.getItem('userId')
-    const user = await getDocuments(collections.userId, userId)
-    const userCurrentInfo = JSON.parse(user.userInfo)
+    const userId = localStorage.getItem("userId");
+    if (!userId) return;
+    const user = await getDocuments(collections.userId, userId);
+    const userCurrentInfo = JSON.parse(user.userInfo);
 
     if (file) {
       const url = userCurrentInfo.avatarId
@@ -54,7 +58,7 @@ const ProfileForm: React.FC = (): JSX.Element => {
       email: values.email || userCurrentInfo.email,
       userInfo: JSON.stringify({
         address: values.address || userCurrentInfo.address,
-        avatar: image.href || userCurrentInfo.avatar,
+        avatar: image?.href || userCurrentInfo.avatar,
         avatarId: imageId || userCurrentInfo.avatarId,
         contacts: values.contacts || userCurrentInfo.contacts,
         fullName: values.fullName || userCurrentInfo.fullName,
@@ -80,12 +84,12 @@ const ProfileForm: React.FC = (): JSX.Element => {
                 ) : (
                   <>
                     <IconUpload />
-                    <span>Upload</span>
+                    <span>{t("upload")}</span>
                   </>
                 )}
               </FormLabel>
               <FormControl>
-                <Input className={`hidden`} placeholder="Upload" type={'file'} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />
+                <Input className={`hidden`} placeholder={t("upload")} type={"file"} {...field} onChange={(e) => readerFile(e, setFile, setFileUrl)} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -97,12 +101,12 @@ const ProfileForm: React.FC = (): JSX.Element => {
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
-                <FormLabel className={`font-semibold text-gray-2`}>Contact</FormLabel>
-                <FormControl className={``}>
+                <FormLabel className={`font-semibold text-gray-2`}>{t("contact")}</FormLabel>
+                <FormControl>
                   <Input
-                    className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder="+994"
-                    type={'tel'}
+                    className={`px-5 py-[25px] placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
+                    placeholder={t("contactPlaceholder")}
+                    type={"tel"}
                     {...field}
                   />
                 </FormControl>
@@ -115,11 +119,11 @@ const ProfileForm: React.FC = (): JSX.Element => {
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
-                <FormLabel className={`font-semibold capitalize text-gray-2`}>Email</FormLabel>
-                <FormControl className={``}>
+                <FormLabel className={`font-semibold capitalize text-gray-2`}>{t("email")}</FormLabel>
+                <FormControl>
                   <Input
-                    className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder="rahimlisarkhan@gmail.com"
+                    className={`px-5 py-[25px] placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
+                    placeholder={t("emailPlaceholder")}
                     {...field}
                     type={'email'}
                   />
@@ -133,11 +137,11 @@ const ProfileForm: React.FC = (): JSX.Element => {
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
-                <FormLabel className={`font-semibold capitalize text-gray-2`}>username</FormLabel>
-                <FormControl className={``}>
+                <FormLabel className={`font-semibold capitalize text-gray-2`}>{t("username")}</FormLabel>
+                <FormControl>
                   <Input
-                    className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder="rahimlisarkhan"
+                    className={`px-5 py-[25px] placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
+                    placeholder={t("usernamePlaceholder")}
                     {...field}
                     type={'text'}
                   />
@@ -151,12 +155,12 @@ const ProfileForm: React.FC = (): JSX.Element => {
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
-                <FormLabel className={`font-semibold capitalize text-gray-2`}>address</FormLabel>
-                <FormControl className={``}>
+                <FormLabel className={`font-semibold capitalize text-gray-2`}>{t("address")}</FormLabel>
+                <FormControl>
                   <Input
-                    className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder="Ataturk 45 Ganclik Baku"
-                    type={'text'}
+                    className={`px-5 py-[25px] placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
+                    placeholder={t("addressPlaceholder")}
+                    type={"text"}
                     {...field}
                   />
                 </FormControl>
@@ -169,11 +173,11 @@ const ProfileForm: React.FC = (): JSX.Element => {
             control={form.control}
             render={({ field }) => (
               <FormItem className={`flex flex-col gap-1`}>
-                <FormLabel className={`font-semibold capitalize text-gray-2`}>full Name</FormLabel>
-                <FormControl className={``}>
+                <FormLabel className={`font-semibold capitalize text-gray-2`}>{t("fullName")}</FormLabel>
+                <FormControl>
                   <Input
                     className={`px-5 py-[25px] placeholder:text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder="Sarkhan Rahimli"
+                    placeholder={t("fullNamePlaceholder")}
                     {...field}
                   />
                 </FormControl>
@@ -186,23 +190,9 @@ const ProfileForm: React.FC = (): JSX.Element => {
             variant={'ghost'}
             type="submit"
           >
-            Save
+            {t("save")}
           </Button>
         </div>
-        {/* <FormField
-          control={form.control}
-          name="file"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>This is your public display name.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
       </form>
     </Form>
   )
