@@ -8,7 +8,7 @@ const BurgerMenu: React.FC = (): JSX.Element => {
       <SheetTrigger asChild className="md:hidden">
         <AlignJustify className="cursor-pointer text-white" />
       </SheetTrigger>
-      <SheetContent side={'left'} className="w-[50%] border-none bg-[#C74FEB]">
+      <SheetContent side={'left'} className="w-[80%] overflow-auto border-none bg-[#C74FEB]">
         <SheetHeader>
           <SheetClose>
             <SheetTitle className="flex items-center">

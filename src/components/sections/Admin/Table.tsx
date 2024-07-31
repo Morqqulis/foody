@@ -1,15 +1,15 @@
-"use client";
-import Image from "next/image";
+'use client'
+import Image from 'next/image'
 
 interface ITable {
-  headers: string[];
-  body: any[];
-  trigger?: any;
+  headers: string[]
+  body: any[]
+  trigger?: any
 }
 
 const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
   return (
-    <div className="w-full pt-10">
+    <div className="w-full pt-10 mmd:overflow-auto">
       <table className="min-w-full overflow-y-auto bg-gray-100 text-gray-800">
         <thead>
           <tr>
@@ -25,9 +25,9 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
             <tr key={Math.random() * 10000} className="text-center">
               {Object.entries(row).map(([key, value]) => (
                 <td key={Math.random() * 10000} className="border border-gray-200 px-4 py-2">
-                  {key === "image" ? (
+                  {key === 'image' ? (
                     <Image src={value as string} width={50} height={50} alt={key} />
-                  ) : key.toLocaleLowerCase() === "id" || key.toLocaleLowerCase() === "userid" ? (
+                  ) : key.toLocaleLowerCase() === 'id' || key.toLocaleLowerCase() === 'userid' ? (
                     <>
                       {value.toString().slice(0, 2)}***{value.toString().slice(-2)}
                     </>
@@ -43,7 +43,7 @@ const Table: React.FC<ITable> = ({ headers, body, trigger }): JSX.Element => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

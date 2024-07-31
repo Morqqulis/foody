@@ -20,7 +20,7 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
     <section>
       <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
       <div className="mt-12 flex">
-        <div className={`grid grid-cols-4 items-center !gap-6 `}>
+        <div className={`flex flex-wrap items-center !gap-6 mmd:justify-center `}>
           {restaurans?.map((restaurant) => <RestaurantCard key={restaurant.$id} prop={restaurant} />)}
         </div>
       </div>
