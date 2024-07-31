@@ -1,3 +1,5 @@
+'use client'
+
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu'
 import Image from 'next/image'
 import { collections, databases, dbId } from '@libs/appwrite/config'
@@ -8,6 +10,7 @@ interface IHeaderUserData {
   id: number
   path: string
 }
+
 const headerUserData: IHeaderUserData[] = [
   {
     id: 0,
@@ -34,6 +37,7 @@ const headerUserData: IHeaderUserData[] = [
 const DrapDown: React.FC = () => {
   const t = useTranslations('Header.dropdown')
   const router = useRouter()
+
   const handleClick = (path: string) => {
     const userId = localStorage.getItem('userId')
     if (path === '/') {
@@ -42,15 +46,14 @@ const DrapDown: React.FC = () => {
         localStorage.removeItem('userId')
       })()
     }
-
     router.push(path)
   }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className={'text-black'}>
+      <DropdownMenuTrigger asChild className="text-black">
         <Image
-          className={`h-auto min-w-[50px]`}
+          className="h-auto min-w-[50px] transition-transform duration-300 hover:animate-rotate-hover"
           src={'/Header/profileIcon.png'}
           width={60}
           height={40}
@@ -58,11 +61,11 @@ const DrapDown: React.FC = () => {
           style={{ width: '60px', height: '40px' }}
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={`flex flex-col px-5 py-5`}>
+      <DropdownMenuContent className="flex flex-col px-5 py-5 animate-fade-in-down">
         {headerUserData.map(({ id, path }) => (
           <DropdownMenuItem
             key={id}
-            className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black last:border-b-0"
+            className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black last:border-b-0 transition-colors duration-300 hover:bg-gray-200"
             onSelect={() => handleClick(path)}
           >
             {t(`${id}`)}
