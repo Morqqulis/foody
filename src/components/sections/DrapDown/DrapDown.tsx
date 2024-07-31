@@ -68,8 +68,6 @@ const DrapDown: React.FC = () => {
     }
   }, [userId])
 
-  console.log(fullName, avatar)
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={'mr-1 cursor-pointer text-black'}>

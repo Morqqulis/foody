@@ -53,14 +53,16 @@ const AsideElements: IAsideElements[] = [
     mt: 'mt-[20px] '
   }
 ]
-
-const AdminAside: React.FC = (): JSX.Element => {
+interface IAdminAside {
+  className?: string
+}
+const AdminAside: React.FC<IAdminAside> = ({ className }): JSX.Element => {
   const t = useTranslations('Admin.Aside.title')
   const pasthname = usePathname()
 
   return (
     <aside
-      className={`flex h-full min-h-[474px] max-h-[50%] w-full basis-[256px] flex-col items-center rounded-[14px] bg-[#C74FEB] py-[24px] mmd:hidden ${pasthname.startsWith('/admin/login') ? 'hidden' : 'flex'}`}
+      className={`flex h-full max-h-[50%] min-h-[474px] w-full basis-[256px] flex-col md:items-center rounded-[14px] bg-[#C74FEB] py-[24px] ${className} ${pasthname.startsWith('/admin/login') ? 'hidden' : 'flex'}`}
     >
       <nav>
         {AsideElements.map((element) => (
