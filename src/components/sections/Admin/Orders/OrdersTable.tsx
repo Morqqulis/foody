@@ -6,7 +6,7 @@ import DeleteModal from '../DeleteModal/DeleteModal'
 import { useEffect, useState } from 'react'
 import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
-import OrdersModal from '@sections/User/Orders/OrdersModal'
+import OrdersModal from '@sections/Orders/OrdersModal'
 import Pagination from '@sections/Paginations/AdminPagination'
 interface IOrdersTable {}
 

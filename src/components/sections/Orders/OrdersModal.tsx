@@ -1,6 +1,6 @@
 import Table from '@sections/Admin/Table'
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@ui/dialog'
-import UserPagination from '../../Paginations/UserPagination'
+import UserPagination from '../Paginations/UserPagination'
 import { useState } from 'react'
 
 interface IOrdersModal {

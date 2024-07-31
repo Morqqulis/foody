@@ -38,8 +38,6 @@ const LoginNavigation: React.FC = (): JSX.Element => {
           <LoginForm name="register" />
         </TabsContent>
       </Tabs>
-
-      <Toaster />
     </>
   )
 }

@@ -50,8 +50,6 @@ const Food: React.FC = (): JSX.Element => {
     })()
   }, [])
 
-  console.log(offers)
-
   return (
     <section className="py-20">
       <div className="container">

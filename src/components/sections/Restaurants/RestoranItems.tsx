@@ -4,6 +4,7 @@ import Cart from './Cart'
 import ProductList from './ProductList'
 import { collections, databases, dbId, ID } from '@libs/appwrite/config'
 import { getDocuments } from '../../../utls/functions'
+import LoadingAnimation from '@ui/LoadingAnimation'
 
 interface IproductsSection {
   restId: string
@@ -17,6 +18,7 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   useEffect(() => {
     const token = localStorage.getItem('userId')
     setUserId(token || '')
+
     if (!userId) return
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
@@ -32,8 +34,9 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   }, [userId])
 
   useEffect(() => {
-    if (basket&&basketId) {
+    if (basket && userId) {
       const strBasket = JSON.stringify(basket)
+
       ;(async () => {
         if (basketId) {
           await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket })

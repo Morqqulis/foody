@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from './Scroll.module.css'
 import { getDocuments } from '../../../utls/functions'
+import { toast } from '@ui/use-toast'
 
 interface CartItem {
   $collectionId: string
@@ -44,11 +45,15 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
   }, [restId])
 
   const addToBasket = (product: CartItem) => {
-    setBasket((prev: any) =>
-      prev?.some((item: any) => item.$id === product.$id)
-        ? prev.map((item: any) => (item.$id === product.$id ? { ...item, quantity: item.quantity + 1 } : item))
-        : [...prev, { ...product, quantity: 1 }]
-    )
+    if (localStorage.getItem('userId')) {
+      setBasket((prev: any) =>
+        prev?.some((item: any) => item.$id === product.$id)
+          ? prev.map((item: any) => (item.$id === product.$id ? { ...item, quantity: item.quantity + 1 } : item))
+          : [...prev, { ...product, quantity: 1 }]
+      )
+    } else {
+      toast({ title: 'Sign In First', variant: 'destructive' })
+    }
   }
 
   return (
@@ -60,7 +65,7 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
             products.map((product: any) => (
               <div
                 key={product.$id}
-                className="flex items-center justify-between rounded border-y-2 border-[#e0e0e0] bg-white p-4 shadow duration-300 hover:shadow-xl hover:shadow-mainRed/30 transition-shadow"
+                className="flex items-center justify-between rounded border-y-2 border-[#e0e0e0] bg-white p-4 shadow transition-shadow duration-300 hover:shadow-xl hover:shadow-mainRed/30"
               >
                 <div className="flex items-center">
                   <Image className="h-20 w-20 rounded-lg" src={product.image} alt={product.name} width={80} height={80} />
