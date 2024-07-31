@@ -68,7 +68,7 @@ const Food: React.FC = (): JSX.Element => {
 
                 <div className={`relative h-[550px] w-[450px] rounded-[50px] bg-mainRed ${index % 2 === 0 ? 'rotate-[23deg] ' : 'rotate-[-23deg] '}`}>
                   <Image
-                    className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 rotate-[-25deg] animate-wiggle-more"
+                    className="animate-wiggle-more absolute top-1/4 h-auto w-full translate-x-[-50%] translate-y-[-50%]"
                     src={image}
                     alt={title}
                     width={630}
