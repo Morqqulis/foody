@@ -17,6 +17,8 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
   const path = usePathname()
   const t = useTranslations('Header')
+  const userIdLocal = localStorage.getItem('userId')
+  
 
   return (
     <header className={`${className || ''} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
@@ -32,14 +34,16 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
             {path === '/login' && <HeaderLanguages />}
             <div className={`flex w-full items-center justify-end gap-2.5 ${path == '/login' && 'hidden'}`}>
               <HeaderLanguages />
+              {
+                !userIdLocal ? 
               <Link
                 className={`flex w-full max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
                 href={'/login'}
               >
                 {t('signUp')}
-              </Link>
-              <HeaderBasket />
-              <DrapDown />
+              </Link> : <><HeaderBasket /> <DrapDown /></>
+              }
+              
             </div>
           </nav>
         </div>

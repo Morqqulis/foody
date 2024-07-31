@@ -5,6 +5,9 @@ import { MoveRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { getListDocuments } from '../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
+import { Link } from '@settings/navigation'
 
 interface Isearchbar {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -13,11 +16,24 @@ interface Isearchbar {
 
 const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element => {
   const [filteredValues, setFilteredValues] = useState([])
+  const [restaurants, setrestaurants] = useState([])
+
+  useEffect(()=>{
+    (async()=>{
+      const {documents} = await getListDocuments(collections.restaurantsId)
+      setrestaurants(documents)
+    })()
+  },[])
+  
 
   useEffect(() => {
-    const filteredValue = headerModalData.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()))
+    const filteredValue = restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(value.toLowerCase()))
     setFilteredValues(filteredValue)
-  }, [value])
+  }, [value, restaurants])
+
+  
+  
+
 
   const t = useTranslations('Header')
   return (
@@ -25,24 +41,24 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
       className={`absolute right-[350px] top-20 z-10 box-border flex h-[319px]  w-[509px] flex-col justify-between rounded-lg border border-[#f7f6fc] bg-white shadow-xl`}
     >
       <div className="h-[80%] overflow-auto">
-        {filteredValues.map((product) => (
+        {filteredValues.map((restaurant) => (
           <div
-            key={product.id}
+            key={restaurant.$id}
             onClick={() => setShowModal(false)}
             className="flex h-[25%] cursor-pointer gap-[40px] border-b-[1px] p-[24px] hover:bg-slate-300"
           >
-            <Image src={product.img_url} alt="image" width={59} height={37} className="h-[37px] w-[59px] rounded-lg" />
+            <Image src={restaurant.image} alt="image" width={59} height={37} className="h-[37px] w-[59px] rounded-lg" />
             <div className="flex flex-col">
-              <h2 className="text-[14px] font-bold leading-[16px] text-[#2B3043]">{product.name}</h2>{' '}
-              <p className=" text-[14px] leading-[16px]  text-[#2B3043]">{product.description}</p>
+              <h2 className="text-[14px] font-bold leading-[16px] text-[#2B3043]">{restaurant.name}</h2>{' '}
+              <p className=" text-[14px] leading-[16px]  text-[#2B3043]">{restaurant.cuisine}</p>
             </div>
           </div>
         ))}
       </div>
       <div className="flex h-[20%] items-center justify-center">
-        <Button onClick={() => setShowModal(false)} variant="ghost" className="flex items-center gap-1 text-lg">
+        <Link onClick={() => setShowModal(false)} href='/restaurants' className="flex items-center gap-1 text-lg">
           {t('more')} <MoveRight />
-        </Button>
+        </Link>
       </div>
     </div>
   )
