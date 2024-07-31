@@ -1,7 +1,7 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { collections, databases, dbId, ID } from '@libs/appwrite/config'
-import DoneIconComponent from '@sections/Checkout/LottieAnimation'
+import DoneIconComponent from './LottieAnimation'
 import { Button } from '@ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
 import { Input } from '@ui/input'
