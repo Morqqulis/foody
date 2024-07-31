@@ -55,7 +55,7 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
     <div className="basis-3.5/6 w-full">
       <div className="mr-6 mt-4 flex-1 bg-gray-100 p-10">
         <h2 className="mb-6 text-center text-2xl font-semibold text-gray-950">{t('title')}</h2>
-        <div className={`${styles.customScrollbar} h-[60vh] space-y-4 overflow-auto`}>
+        <div className={`${styles.customScrollbar} h-[60vh] space-y-4 overflow-y-auto`}>
           {products.length > 0 &&
             products.map((product: any) => (
               <div

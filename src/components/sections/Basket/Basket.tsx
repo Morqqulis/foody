@@ -1,49 +1,51 @@
-'use client';
-import { collections, databases, dbId } from '@libs/appwrite/config';
-import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { getDocuments } from '../../../utls/functions';
-import styles from './basket.module.css';
+'use client'
+import { collections, databases, dbId } from '@libs/appwrite/config'
+import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { getDocuments } from '../../../utls/functions'
+import styles from './basket.module.css'
+import LoadingAnimation from '@ui/LoadingAnimation'
 const Basket = () => {
-  const [basket, setBasket] = useState([]);
-  const [basketId, setBasketId] = useState('');
-  const [userId, setUserId] = useState('');
-  const t = useTranslations('Basket');
+  const [basket, setBasket] = useState([])
+  const [basketId, setBasketId] = useState('')
+  const [userId, setUserId] = useState('')
+  const t = useTranslations('Basket')
   useEffect(() => {
-    const token = localStorage.getItem('userId');
-    setUserId(token || '');
-    if (!userId) return;
-    (async () => {
-      const user = await getDocuments(collections.userId, userId);
-      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id);
+    const token = localStorage.getItem('userId')
+    setUserId(token || '')
+    if (!userId) return
+    ;(async () => {
+      const user = await getDocuments(collections.userId, userId)
+      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id)
       if (basketIdinUser) {
-        setBasketId(basketIdinUser);
-        const prevBasket = user.basket[0].productsList;
-        setBasket(JSON.parse(prevBasket));
+        setBasketId(basketIdinUser)
+        const prevBasket = user.basket[0].productsList
+        setBasket(JSON.parse(prevBasket))
       }
-    })();
-  }, [userId]);
+    })()
+  }, [userId])
   useEffect(() => {
     if (basket.length > 0) {
-      const strBasket = JSON.stringify(basket);
-      (async () =>
-        await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket }))();
+      const strBasket = JSON.stringify(basket)
+      ;(async () => await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket }))()
     }
-  }, [basket, basketId]);
+  }, [basket, basketId])
   const incrementQuantity = (id: string) => {
-    setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)));
-  };
+    setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)))
+  }
   const decrementQuantity = (id: string) => {
-    setBasket((prevItems) => prevItems.map((item) => (item.$id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item)));
-  };
+    setBasket((prevItems) => prevItems.map((item) => (item.$id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item)))
+  }
   const handleDelete = (id: string) => {
-    setBasket((prevItems) => prevItems.filter((item) => item.$id !== id));
-  };
-  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
-  return (
+    setBasket((prevItems) => prevItems.filter((item) => item.$id !== id))
+  }
+  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
+  return basket.length === 0 ? (
+    <LoadingAnimation className="" width={200} height={200} />
+  ) : (
     <section>
       <div className="h-full w-full bg-gray-100">
         <div className="flex min-h-[735px] w-full flex-col p-10">
@@ -75,21 +77,21 @@ const Basket = () => {
                   <div className="flex flex-col items-center">
                     <button
                       onClick={() => incrementQuantity(item.$id)}
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-200"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-300"
                     >
                       <Plus className="h-5 w-5" />
                     </button>
                     <span className="px-4">{item.quantity}</span>
                     <button
                       onClick={() => decrementQuantity(item.$id)}
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-200"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-300"
                     >
                       <Minus className="h-5 w-5" />
                     </button>
                   </div>
                   <button
                     onClick={() => handleDelete(item.$id)}
-                    className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-200"
+                    className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-300"
                   >
                     <Trash2 className="h-5 w-5 text-red-600 hover:text-red-700" />
                   </button>
@@ -97,13 +99,16 @@ const Basket = () => {
               </div>
             ))}
           </div>
-          <Link href="/user/checkout" className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md transition-transform hover:scale-105">
+          <Link
+            href="/user/checkout"
+            className="mt-4 flex items-center justify-between rounded-full bg-red-600 p-4 shadow-md transition-transform hover:scale-105"
+          >
             <div className="rounded-lg bg-red-600 px-4 py-2 text-white">{t('checkout')}</div>
             <span className="rounded-3xl bg-white px-4 py-2 text-xl font-semibold text-red-600">$ {totalAmount.toFixed(2)}</span>
           </Link>
         </div>
       </div>
     </section>
-  );
-};
-export default Basket;
+  )
+}
+export default Basket
