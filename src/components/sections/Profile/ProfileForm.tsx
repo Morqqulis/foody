@@ -92,7 +92,7 @@ const ProfileForm: FC = (): JSX.Element => {
               >
                 {fileUrl ? (
                   <Image src={fileUrl} alt="avatar" width={145} height={145} className="h-full w-full rounded-full" />
-                ) : user ? (
+                ) :  user?.avatar ? (
                   <>
                     <Image src={user.avatar} alt="avatar" width={145} height={145} className="h-full w-full rounded-full" />
                   </>
