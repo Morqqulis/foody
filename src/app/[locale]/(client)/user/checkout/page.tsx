@@ -1,4 +1,3 @@
-import CheckoutHome from '@sections/Checkout/CheckoutHome'
 import { NextPage } from 'next'
 
 interface IUserCheckoutPage {}
@@ -6,7 +5,7 @@ interface IUserCheckoutPage {}
 const UserCheckoutPage: NextPage = (): JSX.Element => {
   return (
     <main>
-      <CheckoutHome />
+      {/* <CheckoutHome /> */}
     </main>
   )
 }
