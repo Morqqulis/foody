@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 export default function RootLayout({ children, params: { locale } }: IRootLayout) {
   return (
     <html lang={locale}>
-      <body className={roboto.className}>
+      <body className={`${roboto.className}`}>
         <Provider>
           <div className={`wrapper`}>
             <Header />
