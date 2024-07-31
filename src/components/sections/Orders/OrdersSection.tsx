@@ -26,6 +26,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
   const [perPage, setPerPage] = useState(5)
   const [orders, setOrders] = useState([])
   const [userId, setUserId] = useState('')
+  const [loading, setloading] = useState(true)
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu
 
   const t = useTranslations('Admin.Products.Modal')
@@ -124,14 +125,17 @@ const OrdersSection: React.FC = (): JSX.Element => {
       )
     }
   })
-  console.log(filteredData)
 
   const deleteOrder = async (id: string) => {
     await deleteDocument(collections.ordersId, id)
     setOrders((prev) => prev.filter((order) => order.id !== id))
   }
 
-  return !filteredData.length ? (
+  useEffect(() => {
+    setloading(false)
+  },[filteredData])
+  
+  return loading ? (
     <LoadingAnimation width={150} height={150} />
   ) : (
     <div className="flex h-full min-h-[500px] flex-col gap-7 bg-[#F3F4F6] p-8">
