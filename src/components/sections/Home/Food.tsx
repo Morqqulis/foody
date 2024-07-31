@@ -1,6 +1,10 @@
+'use client'
 import Title from '@ui/Title'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { getListDocuments } from '../../../utls/functions'
+import { collections } from '@libs/appwrite/config'
 
 interface IFoodCardsData {
   id: number
@@ -13,21 +17,21 @@ interface IFoodCardsData {
 const FoodCardsData: IFoodCardsData[] = [
   {
     id: 0,
-    imagePath: '/Home/Food/1.jpg',
+    imagePath: '/Home/Food/1.png',
     imageWidth: 637,
     imageHeight: 677,
     alt: 'food image'
   },
   {
     id: 1,
-    imagePath: '/Home/Food/2.jpg',
+    imagePath: '/Home/Food/2.png',
     imageWidth: 620,
     imageHeight: 654,
     alt: 'food image'
   },
   {
     id: 2,
-    imagePath: '/Home/Food/3.jpg',
+    imagePath: '/Home/Food/3.png',
     imageWidth: 668,
     imageHeight: 681,
     alt: 'food image'
@@ -35,27 +39,45 @@ const FoodCardsData: IFoodCardsData[] = [
 ]
 
 const Food: React.FC = (): JSX.Element => {
+  const [offers, setOffers] = useState([])
   const t = useTranslations('Home.Food')
+
+  useEffect(() => {
+    ;(async () => {
+      const { documents } = await getListDocuments(collections.offersId)
+      const data = documents.map((offer) => ({ ...JSON.parse(offer.offer), id: offer.$id }))
+      setOffers(data)
+    })()
+  }, [])
+
+  console.log(offers)
 
   return (
     <section className={`py-20`}>
       <div className="container">
         <div className={`flex flex-col gap-12`}>
-          {FoodCardsData.map((item) => (
-            <div className={`flex items-start justify-between gap-8 even:flex-row-reverse`} key={item.id}>
-              <div>
-                <Title
-                  className={`mb-[30px] max-w-[653px] text-balance text-[50px] font-black leading-[70px]`}
-                  tag={'h3'}
-                  text={t(`titles.${item.id}`)}
-                />
-                <p className={`max-w-[500px] text-[22px] leading-[30px]`}>{t(`texts.${item.id}`)}</p>
+          {offers.map((item, index) => {
+            const { id, title, description, image } = item
+
+            return (
+              <div className={`flex items-start justify-between gap-8 even:flex-row-reverse`} key={id}>
+                <div>
+                  <Title className={`mb-[30px] max-w-[653px] text-balance text-[50px] font-black leading-[70px]`} tag={'h3'} text={title} />
+                  <p className={`max-w-[500px] text-[22px] leading-[30px]`}>{description}</p>
+                </div>
+
+                <div className={`relative h-[550px] w-[450px] rounded-[50px] bg-mainRed ${index % 2 === 0 ? 'rotate-[23deg] ' : 'rotate-[-23deg] '}`}>
+                  <Image
+                    className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 rotate-[-25deg]"
+                    src={image}
+                    alt={title}
+                    width={630}
+                    height={650}
+                  />
+                </div>
               </div>
-              <div className={``}>
-                <Image src={item.imagePath} alt={item.alt} width={item.imageWidth} height={item.imageHeight} />
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
