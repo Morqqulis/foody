@@ -42,8 +42,8 @@ const DrapDown: React.FC = () => {
   const [userId, setUserId] = useState('')
 
   useEffect(() => {
-    const userIdLocal = localStorage.getItem('userId')
-    setUserId(userIdLocal)
+    const token = localStorage.getItem('userId')
+    if (token != '') setUserId(token)
   }, [])
 
   const handleClick = (path: string) => {
