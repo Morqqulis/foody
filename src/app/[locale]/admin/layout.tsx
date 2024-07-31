@@ -13,7 +13,7 @@ const AdminLayout: React.FC = ({ children, params: { locale } }: IAdminLayout) =
     <div className={`wrapper bg-[#1E1E30] `}>
       <div className="container">
         <AdminHeader />
-        <div className={`grid h-full min-h-[calc(100vh-120px)] grid-cols-[256px_1fr] items-start gap-4`}>
+        <div className={`md:grid h-full min-h-[calc(100vh-120px)] md:grid-cols-[256px_1fr] items-start gap-4`}>
           <AdminAside />
           {children}
         </div>
