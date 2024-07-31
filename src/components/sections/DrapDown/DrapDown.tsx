@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu'
 import Image from 'next/image'
 import { collections, databases, dbId } from '@libs/appwrite/config'
@@ -37,10 +37,15 @@ const headerUserData: IHeaderUserData[] = [
 const DrapDown: React.FC = () => {
   const t = useTranslations('Header.dropdown')
   const router = useRouter()
-  const [fullName, setFullName] = useState("")
-  const [avatar, setAvatar] = useState("")
+  const [fullName, setFullName] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [userId, setUserId] = useState('')
 
-  const userId = localStorage.getItem('userId')
+  useEffect(() => {
+    const userIdLocal = localStorage.getItem('userId')
+    setUserId(userIdLocal)
+  }, [])
+
   const handleClick = (path: string) => {
     if (path === '/') {
       ;(async () => {
@@ -52,34 +57,36 @@ const DrapDown: React.FC = () => {
     router.push(path)
   }
 
-  useEffect(()=>{
-    if(userId){
-      (async()=>{
+  useEffect(() => {
+    if (userId) {
+      ;(async () => {
         const user = await getDocuments(collections.userId, userId)
         const userAllData = JSON.parse(user.userInfo)
         setFullName(userAllData.fullName)
         setAvatar(userAllData.avatar)
       })()
     }
-  },[userId])
+  }, [userId])
 
-  console.log(fullName, avatar);
-  
+  console.log(fullName, avatar)
+
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className={'text-black mr-1 cursor-pointer'}>
-        {avatar ? 
-        <Image
-          className={`h-auto min-w-10 rounded-full`}
-          src={avatar}
-          width={40}
-          height={40}
-          alt="Icon"
-          style={{ width: '40px', height: '40px' }}
-        /> : <div className='w-10 h-10 rounded-full bg-mainRed flex justify-center items-center '>
-          <p className=' font-bold text-2xl text-white'>{fullName.charAt(0).toUpperCase()}</p>
-        </div>
-        }
+      <DropdownMenuTrigger asChild className={'mr-1 cursor-pointer text-black'}>
+        {avatar ? (
+          <Image
+            className={`h-auto min-w-10 rounded-full`}
+            src={avatar}
+            width={40}
+            height={40}
+            alt="Icon"
+            style={{ width: '40px', height: '40px' }}
+          />
+        ) : (
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-mainRed ">
+            <p className=" text-2xl font-bold text-white">{fullName.charAt(0).toUpperCase()}</p>
+          </div>
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`flex flex-col px-5 py-5`}>
         {headerUserData.map(({ id, path }) => (
