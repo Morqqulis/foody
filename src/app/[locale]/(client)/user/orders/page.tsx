@@ -1,4 +1,4 @@
-import OrdersSection from '@sections/User/Orders/OrdersSection'
+import OrdersSection from '@sections/Orders/OrdersSection'
 import { NextPage } from 'next'
 interface IUserOrdersPage {}
 

@@ -3,6 +3,7 @@ import Footer from '@sections/Footer/Footer'
 import Header from '@sections/Header/Header'
 import { roboto } from '@settings/fonts'
 import '@styles/index.scss'
+import { Toaster } from '@ui/toaster'
 interface IRootLayout {
   params: { locale: string }
   children: React.ReactNode
@@ -18,6 +19,7 @@ export default function RootLayout({ children, params: { locale } }: IRootLayout
             <Header />
             {children}
             <Footer />
+            <Toaster/>
           </div>
         </Provider>
       </body>

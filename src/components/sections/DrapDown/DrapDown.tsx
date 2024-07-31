@@ -1,48 +1,32 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  // DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '../../ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu'
 import Image from 'next/image'
-import { account } from '@libs/appwrite/config'
-// import { headerUserData } from "@data/data";
-import Link from 'next/link'
+import { collections, databases, dbId } from '@libs/appwrite/config'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@settings/navigation'
 
 interface IHeaderUserData {
   id: number
-  //   label: string;
   path: string
 }
 const headerUserData: IHeaderUserData[] = [
   {
     id: 0,
-    // label: "Profile",
     path: '/user'
   },
   {
     id: 1,
-    // label: "Your Basket",
     path: '/user/basket'
   },
   {
     id: 2,
-    // label: "Your Orders",
     path: '/user/orders'
   },
   {
     id: 3,
-    // label: "Checkout",
     path: '/user/checkout'
   },
   {
     id: 4,
-    // label: "Logout",
     path: '/'
   }
 ]
@@ -50,9 +34,16 @@ const headerUserData: IHeaderUserData[] = [
 const DrapDown: React.FC = () => {
   const t = useTranslations('Header.dropdown')
   const router = useRouter()
-  const [goTo, setGoTo] = useState('/user')
-  const handleClick = () => {
-    
+  const handleClick = (path: string) => {
+    const userId = localStorage.getItem('userId')
+    if (path === '/') {
+      ;(async () => {
+        await databases.updateDocument(dbId, collections.userId, userId, { enter: false })
+        localStorage.removeItem('userId')
+      })()
+    }
+
+    router.push(path)
   }
 
   return (
@@ -68,11 +59,13 @@ const DrapDown: React.FC = () => {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`flex flex-col px-5 py-5`}>
-        {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-        {/* <DropdownMenuSeparator /> */}
         {headerUserData.map(({ id, path }) => (
-          <DropdownMenuItem key={id} className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black last:border-b-0">
-            <Link href={path}>{t(`${id}`)}</Link>
+          <DropdownMenuItem
+            key={id}
+            className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black last:border-b-0"
+            onSelect={() => handleClick(path)}
+          >
+            {t(`${id}`)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
