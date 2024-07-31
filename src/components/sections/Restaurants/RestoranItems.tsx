@@ -32,7 +32,7 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   }, [userId])
 
   useEffect(() => {
-    if (basket.length > 0) {
+    if (basket&&basketId) {
       const strBasket = JSON.stringify(basket)
       ;(async () => {
         if (basketId) {

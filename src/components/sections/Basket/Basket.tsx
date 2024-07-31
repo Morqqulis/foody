@@ -12,27 +12,35 @@ const Basket = () => {
   const [basket, setBasket] = useState([])
   const [basketId, setBasketId] = useState('')
   const [userId, setUserId] = useState('')
+  const [loading, setLoading] = useState(true)
   const t = useTranslations('Basket')
+
   useEffect(() => {
     const token = localStorage.getItem('userId')
+
     setUserId(token || '')
     if (!userId) return
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
       const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id)
+
       if (basketIdinUser) {
         setBasketId(basketIdinUser)
         const prevBasket = user.basket[0].productsList
         setBasket(JSON.parse(prevBasket))
       }
+
+      setLoading(false)
     })()
   }, [userId])
+
   useEffect(() => {
-    if (basket.length > 0) {
+    if (basket && basketId) {
       const strBasket = JSON.stringify(basket)
       ;(async () => await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket }))()
     }
   }, [basket, basketId])
+
   const incrementQuantity = (id: string) => {
     setBasket((prevItems) => prevItems.map((item) => (item.$id === id ? { ...item, quantity: item.quantity + 1 } : item)))
   }
@@ -43,7 +51,7 @@ const Basket = () => {
     setBasket((prevItems) => prevItems.filter((item) => item.$id !== id))
   }
   const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
-  return basket.length === 0 ? (
+  return loading ? (
     <LoadingAnimation className="" width={200} height={200} />
   ) : (
     <section>
