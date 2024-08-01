@@ -1,15 +1,14 @@
 'use client'
 
+import DrapDown from '@sections/DrapDown/DrapDown'
 import { Link, usePathname } from '@settings/navigation'
 import Logo from '@ui/Logo'
 import { useTranslations } from 'next-intl'
-import HeaderMenu from './HeaderMenu'
+import { useEffect, useState } from 'react'
+import HeaderBasket from './HeaderBasket'
 import HeaderInput from './HeaderInput'
 import HeaderLanguages from './HeaderLangs'
-import DrapDown from '@sections/DrapDown/DrapDown'
-import HeaderBasket from './HeaderBasket'
-import { useEffect, useState } from 'react'
-import { account } from '@libs/appwrite/config'
+import HeaderMenu from './HeaderMenu'
 interface IHeader {
   className?: string
 }
