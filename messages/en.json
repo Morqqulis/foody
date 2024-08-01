@@ -8,7 +8,7 @@
   },
 
   "Footer": {
-    "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
+    "text": "Follow Us: Stay updated with our latest promotions and restaurant partners on our social media channels",
     "popular": {
       "title": "Popular",
       "links": ["Programming", "Books for children", "Psychology", "Business"]
@@ -51,18 +51,19 @@
     },
     "Hero": {
       "title": "Our Food site makes it easy to find local food",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Welcome to our food delivery platform, where finding local cuisine has never been easier! We are dedicated to connecting you with the best eateries in your area, allowing you to explore a diverse array of culinary delights right at your fingertips.",
       "firstBtn": "Get Started",
       "secondBtn": "Order now"
     },
     "Features": {
       "title": "Features",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Wide variety of restaurants. We have an extensive list of local restaurants serving a variety of cuisines. From Italian pasta to Japanese sushi, you will always find something to suit your taste!",
       "cardsTitle": ["Discount Boucher", "Fresh healthy Food", "Fast Home Delivery"],
       "cardsText": [
-        "Lorem ipsum is placeholder  commonly used in the graphic",
-        "Lorem ipsum is placeholder  commonly used in the graphic",
-        "Lorem ipsum is placeholder  commonly used in the graphic"
+        "You just need to select a restaurant, a menu and place an order in just a few clicks.",
+        "Our team of couriers work quickly and efficiently to deliver your favorite meal as quickly as possible",
+        
+        "We value every customer and strive to make your experience as pleasant as possible."
       ]
     },
     "Food": {
@@ -75,12 +76,12 @@
     },
     "Popular": {
       "title": "Our Popular Update New Foods",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Discover the latest additions to our menu that are already winning hearts and taste buds across the city. We are excited to introduce a variety of new dishes that combine fresh ingredients, innovative flavors, and the culinary expertise of our partner restaurants",
       "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
       "cardsTexts": [
-        "Lorem ipsum is placeholder  commonly used in the graphic ",
-        "Lorem ipsum is placeholder  commonly used in the graphic ",
-        "Lorem ipsum is placeholder  commonly used in the graphic "
+        "Try our new range of gourmet burgers, featuring premium beef patties, fresh vegetables, and artisanal buns.",
+        "From spicy tuna to dragon rolls, each piece is crafted with the finest ingredients and meticulous attention to detail.",
+        "Enjoy rich, creamy sauces paired with perfectly cooked pasta. "
       ]
     },
     "Discover": {
@@ -99,7 +100,7 @@
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
-      "description": "Learn more about our company, our mission and values, and what sets us apart."
+      "description": "Welcome to Foody, your ultimate food delivery companion! Our mission is to connect you with the best local restaurants and make dining out an effortless experience from the comfort of your home.Our team works tirelessly to partner with the finest eateries in town, ensuring that you have access to a diverse menu that caters to every palate. With our easy-to-use app, you can browse menus, read reviews, and place your orders in just a few taps."
     }
   },
   "HowItWorks": {
