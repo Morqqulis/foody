@@ -36,7 +36,7 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
           <div className={`flex  items-center gap-2.5 ${path == '/login' && 'hidden'}`}>
             <HeaderLanguages />
 
-            {userId !== '' ? (
+            {!userId ? (
               <Link
                 className={`flex max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
                 href={'/login'}
