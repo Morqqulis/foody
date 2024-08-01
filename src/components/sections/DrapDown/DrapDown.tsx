@@ -1,15 +1,11 @@
 'use client'
-<<<<<<< HEAD
-
-=======
->>>>>>> 93cbe1371c578736d3674c91f18a2286dbbab3cb
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu'
-import Image from 'next/image'
 import { collections, databases, dbId } from '@libs/appwrite/config'
-import { useTranslations } from 'next-intl'
 import { useRouter } from '@settings/navigation'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { getDocuments } from '../../../utls/functions'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu'
 
 interface IHeaderUserData {
   id: number
@@ -90,11 +86,11 @@ const DrapDown: React.FC = () => {
           </div>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="flex flex-col px-5 py-5 animate-fade-in-down">
+      <DropdownMenuContent className="animate-fade-in-down flex flex-col px-5 py-5">
         {headerUserData.map(({ id, path }) => (
           <DropdownMenuItem
             key={id}
-            className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black last:border-b-0 transition-colors duration-300 hover:bg-gray-200"
+            className="w-full cursor-pointer border-b border-b-gray-7 py-2 text-base text-black transition-colors duration-300 last:border-b-0 hover:bg-gray-200"
             onSelect={() => handleClick(path)}
           >
             {t(`${id}`)}
