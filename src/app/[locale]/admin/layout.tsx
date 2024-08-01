@@ -13,8 +13,8 @@ const AdminLayout: React.FC = ({ children, params: { locale } }: IAdminLayout) =
     <div className={`wrapper bg-[#1E1E30] `}>
       <div className="container">
         <AdminHeader />
-        <div className={`grid h-full min-h-[calc(100vh-120px)] grid-cols-[256px_1fr] items-start gap-4`}>
-          <AdminAside />
+        <div className={`h-full min-h-[calc(100vh-120px)] items-start gap-4 md:grid md:grid-cols-[256px_1fr]`}>
+          <AdminAside className="mmd:hidden" />
           {children}
         </div>
       </div>
