@@ -3,21 +3,21 @@
   justify-content: space-between;
   margin: 100px 0;
   padding: 20px;
+}
 
-  .aboutUs {
-    width: 40%;
+.aboutUs {
+  width: 40%;
+}
 
-    .aboutUsTitle {
-      margin-bottom: 30px;
-      color: #000;
-      font-weight: bold;
-      font-size: 40px;
-    }
+.aboutUsTitle {
+  margin-bottom: 30px;
+  color: #000;
+  font-weight: bold;
+  font-size: 40px;
+}
 
-    .aboutUsText {
-      font-size: 20px;
-    }
-  }
+.aboutUsText {
+  font-size: 20px;
 }
 
 .foodItem {

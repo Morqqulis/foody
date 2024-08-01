@@ -22,7 +22,7 @@ const AboutUsPage = () => {
   const t = useTranslations('AboutUs.Metadata')
   return (
     <div className="container">
-      <div className={styles.aboutUsPage}>
+      <div className={`my-20 flex justify-between p-5`}>
         <div className={styles.aboutUs}>
           <h1 className={styles.aboutUsTitle}>{t('title')}</h1>
           <p className={styles.aboutUsText}>{t('description')}</p>
