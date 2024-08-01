@@ -30,7 +30,7 @@ const SheetOverlay = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Ove
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
 const sheetVariants = cva(
-  'fixed z-50 gap-4 bg-[#38394E] w-full max-w-[60%]  p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950',
+  'fixed z-50 gap-4 bg-[#38394E] w-full md:max-w-[60%]  p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950',
   {
     variants: {
       side: {
@@ -54,7 +54,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
       <SheetOverlay />
       <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), (className = 'flex flex-col gap-2'), className)} {...props}>
         {children}
-        <SheetPrimitive.Close className="absolute left-[-50px] top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800">
+        <SheetPrimitive.Close className="absolute top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800 md:left-[-50px] mmd:right-[50px]">
           <X className="h-7 w-7 rounded-full bg-purple-500 text-white" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
@@ -76,11 +76,7 @@ SheetFooter.displayName = 'SheetFooter'
 
 const SheetTitle = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Title>, React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>>(
   ({ className, ...props }, ref) => (
-    <SheetPrimitive.Title
-      ref={ref}
-      className={cn('h-[32px] w-[305.63px] text-[25px] font-medium leading-[24px] text-[#C7C7C7]', className)}
-      {...props}
-    />
+    <SheetPrimitive.Title ref={ref} className={cn('h-[32px] w-fit text-[25px] font-medium leading-[24px] text-[#C7C7C7]', className)} {...props} />
   )
 )
 SheetTitle.displayName = SheetPrimitive.Title.displayName
