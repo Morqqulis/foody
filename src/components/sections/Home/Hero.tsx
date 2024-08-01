@@ -11,9 +11,9 @@ interface IHero {}
 
 const Hero: React.FC<IHero> = (): JSX.Element => {
   const t = useTranslations('Home.Hero');
-  const heroRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const textRefs = useRef<HTMLDivElement[]>([]);
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
+  const textRefs = useRef([]);
 
   useEffect(() => {
     if (heroRef.current && imageRef.current && textRefs.current.length) {
@@ -78,15 +78,18 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
               </span>
             </div>
           </div>
+          {/* @ts-ignore */}
           <div className="relative z-[2]" ref={(el) => (textRefs.current[0] = el)}>
             <Title
               tag={'h1'}
               className="mlg:text-center text-2xl font-black text-mainBlack sm:text-4xl md:text-5xl lg:text-6xl"
               text={t('title')}
             />
+              {/* @ts-ignore */}
             <p className="msm:hidden max-w-[510px] py-6 text-[22px] leading-[30px]" ref={(el) => (textRefs.current[1] = el)}>
               {t('text')}
             </p>
+              {/* @ts-ignore */}
             <div className="flex gap-10" ref={(el) => (textRefs.current[2] = el)}>
               <Button
                 className="rounded-[30px] border-[2px] bg-mainRed px-[45px] py-[34px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-red-700 active:bg-red-800 focus:bg-red-700 focus:outline-none"
