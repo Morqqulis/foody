@@ -42,7 +42,7 @@ function CheckoutHome() {
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(true)
 
-  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
+  const totalAmount = basket?.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -62,9 +62,9 @@ function CheckoutHome() {
       const userInfo = await getDocuments(collections.userId, userId)
       setUser(userInfo)
 
-      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id
+      const basketIdinUser = userInfo.basket && userInfo.basket.$id
       if (basketIdinUser) {
-        let prevBasket = userInfo.basket[0].productsList
+        let prevBasket = userInfo.basket.productsList
         setBasket(JSON.parse(prevBasket))
       }
     })()
@@ -83,14 +83,19 @@ function CheckoutHome() {
 
     if (!userId) return
     // @ts-ignore
-    const basketId = await user.basket[0].$id
+    const basketId = await user.basket.$id
     await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
       user: userId,
       orderInfo
     })
-    await databases.deleteDocument(dbId, collections.basketId, basketId)
-    setShowDoneIcon(true)
 
+    // await databases.updateDocument(dbId, collections.userId, userId, {
+    //   basket: null
+    // })
+
+    await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: null })
+
+    setShowDoneIcon(true)
     form.reset()
     setBasket([])
   }

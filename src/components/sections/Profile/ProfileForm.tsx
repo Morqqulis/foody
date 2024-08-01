@@ -5,12 +5,12 @@ import { collections, databases, dbId } from '@libs/appwrite/config'
 import { Button } from '@ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
 import { Input } from '@ui/input'
-import React, { FC, useEffect, useState } from 'react'
+import Image from 'next/image'
+import { FC, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { deleteImage, getDocuments, uploadImage } from '../../../utls/functions'
 import { readerFile } from '../../helper/helper'
-import Image from 'next/image'
 
 interface IProfileForm {}
 
@@ -27,10 +27,12 @@ const ProfileForm: FC = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null)
   const [fileUrl, setFileUrl] = useState<string | null>(null)
   const [user, setUser] = useState(null)
-
-  const userId = localStorage.getItem('userId')
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
+    const token = localStorage.getItem('userId')
+    if (token != '') setUserId(token)
+        
     if (userId) {
       ;(async () => {
         const data = await getDocuments(collections.userId, userId)
@@ -92,7 +94,7 @@ const ProfileForm: FC = (): JSX.Element => {
               >
                 {fileUrl ? (
                   <Image src={fileUrl} alt="avatar" width={145} height={145} className="h-full w-full rounded-full" />
-                ) : user ? (
+                ) : user?.avatar ? (
                   <>
                     <Image src={user.avatar} alt="avatar" width={145} height={145} className="h-full w-full rounded-full" />
                   </>

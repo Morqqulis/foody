@@ -26,9 +26,9 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
   }, [])
 
   return (
-    <div className="flex items-center  gap-[15px]">
+    <div className="flex  gap-[15px]  md:items-center mmd:flex-col">
       <Select onValueChange={setSelected}>
-        <SelectTrigger className="w-[180px] border-none bg-[#5A5B70] text-white">
+        <SelectTrigger className="min-w-[180px] border-none  bg-[#5A5B70] text-white mmd:w-full">
           <SelectValue placeholder="Restaurant Type" />
         </SelectTrigger>
         <SelectContent className="bg-[#5A5B70] text-white">
@@ -43,7 +43,7 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
       </Select>
       {open ? (
         <div
-          className={`flex w-[150px] cursor-pointer items-center justify-center gap-2 rounded-full bg-[#C035A2] p-2 text-white `}
+          className={`flex min-w-[150px] cursor-pointer items-center justify-center gap-2 rounded-full bg-[#C035A2] p-2 text-white mmd:w-full `}
           onClick={() => setOpen(false)}
         >
           <>
@@ -51,11 +51,14 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
           </>
         </div>
       ) : (
-        <div className="flex gap-2 p-2 text-white">
-          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#C035A2]" onClick={() => setOpen(true)}>
+        <div className="flex gap-2 text-white mmd:w-full ">
+          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#C035A2] " onClick={() => setOpen(true)}>
             <Search size={20} />
           </div>
-          <Input onChange={(e) => setSearchValue(e.target.value)} className={`w-[250px] border-none bg-[#5A5B70] text-white`} />
+          <Input
+            onChange={(e) => setSearchValue(e.target.value)}
+            className={`w-[250px] border-none bg-[#5A5B70] text-white mmd:w-[calc(100%-50px)]`}
+          />
         </div>
       )}
     </div>

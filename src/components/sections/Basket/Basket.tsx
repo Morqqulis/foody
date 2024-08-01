@@ -22,12 +22,12 @@ const Basket = () => {
     if (!userId) return
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
-      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id)
+      const basketIdinUser = user.basket && (await user.basket.$id)
 
       if (basketIdinUser) {
         setBasketId(basketIdinUser)
-        const prevBasket = user.basket[0].productsList
-        setBasket(JSON.parse(prevBasket))
+        const prevBasket = user.basket.productsList
+        prevBasket ? setBasket(JSON.parse(prevBasket)) : setBasket([])
       }
 
       setLoading(false)

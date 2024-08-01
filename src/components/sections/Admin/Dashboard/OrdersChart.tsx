@@ -70,7 +70,7 @@ const OrdersChart: React.FC = ({ className }: { className?: string }): JSX.Eleme
   }, [])
 
   return (
-    <Card className={`flex h-full w-full basis-[40%] flex-col border-none bg-[#27283C] px-5 pb-20   pt-5 `}>
+    <Card className={`flex h-full w-full basis-[40%] flex-col border-none bg-[#27283C] px-5 pb-20   pt-5`}>
       <CardHeader>
         <CardTitle className={`text-left text-[#c7c7c7]`}>{t('orders')}</CardTitle>
       </CardHeader>

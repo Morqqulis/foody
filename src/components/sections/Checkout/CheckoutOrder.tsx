@@ -11,6 +11,7 @@ const CheckoutOrder: React.FC<IProps> = ({ basket, loading }): JSX.Element => {
   const t = useTranslations('CheckoutOrder')
 
   function getTotal() {
+    if (basket === null) return 0
     return basket.reduce((total: number, data: any) => total + Number(data.price) * Number(data.quantity), 0)
   }
 
@@ -21,7 +22,7 @@ const CheckoutOrder: React.FC<IProps> = ({ basket, loading }): JSX.Element => {
         {loading ? (
           <LoadingAnimation width={100} height={100} />
         ) : (
-          basket.map((item: any) => (
+          basket?.map((item: any) => (
             <div className={`flex items-start justify-between gap-4`} key={item.$id}>
               <div className={`flex items-center gap-2 text-sm font-normal`}>
                 <span className={`text-lg font-medium`}>{item.quantity} x</span>

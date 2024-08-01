@@ -23,12 +23,12 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
 
-      const basketIdinUser = user.basket.length > 0 && (await user.basket[0].$id)
+      if (user.basket) {
+        setBasketId(user.basket.$id)
+        const prevBasket = user.basket.productsList
+        console.log(prevBasket)
 
-      if (basketIdinUser) {
-        setBasketId(basketIdinUser)
-        const prevBasket = user.basket[0].productsList
-        setBasket(JSON.parse(prevBasket))
+        prevBasket ? setBasket(JSON.parse(prevBasket)) : setBasket([])
       }
     })()
   }, [userId])
@@ -41,8 +41,10 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
         if (basketId) {
           await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket })
         } else {
-          const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: userId, productsList: strBasket })
-          setBasketId(newBasket.$id)
+          if (basket.length > 0) {
+            const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: userId, productsList: strBasket })
+            setBasketId(newBasket.$id)
+          }
         }
       })()
     }
