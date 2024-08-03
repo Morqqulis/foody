@@ -20,8 +20,9 @@ const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.E
           e.target.value.length > 0 ? setShowModal(true) : setShowModal(false)
           setInputValue(e.target.value)
         }}
+        value={inputValue}
       />
-      {showModal && <SearchModal setShowModal={setShowModal} value={inputValue} />}
+      {showModal && <SearchModal setShowModal={setShowModal} value={inputValue} setInputValue={setInputValue} />}
     </>
   )
 }
