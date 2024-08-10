@@ -26,10 +26,7 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
       <div className="mt-12 flex">
         <div className={`grid grid-cols-4 items-center !gap-6`}>
           {restaurants?.map((restaurant) => (
-            <div
-              key={restaurant.$id}
-              className="animate-fade-in scale-95 transition-transform duration-300 hover:scale-100"
-            >
+            <div key={restaurant.$id} className="animate-fade-in">
               <RestaurantCard prop={restaurant} />
             </div>
           ))}
