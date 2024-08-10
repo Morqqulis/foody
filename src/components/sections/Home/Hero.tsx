@@ -1,41 +1,34 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { Button } from '@ui/button';
-import Title from '@ui/Title';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { Button } from '@ui/button'
+import Title from '@ui/Title'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface IHero {}
 
 const Hero: React.FC<IHero> = (): JSX.Element => {
-  const t = useTranslations('Home.Hero');
-  const heroRef = useRef(null);
-  const imageRef = useRef(null);
-  const textRefs = useRef([]);
+  const t = useTranslations('Home.Hero')
+  const heroRef = useRef(null)
+  const imageRef = useRef(null)
+  const textRefs = useRef([])
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
+    const token = localStorage.getItem('userId')
+    setUserId(token || '')
+
     if (heroRef.current && imageRef.current && textRefs.current.length) {
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: -50 },
-        { opacity: 1, y: 0, duration: 1 }
-      );
-      gsap.fromTo(
-        imageRef.current,
-        { opacity: 0, x: 100 },
-        { opacity: 1, x: 0, duration: 1, delay: 0.5 }
-      );
+      gsap.fromTo(heroRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1 })
+      gsap.fromTo(imageRef.current, { opacity: 0, x: 100 }, { opacity: 1, x: 0, duration: 1, delay: 0.5 })
       textRefs.current.forEach((el, index) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 1, delay: 0.5 + index * 0.3 }
-        );
-      });
+        gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.5 + index * 0.3 })
+      })
     }
-  }, []);
+  }, [])
 
   return (
     <section className="hero" ref={heroRef}>
@@ -53,25 +46,19 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
               placeholder="blur"
               blurDataURL="/Home/Hero/burger.png"
             />
-            <div
-              className="absolute -left-[82px] bottom-[122px] flex w-full max-w-[278px] items-center gap-5 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105"
-            >
+            <div className="absolute -left-[82px] bottom-[122px] flex w-full max-w-[278px] items-center gap-5 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
               <Image src={'/Home/Hero/1.jpg'} alt={'food image'} width={70} height={50} />
               <span className="w-full max-w-[136px] text-center text-base font-medium tracking-[3%] text-gray-2">
                 French Fries <br /> Yummy ...
               </span>
             </div>
-            <div
-              className="absolute right-[28px] top-[31px] flex w-full max-w-[278px] items-center gap-10 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105"
-            >
+            <div className="absolute right-[28px] top-[31px] flex w-full max-w-[278px] items-center gap-10 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
               <Image src={'/Home/Hero/2.jpg'} alt={'food image'} width={70} height={50} />
               <span className="w-full max-w-[136px] text-center text-base font-medium tracking-[3%] text-gray-2">
                 Pizza Hut <br /> Yummy ...
               </span>
             </div>
-            <div
-              className="absolute -bottom-[19px] right-[47px] flex w-full max-w-[278px] items-center gap-10 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105"
-            >
+            <div className="absolute -bottom-[19px] right-[47px] flex w-full max-w-[278px] items-center gap-10 rounded-[15px] bg-white py-5 pl-5 pr-[59px] shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
               <Image src={'/Home/Hero/3.jpg'} alt={'food image'} width={70} height={50} />
               <span className="w-full max-w-[136px] text-center text-base font-medium tracking-[3%] text-gray-2">
                 Cheesburger <br /> Yummy ...
@@ -80,38 +67,34 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
           </div>
           {/* @ts-ignore */}
           <div className="relative z-[2]" ref={(el) => (textRefs.current[0] = el)}>
-            <Title
-              tag={'h1'}
-              className="mlg:text-center text-2xl font-black text-mainBlack sm:text-4xl md:text-5xl lg:text-6xl"
-              text={t('title')}
-            />
-              {/* @ts-ignore */}
-            <p className="msm:hidden max-w-[510px] py-6 text-[22px] leading-[30px]" ref={(el) => (textRefs.current[1] = el)}>
+            <Title tag={'h1'} className="text-2xl font-black text-mainBlack sm:text-4xl md:text-5xl lg:text-6xl mlg:text-center" text={t('title')} />
+            {/* @ts-ignore */}
+            <p className="max-w-[510px] py-6 text-[22px] leading-[30px] msm:hidden" ref={(el) => (textRefs.current[1] = el)}>
               {t('text')}
             </p>
-              {/* @ts-ignore */}
+            {/* @ts-ignore */}
             <div className="flex gap-10" ref={(el) => (textRefs.current[2] = el)}>
-              <Button
-                className="rounded-[30px] border-[2px] bg-mainRed px-[45px] py-[34px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-red-700 active:bg-red-800 focus:bg-red-700 focus:outline-none"
-                type="button"
+              <Link
+                className="rounded-[30px] text-white border-[2px] bg-mainRed px-[45px] py-[14px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-red-700 focus:bg-red-700 focus:outline-none active:bg-red-800"
+                href={`${userId ? '/restaurants' : '/login'}`}
                 aria-label="Get Started Button"
               >
                 {t('firstBtn')}
-              </Button>
-              <Button
-                className="rounded-[30px] border-[2px] border-foreground px-[45px] py-[34px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-mainBlack hover:text-white active:bg-gray-900 focus:bg-mainBlack focus:text-white focus:outline-none"
+              </Link>
+              <Link
+                className="rounded-[30px] border-[2px] border-foreground px-[45px] py-[14px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-mainBlack hover:text-white focus:bg-mainBlack focus:text-white focus:outline-none active:bg-gray-900"
                 type="button"
-                variant="ghost"
+                href={'/user/checkout'}
                 aria-label="Order now Button"
               >
                 {t('secondBtn')}
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

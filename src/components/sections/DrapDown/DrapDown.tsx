@@ -31,7 +31,7 @@ const headerUserData: IHeaderUserData[] = [
   },
   {
     id: 4,
-    path: '/'
+    path: '/login'
   }
 ]
 
