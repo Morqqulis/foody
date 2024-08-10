@@ -21,6 +21,21 @@ interface IMyform {
   actionId?: string
 }
 
+const scrollbarStyles = `
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #EF5DA8;
+  }
+`
+
 const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
   const [file, setFile] = useState<File | null>(null)
   const [fileUrl, setFileUrl] = useState<string | null>(null)
@@ -154,27 +169,28 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col gap-8  mmd:w-full  ">
-        <div className="flex md:gap-10 mmd:flex-col">
-          <div className="flex w-full flex-col items-center gap-2">
-            <p className="flex h-[32px] w-[252px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7] mmd:w-full">
+      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col h-[calc(100vh-70px)] gap-8 mmd:w-full">
+        <div className="flex items-center justify-between md:gap-10 mmd:flex-col">
+          <div className="flex basis-1/3 flex-col gap-2">
+            <p className="flex h-[32px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7] mmd:w-full">
               {t('imageBlock.description')}
             </p>
             {fileUrl && <Image src={fileUrl} width={154} height={125} alt="upload" priority style={{ width: '154px', height: '125px' }} />}
           </div>
-          <Label className="mt-8 flex h-[100px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A] md:w-[526px] ">
+          <Label className="flex w-full py-6 max-w-[526px] flex-col items-center justify-center gap-2 rounded-[14px] bg-[#43445A] ">
             <Image src="/Form/uploadFile.svg" width={60} height={40} alt="upload" priority />
             <p className="text-[18px] font-medium leading-[24px] text-[#C7C7C7]"> {file ? file.name : t('imageBlock.label')}</p>
             <Input type="file" className="hidden" onChange={(e) => readerFile(e, setFile, setFileUrl)} />
           </Label>
         </div>
 
-        <div className="flex h-fit md:gap-10 mmd:flex-col ">
+        <div className="flex h-fit grow justify-between md:gap-10 mmd:flex-col">
           <p className="flex h-[30px] w-[252px] flex-row items-center text-left text-[18px] font-medium leading-[24px] text-[#C7C7C7] mmd:w-full">
             {t('InfoBlock.text')}
           </p>
 
-          <div className="mt-8 flex h-fit max-h-[500px] flex-col items-center gap-2 overflow-auto rounded-[14px]  bg-[#43445A]  py-[20px] md:w-[526px] mmd:w-full ">
+          <div className="mt-8 flex  flex-col h-fit overflow-y-auto max-h-full items-center gap-2 overflow-x-auto rounded-[14px] bg-[#43445A]  py-[20px] md:w-[526px] mmd:w-full">
+            <style>{scrollbarStyles}</style>
             {whatIs === 'EditProduct' || whatIs === 'AddProduct' ? (
               <>
                 <MyFormLabel whatIs={whatIs} form={form} name="name" inputType="text" />
@@ -211,7 +227,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex w-full gap-10 border-t-2 p-[20px]">
+        <div className="flex w-full gap-10 border-t-2 border-t-[#43445A] p-[20px]">
           <button
             type="button"
             onClick={() => form.reset()}
