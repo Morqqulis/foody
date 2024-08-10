@@ -18,22 +18,17 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
   const [filteredValues, setFilteredValues] = useState([])
   const [restaurants, setrestaurants] = useState([])
 
-  useEffect(()=>{
-    (async()=>{
-      const {documents} = await getListDocuments(collections.restaurantsId)
+  useEffect(() => {
+    ;(async () => {
+      const { documents } = await getListDocuments(collections.restaurantsId)
       setrestaurants(documents)
     })()
-  },[])
-  
+  }, [])
 
   useEffect(() => {
     const filteredValue = restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(value.toLowerCase()))
     setFilteredValues(filteredValue)
   }, [value, restaurants])
-
-  
-  
-
 
   const t = useTranslations('Header')
   return (
@@ -56,7 +51,7 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
         ))}
       </div>
       <div className="flex h-[20%] items-center justify-center">
-        <Link onClick={() => setShowModal(false)} href='/restaurants' className="flex items-center gap-1 text-lg">
+        <Link onClick={() => setShowModal(false)} href="/restaurants" className="flex items-center gap-1 text-lg">
           {t('more')} <MoveRight />
         </Link>
       </div>
