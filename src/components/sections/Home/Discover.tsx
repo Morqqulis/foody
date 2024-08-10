@@ -19,7 +19,10 @@ const Discover: React.FC = (): JSX.Element => {
           <Image className={`max-w-full`} src={'/Home/Discover/1.png'} alt={'Food image'} width={200} height={200} />
           <div className={`flex flex-col gap-11`}>
             <Title className={`text-balance text-center text-[50px] font-medium leading-[70px] text-white`} tag={'h3'} text={t('title')} />
-            <Link className={`mx-auto w-fit rounded-[30px] bg-mainOrange px-11 py-2 text-xl font-medium text-white hover:bg-mainRed`} href={'/'}>
+            <Link
+              className={`mx-auto w-fit rounded-[30px] bg-mainOrange px-11 py-2 text-xl font-medium text-white hover:bg-mainRed`}
+              href={'/restaurants'}
+            >
               {t('buttonText')}
             </Link>
           </div>

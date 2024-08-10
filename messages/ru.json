@@ -362,8 +362,29 @@
 
   "User": {
     "Metadata": {
-      "title": "Пользователь",
+      "title": "Настройки Пользователя",
       "description": "Управляйте своим профилем, заказами и настройками."
+    },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Корзина",
+        "description": "Просматривайте свою корзину и управляйте ею."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Заказы",
+        "description": "Ваши заказы и история покупок."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Оплата",
+        "description": "Оплатите свои заказы"
+      }
     },
 
     "Aside": {
@@ -423,8 +444,8 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Ататюрк 45 Ганчлик Баку",
     "fullNamePlaceholder": "Фуад Пашаев"
-    } ,
-    "AdminOrders": {
+  },
+  "AdminOrders": {
     "Products": {
       "Modal": {
         "deleteBtn": "Удалить",
@@ -437,14 +458,14 @@
   "OrdersSection": {
     "yourOrders": "Ваши заказы",
     "show": "Показать"
-    },
-    "DashboardSection": {
-      "assignedRisk": "Назначенные риски",
-      "noRisksAssigned": "Риски не назначены.",
-      "assignedActionItems": "Назначенные действия",
-      "noActionItems": "Действия не назначены."
-    },
-    "SalaryChart": {
+  },
+  "DashboardSection": {
+    "assignedRisk": "Назначенные риски",
+    "noRisksAssigned": "Риски не назначены.",
+    "assignedActionItems": "Назначенные действия",
+    "noActionItems": "Действия не назначены."
+  },
+  "SalaryChart": {
     "totalSalary": "Общий доход"
   },
   "OrdersChart": {

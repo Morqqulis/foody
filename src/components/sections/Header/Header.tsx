@@ -9,6 +9,7 @@ import HeaderBasket from './HeaderBasket'
 import HeaderInput from './HeaderInput'
 import HeaderLanguages from './HeaderLangs'
 import HeaderMenu from './HeaderMenu'
+import LoginHeader from '@sections/Login/LoginHeader'
 interface IHeader {
   className?: string
 }
@@ -23,36 +24,38 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
     setUserId(userIdLocal)
   }, [])
 
-  return (
-    <header className={`${className || ''} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
-      <div className={`container`}>
-        <nav className={`flex w-full items-center justify-around gap-2.5  rounded bg-gray-7 py-10 ${path === '/login' && 'justify-between'}`}>
-          <Logo className={'mr-8'} color={path === '/login' ? 'white' : 'black'} />
-          <HeaderMenu className={`mr-10 ${path == '/login' && 'hidden'}`} />
-          <HeaderInput className={`mr-8 w-full ${path == '/login' && 'hidden'}`} />
+  if (path === '/login') {
+    return <LoginHeader />
+  } else
+    return (
+      <header className={`${className || ''} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
+        <div className={`container`}>
+          <nav className={`flex w-full items-center justify-around gap-2.5  rounded bg-gray-7 py-10 ${path === '/login' && 'justify-between'}`}>
+            <Logo className={'mr-8'} color={path === '/login' ? 'white' : 'black'} />
+            <HeaderMenu className={`mr-10 ${path == '/login' && 'hidden'}`} />
+            <HeaderInput className={`mr-8 w-full ${path == '/login' && 'hidden'}`} />
 
-          {path === '/login' && <HeaderLanguages />}
-          <div className={`flex  items-center gap-2.5 ${path == '/login' && 'hidden'}`}>
-            <HeaderLanguages />
+            <div className={`flex  items-center gap-2.5`}>
+              <HeaderLanguages />
 
-            {!userId ? (
-              <Link
-                className={`flex max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
-                href={'/login'}
-              >
-                {t('signUp')}
-              </Link>
-            ) : (
-              <>
-                <HeaderBasket />
-                <DrapDown />
-              </>
-            )}
-          </div>
-        </nav>
-      </div>
-    </header>
-  )
+              {!userId ? (
+                <Link
+                  className={`flex max-w-[115px] items-center justify-center rounded-full bg-mainRed px-5 py-2 text-center text-sm font-medium tracking-widest text-white`}
+                  href={'/login'}
+                >
+                  {t('signUp')}
+                </Link>
+              ) : (
+                <>
+                  <HeaderBasket />
+                  <DrapDown />
+                </>
+              )}
+            </div>
+          </nav>
+        </div>
+      </header>
+    )
 }
 
 export default Header

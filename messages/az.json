@@ -82,7 +82,7 @@
       "text": "Artıq şəhərdə ürəkləri və dad qönçələrini qazanan menyumuza ən son əlavələri kəşf edin. Biz təzə inqrediyentləri, innovativ dadları və tərəfdaş restoranlarımızın kulinariya təcrübəsini birləşdirən müxtəlif yeni yeməkləri təqdim etməkdən məmnunuq.",
       "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
       "cardsTexts": [
-       "Premium mal əti köftələri, təzə tərəvəzlər və kustar çörəklərdən ibarət yeni gurme burgerlərimizi sınayın.",
+        "Premium mal əti köftələri, təzə tərəvəzlər və kustar çörəklərdən ibarət yeni gurme burgerlərimizi sınayın.",
         "Ədviyyatlı tuna balığından əjdaha rulonlarına qədər hər bir parça ən yaxşı inqrediyentlərlə və təfərrüatlara ciddi diqqət yetirilməklə hazırlanır.",
         "Mükəmməl bişmiş makaronla birləşdirilən zəngin, qaymaqlı souslardan həzz alın."
       ]
@@ -363,9 +363,31 @@
 
   "User": {
     "Metadata": {
-      "title": "İstifadəçi",
+      "title": "Profil Parametrləri",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
     },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Səbətiniz",
+        "description": "Məhsulları səbətə əlavə edin."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Ödəniş",
+        "description": "Ödəniş edin."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Sifarişlər",
+        "description": "Sifarişlərinizi idarə edin."
+      }
+    },
+
     "Aside": {
       "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
@@ -413,20 +435,20 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
     "fullNamePlaceholder": "Fuad Paşayev"
-    } ,
-    "AdminOrders": {
-      "Products": {
-        "Modal": {
-          "deleteBtn": "Sil",
-          "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
-          "text": "Bu əməliyyat geri qaytarıla bilməz.",
-          "cancelBtn": "Ləğv et"
-        }
+  },
+  "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Sil",
+        "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+        "text": "Bu əməliyyat geri qaytarıla bilməz.",
+        "cancelBtn": "Ləğv et"
       }
-    },
-    "OrdersSection": {
-      "yourOrders": "Sizin Sifarişləriniz",
-      "show": "Göstər"
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Sizin Sifarişləriniz",
+    "show": "Göstər"
   },
   "Checkout": {
     "checkoutTitle": "Yoxlama",
