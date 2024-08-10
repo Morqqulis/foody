@@ -22,6 +22,9 @@ const AdminAsideElement: FC<AsideElements> = ({ element, title, whatIs }): JSX.E
       ;(async () => await databases.updateDocument(dbId, collections.userId, localStorage.getItem('userId'), { enter: false }))()
       localStorage.removeItem('userId')
     }
+    if (whatIs === 'admin' && element.href === '/admin/login') {
+      localStorage.removeItem('admin')
+    }
   }
 
   return (

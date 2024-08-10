@@ -61,9 +61,9 @@ export const SignInFormSchema = z.object({
 })
 
 export const AdminLoginSchema = z.object({
-  email: z
+  username: z
     .string({
-      required_error: 'Email is required.'
+      required_error: 'Username is required.'
     })
     .min(2, {
       message: 'Username must be at least 2 characters.'

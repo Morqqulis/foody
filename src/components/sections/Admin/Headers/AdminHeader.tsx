@@ -4,14 +4,22 @@ import Logo from '@ui/Logo'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import AddProductSheet from '../Sheet/ReusableSheet'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import BurgerMenu from './BurgerMenu'
+import { useEffect } from 'react'
 
 interface IAdminHeader {}
 
 const AdminHeader: React.FC = (): JSX.Element => {
   const pasthname = usePathname()
   const t = useTranslations('Admin.Header')
+  const router = useRouter()
+
+  useEffect(() => {
+    const adminLog = localStorage.getItem('admin')
+    if (adminLog != 'true') router.push('/admin/login')
+  }, [router])
+
   return (
     <header className={`mb-[18px] rounded-b-[20px] bg-[#27283C] p-3`}>
       <nav className={`flex items-center justify-between gap-5`}>
