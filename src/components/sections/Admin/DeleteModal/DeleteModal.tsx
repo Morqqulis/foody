@@ -27,7 +27,7 @@ const DeleteModal: React.FC<IProps> = ({ collectionId, deletedId }): JSX.Element
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger className={`hover:scale-110`}>
         <Trash2 size={24} color="red" className="cursor-pointer" />
       </AlertDialogTrigger>
       <AlertDialogContent className="mmd:w-[90%] rounded-md">

@@ -1,3 +1,4 @@
+import SectionHeader from '@sections/Admin/Headers/SectionHeaders/SectionHeader'
 import RestaurantsSection from '@sections/Admin/Restaurants/RestaurantsSection'
 import { getTranslations } from 'next-intl/server'
 
