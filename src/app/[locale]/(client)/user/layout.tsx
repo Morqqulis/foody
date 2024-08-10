@@ -1,20 +1,19 @@
-import UserAside from "@sections/Aside/UserAside";
+import UserAside from '@sections/Aside/UserAside'
 
 interface IUserLayout {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: React.ReactNode
+  params: { locale: string }
 }
 
 const UserLayout: React.FC = ({ children, params: { locale } }: IUserLayout) => {
   return (
-    <div className={`wrapper`}>
-      <div className="container pt-4">
-        <div className={`flex items-start gap-4`}>
-          <UserAside />
-          {children}</div>
+    <main>
+      <div className={`container flex items-start gap-4 pt-4`}>
+        <UserAside />
+        {children}
       </div>
-    </div>
-  );
-};
+    </main>
+  )
+}
 
-export default UserLayout;
+export default UserLayout

@@ -1,17 +1,14 @@
 {
   "Header": {
-    "menu": [
-      "Ana səhifə",
-      "Restoranlar",
-      "Haqqımızda",
-      "Necə işləyir?",
-      "FAQ"
-    ],
+    "menu": ["Ana səhifə", "Restoranlar", "Haqqımızda", "Necə işləyir?", "FAQ"],
+    "more": "Daha çox",
     "search": "Axtar...",
-    "signUp": "Qeydiyyat"
+    "signUp": "Qeydiyyat",
+    "dropdown": ["Profil", "Səbət", "Sifarişlər", "Ödəniş", "Cixis"]
   },
   "Footer": {
-    "text": "Lorem ipsum, qrafikdə çox istifadə olunan yer tutucu mətndir.",
+    "text": "Bizi izləyin: Sosial media kanallarımızda ən son promosyonlarımız və restoran tərəfdaşlarımızdan xəbərdar olun",
+
     "popular": {
       "title": "Populyar",
       "links": [
@@ -62,22 +59,19 @@
     },
     "Hero": {
       "title": "Qida saytımız yerli yeməkləri tapmağı asanlaşdırır",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "text": "Yerli mətbəxi tapmaq heç vaxt asan olmadığı yeməklərin çatdırılması platformamıza xoş gəlmisiniz! Biz sizi ərazinizdəki ən yaxşı yeməkxanalarla birləşdirməyə sadiqik, bu da sizə əlinizin altında müxtəlif kulinariya ləzzətlərini kəşf etməyə imkan verir.",
       "firstBtn": "Başlamaq",
       "secondBtn": "İndi sifariş edin"
     },
     "Features": {
       "title": "Xidmətlər",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləriizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-      "cardsTitle": [
-        "Endirim kuponu",
-        "Təzə sağlam qida",
-        "Evə Sürətli Çatdırılma"
-      ],
+      "text": "Restoranların geniş çeşidi. Bizdə müxtəlif mətbəxlər təqdim edən yerli restoranların geniş siyahısı var. İtalyan makaronundan tutmuş Yapon suşisinə qədər hər zaman zövqünüzə uyğun nəsə tapacaqsınız!",
+
+      "cardsTitle": ["Endirim kuponu", "Təzə sağlam qida", "Evə Sürətli Çatdırılma"],
       "cardsText": [
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+        "Sadəcə bir neçə kliklə restoran, menyu seçmək və sifariş vermək lazımdır.",
+        "Bizim kuryer komandamız sevimli yeməyinizi mümkün qədər tez çatdırmaq üçün tez və səmərəli işləyir",
+        "Biz hər bir müştərini qiymətləndiririk və təcrübənizi mümkün qədər xoş etməyə çalışırıq."
       ]
     },
     "Food": {
@@ -94,16 +88,12 @@
     },
     "Popular": {
       "title": "Populyar",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
-      "cardsTitles": [
-        "İkiqat Pendir",
-        "Marqarita",
-        "Twister Menyu"
-      ],
+      "text": "Artıq şəhərdə ürəkləri və dad qönçələrini qazanan menyumuza ən son əlavələri kəşf edin. Biz təzə inqrediyentləri, innovativ dadları və tərəfdaş restoranlarımızın kulinariya təcrübəsini birləşdirən müxtəlif yeni yeməkləri təqdim etməkdən məmnunuq.",
+      "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
       "cardsTexts": [
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+        "Premium mal əti köftələri, təzə tərəvəzlər və kustar çörəklərdən ibarət yeni gurme burgerlərimizi sınayın.",
+        "Ədviyyatlı tuna balığından əjdaha rulonlarına qədər hər bir parça ən yaxşı inqrediyentlərlə və təfərrüatlara ciddi diqqət yetirilməklə hazırlanır.",
+        "Mükəmməl bişmiş makaronla birləşdirilən zəngin, qaymaqlı souslardan həzz alın."
       ]
     },
     "Discover": {
@@ -120,7 +110,7 @@
   "AboutUs": {
     "Metadata": {
       "title": "Haqqımızda",
-      "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
+      "description": "Qida çatdırılması üçün ən yaxşı yoldaşınız Foody-ə xoş gəlmisiniz! Bizim missiyamız sizi ən yaxşı yerli restoranlarla əlaqələndirmək və evinizin rahatlığından rahatlıqla nahar etməkdən ibarətdir.Komandamız şəhərin ən yaxşı yeməkxanaları ilə əməkdaşlıq etmək üçün yorulmadan çalışır və sizin hər bir dadınıza uyğun müxtəlif menyuya çıxış əldə etməyinizi təmin edir. İstifadəsi asan tətbiqimizlə siz bir neçə toxunuşla menyulara baxa, rəyləri oxuya və sifarişlərinizi verə bilərsiniz."
     }
   },
   "HowItWorks": {
@@ -165,23 +155,28 @@
       "title": "İdarəçi",
       "description": "Web saytını idarə etmək üçün administrator idarəetmə panelinə daxil olun."
     },
+    "Login": {
+      "title": "Xoş gəlmişsiniz, Admin",
+      "btn": "Daxil ol",
+      "username": "İstifadəçi adı",
+      "password": "Şifrə"
+    },
     "Header": {
       "btn": "Məhsul artır",
       "admin": "Admin",
       "Sheet": {
         "imageBlock": {
           "title": "Məhsul əlavə edin",
-          "text": "Məhsul şəklinizi yükləyin",
+          "description": "Məhsul şəklinizi yükləyin",
           "label": "yükləmək"
         },
         "InfoBlock": {
           "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-          "labels": [
-            "Ad",
-            "Təsvir",
-            "Qiymət",
-            "Restoranlar"
-          ]
+          "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
+          "name": "Ad",
+          "description": "Təsvir",
+          "price": "Qiymət",
+          "restaurant": "Restoranlar"
         },
         "cancelBtn": "Ləğv etmək",
         "submitBtn": "Məhsul yaradın"
@@ -271,7 +266,7 @@
             "name": "Ad",
             "description": "Təsvir",
             "price": "Qiymət",
-            "restaurants": "Restoranlar"
+            "restaurant": "Restoranlar"
           },
           "cancelBtn": "Ləğv etmək",
           "submitBtn": "Məhsulu yenilə"
@@ -279,26 +274,267 @@
       }
     },
     "Aside": {
-      "title": [
-        "İdarə paneli",
-        "Məhsullar",
-        "Restoranlar",
-        "Kateqoriya",
-        "Sifarişlər",
-        "Təklif",
-        "Çıxış"
-      ]
+      "title": ["İdarə paneli", "Məhsullar", "Restoranlar", "Kateqoriya", "Sifarişlər", "Tarixçə", "Təklif", "Çıxış"]
+    },
+    "Category": {
+      "title": "Kateqoriya",
+      "addCategory": "Kateqoriya əlavə et",
+      "id": "ID",
+      "image": "Şəkil",
+      "name": "Ad",
+      "slug": "Slug",
+      "actions": "Əməliyyatlar",
+      "EditCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı redaktə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını redaktə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Kateqoriyanı yenilə"
+        }
+      },
+      "AddCategory": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Kateqoriyanı əlavə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Kateqoriya məlumatlarını əlavə et",
+            "labels": ["Ad", "Sluq"],
+            "name": "Ad",
+            "slug": "Sluq"
+          },
+
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Kateqoriyanı əlavə et"
+        }
+      }
+    },
+    "Restaurants": {
+      "Metadata": {
+        "title": "Admin - Restoranlar",
+        "description": "Restoranlar əlavə edin, redaktə edin, silin"
+      },
+      "Title": "Restoranlar",
+      "AddRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoran əlavə et",
+            "description": "Şəkil yükləyin",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatlarınızı əlavə edin",
+            "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "deliveryPrice": "Çatdırılma qiyməti",
+            "deliveryMin": "Çatdırılma müddəti",
+            "address": "Ünvan",
+            "category": "Kateqoriya"
+          },
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Əlavə et"
+        }
+      },
+      "EditRestaurant": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Restoranı redaktə et",
+            "description": "Şəkil yükləyin",
+            "label": "Yüklə"
+          },
+          "InfoBlock": {
+            "text": "Restoran məlumatlarınızı redaktə edin",
+            "labels": ["Ad", "Mətbəx", "Çatdırılma qiyməti", "Çatdırılma müddəti", "Ünvan", "Kateqoriya"],
+            "name": "Ad",
+            "cuisine": "Mətbəx",
+            "deliveryPrice": "Çatdırılma qiyməti",
+            "deliveryMin": "Çatdırılma müddəti",
+            "address": "Ünvan",
+            "category": "Kateqoriya"
+          },
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Restoranı Yenilə"
+        }
+      }
+    },
+    "Offers": {
+      "title": "Təkliflər",
+      "addOffer": "Təklif əlavə et",
+      "id": "ID",
+      "image": "Şəkil",
+      "titleColumn": "Başlıq",
+      "description": "Təsvir",
+      "actions": "Əməliyyatlar",
+      "AddOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Təklif əlavə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Təklif məlumatlarını əlavə et",
+            "labels": ["Başlıq", "Açıqlama"],
+            "title": "Başlıq",
+            "description": "Açıqlama"
+          },
+
+          "cancelBtn": "Ləgv etmək",
+          "submitBtn": "Təklif əlavə et"
+        }
+      },
+      "EditOffer": {
+        "Sheet": {
+          "imageBlock": {
+            "title": "Təklifi redaktə et",
+            "description": "Şəkil əlavə et",
+            "label": "Yüklə"
+          },
+
+          "InfoBlock": {
+            "text": "Təklif məlumatlarını redaktə edin",
+            "labels": ["Başlıq", "Açıqlama"],
+            "title": "Başlıq",
+            "description": "Açıqlama"
+          },
+
+          "cancelBtn": "Ləğv etmək",
+          "submitBtn": "Təklifi yenilə"
+        }
+      }
     }
   },
   "User": {
     "Metadata": {
-      "title": "İstifadəçi",
+      "title": "Profil Parametrləri",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
+    },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Səbətiniz",
+        "description": "Məhsulları səbətə əlavə edin."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Ödəniş",
+        "description": "Ödəniş edin."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Sifarişlər",
+        "description": "Sifarişlərinizi idarə edin."
+      }
+    },
+
+    "Aside": {
+      "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
   },
   "Basket": {
     "title": "Səbətiniz",
     "items": "Məhsul",
     "checkout": "Təsdiqlə"
+  },
+  "Header-Restaurants": {
+    "restaurantName": "Papa John's Pizza Restoranı",
+    "address": "Nizami küçəsi 19, Səbail, Bakı",
+    "cuisine": "Mətbəx",
+    "cuisineList": "pizza, içki, hotdog, sendviç, roll",
+    "deliveryCost": "Çatdırılma",
+    "goBack": "Geri Qayıt"
+  },
+  "RestaurantSection": {
+    "all": "Hamısı",
+    "ariaLabelFoodCategory": "qida kateqoriyası",
+    "ariaLabelVortexLoading": "voronka-yükləmə"
+  },
+  "RestaurantCard": {
+    "delivery": "Çatdırılma",
+    "new": "Yeni",
+    "minutes": "dəq"
+  },
+  "CheckoutOrder": {
+    "yourOrder": "Sifarişiniz",
+    "total": "Cəmi"
+  },
+  "ProfileSection": {
+    "profile": "Profil"
+  },
+  "ProfileForm": {
+    "upload": "Avatar Yükle",
+    "contact": "Əlaqə Nömrəsi",
+    "email": "E-poçt Ünvanı",
+    "username": "İstifadəçi Adı",
+    "address": "Ünvan",
+    "fullName": "Tam Ad",
+    "save": "Yadda Saxla",
+    "contactPlaceholder": "+994",
+    "emailPlaceholder": "info@eacamp.com",
+    "usernamePlaceholder": "eacampm1",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "fullNamePlaceholder": "Fuad Paşayev"
+  },
+  "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Sil",
+        "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+        "text": "Bu əməliyyat geri qaytarıla bilməz.",
+        "cancelBtn": "Ləğv et"
+      }
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Sizin Sifarişləriniz",
+    "show": "Göstər"
+  },
+  "Checkout": {
+    "checkoutTitle": "Yoxlama",
+    "addressLabel": "Çatdırılma ünvanı",
+    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
+    "phoneLabel": "Əlaqə nömrəsi",
+    "phonePlaceholder": "+994",
+    "paymentCard": "Qapıda kredit kartı ilə ödəmə",
+    "paymentCash": "Qapıda ödəmə",
+    "submitButton": "Təqdim"
+  },
+  "DashboardSection": {
+    "assignedRisk": "Təyin olunmuş risk",
+    "noRisksAssigned": "Təyin olunmuş risklər yoxdur.",
+    "assignedActionItems": "Təyin olunmuş tədbirlər",
+    "noActionItems": "Təyin olunmuş tədbirlər yoxdur."
+  },
+  "SalaryChart": {
+    "totalSalary": "Ümumi gəlir"
+  },
+  "OrdersChart": {
+    "orders": "Sifarişlər",
+    "projectsByAccount": "Hesab üzrə layihələr",
+    "totalProjects": "Ümumi layihələr"
+  },
+  "ProductList": {
+    "title": "Məhsullar",
+    "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"
   }
 }

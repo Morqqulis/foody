@@ -1,16 +1,16 @@
-import LoginImage from "@sections/Login/LoginImage";
-import LoginNavigation from "@sections/Login/LoginNavigation";
-import { Toaster } from "@ui/toaster";
+import LoginImage from '@sections/Login/LoginImage'
+import LoginNavigation from '@sections/Login/LoginNavigation'
+import { Toaster } from '@ui/toaster'
 import { getTranslations } from 'next-intl/server'
 //----------------------------------------------
 
 export async function generateMetadata({ params: { locale } }) {
-  const t = await getTranslations({ locale, namespace: "Login.Metadata" });
+  const t = await getTranslations({ locale, namespace: 'Login.Metadata' })
 
   return {
-    title: t("title"),
-    description: t("description"),
-  };
+    title: t('title'),
+    description: t('description')
+  }
 }
 //----------------------------------------------
 
@@ -25,9 +25,8 @@ const LoginPage = () => {
           <LoginNavigation />
         </div>
       </div>
-      <Toaster />
     </main>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

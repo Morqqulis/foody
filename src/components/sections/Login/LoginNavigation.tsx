@@ -1,17 +1,16 @@
-"use client";
-import { cn } from "@libs/clsx"
-import { useLoginStore } from "@stores/Login"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs"
-import { Toaster } from "@ui/toaster"
-import { useTranslations } from "next-intl"
-import LoginForm from "./LoginForm"
+'use client'
+import { cn } from '@libs/clsx'
+import { useLoginStore } from '@stores/Login'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs'
+import { Toaster } from '@ui/toaster'
+import { useTranslations } from 'next-intl'
+import LoginForm from './LoginForm'
 
 interface ILoginNavigation {}
 
 const LoginNavigation: React.FC = (): JSX.Element => {
-  const t = useTranslations("Login");
-  const { defaultTab, setDefaultTab } = useLoginStore();
- 
+  const t = useTranslations('Login')
+  const { defaultTab, setDefaultTab } = useLoginStore()
 
   return (
     <>
@@ -19,17 +18,17 @@ const LoginNavigation: React.FC = (): JSX.Element => {
         <TabsList className={`mb-[72px] flex justify-center gap-16 bg-transparent`}>
           <TabsTrigger
             className={cn(`text-2xl duration-300 hover:text-mainOrange data-[state=active]:text-normal-red lg:text-3xl`)}
-            value="login"
-            onClick={() => setDefaultTab("login")}
+            value={'login'}
+            onClick={() => setDefaultTab('login')}
           >
-            {t("signIn")}
+            {t('signIn')}
           </TabsTrigger>
           <TabsTrigger
             className={cn(`text-2xl duration-300 hover:text-mainOrange data-[state=active]:text-normal-red lg:text-3xl`)}
             value="register"
-            onClick={() => setDefaultTab("register")}
+            onClick={() => setDefaultTab('register')}
           >
-            {t("signUp")}
+            {t('signUp')}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">
@@ -39,9 +38,8 @@ const LoginNavigation: React.FC = (): JSX.Element => {
           <LoginForm name="register" />
         </TabsContent>
       </Tabs>
-      <Toaster />
     </>
-  );
-};
+  )
+}
 
-export default LoginNavigation;
+export default LoginNavigation

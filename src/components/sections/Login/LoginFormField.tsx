@@ -1,21 +1,21 @@
-import { Button } from "@ui/button";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@ui/form";
-import { Input } from "@ui/input";
-import { useTranslations } from "next-intl";
-import { HTMLInputTypeAttribute, useState } from "react";
-import { IconEye } from "../../icons";
+import { Button } from '@ui/button'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
+import { Input } from '@ui/input'
+import { useTranslations } from 'next-intl'
+import { HTMLInputTypeAttribute, useState } from 'react'
+import { IconEye } from '../../icons'
 
 interface ILoginFormField {
-  form: any;
-  name: string;
-  placeholder?: string;
-  inputType?: HTMLInputTypeAttribute;
+  form: any
+  name: string
+  placeholder?: string
+  inputType?: HTMLInputTypeAttribute
 }
 
 const LoginFormField = ({ form, name, placeholder, inputType }: ILoginFormField): JSX.Element => {
-  const t = useTranslations("Login.form");
+  const t = useTranslations('Login.form')
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <FormField
@@ -30,17 +30,17 @@ const LoginFormField = ({ form, name, placeholder, inputType }: ILoginFormField)
               placeholder={placeholder}
               {...field}
               name={name}
-              type={showPassword ? "text" : inputType}
+              type={showPassword ? 'text' : inputType}
             />
           </FormControl>
           <FormMessage />
-          {inputType === "password" && (
+          {inputType === 'password' && (
             <Button
               className={`group/showPassword absolute right-2.5 top-1/2 -translate-y-[25%]`}
-              type={"button"}
-              aria-label={showPassword ? "Hide" : "Show"}
+              type={'button'}
+              aria-label={showPassword ? 'Hide' : 'Show'}
               onClick={() => setShowPassword(!showPassword)}
-              variant={"ghost"}
+              variant={'ghost'}
             >
               <IconEye className={`h-auto w-8 fill-black group-hover/showPassword:fill-mainRed`} />
             </Button>
@@ -48,7 +48,7 @@ const LoginFormField = ({ form, name, placeholder, inputType }: ILoginFormField)
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-export default LoginFormField;
+export default LoginFormField

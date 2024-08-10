@@ -1,9 +1,15 @@
-import AdminAside from "@sections/Aside/AdminAside";
+import RestaurantsSection from '@sections/Admin/Restaurants/RestaurantsSection'
+import { getTranslations } from 'next-intl/server'
 import SectionHeader from "@sections/Admin/Headers/SectionHeader";
-import RestaurantsSection from "@sections/Admin/Restaurants/RestaurantsSection";
-import { Button } from "@ui/button";
 
-interface Ipage { }
+interface Ipage {}
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: 'Admin.Restaurants.Metadata' })
+  return {
+    title: t('title'),
+    description: t('description')
+  }
+}
 
 const RestaurantsAdminPage: React.FC = (): JSX.Element => {
   return (
@@ -14,7 +20,7 @@ const RestaurantsAdminPage: React.FC = (): JSX.Element => {
 
       </section>
     </main>
-  );
-};
+  )
+}
 
-export default RestaurantsAdminPage;
+export default RestaurantsAdminPage

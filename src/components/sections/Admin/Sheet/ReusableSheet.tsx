@@ -1,21 +1,16 @@
-import { Button } from "@ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@ui/AdminSheet";
-import { useTranslations } from "next-intl";
-import Myform from "../Products/Myform";
-interface IAddProductSheet {
-  trigger: any;
-  whatIs: string;
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@ui/AdminSheet'
+import { useTranslations } from 'next-intl'
+import Myform from '../../../ui/Myform'
+import { translateUrl } from '../../../helper/helper'
+interface IReusableSheet {
+  trigger: any
+  whatIs: string
+  id?: any
+  restore?: any
 }
 
-const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.Element => {
-  let t: any;
-
-  if (whatIs === "EditProduct") {
-    t = useTranslations("Admin.Products.EditProduct.Sheet.imageBlock");
-  }
-  if (whatIs === "AddProduct") {
-    t = useTranslations("Admin.Header.Sheet.imageBlock");
-  }
+const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id, restore }): JSX.Element => {
+  const t = useTranslations(`Admin.${translateUrl(whatIs)}.Sheet.imageBlock`)
 
   if (whatIs === "AddRestaurant") {
     t = useTranslations("Admin.Restaurants.AddRestaurant.Sheet.imageBlock");
@@ -26,19 +21,22 @@ const AddProductSheet: React.FC<IAddProductSheet> = ({ trigger, whatIs }): JSX.E
 
   return (
     <Sheet>
-      <SheetTrigger>{trigger}</SheetTrigger>
+      <SheetTrigger className={`cursor-pointer duration-300 ${whatIs.startsWith('Add') && 'hover:bg-slate-900'}`} asChild>
+        {trigger}
+      </SheetTrigger>
       <SheetContent>
-        <div className="h-[1000px] overflow-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          <SheetHeader>
-            <SheetTitle>{t("title")}</SheetTitle>
+        <div className="flex h-screen flex-col justify-between overflow-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <SheetHeader className="h-[40px]mmd:w-full">
+            <SheetTitle>{t('title')}</SheetTitle>
           </SheetHeader>
-          <div>
-            <Myform whatIs={whatIs} />
+          <div className="h-[calc(100vh-40px)] ">
+            <Myform whatIs={whatIs} actionId={id} />
           </div>
+          <SheetDescription></SheetDescription>
         </div>
       </SheetContent>
     </Sheet>
-  );
-};
+  )
+}
 
-export default AddProductSheet;
+export default ReusableSheet
