@@ -1,8 +1,7 @@
 'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { collections, databases, dbId, ID } from '@libs/appwrite/config'
-import DoneIconComponent from '@sections/Checkout/LottieAnimation'
+import DoneIconComponent from './LottieAnimation'
 import { Button } from '@ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form'
 import { Input } from '@ui/input'
@@ -12,7 +11,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { getDocuments } from '../../../utls/functions'
 import CheckoutOrder from './CheckoutOrder'
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl'
 
 const formSchema = z.object({
   address: z
@@ -36,13 +35,14 @@ const formSchema = z.object({
 })
 
 function CheckoutHome() {
-  const t = useTranslations("Checkout");
-  const [showDoneIcon, setShowDoneIcon] = useState(false);
-  const [userId, setUserId] = useState("");
-  const [basket, setBasket] = useState([]);
-  const [user, setUser] = useState({});
+  const t = useTranslations('Checkout')
+  const [showDoneIcon, setShowDoneIcon] = useState(false)
+  const [userId, setUserId] = useState('')
+  const [basket, setBasket] = useState([])
+  const [user, setUser] = useState({})
+  const [loading, setLoading] = useState(true)
 
-  const totalAmount = basket.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
+  const totalAmount = basket?.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -58,17 +58,17 @@ function CheckoutHome() {
     setUserId(token || '')
 
     if (!userId) return
-
     ;(async () => {
       const userInfo = await getDocuments(collections.userId, userId)
       setUser(userInfo)
 
-      const basketIdinUser = userInfo.basket.length > 0 && userInfo.basket[0].$id
+      const basketIdinUser = userInfo.basket && userInfo.basket.$id
       if (basketIdinUser) {
-        let prevBasket = userInfo.basket[0].productsList
+        let prevBasket = userInfo.basket.productsList
         setBasket(JSON.parse(prevBasket))
       }
     })()
+    setLoading(false)
   }, [userId])
 
   const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
@@ -83,14 +83,19 @@ function CheckoutHome() {
 
     if (!userId) return
     // @ts-ignore
-    const basketId = await user.basket[0].$id
+    const basketId = await user.basket.$id
     await databases.createDocument(dbId, collections.ordersId, ID.unique(), {
       user: userId,
       orderInfo
     })
-    await databases.deleteDocument(dbId, collections.basketId, basketId)
-    setShowDoneIcon(true)
 
+    // await databases.updateDocument(dbId, collections.userId, userId, {
+    //   basket: null
+    // })
+
+    await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: null })
+
+    setShowDoneIcon(true)
     form.reset()
     setBasket([])
   }
@@ -111,7 +116,7 @@ function CheckoutHome() {
     <section className={`w-full`}>
       <div className={`flex items-start gap-4`}>
         <div className={`w-full basis-2/3 rounded-md bg-gray-7 p-10 pb-11`}>
-          <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>{t("checkoutTitle")}</h1>
+          <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>{t('checkoutTitle')}</h1>
           <Form {...form}>
             <form className={`flex flex-col gap-8`} onSubmit={form.handleSubmit(handleCheckOut)}>
               <FormField
@@ -119,11 +124,11 @@ function CheckoutHome() {
                 name="address"
                 render={({ field }) => (
                   <FormItem className={`flex flex-col gap-1`}>
-                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t("addressLabel")}</FormLabel>
+                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t('addressLabel')}</FormLabel>
                     <FormControl>
                       <Input
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
-                        placeholder={t("addressPlaceholder")}
+                        placeholder={t('addressPlaceholder')}
                         {...field}
                         type={'text'}
                         autoComplete={'address-level1 webauthn'}
@@ -138,11 +143,11 @@ function CheckoutHome() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className={`flex flex-col gap-1`}>
-                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t("phoneLabel")}</FormLabel>
+                    <FormLabel className={`text-lg font-semibold text-gray-2`}>{t('phoneLabel')}</FormLabel>
                     <FormControl>
                       <Input
                         className={`p-6 text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:placeholder:opacity-0`}
-                        placeholder={t("phonePlaceholder")}
+                        placeholder={t('phonePlaceholder')}
                         {...field}
                         type={'tel'}
                         autoComplete={'tel webauthn'}
@@ -170,7 +175,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === 'Card' ? 'font-bold text-[#6FCF97]' : 'text-foreground'} cursor-pointer text-base`}
                           >
-                            {t("paymentCard")}
+                            {t('paymentCard')}
                           </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -183,7 +188,7 @@ function CheckoutHome() {
                           <FormLabel
                             className={`${field.value === 'Cash' ? 'font-bold text-[#6FCF97]' : 'border-slate-600'} text-base} cursor-pointer`}
                           >
-                            {t("paymentCash")}
+                            {t('paymentCash')}
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
@@ -192,12 +197,12 @@ function CheckoutHome() {
                 )}
               />
               <Button className={`bg-[#6FCF97] py-7 duration-300 hover:bg-mainRed`} type="submit">
-                {t("submitButton")}
+                {t('submitButton')}
               </Button>
             </form>
           </Form>
         </div>
-        <CheckoutOrder basket={basket} />
+        <CheckoutOrder basket={basket} loading={loading} />
       </div>
     </section>
   )

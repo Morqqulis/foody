@@ -13,6 +13,7 @@ import { checkUser, editDocuments, getDocuments } from '../../../utls/functions'
 import Loader from './Loader'
 import LoginFormField from './LoginFormField'
 import { collections, databases, dbId, ID } from '@libs/appwrite/config'
+import LoadingAnimation from '@ui/LoadingAnimation'
 
 interface ILoginForm {
   name: 'login' | 'register'
@@ -51,9 +52,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
         duration: 2000
       })
 
-      setTimeout(() => {
-        router.push('/user')
-      }, 1000)
+      router.push('/user')
 
       form.reset()
     } else {
@@ -122,23 +121,28 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
   }
 
   return (
-    <Form {...form}>
-      <form className={`flex flex-col gap-[25px] px-10 `} onSubmit={form.handleSubmit((data) => onSubmit(data))}>
-        {name === 'register' && (
-          <>
-            <LoginFormField form={form} inputType={'text'} name={'fullName'} placeholder="John Doe" />
-            <LoginFormField form={form} inputType={'text'} name={'userName'} placeholder="john_doe" />
-          </>
-        )}
-        <LoginFormField form={form} inputType={'text'} name={'email'} placeholder="wqS6S@example.com" />
-        <LoginFormField form={form} inputType={'password'} name={'password'} placeholder="********" />
+    <div className="relative flex min-h-96 flex-col items-center justify-center">
+      {isLoading ? (
+        <LoadingAnimation className="absolute left-0 top-0 " height={300} width={300} />
+      ) : (
+        <Form {...form}>
+          <form className={`flex w-full flex-col gap-[25px] px-10`} onSubmit={form.handleSubmit((data) => onSubmit(data))}>
+            {name === 'register' && (
+              <>
+                <LoginFormField form={form} inputType={'text'} name={'fullName'} placeholder="John Doe" />
+                <LoginFormField form={form} inputType={'text'} name={'userName'} placeholder="john_doe" />
+              </>
+            )}
+            <LoginFormField form={form} inputType={'text'} name={'email'} placeholder="wqS6S@example.com" />
+            <LoginFormField form={form} inputType={'password'} name={'password'} placeholder="********" />
 
-        <Button className={`h-full bg-normal-red py-3 text-xl font-medium text-white md:py-4`} type={'submit'} aria-label={t('form.btnSignIn')}>
-          {name === 'login' ? t('form.btnSignIn') : t('form.btnSignUp')}
-        </Button>
-        {isLoading && <Loader />}
-      </form>
-    </Form>
+            <Button className={`h-full bg-normal-red py-3 text-xl font-medium text-white md:py-4`} type={'submit'} aria-label={t('form.btnSignIn')}>
+              {name === 'login' ? t('form.btnSignIn') : t('form.btnSignUp')}
+            </Button>
+          </form>
+        </Form>
+      )}
+    </div>
   )
 }
 

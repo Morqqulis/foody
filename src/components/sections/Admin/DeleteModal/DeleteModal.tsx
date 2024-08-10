@@ -30,7 +30,7 @@ const DeleteModal: React.FC<IProps> = ({ collectionId, deletedId }): JSX.Element
       <AlertDialogTrigger>
         <Trash2 size={24} color="red" className="cursor-pointer" />
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="mmd:w-[90%] rounded-md">
         <AlertDialogHeader>
           <AlertDialogTitle>{t("title")}</AlertDialogTitle>
           <AlertDialogDescription>{t("text")}</AlertDialogDescription>

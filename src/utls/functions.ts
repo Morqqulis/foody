@@ -32,7 +32,7 @@ export const uploadImage = async (file: File) => {
   const fileUploaded = await storage.createFile(avatarId, ID.unique(), file)
   // @ts-ignore
 
-  const image = storage.getFilePreview(avatarId, fileUploaded.$id, 200, 200)
+  const image = storage.getFilePreview(avatarId, fileUploaded.$id)
 
   const imageId = fileUploaded.$id
 

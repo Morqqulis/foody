@@ -37,25 +37,27 @@ const Popular: React.FC = (): JSX.Element => {
   const t = useTranslations('Home.Popular')
 
   return (
-    <section className={`mb-10 py-20 md:mb-40`}>
+    <section className="mb-10 py-20 md:mb-40">
       <div className="container">
-        <Title className={`mx-auto mb-[15px] w-full max-w-[500px] text-center text-[48px] font-black leading-[50px]`} tag={'h3'} text={t('title')} />
-        <Text className={`mx-auto mb-[30px] max-w-[780px] text-center`} text={t('text')} />
-        <div className={`grid grid-cols-3 justify-between gap-8`}>
+        <Title className="mx-auto mb-4 w-full max-w-lg text-center text-4xl font-black leading-tight" tag={'h3'} text={t('title')} />
+        <Text className="mx-auto mb-8 max-w-3xl text-center" text={t('text')} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {popularCardsImages.map((item) => (
             <div
-              className={`flex h-full w-full max-w-[350px] flex-col items-center gap-8 bg-white px-6 pb-8 text-center shadow-[0px_4px_4px_0px_rgb(0_0_0/25%)] blur-[.5px]`}
+              className="group flex h-full w-full max-w-xs flex-col items-center gap-8 bg-white px-6 pb-8 text-center shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               key={item.id}
             >
               <Image
-                className={`h-[233px] border-[2px] border-dashed`}
+                className="h-[233px] w-full border-2 border-dashed transition-transform duration-300 ease-in-out group-hover:scale-105"
                 src={item.imagePath}
                 width={item.imageWidth}
                 height={item.imageHeight}
-                alt={'popular image'}
+                alt="popular image"
               />
-              <span className={`text-[30px] font-bold leading-[70px] text-gray-2`}>{t(`cardsTitles.${item.id}`)}</span>
-              <Text className={``} text={t(`cardsTexts.${item.id}`)} />
+              <span className="text-2xl font-bold leading-snug text-gray-700 transition-colors duration-300 ease-in-out group-hover:text-primary">
+                {t(`cardsTitles.${item.id}`)}
+              </span>
+              <Text className="transition-colors duration-300 ease-in-out group-hover:text-gray-600" text={t(`cardsTexts.${item.id}`)} />
             </div>
           ))}
         </div>

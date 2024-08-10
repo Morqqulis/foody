@@ -25,7 +25,6 @@ const LoginPage = () => {
           <LoginNavigation />
         </div>
       </div>
-      <Toaster />
     </main>
   )
 }

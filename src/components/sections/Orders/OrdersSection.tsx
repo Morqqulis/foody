@@ -2,7 +2,7 @@
 import Table from '@sections/Admin/Table'
 import { EllipsisVertical } from 'lucide-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import UserPagination from '../../Paginations/UserPagination'
+import UserPagination from '../Paginations/UserPagination'
 import { useEffect, useState } from 'react'
 import {
   AlertDialog,
@@ -15,16 +15,18 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@ui/alert-dialog'
-import OrdersModal from '@sections/User/Orders/OrdersModal'
-import { deleteDocument, getDocuments } from '../../../../utls/functions'
+import OrdersModal from '@sections/Orders/OrdersModal'
+import { deleteDocument, getDocuments } from '../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
 import { useTranslations } from 'next-intl'
+import LoadingAnimation from '@ui/LoadingAnimation'
 
 const OrdersSection: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1)
   const [perPage, setPerPage] = useState(5)
   const [orders, setOrders] = useState([])
   const [userId, setUserId] = useState('')
+  const [loading, setloading] = useState(true)
   const { Root, DropdownMenuTrigger, Portal, Content, Item } = DropdownMenu
 
   const t = useTranslations('Admin.Products.Modal')
@@ -36,7 +38,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
     if (!token) return
     ;(async () => {
-      const user:any = await getDocuments(collections.userId, userId)
+      const user: any = await getDocuments(collections.userId, userId)
 
       if (!user.orders) return
 
@@ -129,9 +131,16 @@ const OrdersSection: React.FC = (): JSX.Element => {
     setOrders((prev) => prev.filter((order) => order.id !== id))
   }
 
-  return (
+  useEffect(() => {
+    setloading(false)
+  },[filteredData])
+  
+  return loading ? (
+    <LoadingAnimation width={150} height={150} />
+  ) : (
     <div className="flex h-full min-h-[500px] flex-col gap-7 bg-[#F3F4F6] p-8">
       <h2 className="font-mukta text-[30px] font-semibold leading-[24px] tracking-[3%] text-black">{t2('yourOrders')}</h2>
+
       <Table headers={headers} body={filteredData} />
       {orders.length > perPage && (
         <UserPagination

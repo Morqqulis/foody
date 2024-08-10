@@ -8,7 +8,7 @@
   },
 
   "Footer": {
-    "text": "Lorem ipsum, qrafikdə çox istifadə olunan yer tutucu mətndir.",
+    "text": "Bizi izləyin: Sosial media kanallarımızda ən son promosyonlarımız və restoran tərəfdaşlarımızdan xəbərdar olun",
 
     "popular": {
       "title": "Populyar",
@@ -53,20 +53,20 @@
     },
     "Hero": {
       "title": "Qida saytımız yerli yeməkləri tapmağı asanlaşdırır",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "text": "Yerli mətbəxi tapmaq heç vaxt asan olmadığı yeməklərin çatdırılması platformamıza xoş gəlmisiniz! Biz sizi ərazinizdəki ən yaxşı yeməkxanalarla birləşdirməyə sadiqik, bu da sizə əlinizin altında müxtəlif kulinariya ləzzətlərini kəşf etməyə imkan verir.",
       "firstBtn": "Başlamaq",
       "secondBtn": "İndi sifariş edin"
     },
 
     "Features": {
       "title": "Xidmətlər",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləriizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "text": "Restoranların geniş çeşidi. Bizdə müxtəlif mətbəxlər təqdim edən yerli restoranların geniş siyahısı var. İtalyan makaronundan tutmuş Yapon suşisinə qədər hər zaman zövqünüzə uyğun nəsə tapacaqsınız!",
 
       "cardsTitle": ["Endirim kuponu", "Təzə sağlam qida", "Evə Sürətli Çatdırılma"],
       "cardsText": [
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+        "Sadəcə bir neçə kliklə restoran, menyu seçmək və sifariş vermək lazımdır.",
+        "Bizim kuryer komandamız sevimli yeməyinizi mümkün qədər tez çatdırmaq üçün tez və səmərəli işləyir",
+        "Biz hər bir müştərini qiymətləndiririk və təcrübənizi mümkün qədər xoş etməyə çalışırıq."
       ]
     },
     "Food": {
@@ -79,12 +79,12 @@
     },
     "Popular": {
       "title": "Populyar",
-      "text": "Lorem ipsum qrafika, çap və nəşriyyat sənayelərində tərtibat və vizual maketləri önizləmək üçün geniş istifadə olunan yer tutucu mətndir.",
+      "text": "Artıq şəhərdə ürəkləri və dad qönçələrini qazanan menyumuza ən son əlavələri kəşf edin. Biz təzə inqrediyentləri, innovativ dadları və tərəfdaş restoranlarımızın kulinariya təcrübəsini birləşdirən müxtəlif yeni yeməkləri təqdim etməkdən məmnunuq.",
       "cardsTitles": ["İkiqat Pendir", "Marqarita", "Twister Menyu"],
       "cardsTexts": [
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur",
-        "Lorem ipsum qrafikdə çox istifadə olunan yer tutucudur"
+        "Premium mal əti köftələri, təzə tərəvəzlər və kustar çörəklərdən ibarət yeni gurme burgerlərimizi sınayın.",
+        "Ədviyyatlı tuna balığından əjdaha rulonlarına qədər hər bir parça ən yaxşı inqrediyentlərlə və təfərrüatlara ciddi diqqət yetirilməklə hazırlanır.",
+        "Mükəmməl bişmiş makaronla birləşdirilən zəngin, qaymaqlı souslardan həzz alın."
       ]
     },
     "Discover": {
@@ -103,7 +103,7 @@
   "AboutUs": {
     "Metadata": {
       "title": "Haqqımızda",
-      "description": "Şirkətimiz, missiyamız və dəyərlərimiz və bizi fərqləndirən şey haqqında daha çox məlumat əldə edin."
+      "description": "Qida çatdırılması üçün ən yaxşı yoldaşınız Foody-ə xoş gəlmisiniz! Bizim missiyamız sizi ən yaxşı yerli restoranlarla əlaqələndirmək və evinizin rahatlığından rahatlıqla nahar etməkdən ibarətdir.Komandamız şəhərin ən yaxşı yeməkxanaları ilə əməkdaşlıq etmək üçün yorulmadan çalışır və sizin hər bir dadınıza uyğun müxtəlif menyuya çıxış əldə etməyinizi təmin edir. İstifadəsi asan tətbiqimizlə siz bir neçə toxunuşla menyulara baxa, rəyləri oxuya və sifarişlərinizi verə bilərsiniz."
     }
   },
 
@@ -363,9 +363,31 @@
 
   "User": {
     "Metadata": {
-      "title": "İstifadəçi",
+      "title": "Profil Parametrləri",
       "description": "Profilinizi, sifarişlərinizi və parametrlərinizi idarə edin."
     },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Səbətiniz",
+        "description": "Məhsulları səbətə əlavə edin."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Ödəniş",
+        "description": "Ödəniş edin."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Sifarişlər",
+        "description": "Sifarişlərinizi idarə edin."
+      }
+    },
+
     "Aside": {
       "title": ["Profil", "Sənin Səbətin", "Sifarişləriniz", "Ödəniş", "Çıxış"]
     }
@@ -413,20 +435,20 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
     "fullNamePlaceholder": "Fuad Paşayev"
-    } ,
-    "AdminOrders": {
-      "Products": {
-        "Modal": {
-          "deleteBtn": "Sil",
-          "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
-          "text": "Bu əməliyyat geri qaytarıla bilməz.",
-          "cancelBtn": "Ləğv et"
-        }
+  },
+  "AdminOrders": {
+    "Products": {
+      "Modal": {
+        "deleteBtn": "Sil",
+        "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+        "text": "Bu əməliyyat geri qaytarıla bilməz.",
+        "cancelBtn": "Ləğv et"
       }
-    },
-    "OrdersSection": {
-      "yourOrders": "Sizin Sifarişləriniz",
-      "show": "Göstər"
+    }
+  },
+  "OrdersSection": {
+    "yourOrders": "Sizin Sifarişləriniz",
+    "show": "Göstər"
   },
   "Checkout": {
     "checkoutTitle": "Yoxlama",

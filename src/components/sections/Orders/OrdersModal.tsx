@@ -1,6 +1,6 @@
 import Table from '@sections/Admin/Table'
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@ui/dialog'
-import UserPagination from '../../Paginations/UserPagination'
+import UserPagination from '../Paginations/UserPagination'
 import { useState } from 'react'
 
 interface IOrdersModal {
@@ -18,7 +18,7 @@ const OrdersModal: React.FC<IOrdersModal> = ({ trigger, header, body }): JSX.Ele
   return (
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
-      <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white">
+      <DialogContent className="flex h-[500px] max-w-[800px] flex-col justify-between overflow-auto rounded-md bg-white mmd:w-[95%]">
         <Table headers={header} body={filteredData} />
         <DialogTitle></DialogTitle>
         <UserPagination setCurrentPage={setCurrentPage} dataCount={body.length} currentPage={currentPage} perPage={perPage} setPerPage={setPerPage} />

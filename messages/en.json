@@ -8,7 +8,7 @@
   },
 
   "Footer": {
-    "text": "Lorem ipsum is placeholder text commonly used in the graphic.",
+    "text": "Follow Us: Stay updated with our latest promotions and restaurant partners on our social media channels",
     "popular": {
       "title": "Popular",
       "links": ["Programming", "Books for children", "Psychology", "Business"]
@@ -51,18 +51,19 @@
     },
     "Hero": {
       "title": "Our Food site makes it easy to find local food",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Welcome to our food delivery platform, where finding local cuisine has never been easier! We are dedicated to connecting you with the best eateries in your area, allowing you to explore a diverse array of culinary delights right at your fingertips.",
       "firstBtn": "Get Started",
       "secondBtn": "Order now"
     },
     "Features": {
       "title": "Features",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Wide variety of restaurants. We have an extensive list of local restaurants serving a variety of cuisines. From Italian pasta to Japanese sushi, you will always find something to suit your taste!",
       "cardsTitle": ["Discount Boucher", "Fresh healthy Food", "Fast Home Delivery"],
       "cardsText": [
-        "Lorem ipsum is placeholder  commonly used in the graphic",
-        "Lorem ipsum is placeholder  commonly used in the graphic",
-        "Lorem ipsum is placeholder  commonly used in the graphic"
+        "You just need to select a restaurant, a menu and place an order in just a few clicks.",
+        "Our team of couriers work quickly and efficiently to deliver your favorite meal as quickly as possible",
+
+        "We value every customer and strive to make your experience as pleasant as possible."
       ]
     },
     "Food": {
@@ -75,12 +76,12 @@
     },
     "Popular": {
       "title": "Our Popular Update New Foods",
-      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      "text": "Discover the latest additions to our menu that are already winning hearts and taste buds across the city. We are excited to introduce a variety of new dishes that combine fresh ingredients, innovative flavors, and the culinary expertise of our partner restaurants",
       "cardsTitles": ["Dubble Chees", "Margarita", "Twister Menu"],
       "cardsTexts": [
-        "Lorem ipsum is placeholder  commonly used in the graphic ",
-        "Lorem ipsum is placeholder  commonly used in the graphic ",
-        "Lorem ipsum is placeholder  commonly used in the graphic "
+        "Try our new range of gourmet burgers, featuring premium beef patties, fresh vegetables, and artisanal buns.",
+        "From spicy tuna to dragon rolls, each piece is crafted with the finest ingredients and meticulous attention to detail.",
+        "Enjoy rich, creamy sauces paired with perfectly cooked pasta. "
       ]
     },
     "Discover": {
@@ -99,9 +100,10 @@
   "AboutUs": {
     "Metadata": {
       "title": "About Us",
-      "description": "Learn more about our company, our mission and values, and what sets us apart."
+      "description": "Welcome to Foody, your ultimate food delivery companion! Our mission is to connect you with the best local restaurants and make dining out an effortless experience from the comfort of your home.Our team works tirelessly to partner with the finest eateries in town, ensuring that you have access to a diverse menu that caters to every palate. With our easy-to-use app, you can browse menus, read reviews, and place your orders in just a few taps."
     }
   },
+
   "HowItWorks": {
     "Metadata": {
       "title": "How it works",
@@ -110,6 +112,7 @@
     "title": "How it works",
     "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
   },
+
   "FAQs": {
     "Metadata": {
       "title": "FAQ",
@@ -152,6 +155,7 @@
       "username": "Username",
       "password": "Password"
     },
+
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
@@ -205,9 +209,11 @@
         }
       }
     },
+
     "Aside": {
       "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
     },
+
     "Category": {
       "title": "Category",
       "id": "ID",
@@ -236,6 +242,7 @@
           "submitBtn": "Update  Category"
         }
       },
+
       "AddCategory": {
         "Sheet": {
           "imageBlock": {
@@ -256,6 +263,7 @@
         }
       }
     },
+
     "Restaurants": {
       "Metadata": {
         "title": "Admin - Restaurants",
@@ -305,6 +313,7 @@
         }
       }
     },
+
     "Offers": {
       "title": "Offers",
       "addOffer": "Add Offer",
@@ -356,19 +365,42 @@
 
   "User": {
     "Metadata": {
-      "title": "User",
+      "title": "Profile Settings",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Basket",
+        "description": "View your basket and manage it."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Orders",
+        "description": "View your orders and manage them."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Checkout",
+        "description": "Manage your checkout settings."
+      }
     },
 
     "Aside": {
       "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
+
   "Basket": {
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
   },
+
   "Header-Restaurants": {
     "restaurantName": "Papa John’s Pizza Restaurant",
     "address": "19 Nizami street, Sabail, Baku",
@@ -377,16 +409,18 @@
     "deliveryCost": "Delivery",
     "goBack": "Go Back"
   },
-"RestaurantSection": {
+  "RestaurantSection": {
     "all": "All",
     "ariaLabelFoodCategory": "food category",
     "ariaLabelVortexLoading": "vortex-loading"
   },
+
   "RestaurantCard": {
     "delivery": "Delivery",
     "new": "New",
     "minutes": "min"
   },
+
   "Checkout": {
     "checkoutTitle": "Checkout",
     "addressLabel": "Delivery Address",
@@ -397,15 +431,17 @@
     "paymentCash": "Pay at the door",
     "submitButton": "Submit"
   },
+
   "CheckoutOrder": {
     "yourOrder": "Your Order",
     "total": "Total"
-
   },
- "ProfileSection": {
+
+  "ProfileSection": {
     "profile": "Profile"
   },
-"ProfileForm": {
+
+  "ProfileForm": {
     "upload": "Upload Avatar",
     "contact": "Contact Number",
     "email": "Email Address",
@@ -418,7 +454,8 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Ataturk 45 Ganclik Baku",
     "fullNamePlaceholder": "Fuad Pashayev"
-  } ,
+  },
+
   "AdminOrders": {
     "Products": {
       "Modal": {
@@ -429,24 +466,29 @@
       }
     }
   },
+
   "OrdersSection": {
     "yourOrders": "Your Orders",
     "show": "Show"
   },
+
   "DashboardSection": {
     "assignedRisk": "Assigned Risk",
     "noRisksAssigned": "There are no risks assigned.",
     "assignedActionItems": "Assigned Action Items",
     "noActionItems": "There are no action items assigned."
   },
+
   "SalaryChart": {
     "totalSalary": "Total Salary"
   },
+
   "OrdersChart": {
     "orders": "Orders",
     "projectsByAccount": "Projects by Account",
     "totalProjects": "Total Projects"
   },
+
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
