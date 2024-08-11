@@ -10,12 +10,16 @@ interface IRestCard {
 
 const RestaurantCard: React.FC<IRestCard> = ({ prop }): JSX.Element => {
   return (
-    <div className="relative flex h-[83px] w-[300px]  items-center justify-between gap-4 rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">
+    <div className="relative flex h-[83px] w-full max-w-[247px] items-center justify-between gap-4 rounded bg-white shadow-[0px_4px_4px_0px_rgb(57_57_57)/25%] ">
       <div className={`flex items-center gap-4 p-4 `}>
-        {prop?.image && <Image className={`w-full max-w-[65px]`} src={prop.image} alt="image" width={80} height={80} />}
+        {prop?.image && <Image className={``} src={prop.image} alt="image" width={80} height={80} />}
         <div className="w-full whitespace-nowrap">
-          <h3 className="w-44 overflow-hidden text-lg font-medium text-[#1E1E30]">{prop.name}</h3>
-          <p className="w-44 overflow-hidden  text-sm font-medium text-[#8E8E93]">{prop.cuisine}</p>
+          <h3 className="w-44 overflow-hidden text-lg font-medium text-[#1E1E30]">
+            {prop.name.length > 8 ? `${prop.name.slice(0, 8)}...` : prop.name}
+          </h3>
+          <p className="w-44 overflow-hidden  text-sm font-medium text-[#8E8E93]">
+            {prop.cuisine.length > 10 ? `${prop.cuisine.slice(0, 10)}...` : prop.cuisine}
+          </p>
         </div>
       </div>
 

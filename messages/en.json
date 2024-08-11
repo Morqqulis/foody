@@ -1,6 +1,12 @@
 {
   "Header": {
-    "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
+    "menu": [
+      "Home",
+      "Restaurants",
+      "About",
+      "How it works",
+      "FAQs"
+    ],
     "search": "Search...",
     "more": "More",
     "signUp": "Sign Up",
@@ -11,22 +17,31 @@
     "text": "Follow Us: Stay updated with our latest promotions and restaurant partners on our social media channels",
     "popular": {
       "title": "Popular",
-      "links": ["Programming", "Books for children", "Psychology", "Business"]
+      "links": [
+        "Programming",
+        "Books for children",
+        "Psychology",
+        "Business"
+      ]
     },
-
     "cash": {
       "title": "Cash",
-      "links": ["Delivery", "Payment", "About the store"]
+      "links": [
+        "Delivery",
+        "Payment",
+        "About the store"
+      ]
     },
-
     "help": {
       "title": "Help",
-      "links": ["Contacts", "Purchase returns", "Buyer help"]
+      "links": [
+        "Contacts",
+        "Purchase returns",
+        "Buyer help"
+      ]
     },
-
     "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
   },
-
   "Login": {
     "Metadata": {
       "title": "Login",
@@ -43,7 +58,6 @@
       "btnSignUp": "Register"
     }
   },
-
   "Home": {
     "Metadata": {
       "title": "Home",
@@ -62,12 +76,16 @@
       "cardsText": [
         "You just need to select a restaurant, a menu and place an order in just a few clicks.",
         "Our team of couriers work quickly and efficiently to deliver your favorite meal as quickly as possible",
-        
+
         "We value every customer and strive to make your experience as pleasant as possible."
       ]
     },
     "Food": {
-      "titles": ["Menu That Always Make You Fall In Love", "Yummy Always Papa John’s Pizza.Agree?", "Do You Like French Fries? Mmm..."],
+      "titles": [
+        "Menu That Always Make You Fall In Love",
+        "Yummy Always Papa John’s Pizza.Agree?",
+        "Do You Like French Fries? Mmm..."
+      ],
       "texts": [
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
@@ -103,6 +121,7 @@
       "description": "Welcome to Foody, your ultimate food delivery companion! Our mission is to connect you with the best local restaurants and make dining out an effortless experience from the comfort of your home.Our team works tirelessly to partner with the finest eateries in town, ensuring that you have access to a diverse menu that caters to every palate. With our easy-to-use app, you can browse menus, read reviews, and place your orders in just a few taps."
     }
   },
+
   "HowItWorks": {
     "Metadata": {
       "title": "How it works",
@@ -111,6 +130,7 @@
     "title": "How it works",
     "text": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address."
   },
+
   "FAQs": {
     "Metadata": {
       "title": "FAQ",
@@ -140,7 +160,6 @@
       }
     }
   },
-
   "Admin": {
     "Metadata": {
       "title": "Admin",
@@ -153,6 +172,7 @@
       "username": "Username",
       "password": "Password"
     },
+
     "Header": {
       "btn": "Add Product",
       "admin": "Admin",
@@ -162,7 +182,6 @@
           "description": "Upload your product image",
           "label": "upload"
         },
-
         "InfoBlock": {
           "text": "Add your Product description and necessary information",
           "labels": ["Name", "Description", "Price", "Restaurants"],
@@ -171,12 +190,10 @@
           "price": "Price",
           "restaurant": "Restaurants"
         },
-
         "cancelBtn": "Cancel",
         "submitBtn": "Create  Product"
       }
     },
-
     "Products": {
       "Modal": {
         "title": "Are you sure it’s deleted ?",
@@ -191,24 +208,29 @@
             "description": "Upload your product image",
             "label": "Upload"
           },
-
           "InfoBlock": {
             "text": "Edit your Product description and necessary information",
-            "labels": ["Name", "Description", "Price", "Restaurants"],
+            "labels": [
+              "Name",
+              "Description",
+              "Price",
+              "Restaurants"
+            ],
             "name": "Name",
             "description": "Description",
             "price": "Price",
             "restaurant": "Restaurants"
           },
-
           "cancelBtn": "Cancel",
           "submitBtn": "Update  Product"
         }
       }
     },
+
     "Aside": {
       "title": ["Dashboard", "Products", "Restaurants", "Category", "Orders", "History", "Offer", "Log Out"]
     },
+
     "Category": {
       "title": "Category",
       "id": "ID",
@@ -237,6 +259,7 @@
           "submitBtn": "Update  Category"
         }
       },
+
       "AddCategory": {
         "Sheet": {
           "imageBlock": {
@@ -257,6 +280,7 @@
         }
       }
     },
+
     "Restaurants": {
       "Metadata": {
         "title": "Admin - Restaurants",
@@ -306,6 +330,7 @@
         }
       }
     },
+
     "Offers": {
       "title": "Offers",
       "addOffer": "Add Offer",
@@ -357,19 +382,42 @@
 
   "User": {
     "Metadata": {
-      "title": "User",
+      "title": "Profile Settings",
       "description": "Manage your profile, orders, and settings."
+    },
+
+    "Basket": {
+      "Metadata": {
+        "title": "Basket",
+        "description": "View your basket and manage it."
+      }
+    },
+
+    "Orders": {
+      "Metadata": {
+        "title": "Orders",
+        "description": "View your orders and manage them."
+      }
+    },
+
+    "Checkout": {
+      "Metadata": {
+        "title": "Checkout",
+        "description": "Manage your checkout settings."
+      }
     },
 
     "Aside": {
       "title": ["Profile", "Your Basket", "Your Orders", "Checkout", "Logout"]
     }
   },
+
   "Basket": {
     "title": "Your Basket",
     "items": "Items",
     "checkout": "Checkout"
   },
+
   "Header-Restaurants": {
     "restaurantName": "Papa John’s Pizza Restaurant",
     "address": "19 Nizami street, Sabail, Baku",
@@ -378,16 +426,18 @@
     "deliveryCost": "Delivery",
     "goBack": "Go Back"
   },
-"RestaurantSection": {
+  "RestaurantSection": {
     "all": "All",
     "ariaLabelFoodCategory": "food category",
     "ariaLabelVortexLoading": "vortex-loading"
   },
+
   "RestaurantCard": {
     "delivery": "Delivery",
     "new": "New",
     "minutes": "min"
   },
+
   "Checkout": {
     "checkoutTitle": "Checkout",
     "addressLabel": "Delivery Address",
@@ -398,15 +448,17 @@
     "paymentCash": "Pay at the door",
     "submitButton": "Submit"
   },
+
   "CheckoutOrder": {
     "yourOrder": "Your Order",
     "total": "Total"
-
   },
- "ProfileSection": {
+
+  "ProfileSection": {
     "profile": "Profile"
   },
-"ProfileForm": {
+
+  "ProfileForm": {
     "upload": "Upload Avatar",
     "contact": "Contact Number",
     "email": "Email Address",
@@ -419,7 +471,8 @@
     "usernamePlaceholder": "eacampm1",
     "addressPlaceholder": "Ataturk 45 Ganclik Baku",
     "fullNamePlaceholder": "Fuad Pashayev"
-  } ,
+  },
+
   "AdminOrders": {
     "Products": {
       "Modal": {
@@ -430,24 +483,29 @@
       }
     }
   },
+
   "OrdersSection": {
     "yourOrders": "Your Orders",
     "show": "Show"
   },
+
   "DashboardSection": {
     "assignedRisk": "Assigned Risk",
     "noRisksAssigned": "There are no risks assigned.",
     "assignedActionItems": "Assigned Action Items",
     "noActionItems": "There are no action items assigned."
   },
+
   "SalaryChart": {
     "totalSalary": "Total Salary"
   },
+
   "OrdersChart": {
     "orders": "Orders",
     "projectsByAccount": "Projects by Account",
     "totalProjects": "Total Projects"
   },
+
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
