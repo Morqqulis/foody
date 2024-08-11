@@ -9,6 +9,7 @@ import HeaderBasket from './HeaderBasket'
 import HeaderInput from './HeaderInput'
 import HeaderLanguages from './HeaderLangs'
 import HeaderMenu from './HeaderMenu'
+import LoginHeader from '@sections/Login/LoginHeader'
 interface IHeader {
   className?: string
 }
@@ -25,17 +26,17 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
     setUserId(token)
   }, [])
 
-  return (
-    <header className={`${className || ''} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
-      <div className={`container`}>
-        <nav
-          className={`flex w-full items-center  gap-2.5 rounded bg-gray-7 py-10 ${path === '/login' ? 'mt-[30px] justify-between bg-[rgb(235_87_87)] p-[35px]' : 'justify-around'}`}
-        >
-          <Logo className={'mr-8'} color={path === '/login' ? 'white' : 'black'} />
-          <HeaderMenu className={`mr-10 ${path == '/login' && 'hidden'}`} />
-          <HeaderInput className={`mr-8 w-full ${path == '/login' && 'hidden'}`} />
+  if (path === '/login') return <LoginHeader />
+  else
+    return (
+      <header className={`mt-[30px] ${className} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
+        <div className={`container`}>
+          <nav className={`flex w-full items-center justify-around gap-2.5 rounded-t bg-gray-7 py-10`}>
+            <Logo className={'mr-8'} color={'black'} />
+            <HeaderMenu className={``} />
+            <HeaderInput className={`mr-8 w-full ${path == '/login' && 'hidden'}`} />
 
-            <div className={`flex  items-center gap-2.5`}>
+            <div className={`flex items-center gap-2.5`}>
               <HeaderLanguages />
 
               {!userId ? (

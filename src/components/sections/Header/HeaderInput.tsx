@@ -1,7 +1,7 @@
 'use client'
 import { useTranslations } from 'next-intl'
-import { useRef, useState } from 'react'
 import SearchModal from './HeaderModal'
+import { useState } from 'react'
 interface IHeaderInput {
   className?: string
 }
@@ -10,22 +10,6 @@ const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.E
   const t = useTranslations('Header')
   const [showModal, setShowModal] = useState(false)
   const [inputValue, setInputValue] = useState('')
-
-  const debounceTimeout = useRef<NodeJS.Timeout | null>(null)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (debounceTimeout.current) {
-      clearTimeout(debounceTimeout.current)
-    }
-
-    debounceTimeout.current = setTimeout(() => {
-      const inputLength = e.target.value.length
-      setShowModal(inputLength > 0)
-      setInputValue(e.target.value)
-      debounceTimeout.current = null
-    }, 500)
-  }
-
   return (
     <>
       <input
@@ -37,7 +21,6 @@ const HeaderInput: React.FC<IHeaderInput> = ({ className }: IHeaderInput): JSX.E
           e.target.value.length > 0 ? setShowModal(true) : setShowModal(false)
           setInputValue(e.target.value)
         }}
-        onChange={handleChange}
       />
       {showModal && <SearchModal setShowModal={setShowModal} value={inputValue} setInputValue={setInputValue} />}
     </>
