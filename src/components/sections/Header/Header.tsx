@@ -16,17 +16,21 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
   const path = usePathname()
   const t = useTranslations('Header')
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState(null)
 
   useEffect(() => {
-    const userIdLocal = localStorage.getItem('userId')
-    setUserId(userIdLocal)
+    const token = localStorage.getItem('userId')
+    if (!token) return
+
+    setUserId(token)
   }, [])
 
   return (
     <header className={`${className || ''} ${path.startsWith('/admin') ? 'hidden' : 'block'} `}>
       <div className={`container`}>
-        <nav className={`flex w-full items-center justify-around gap-2.5  rounded bg-gray-7 py-10 ${path === '/login' && 'justify-between'}`}>
+        <nav
+          className={`flex w-full items-center  gap-2.5 rounded bg-gray-7 py-10 ${path === '/login' ? 'mt-[30px] justify-between bg-[rgb(235_87_87)] p-[35px]' : 'justify-around'}`}
+        >
           <Logo className={'mr-8'} color={path === '/login' ? 'white' : 'black'} />
           <HeaderMenu className={`mr-10 ${path == '/login' && 'hidden'}`} />
           <HeaderInput className={`mr-8 w-full ${path == '/login' && 'hidden'}`} />

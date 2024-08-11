@@ -88,6 +88,7 @@ export const checkUser = async (email: string, password?: string, userName?: str
   if (isExist) {
     $id = isExist.email === email && isExist.password === password ? isExist.$id : false
   }
+  console.log(isExist, $id)
   return { isExist, $id }
 }
 

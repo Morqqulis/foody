@@ -12,9 +12,10 @@ import { Link } from '@settings/navigation'
 interface Isearchbar {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
   value: string
+  setInputValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element => {
+const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value, setInputValue }): JSX.Element => {
   const [filteredValues, setFilteredValues] = useState([])
   const [restaurants, setrestaurants] = useState([])
 
@@ -37,9 +38,13 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
     >
       <div className="h-[80%] overflow-auto">
         {filteredValues.map((restaurant) => (
-          <div
+          <Link
+            href={`/restaurants/${restaurant.$id}`}
             key={restaurant.$id}
-            onClick={() => setShowModal(false)}
+            onClick={() => {
+              setShowModal(false)
+              setInputValue('')
+            }}
             className="flex h-[25%] cursor-pointer gap-[40px] border-b-[1px] p-[24px] hover:bg-slate-300"
           >
             <Image src={restaurant.image} alt="image" width={59} height={37} className="h-[37px] w-[59px] rounded-lg" />
@@ -47,7 +52,7 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value }): JSX.Element =
               <h2 className="text-[14px] font-bold leading-[16px] text-[#2B3043]">{restaurant.name}</h2>{' '}
               <p className=" text-[14px] leading-[16px]  text-[#2B3043]">{restaurant.cuisine}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="flex h-[20%] items-center justify-center">
