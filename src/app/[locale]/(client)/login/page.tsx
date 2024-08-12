@@ -14,17 +14,16 @@ export async function generateMetadata({ params: { locale } }) {
 }
 //----------------------------------------------
 
-interface ILoginPage {}
 const LoginPage = () => {
   return (
     <main>
-      <div className="container flex flex-col pt-4 lg:grid lg:grid-cols-2 lg:pt-10">
+      <section className="container flex flex-col pt-4 lg:grid lg:grid-cols-2 lg:pt-10">
         <LoginImage />
 
         <div className={`min-h-[901px]`}>
           <LoginNavigation />
         </div>
-      </div>
+      </section>
     </main>
   )
 }

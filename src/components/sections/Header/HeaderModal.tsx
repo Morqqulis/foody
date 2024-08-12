@@ -1,13 +1,11 @@
 'use client'
-import { headerModalData } from '@data/data'
-import { Button } from '@ui/button'
-import { MoveRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { getListDocuments } from '../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
 import { Link } from '@settings/navigation'
+import { MoveRight } from 'lucide-react'
 
 interface Isearchbar {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -15,21 +13,36 @@ interface Isearchbar {
   setInputValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Searchbar: React.FC<Isearchbar> = ({ setShowModal, setInputValue, value }): JSX.Element => {
+const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value, setInputValue }): JSX.Element => {
   const [filteredValues, setFilteredValues] = useState([])
   const [restaurants, setrestaurants] = useState([])
+  const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    ;(async () => {
+    const fetchRestaurants = async () => {
       const { documents } = await getListDocuments(collections.restaurantsId)
       setrestaurants(documents)
-    })()
+    }
+    fetchRestaurants()
   }, [])
 
-  useEffect(() => {
+  const filterRestaurants = useCallback(() => {
     const filteredValue = restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(value.toLowerCase()))
     setFilteredValues(filteredValue)
   }, [value, restaurants])
+
+  useEffect(() => {
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current)
+    }
+    debounceTimeoutRef.current = setTimeout(filterRestaurants, 300) // 300ms delay
+
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current)
+      }
+    }
+  }, [value, filterRestaurants])
 
   const t = useTranslations('Header')
   return (
@@ -42,7 +55,8 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, setInputValue, value })
             href={`/restaurants/${restaurant.$id}`}
             key={restaurant.$id}
             onClick={() => {
-              setShowModal(false), setInputValue('')
+              setShowModal(false)
+              setInputValue('')
             }}
             className="flex h-[25%] cursor-pointer gap-[40px] border-b-[1px] p-[24px] hover:bg-slate-300"
           >
