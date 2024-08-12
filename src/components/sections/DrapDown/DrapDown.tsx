@@ -68,7 +68,7 @@ const DrapDown: React.FC = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className={'mr-1 cursor-pointer text-black'}>
+      <DropdownMenuTrigger asChild className={'mr-1 ml-2 cursor-pointer text-black'}>
         {avatar ? (
           <Image
             className={`h-auto min-w-10 rounded-full`}
