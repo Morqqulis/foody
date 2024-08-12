@@ -3,17 +3,15 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SignInFormSchema, SignUpFormSchema } from '@settings/zodSchemes'
 import { Button } from '@ui/button'
 import { Form } from '@ui/form'
+import LoadingAnimation from '@ui/LoadingAnimation'
 import { useToast } from '@ui/use-toast'
+import axios from 'axios'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { checkUser, editDocuments, getDocuments } from '../../../utls/functions'
-import Loader from './Loader'
 import LoginFormField from './LoginFormField'
-import { collections, databases, dbId, ID } from '@libs/appwrite/config'
-import LoadingAnimation from '@ui/LoadingAnimation'
 
 interface ILoginForm {
   name: 'login' | 'register'
@@ -25,7 +23,6 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
   const schema = setSchema(name)
   const router = useRouter()
   const { toast } = useToast()
-  const [session, setSession] = useState(false)
 
   const setDefaultValues = () => (name === 'login' ? { email: '', password: '' } : { fullName: '', userName: '', email: '', password: '' })
 
@@ -38,13 +35,12 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
 
   const handleLogin = async (data: z.infer<typeof SignInFormSchema>) => {
     setIsLoading(true)
-    const { email, password } = data
-    const { $id } = await checkUser(email, password)
+    const res = await axios.post('api/login', data)
 
-    if ($id) {
-      await databases.updateDocument(dbId, collections.userId, $id, { enter: true })
-      localStorage.setItem('userId', $id)
-
+    if (!res.data.$id) {
+      toast({ title: 'Sign In Failed', description: `We can not find this user`, variant: 'destructive', duration: 2000 })
+    } else {
+      localStorage.setItem('userId', res.data.$id)
       toast({
         title: 'Congratulations',
         description: `Sign In Succesfull`,
@@ -53,10 +49,7 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
       })
 
       router.push('/user')
-
       form.reset()
-    } else {
-      toast({ title: 'Sign In Failed', description: `We can not find this user`, variant: 'destructive', duration: 2000 })
     }
 
     setIsLoading(false)
@@ -64,29 +57,10 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
 
   const handleResigter = async (data: z.infer<typeof SignUpFormSchema>) => {
     setIsLoading(true)
-    const { email, password, userName, fullName } = data
 
-    const userInfo: any = JSON.stringify({
-      fullName,
-      userName,
-      contacts: '',
-      address: '',
-      avatar: '',
-      avatarId: ''
-    })
+    const res = await axios.post('api/register', data)
 
-    const userData: any = {
-      email,
-      password,
-      enter: false,
-      userInfo
-    }
-
-    const { isExist } = await checkUser(email, password, userName)
-
-    if (!isExist) {
-      databases.createDocument(dbId, collections.userId, ID.unique(), userData)
-
+    if (!res.data.isExist) {
       toast({
         title: 'Congratulations',
         description: `Sign Up Succesfull`,
