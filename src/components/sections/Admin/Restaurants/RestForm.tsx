@@ -1,7 +1,6 @@
 "use client";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
-import { ChevronDown } from "lucide-react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 interface Restform {
@@ -19,7 +18,6 @@ const Restform: React.FC<Restform> = ({ title }): JSX.Element => {
     const { handleSubmit, register, reset } = useForm();
 
     const submit = (v: RestformValues) => {
-        console.log(v);
         reset();
     };
 

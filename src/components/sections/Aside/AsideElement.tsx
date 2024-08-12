@@ -29,9 +29,9 @@ const AdminAsideElement: FC<AsideElements> = ({ element, title, whatIs }): JSX.E
 
   return (
     <Link
-      href={element.href}
       className={`mb-[8px] flex h-[40px] w-[200px] cursor-pointer items-center gap-[26px] pl-[18px] ${path === element.href && ((whatIs === 'admin' && 'bg-[#d578f2] ') || (whatIs === 'user' && 'bg-[#ffb6af] hover:bg-[#ffb6af]'))} ${whatIs.startsWith('admin') ? 'hover:bg-[#d578f2]' : 'hover:bg-[#ffb6af]'}`}
       onClick={asideElementAction}
+      href={element.href}
     >
       {element.icon}
       <p

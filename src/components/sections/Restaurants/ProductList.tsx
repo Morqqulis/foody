@@ -32,6 +32,13 @@ interface IProductList {
 const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
   const t = useTranslations('ProductList')
   const [products, setProducts] = useState([])
+  const [userId, setUserId] = useState('')
+
+  useEffect(() => {
+    const id = localStorage.getItem('userId') || ''
+    if (!id) return
+    setUserId(id)
+  }, [userId])
 
   useEffect(() => {
     ;(async () => {
@@ -45,7 +52,7 @@ const ProductList: React.FC<IProductList> = ({ restId, setBasket }) => {
   }, [restId])
 
   const addToBasket = (product: CartItem) => {
-    if (localStorage.getItem('userId')) {
+    if (userId) {
       setBasket((prev: any) =>
         prev?.some((item: any) => item.$id === product.$id)
           ? prev.map((item: any) => (item.$id === product.$id ? { ...item, quantity: item.quantity + 1 } : item))

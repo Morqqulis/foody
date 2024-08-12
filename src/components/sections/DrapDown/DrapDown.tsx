@@ -47,12 +47,10 @@ const DrapDown: React.FC = () => {
     if (token != '') setUserId(token)
   }, [])
 
-  const handleClick = (path: string) => {
-    if (path === '/') {
-      ;(async () => {
-        await databases.updateDocument(dbId, collections.userId, userId, { enter: false })
-        localStorage.removeItem('userId')
-      })()
+  const handleClick = async (path: string) => {
+    if (path === '/login') {
+      await databases.updateDocument(dbId, collections.userId, userId, { enter: false })
+      localStorage.removeItem('userId')
     }
     router.push(path)
   }
