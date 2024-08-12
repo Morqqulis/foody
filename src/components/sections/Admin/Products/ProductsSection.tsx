@@ -2,7 +2,7 @@
 import { collections } from '@libs/appwrite/config'
 import Pagination from '@sections/Paginations/AdminPagination'
 import { FC, useEffect, useState } from 'react'
-import { subscribeToCollection } from '../../../../utls/functions'
+import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import ProductCard from './ProductCard'
 const ProductsSection: FC = (): JSX.Element => {
@@ -11,12 +11,14 @@ const ProductsSection: FC = (): JSX.Element => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedRestaurant, setSelectedRestaurant] = useState('All')
   const [searchValue, setSearchValue] = useState('')
+
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.productsId, setProducts)
       setProducts(data)
     })()
   }, [])
+
   useEffect(() => {
     if (searchValue === '' && selectedRestaurant === 'All') return setFilteredProducts(products)
     if (searchValue) {
@@ -40,10 +42,7 @@ const ProductsSection: FC = (): JSX.Element => {
       <div className="flex w-full max-w-[1124px] flex-col items-center justify-center px-0 pt-10">
         <div className="flex w-full flex-wrap gap-[35px]">
           {newProducts.map((product) => (
-            <div
-              key={product.$id}
-              className="animate-fade-in scale-95 transition-transform duration-300 hover:scale-100"
-            >
+            <div key={product.$id} className="animate-fade-in scale-95 transition-transform duration-300 hover:scale-100">
               <ProductCard prod={product} />
             </div>
           ))}

@@ -1,4 +1,4 @@
-import { avatarId, client, collections, databases, dbId, ID, storage } from '@libs/appwrite/config'
+import { avatarId, client, collections, databases, dbId, ID, Query, storage } from '@libs/appwrite/config'
 import axios from 'axios'
 
 interface IMultiFn {
@@ -64,7 +64,7 @@ export const editDocuments = async (collectionsId: string, v?: any, file?: File,
 }
 
 export const getListDocuments = async (collectionsId: string) => {
-  const list = await databases.listDocuments(dbId, collectionsId)
+  const list = await databases.listDocuments(dbId, collectionsId, [Query.limit(5000)])
   return list
 }
 
@@ -78,7 +78,7 @@ export const deleteDocument = async (collectionsId: string, deletedId: string) =
 }
 
 export const checkUser = async (email: string, password?: string, userName?: string) => {
-  const users: any = await databases.listDocuments(dbId, collections.userId)
+  const users: any = await databases.listDocuments(dbId, collections.userId,[Query.limit(5000)])
 
   const isExist =
     users.documents.length > 0 ? users.documents.find((user: any) => user.email === email || JSON.parse(user.userInfo).userName === userName) : false
@@ -92,10 +92,10 @@ export const checkUser = async (email: string, password?: string, userName?: str
 }
 
 export const subscribeToCollection = async (collectionId: string, callback: (data: any[]) => void) => {
-  const { documents } = await databases.listDocuments(dbId, collectionId)
+  const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(5000)])
 
   client.subscribe(`databases.${dbId}.collections.${collectionId}.documents`, async () => {
-    const { documents } = await databases.listDocuments(dbId, collectionId)
+    const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(5000)])
     callback(documents)
   })
 

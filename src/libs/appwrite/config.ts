@@ -1,5 +1,4 @@
-import { basket } from '@settings/constants'
-import { Account, Client, Databases, ID, Storage } from 'appwrite'
+import { Account, Client, Databases, ID, Query, Storage } from 'appwrite'
 
 //=============================================
 const dbId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`
@@ -17,6 +16,7 @@ const account = new Account(client)
 const databases = new Databases(client)
 const storage = new Storage(client)
 
+
 //=============================================
 
 const collections = {
@@ -31,4 +31,5 @@ const collections = {
 
 //=============================================
 
-export { account, apikey, client, databases, dbId, endpoint, storage, avatarId, ID, projectId, collections }
+export { account, apikey, avatarId, client, collections, databases, dbId, endpoint, ID, projectId, Query, storage }
+

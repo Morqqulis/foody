@@ -17,9 +17,9 @@ const ReusableSheet: React.FC<IReusableSheet> = ({ trigger, whatIs, id, restore 
       <SheetTrigger className={`cursor-pointer duration-300 ${whatIs.startsWith('Add') && 'hover:bg-slate-900'}`} asChild>
         {trigger}
       </SheetTrigger>
-      <SheetContent>
-        <div className="overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <SheetHeader className=" mmd:w-full mb-5">
+      <SheetContent className={`p-10`}>
+        <div className="overflow-y-clip" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <SheetHeader className=" mb-5 mmd:w-full">
             <SheetTitle>{t('title')}</SheetTitle>
           </SheetHeader>
           <div className="">

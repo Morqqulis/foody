@@ -227,7 +227,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex w-full gap-10 border-t-2 border-t-[#43445A] p-[20px]">
+        <div className="flex w-full justify-center items-center gap-10 border-t-2 border-t-[#43445A] p-[20px]">
           <button
             type="button"
             onClick={() => form.reset()}

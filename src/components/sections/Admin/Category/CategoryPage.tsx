@@ -2,7 +2,7 @@
 import { collections } from '@libs/appwrite/config'
 import ReusableSheet from '@sections/Admin/Sheet/ReusableSheet'
 import { Pencil } from 'lucide-react'
-import { subscribeToCollection } from '../../../../utls/functions'
+import { deleteDocument, subscribeToCollection } from '../../../../utls/functions'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import Table from '../Table'
 import { useTranslations } from 'next-intl'
@@ -19,7 +19,6 @@ const CategoryPage = () => {
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.categoriesId, setCategories)
-
       const filteredData = data
         .map((item: any) => ({
           id: item.$id,
@@ -42,9 +41,11 @@ const CategoryPage = () => {
   return (
     <div className=" h-full w-full ">
       <Table headers={['ID', 'Image', 'Name', 'Slug', '']} body={filteredCategories} />
-      {categories.length > perPage && (
-        <Pagination dataCount={categories.length} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      )}
+      <div className="flex w-full justify-center ">
+        {categories.length > perPage && (
+          <Pagination dataCount={categories.length} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        )}
+      </div>
     </div>
   )
 }

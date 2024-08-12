@@ -33,7 +33,7 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
   return (
     <section className="hero" ref={heroRef}>
       <div className="container">
-        <div className="flex flex-row-reverse items-center justify-between bg-gray-7 pb-[162px] pl-[57px]">
+        <div className="flex flex-row-reverse items-center justify-between rounded-b bg-gray-7 pb-[162px] pl-[57px] pt-10 ">
           <div className="relative flex w-full justify-end">
             <Image
               ref={imageRef}
@@ -67,15 +67,19 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
           </div>
           {/* @ts-ignore */}
           <div className="relative z-[2]" ref={(el) => (textRefs.current[0] = el)}>
-            <Title tag={'h1'} className="text-2xl font-black text-mainBlack sm:text-4xl md:text-5xl lg:text-6xl mlg:text-center" text={t('title')} />
+            <Title
+              tag={'h1'}
+              className="mb-4 text-2xl font-black text-mainBlack sm:text-4xl md:text-5xl lg:text-6xl mlg:text-center"
+              text={t('title')}
+            />
             {/* @ts-ignore */}
-            <p className="max-w-[510px] py-6 text-[22px] leading-[30px] msm:hidden" ref={(el) => (textRefs.current[1] = el)}>
+            <p className="mb-10 max-w-[600px] text-[22px] leading-[30px] msm:hidden" ref={(el) => (textRefs.current[1] = el)}>
               {t('text')}
             </p>
             {/* @ts-ignore */}
             <div className="flex gap-10" ref={(el) => (textRefs.current[2] = el)}>
               <Link
-                className="rounded-[30px] text-white border-[2px] bg-mainRed px-[45px] py-[14px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-red-700 focus:bg-red-700 focus:outline-none active:bg-red-800"
+                className="rounded-[30px] border-[2px] bg-mainRed px-[45px] py-[14px] text-[25px] font-medium text-white transition-colors duration-300 ease-in-out hover:bg-red-700 focus:bg-red-700 focus:outline-none active:bg-red-800"
                 href={`${userId ? '/restaurants' : '/login'}`}
                 aria-label="Get Started Button"
               >
@@ -84,7 +88,7 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
               <Link
                 className="rounded-[30px] border-[2px] border-foreground px-[45px] py-[14px] text-[25px] font-medium transition-colors duration-300 ease-in-out hover:bg-mainBlack hover:text-white focus:bg-mainBlack focus:text-white focus:outline-none active:bg-gray-900"
                 type="button"
-                href={'/user/checkout'}
+                href={`${'/restaurants'}`}
                 aria-label="Order now Button"
               >
                 {t('secondBtn')}

@@ -49,7 +49,7 @@ const AsideElements: IAsideElements[] = [
   {
     id: 7,
     icon: <LogOut className="text-[#F2F2F2DE]" />,
-    href: '/',
+    href: '/admin/login',
     mt: 'mt-[20px] '
   }
 ]
