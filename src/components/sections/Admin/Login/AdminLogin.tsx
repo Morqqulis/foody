@@ -8,7 +8,7 @@ interface IadminLogin {}
 const AdminLogin: React.FC = (): JSX.Element => {
   const t = useTranslations('Admin.Login')
   return (
-    <div className="flex min-h-[412px] w-[830px] gap-12 mmd:container mmd:flex-col-reverse mmd:items-center ">
+    <section className="flex min-h-[412px] w-[830px] gap-12 mmd:container mmd:flex-col-reverse mmd:items-center ">
       <div className="flex h-full w-[425px] flex-col items-center justify-between gap-11 p-8 mmd:gap-6">
         <h2 className={`h-fit text-center text-[33px] font-bold text-gray-400  md:w-full`}>{t('title')}</h2>
         <AdminForm />
@@ -21,7 +21,7 @@ const AdminLogin: React.FC = (): JSX.Element => {
           <Image src="/Admin/login.svg" alt="admin" width={345} height={303} />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

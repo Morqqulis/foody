@@ -1,11 +1,8 @@
 import DashboardSection from '@sections/Admin/Dashboard/dashboard'
+import AdminLogin from '@sections/Admin/Login/AdminLogin'
 import { NextPage } from 'next'
 import { getTranslations } from 'next-intl/server'
-export const dynamic = 'force-dynamic'
-export const dynamicParams = true
-export const revalidate = 0
-export const fetchCache = 'force-no-store'
-export const runtime = 'nodejs'
+
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslations({ locale, namespace: 'Admin.Metadata' })
 

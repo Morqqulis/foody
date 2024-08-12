@@ -40,10 +40,7 @@ const ProductsSection: FC = (): JSX.Element => {
       <div className="flex w-full max-w-[1124px] flex-col items-center justify-center px-0 pt-10">
         <div className="flex w-full flex-wrap gap-[35px]">
           {newProducts.map((product) => (
-            <div
-              key={product.$id}
-              className="animate-fade-in scale-95 transition-transform duration-300 hover:scale-100"
-            >
+            <div key={product.$id} className="animate-fade-in scale-95 transition-transform duration-300 hover:scale-100">
               <ProductCard prod={product} />
             </div>
           ))}

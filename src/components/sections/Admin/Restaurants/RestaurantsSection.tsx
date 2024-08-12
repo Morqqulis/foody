@@ -13,6 +13,7 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
       setRestaurants(data)
     })()
   }, [])
+  
   useEffect(() => {
     if (selectedCategory === 'All') {
       setRestaurants((prev) => [...prev]) // Reset to original data when 'All' is selected
