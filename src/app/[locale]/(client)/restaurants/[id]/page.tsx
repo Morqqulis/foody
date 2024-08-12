@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server'
 export async function generateMetadata({ params: { locale, id } }) {
   const t = await getTranslations({ locale, namespace: 'Restaurants.Metadata' })
   return {
-    title: id.split('__')[0].replace('%20', ' '),
+    title: id.split('__')[0].replace(/%20/g, ' '),
     description: t('description')
   }
 }
@@ -16,14 +16,14 @@ interface IRestaurantPage {
 }
 
 const RestaurantPage: NextPage = ({ params: { locale, id } }: IRestaurantPage): JSX.Element => {
-  const ids = id.split('__')[1]
+  const identifier = id.split('__')[1]
 
   return (
     <main>
       <section className={``}>
         <div className="container">
-          <RestaurantsHeader restId={ids} />
-          <RestoranItems restId={ids} />
+          <RestaurantsHeader restId={identifier} />
+          <RestoranItems restId={identifier} />
         </div>
       </section>
     </main>

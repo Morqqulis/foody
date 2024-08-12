@@ -16,10 +16,10 @@ const HeaderBasket: React.FC = (): JSX.Element => {
     if (!token) return
     ;(async () => {
       const userdata = await getDocuments(collections.userId, token)
-      setCount(JSON.parse(userdata.basket.productsList).length)
+      setCount(userdata.basket.productsList ? JSON.parse(userdata.basket.productsList).length : 0)
 
       client.subscribe(`databases.${dbId}.collections.${collections.basketId}.documents.${userdata.basket.$id}`, async (res: any) => {
-        setCount(JSON.parse(res.payload.productsList).length)
+        setCount(res.payload.productsList ? JSON.parse(res.payload.productsList).length : 0)
       })
     })()
   }, [])
@@ -27,7 +27,7 @@ const HeaderBasket: React.FC = (): JSX.Element => {
   return (
     <Link className={`relative`} href={'/user/basket'}>
       <IconBasket />
-      <p className="absolute right-[-15px] top-[-15px] font-bold text-red-600">{count}</p>
+      <p className="absolute right-[-11px] top-[-13px] font-bold text-red-600">{count}</p>
     </Link>
   )
 }
