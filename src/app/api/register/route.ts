@@ -21,15 +21,15 @@ export async function POST(request: NextRequest) {
   const userData: any = {
     email: data.email,
     password: data.password,
-    enter: false,
+    enter: true,
     userInfo
   }
 
   const { isExist } = await checkUser(data.email, data.password, data.userName)
-
+  let id = ''
   if (!isExist) {
-    databases.createDocument(dbId, collections.userId, ID.unique(), userData)
+    id = (await databases.createDocument(dbId, collections.userId, ID.unique(), userData)).$id
   }
 
-  return NextResponse.json({ isExist })
+  return NextResponse.json({ isExist, id })
 }

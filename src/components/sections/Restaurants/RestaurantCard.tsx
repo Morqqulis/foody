@@ -1,7 +1,7 @@
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import Link from "next/link"
-import { FC } from "react"
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
 
 interface IRestCard {
   data: {
@@ -18,13 +18,12 @@ interface IRestCard {
 }
 
 const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
-  const t = useTranslations("RestaurantCard");
-
+  const t = useTranslations('RestaurantCard')
   return (
     <Link
       className={`group/rest-card relative flex h-fit w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl`}
-      style={{ boxShadow: "0px 0px 5px 3px rgba(0, 0, 0, 0.25)" }}
-      href={`/restaurants/${data.$id}`}
+      style={{ boxShadow: '0px 0px 5px 3px rgba(0, 0, 0, 0.25)' }}
+      href={`/restaurants/${data.name + '__' + data.$id}`}
     >
       <Image
         className={`mb-10 h-[160px] w-full rounded-md group-hover/rest-card:scale-105`}
@@ -38,19 +37,15 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
       <p className={`mb-5 grow`}>{data.cuisine}</p>
       <div className={`flex items-center justify-between gap-2.5`}>
         <span className={`text-base font-bold text-gray-2`}>
-          ${data.deliveryPrice} {t("delivery")}
+          ${data.deliveryPrice} {t('delivery')}
         </span>
-        <span className={`rounded-full bg-mainRed max-w-[80px] w-full text-center py-1 font-medium whitespace-normal text-white`}>
-          {data.deliveryMin} {t("minutes")}
+        <span className={`w-full max-w-[80px] whitespace-normal rounded-full bg-mainRed py-1 text-center font-medium text-white`}>
+          {data.deliveryMin} {t('minutes')}
         </span>
       </div>
-      {data.new && (
-        <span className={`absolute left-0 top-0 bg-mainRed px-3 py-0.5 text-white`}>
-          {t("new")}
-        </span>
-      )}
+      {data.new && <span className={`absolute left-0 top-0 bg-mainRed px-3 py-0.5 text-white`}>{t('new')}</span>}
     </Link>
-  );
-};
+  )
+}
 
 export default RestaurantCard

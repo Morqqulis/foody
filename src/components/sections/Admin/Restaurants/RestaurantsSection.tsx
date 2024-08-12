@@ -5,7 +5,8 @@ import { subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import RestaurantCard from './RestaurantCard'
 const RestaurantsSection: React.FC = (): JSX.Element => {
-  const [restaurants, setRestaurants] = useState([]) // Corrected spelling from 'restaurans' to 'restaurants'
+  const [restaurants, setRestaurants] = useState([])
+  const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('All')
   useEffect(() => {
     ;(async () => {
@@ -13,20 +14,21 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
       setRestaurants(data)
     })()
   }, [])
-  
+
   useEffect(() => {
     if (selectedCategory === 'All') {
-      setRestaurants((prev) => [...prev]) // Reset to original data when 'All' is selected
+      setFilteredRestaurants(restaurants)
     } else {
-      setRestaurants((prev) => prev.filter((doc) => doc.category.$id === selectedCategory))
+      setFilteredRestaurants(restaurants.filter((doc) => doc.category.$id === selectedCategory))
     }
-  }, [selectedCategory])
+  }, [selectedCategory, restaurants])
+
   return (
     <section>
       <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
       <div className="mt-12 flex">
         <div className={`grid grid-cols-4 items-center !gap-6`}>
-          {restaurants?.map((restaurant) => (
+          {filteredRestaurants?.map((restaurant) => (
             <div key={restaurant.$id} className="animate-fade-in">
               <RestaurantCard prop={restaurant} />
             </div>

@@ -46,7 +46,7 @@ const UserAside: React.FC = (): JSX.Element => {
   useEffect(() => {
     const token = localStorage.getItem('userId')
     if (!token) router.push('/login')
-  }, [router])
+  }, [])
 
   return (
     <aside className="h-[515px] w-[325px]  rounded-md bg-[#f3f4f6] pl-[35px] pr-[53px] pt-[45px]">

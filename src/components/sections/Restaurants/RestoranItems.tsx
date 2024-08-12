@@ -22,12 +22,9 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
     if (!userId) return
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
-
       if (user.basket) {
         setBasketId(user.basket.$id)
         const prevBasket = user.basket.productsList
-        console.log(prevBasket)
-
         prevBasket ? setBasket(JSON.parse(prevBasket)) : setBasket([])
       }
     })()
@@ -36,7 +33,6 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
   useEffect(() => {
     if (basket && userId) {
       const strBasket = JSON.stringify(basket)
-
       ;(async () => {
         if (basketId) {
           await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket })

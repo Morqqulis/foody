@@ -2,7 +2,7 @@
 import { collections } from '@libs/appwrite/config'
 import Pagination from '@sections/Paginations/AdminPagination'
 import { FC, useEffect, useState } from 'react'
-import { subscribeToCollection } from '../../../../utls/functions'
+import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import ProductCard from './ProductCard'
 const ProductsSection: FC = (): JSX.Element => {
@@ -11,12 +11,14 @@ const ProductsSection: FC = (): JSX.Element => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedRestaurant, setSelectedRestaurant] = useState('All')
   const [searchValue, setSearchValue] = useState('')
+
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.productsId, setProducts)
       setProducts(data)
     })()
   }, [])
+
   useEffect(() => {
     if (searchValue === '' && selectedRestaurant === 'All') return setFilteredProducts(products)
     if (searchValue) {

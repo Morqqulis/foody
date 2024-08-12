@@ -64,7 +64,7 @@ export const editDocuments = async (collectionsId: string, v?: any, file?: File,
 }
 
 export const getListDocuments = async (collectionsId: string) => {
-  const list = await databases.listDocuments(dbId, collectionsId, [Query.limit(500)])
+  const list = await databases.listDocuments(dbId, collectionsId, [Query.limit(5000)])
   return list
 }
 
@@ -78,7 +78,7 @@ export const deleteDocument = async (collectionsId: string, deletedId: string) =
 }
 
 export const checkUser = async (email: string, password?: string, userName?: string) => {
-  const users: any = await databases.listDocuments(dbId, collections.userId, [Query.limit(500)])
+  const users: any = await databases.listDocuments(dbId, collections.userId,[Query.limit(5000)])
 
   const isExist =
     users.documents.length > 0 ? users.documents.find((user: any) => user.email === email || JSON.parse(user.userInfo).userName === userName) : false
@@ -88,15 +88,14 @@ export const checkUser = async (email: string, password?: string, userName?: str
   if (isExist) {
     $id = isExist.email === email && isExist.password === password ? isExist.$id : false
   }
-  console.log(isExist, $id)
   return { isExist, $id }
 }
 
 export const subscribeToCollection = async (collectionId: string, callback: (data: any[]) => void) => {
-  const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(500)])
+  const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(5000)])
 
   client.subscribe(`databases.${dbId}.collections.${collectionId}.documents`, async () => {
-    const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(500)])
+    const { documents } = await databases.listDocuments(dbId, collectionId, [Query.limit(5000)])
     callback(documents)
   })
 

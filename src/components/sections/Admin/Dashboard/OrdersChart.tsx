@@ -8,7 +8,7 @@ import { Label, Pie, PieChart } from 'recharts'
 
 const chartData = [
   { restaurant: 'Fish House', ProjectsByAccount: 173, fill: '#00B2A9' },
-  { restaurant: 'KFC', ProjectsByAccount: 275, fill: '#EB5757' },
+  { restaurant: 'KFC', ProjectsByAccount: 575, fill: '#EB5757' },
   { restaurant: 'KLM', ProjectsByAccount: 200, fill: '#EAAB00' },
   { restaurant: "McCDonald's", ProjectsByAccount: 287, fill: '#A84069' },
   { restaurant: 'Dolma', ProjectsByAccount: 190, fill: '#8D43FF' },

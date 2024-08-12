@@ -67,6 +67,8 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
         variant: 'dark',
         duration: 2000
       })
+      router.push('/user')
+      localStorage.setItem('userId', res.data.id)
       form.reset()
     } else {
       toast({
