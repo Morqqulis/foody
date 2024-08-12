@@ -16,9 +16,9 @@ const AdminHeader: React.FC = (): JSX.Element => {
   const router = useRouter()
 
   useEffect(() => {
-    const adminLog = localStorage.getItem('admin')
-    if (adminLog != 'true') router.push('/admin/login')
-  }, [router])
+  const adminLog = localStorage.getItem('admin')
+  if (adminLog != 'true') router.push('/admin/login')
+  }, [])
 
   return (
     <header className={`mb-[18px] rounded-b-[20px] bg-[#27283C] p-3`}>

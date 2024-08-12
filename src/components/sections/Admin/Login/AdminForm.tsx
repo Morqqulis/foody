@@ -25,14 +25,11 @@ const AdminForm: React.FC = (): JSX.Element => {
       password: ''
     }
   })
-  const access_token = localStorage.getItem('token')
-
   function submit(v: IAdminForm) {
     const { password, username } = v
 
     if (password === 'admin' && username === 'admin') {
       localStorage.setItem('admin', 'true')
-      // multiFn('post', auth.signIn, v)
       router.push('/admin')
       form.reset()
     }
