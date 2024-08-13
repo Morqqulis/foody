@@ -22,11 +22,15 @@ const HeaderBasket: React.FC = (): JSX.Element => {
       const userdata = await getDocuments(collections.userId, token)
 
       if (!userdata) return
-      setCount(JSON.parse(userdata.basket.productsList).length)
-console.log(userdata);
+      const userProducts = JSON.parse(userdata.basket?.productsList)
+
+      setCount(userProducts == null ? 0 : userProducts.length)
 
       client.subscribe(`databases.${dbId}.collections.${collections?.basketId}.documents.${userdata?.basket?.$id}`, (res: any) => {
-        if (res.payload) setCount(JSON.parse(res.payload.productsList).length)
+        if (res.payload) {
+          const products = JSON.parse(res.payload.productsList)
+          setCount(products == null ? 0 : products.length)
+        }
       })
       //   unsubscribe()
       //   return () => unsubscribe()
