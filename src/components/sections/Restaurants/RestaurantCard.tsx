@@ -7,21 +7,34 @@ interface IRestCard {
   data: {
     id: number
     image: string
+    $updatedAt: string
     name: string
     cuisine: string
     deliveryPrice: number
     deliveryMin: number
     new?: boolean
     $id: string
-    // description: string;
   }
 }
 
 const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
   const t = useTranslations('RestaurantCard')
+  
+  function isUpdatedRecently(restDate: string): boolean {
+    const updatedDate = Date.parse(restDate.slice(0, 10))
+    const currentDate = () => {
+      const year = new Date().getFullYear()
+      const month = new Date().getMonth() + 1
+      const day = new Date().getDate()
+      return Date.parse(`${year}-${month}-${day}`)
+    }
+
+    return (currentDate() - updatedDate) / (1000 * 3600 * 24) <= 1
+  }
+
   return (
     <Link
-      className={`group/rest-card relative flex  h-full w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl`}
+      className={`group/rest-card relative  flex h-full w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl`}
       style={{ boxShadow: '0px 0px 5px 3px rgba(0, 0, 0, 0.25)' }}
       href={`/restaurants/${data.name + '__' + data.$id}`}
     >
@@ -43,7 +56,9 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
           {data.deliveryMin} {t('minutes')}
         </span>
       </div>
-      {data.new && <span className={`absolute left-0 top-0 bg-mainRed px-3 py-0.5 text-white`}>{t('new')}</span>}
+      {isUpdatedRecently(data.$updatedAt) && (
+        <span className="absolute left-0 top-0 flex h-7 w-14 items-center justify-center bg-[#D63626] font-bold text-white">{t('new')}</span>
+      )}
     </Link>
   )
 }
