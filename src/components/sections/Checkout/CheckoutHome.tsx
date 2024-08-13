@@ -19,7 +19,7 @@ const formSchema = z.object({
       required_error: 'Delivery address is required.'
     })
     .min(2, {
-      message: 'Username must be at least 2 characters.'
+      message: 'Address must be at least 2 characters.'
     }),
   phone: z
     .string({
@@ -27,7 +27,7 @@ const formSchema = z.object({
       invalid_type_error: 'Contact number must be a number.'
     })
     .min(2, {
-      message: 'Username must be at least 11 characters.'
+      message: 'Phone number must be at least 11 characters.'
     }),
   payment: z.enum(['Cash', 'Card'], {
     required_error: 'Payment method is required.'
@@ -55,7 +55,12 @@ function CheckoutHome() {
 
   useEffect(() => {
     const token = localStorage.getItem('userId')
-    setUserId(token || '')
+    if (token != '') setUserId(token)
+
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken)
+    }
 
     if (!userId) return
     ;(async () => {
@@ -69,6 +74,12 @@ function CheckoutHome() {
       }
     })()
     setLoading(false)
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [userId])
 
   const handleCheckOut = async (v: z.infer<typeof formSchema>) => {
@@ -88,10 +99,6 @@ function CheckoutHome() {
       user: userId,
       orderInfo
     })
-
-    // await databases.updateDocument(dbId, collections.userId, userId, {
-    //   basket: null
-    // })
 
     await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: null })
 
@@ -116,7 +123,7 @@ function CheckoutHome() {
     <section className={`w-full`}>
       <div className={`flex items-start gap-4`}>
         <div className={`w-full basis-2/3 rounded-md bg-gray-7 p-10 pb-11`}>
-          <h1 className={`mb-6  text-3xl font-semibold text-gray-2 `}>{t('checkoutTitle')}</h1>
+          <h1 className={`mb-6 text-3xl font-semibold text-gray-2 `}>{t('checkoutTitle')}</h1>
           <Form {...form}>
             <form className={`flex flex-col gap-8`} onSubmit={form.handleSubmit(handleCheckOut)}>
               <FormField

@@ -45,12 +45,24 @@ const DrapDown: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem('userId')
     if (token != '') setUserId(token)
+
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken)
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [])
 
   const handleClick = async (path: string) => {
     if (path === '/login') {
       await databases.updateDocument(dbId, collections.userId, userId, { enter: false })
       localStorage.removeItem('userId')
+      window.dispatchEvent(new Event('storage'))
     }
     router.push(path)
   }
@@ -68,7 +80,7 @@ const DrapDown: React.FC = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className={'mr-1 cursor-pointer text-black'}>
+      <DropdownMenuTrigger asChild className={'ml-2 mr-1 cursor-pointer text-black'}>
         {avatar ? (
           <Image
             className={`h-auto min-w-10 rounded-full`}

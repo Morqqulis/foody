@@ -48,8 +48,10 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
         duration: 2000
       })
 
-      router.push('/user')
+      window.dispatchEvent(new Event('storage'))
+      
       form.reset()
+      router.push('/user')
     }
 
     setIsLoading(false)
@@ -67,8 +69,6 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
         variant: 'dark',
         duration: 2000
       })
-      router.push('/user')
-      localStorage.setItem('userId', res.data.id)
       form.reset()
     } else {
       toast({

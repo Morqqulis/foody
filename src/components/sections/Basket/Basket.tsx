@@ -1,5 +1,6 @@
 'use client'
 import { collections, databases, dbId } from '@libs/appwrite/config'
+import LoadingAnimation from '@ui/LoadingAnimation'
 import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -7,7 +8,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getDocuments } from '../../../utls/functions'
 import styles from './basket.module.css'
-import LoadingAnimation from '@ui/LoadingAnimation'
 const Basket = () => {
   const [basket, setBasket] = useState([])
   const [basketId, setBasketId] = useState('')
@@ -17,8 +17,14 @@ const Basket = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('userId')
+    if (token !== '') setUserId(token)
 
-    setUserId(token || '')
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken)
+    }
+    window.addEventListener('storage', handleStorageChange)
+
     if (!userId) return
     ;(async () => {
       const user = await getDocuments(collections.userId, userId)
@@ -32,6 +38,10 @@ const Basket = () => {
 
       setLoading(false)
     })()
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [userId])
 
   useEffect(() => {

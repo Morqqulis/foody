@@ -34,9 +34,16 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     const token = localStorage.getItem('userId')
-    setUserId(token || '')
+    if (token != '') setUserId(token)
+        
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken || '')
+    }
 
-    if (!token) return
+    window.addEventListener('storage', handleStorageChange)
+
+    if (!userId) return
     ;(async () => {
       const user: any = await getDocuments(collections.userId, userId)
 
@@ -57,6 +64,10 @@ const OrdersSection: React.FC = (): JSX.Element => {
       })
       setOrders(filteredOrders)
     })()
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [userId])
 
   const headers = ['ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact', '']
@@ -133,8 +144,8 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     setloading(false)
-  },[filteredData])
-  
+  }, [filteredData])
+
   return loading ? (
     <LoadingAnimation width={150} height={150} />
   ) : (

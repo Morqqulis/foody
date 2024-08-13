@@ -29,6 +29,8 @@ export async function POST(request: NextRequest) {
   let id = ''
   if (!isExist) {
     id = (await databases.createDocument(dbId, collections.userId, ID.unique(), userData)).$id
+
+    await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: id, productsList: JSON.stringify([]) })
   }
 
   return NextResponse.json({ isExist, id })

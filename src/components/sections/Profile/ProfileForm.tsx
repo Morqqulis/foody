@@ -32,14 +32,27 @@ const ProfileForm: FC = (): JSX.Element => {
   useEffect(() => {
     const token = localStorage.getItem('userId')
     if (token != '') setUserId(token)
-        
+
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      if (updatedToken != '') setUserId(updatedToken)
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
     if (userId) {
       ;(async () => {
         const data = await getDocuments(collections.userId, userId)
+        console.log(data);
+        
         const { email } = data
         const info = { ...JSON.parse(data.userInfo), email }
         setUser(info)
       })()
+    }
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
     }
   }, [userId])
 
@@ -122,7 +135,7 @@ const ProfileForm: FC = (): JSX.Element => {
                 <FormControl className={``}>
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder={user ? user.contacts : '+99400-000-0000'}
+                    placeholder={user?.contacts ? user.contacts : '+99400-000-0000'}
                     type={'tel'}
                     {...field}
                   />
@@ -140,7 +153,7 @@ const ProfileForm: FC = (): JSX.Element => {
                 <FormControl className={``}>
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder={user ? user.email : 'johndoe@gmail.com'}
+                    placeholder={user?.email ? user.email : 'johndoe@gmail.com'}
                     {...field}
                     type={'email'}
                   />
@@ -158,7 +171,7 @@ const ProfileForm: FC = (): JSX.Element => {
                 <FormControl className={``}>
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder={user ? user.userName : 'johndoe'}
+                    placeholder={user?.userName ? user.userName : 'johndoe'}
                     {...field}
                     type={'text'}
                   />
@@ -176,7 +189,7 @@ const ProfileForm: FC = (): JSX.Element => {
                 <FormControl className={``}>
                   <Input
                     className={`px-5 py-[25px]  placeholder:text-lg placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder={user ? user.address : 'Ataturk 45 Ganclik Baku'}
+                    placeholder={user?.address ? user.address : 'Ataturk 45 Ganclik Baku'}
                     type={'text'}
                     {...field}
                   />
@@ -194,7 +207,7 @@ const ProfileForm: FC = (): JSX.Element => {
                 <FormControl className={``}>
                   <Input
                     className={`px-5 py-[25px] placeholder:text-lg placeholder:text-foreground placeholder:duration-300 focus-visible:ring-mainRed focus-visible:placeholder:text-opacity-0`}
-                    placeholder={user ? user.fullName : 'John Doe'}
+                    placeholder={user?.fullName ? user.fullName : 'John Doe'}
                     {...field}
                   />
                 </FormControl>

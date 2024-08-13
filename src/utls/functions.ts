@@ -69,7 +69,7 @@ export const getListDocuments = async (collectionsId: string) => {
 }
 
 export const getDocuments = async (collectionsId: string, docId: string) => {
-  const document = await databases.getDocument(dbId, collectionsId, docId)
+  const document = await databases?.getDocument(dbId, collectionsId, docId)
   return document
 }
 
