@@ -21,6 +21,8 @@ const HeaderBasket: React.FC = (): JSX.Element => {
 
     ;(async () => {
       const userdata = await getDocuments(collections.userId, token)
+      const initialBasketCount = userdata?.basket?.productsList ? JSON.parse(userdata.basket.productsList).length : 0
+      setCount(initialBasketCount)
 
       client.subscribe(`databases.${dbId}.collections.${collections?.basketId}.documents.${userdata?.basket?.$id}`, async (res: any) => {
         setCount(res?.payload?.productsList ? JSON.parse(res.payload.productsList).length : 0)
