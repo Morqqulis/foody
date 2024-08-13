@@ -1,10 +1,10 @@
 'use client'
 
+import { client, collections, dbId } from '@libs/appwrite/config'
 import Link from 'next/link'
-import { IconBasket } from '../../icons'
 import { useEffect, useState } from 'react'
-import { getDocuments, subscribeToCollection } from '../../../utls/functions'
-import { client, collections, databases, dbId, Query } from '@libs/appwrite/config'
+import { getDocuments } from '../../../utls/functions'
+import { IconBasket } from '../../icons'
 
 const HeaderBasket: React.FC = (): JSX.Element => {
   const [count, setCount] = useState(0)

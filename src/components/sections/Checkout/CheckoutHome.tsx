@@ -100,10 +100,6 @@ function CheckoutHome() {
       orderInfo
     })
 
-    // await databases.updateDocument(dbId, collections.userId, userId, {
-    //   basket: null
-    // })
-
     await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: null })
 
     setShowDoneIcon(true)

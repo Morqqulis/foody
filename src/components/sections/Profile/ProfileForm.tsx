@@ -43,6 +43,8 @@ const ProfileForm: FC = (): JSX.Element => {
     if (userId) {
       ;(async () => {
         const data = await getDocuments(collections.userId, userId)
+        console.log(data);
+        
         const { email } = data
         const info = { ...JSON.parse(data.userInfo), email }
         setUser(info)
