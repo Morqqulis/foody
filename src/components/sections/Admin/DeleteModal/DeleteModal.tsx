@@ -19,7 +19,7 @@ interface IProps {
 }
 
 const DeleteModal: React.FC<IProps> = ({ collectionId, deletedId }): JSX.Element => {
-  const t = useTranslations("Admin.Products.Modal");
+  const t = useTranslations("DeleteModal");
 
   const deleting = async () => {
     await deleteDocument(collectionId, deletedId);

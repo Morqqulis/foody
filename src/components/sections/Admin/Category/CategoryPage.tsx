@@ -37,10 +37,9 @@ const CategoryPage = () => {
       setFilteredCategories(filteredData)
     })()
   }, [categories, currentPage])
-
   return (
     <div className=" h-full w-full ">
-      <Table headers={['ID', 'Image', 'Name', 'Slug', '']} body={filteredCategories} />
+      <Table headers={[t("id"),t("image"),t("name"),t("slug"),'']} body={filteredCategories} />
       <div className="flex w-full justify-center ">
         {categories.length > perPage && (
           <Pagination dataCount={categories.length} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />

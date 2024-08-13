@@ -1,5 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 interface IPagination {
   setCurrentPage: (prev: number) => void
@@ -10,7 +11,7 @@ interface IPagination {
 }
 const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentPage, perPage, setPerPage }): JSX.Element => {
   const pageCount = []
-
+const t=useTranslations('Pagination')
   for (let i = 1; i <= 10; i++) {
     pageCount.push(i)
   }
@@ -30,7 +31,7 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
         />
       </div>
       <div className="flex items-center gap-6">
-        <p>Rows per page</p>
+        <p>{t('rowsPerPage')}</p>
         <Select
           onValueChange={(value) => {
             const currentPage = parseFloat(value)

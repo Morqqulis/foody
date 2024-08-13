@@ -4,35 +4,22 @@
     "more": "Daha çox",
     "search": "Axtar...",
     "signUp": "Qeydiyyat",
-    "dropdown": ["Profil", "Səbət", "Sifarişlər", "Ödəniş", "Cixis"]
+    "dropdown": ["Profil", "Səbət", "Sifarişlər", "Ödəniş", "Çıxış"]
   },
   "Footer": {
     "text": "Bizi izləyin: Sosial media kanallarımızda ən son promosyonlarımız və restoran tərəfdaşlarımızdan xəbərdar olun",
 
     "popular": {
       "title": "Populyar",
-      "links": [
-        "Programlama",
-        "Kitablar",
-        "Psixoloji",
-        "Biznes"
-      ]
+      "links": ["Programlama", "Kitablar", "Psixoloji", "Biznes"]
     },
     "cash": {
       "title": "Nagd",
-      "links": [
-        "Cavabdeh",
-        "Ödəmə",
-        "Mağaza haqqında"
-      ]
+      "links": ["Cavabdeh", "Ödəmə", "Mağaza haqqında"]
     },
     "help": {
       "title": "Yardım",
-      "links": [
-        "Əlaqə",
-        "Alışı qaytarma",
-        "Alıcı yardımı"
-      ]
+      "links": ["Əlaqə", "Alışı qaytarma", "Alıcı yardımı"]
     },
     "copyright": "Bütün hüquqlar qorunur © 2003-2023 Foody İSTİFADƏ ŞƏRTLƏRİ | Gizlilik Siyasəti"
   },
@@ -75,11 +62,7 @@
       ]
     },
     "Food": {
-      "titles": [
-        "Sizi Həmişə Aşiq Etdirən Menyu",
-        "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?",
-        "Kartof qızartması xoşunuza gəlirmi? Mmm..."
-      ],
+      "titles": ["Sizi Həmişə Aşiq Etdirən Menyu", "Dadlı Həmişə Papa John's Pizza. Razılaşırsınız?", "Kartof qızartması xoşunuza gəlirmi? Mmm..."],
       "texts": [
         "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
         "Lorem ipsum layout və vizual maketləri önizləmək üçün qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan yertutan mətndir. Lorem ipsum qrafika, çap və nəşriyyat sənayesində tərtibatların və vizual maketlərin önizlənməsi üçün geniş istifadə olunan yertutan mətndir.",
@@ -193,14 +176,7 @@
           },
           "InfoBlock": {
             "text": "Restoran məlumatları yenilə",
-            "labels": [
-              "Ad",
-              "Mətbəx",
-              "Çatdırılma məbləği $",
-              "Çatdırılma Vaxtı",
-              "Ünvan",
-              "Kategoriya"
-            ],
+            "labels": ["Ad", "Mətbəx", "Çatdırılma məbləği $", "Çatdırılma Vaxtı", "Ünvan", "Kategoriya"],
             "name": "Ad",
             "cuisine": "Mətbəx",
             "price": "Çatdırılma məbləği $",
@@ -221,14 +197,7 @@
           },
           "InfoBlock": {
             "text": "Restoran məlumatları daxil et",
-            "labels": [
-              "Ad",
-              "Mətbəx",
-              "Çatdırılma məbləği $",
-              "Çatdırılma Vaxtı",
-              "Ünvan",
-              "Kategoriya"
-            ],
+            "labels": ["Ad", "Mətbəx", "Çatdırılma məbləği $", "Çatdırılma Vaxtı", "Ünvan", "Kategoriya"],
             "name": "Ad",
             "cuisine": "Mətbəx",
             "price": "Çatdırılma məbləği $",
@@ -242,6 +211,7 @@
       }
     },
     "Products": {
+      "title": "Məhsullar",
       "Modal": {
         "title": "Silmək istədiyinizdən əminsinizmi?",
         "text": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq",
@@ -257,12 +227,7 @@
           },
           "InfoBlock": {
             "text": "Məhsul təsvirinizi və lazımi məlumatları əlavə edin",
-            "labels": [
-              "Ad",
-              "Təsvir",
-              "Qiymət",
-              "Restoranlar"
-            ],
+            "labels": ["Ad", "Təsvir", "Qiymət", "Restoranlar"],
             "name": "Ad",
             "description": "Təsvir",
             "price": "Qiymət",
@@ -283,7 +248,6 @@
       "image": "Şəkil",
       "name": "Ad",
       "slug": "Slug",
-      "actions": "Əməliyyatlar",
       "EditCategory": {
         "Sheet": {
           "imageBlock": {
@@ -418,6 +382,12 @@
           "submitBtn": "Təklifi yenilə"
         }
       }
+    },
+    "Orders": {
+      "title": "Sifarişlər"
+    },
+    "History": {
+      "title": "Tarixçə"
     }
   },
   "User": {
@@ -479,31 +449,24 @@
     "total": "Cəmi"
   },
   "ProfileSection": {
-    "profile": "Profil"
-  },
-  "ProfileForm": {
-    "upload": "Avatar Yükle",
-    "contact": "Əlaqə Nömrəsi",
-    "email": "E-poçt Ünvanı",
-    "username": "İstifadəçi Adı",
-    "address": "Ünvan",
-    "fullName": "Tam Ad",
-    "save": "Yadda Saxla",
-    "contactPlaceholder": "+994",
-    "emailPlaceholder": "info@eacamp.com",
-    "usernamePlaceholder": "eacampm1",
-    "addressPlaceholder": "Atatürk 45 Gənclik Bakı",
-    "fullNamePlaceholder": "Fuad Paşayev"
-  },
-  "AdminOrders": {
-    "Products": {
-      "Modal": {
-        "deleteBtn": "Sil",
-        "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
-        "text": "Bu əməliyyat geri qaytarıla bilməz.",
-        "cancelBtn": "Ləğv et"
-      }
+    "profile": "Profil",
+    
+    "ProfileForm": {
+      "upload": "Yüklə",
+      "contact": "Əlaqə",
+      "email": "Email",
+      "username": "İstifadəçi adı",
+      "address": "Ünvan",
+      "fullName": "Tam ad",
+      "save": "Yadda saxla"
     }
+  },
+
+  "DeleteModal": {
+    "deleteBtn": "Sil",
+    "title": "Bu sifarişi silmək istədiyinizdən əminsinizmi?",
+    "text": "Bu əməliyyat geri qaytarıla bilməz.",
+    "cancelBtn": "Ləğv et"
   },
   "OrdersSection": {
     "yourOrders": "Sizin Sifarişləriniz",
@@ -536,5 +499,26 @@
   "ProductList": {
     "title": "Məhsullar",
     "description": "Keyfiyyətlə hazırlanmış, bir dilim pendir və xüsusi sous"
+  },
+  "Table": {
+    "id": "ID",
+    "customerId": "Müştəri ID",
+    "time": "Vaxt",
+    "deliveryAdress": "Çatdırılma Ünvanı",
+    "amount": "Məbləğ",
+    "paymentMethod": "Ödəmə növü",
+    "contact": "Əlaqə",
+    "image": "Şəkil",
+    "name": "Ad",
+    "price": "Qiymət",
+    "count": "Miqdar"
+  },
+  "Pagination": {
+    "rowsPerPage": "Sətirlərin sayı"
+  },
+  "Select": {
+    "all": "Hamısı",
+    "category": "Kateqoriya tipi",
+    "restaurant": "Restoran tipi"
   }
 }

@@ -4,13 +4,14 @@ import { FC, useEffect, useState } from 'react'
 import { getListDocuments } from '../../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
 import Pagination from '@sections/Paginations/AdminPagination'
+import { useTranslations } from 'next-intl'
 interface IOrderHistoryPage {}
 
 const OrderHistoryPage: FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1)
   const perPage = 5
   const [orders, setOrders] = useState([])
-
+  const t = useTranslations('Table')
   useEffect(() => {
     ;(async () => {
       const orders = await getListDocuments(collections.ordersId)
@@ -31,7 +32,7 @@ const OrderHistoryPage: FC = (): JSX.Element => {
     })()
   }, [])
 
-  const header = ['ID', 'Customer ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact']
+  const header = [t('id'), t('customerId'), t('time'), t('deliveryAdress'), t('amount'), t('paymentMethod'), t('contact')]
 
   const filteredData = orders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
     const { id, userId, amount, phone, address, payment, time } = order

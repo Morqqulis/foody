@@ -2,16 +2,17 @@
 import { collections } from '@libs/appwrite/config'
 import Pagination from '@sections/Paginations/AdminPagination'
 import { FC, useEffect, useState } from 'react'
-import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
+import { subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import ProductCard from './ProductCard'
+import { useTranslations } from 'next-intl'
 const ProductsSection: FC = (): JSX.Element => {
   const [products, setProducts] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedRestaurant, setSelectedRestaurant] = useState('All')
   const [searchValue, setSearchValue] = useState('')
-
+  const t = useTranslations('Admin.Products')
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.productsId, setProducts)
@@ -38,7 +39,7 @@ const ProductsSection: FC = (): JSX.Element => {
   const newProducts = filteredProducts.slice(firstIndex, secondIndex)
   return (
     <section className={`w-full`}>
-      <SectionHeader title="Products" setSelected={setSelectedRestaurant} setSearchValue={setSearchValue} />
+      <SectionHeader title={t('title')} setSelected={setSelectedRestaurant} setSearchValue={setSearchValue} />
       <div className="flex w-full max-w-[1124px] flex-col items-center justify-center px-0 pt-10">
         <div className="flex w-full flex-wrap gap-[35px]">
           {newProducts.map((product) => (

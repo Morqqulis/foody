@@ -4,10 +4,11 @@ import { Eye } from 'lucide-react'
 import Table from '../Table'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import { useEffect, useState } from 'react'
-import { getListDocuments, subscribeToCollection } from '../../../../utls/functions'
+import { subscribeToCollection } from '../../../../utls/functions'
 import { collections } from '@libs/appwrite/config'
 import OrdersModal from '@sections/Orders/OrdersModal'
 import Pagination from '@sections/Paginations/AdminPagination'
+import { useTranslations } from 'next-intl'
 interface IOrdersTable {}
 
 const OrdersTable: React.FC = (): JSX.Element => {
@@ -15,7 +16,7 @@ const OrdersTable: React.FC = (): JSX.Element => {
   const perPage = 5
   const [orders, setOrders] = useState([])
   const [filteredOrders, setFilteredOrders] = useState([])
-
+  const t = useTranslations('Table')
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.ordersId, setOrders)
@@ -37,7 +38,7 @@ const OrdersTable: React.FC = (): JSX.Element => {
     })()
   }, [orders])
 
-  const header = ['ID', 'Customer ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact']
+  const header = [t("id"), t("customerId"), t("time"), t("deliveryAdress"), t("amount"), t("paymentMethod"), t("contact")] 
 
   const filteredData = filteredOrders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
     const { id, userId, amount, phone, basket, address, payment, time } = order
@@ -50,8 +51,7 @@ const OrdersTable: React.FC = (): JSX.Element => {
       payment,
       phone
     }
-
-    const basketHeader = ['Image', 'Name', 'Price $', 'Count', 'Amount']
+    const basketHeader = [t('image'), t('name'), t('price'), t('count'), t('amount')]
     const updatesBasket = basket.map((item: any) => {
       const { image, name, price, quantity } = item
       return {

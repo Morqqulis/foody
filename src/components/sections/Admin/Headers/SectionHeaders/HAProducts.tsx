@@ -16,6 +16,7 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
   const [restaurants, setRestaurants] = useState([])
   const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`)
   const t2 = useTranslations(`Header`)
+  const t3 = useTranslations(`Select`)
   const [open, setOpen] = useState(true)
 
   useEffect(() => {
@@ -29,10 +30,10 @@ const AdminProducts: React.FC<IProducts> = ({ setSelected, setSearchValue }): JS
     <div className="flex  gap-[15px]  md:items-center mmd:flex-col">
       <Select onValueChange={setSelected}>
         <SelectTrigger className="min-w-[180px] border-none  bg-[#5A5B70] text-white mmd:w-full">
-          <SelectValue placeholder="Restaurant Type" />
+          <SelectValue placeholder={t3('restaurant')} />
         </SelectTrigger>
         <SelectContent className="bg-[#5A5B70] text-white">
-          <SelectItem value={'All'}>All</SelectItem>
+          <SelectItem value={'All'}>{t3('all')}</SelectItem>
 
           {restaurants?.map((restaurant: any) => (
             <SelectItem key={restaurant.$id} value={restaurant.$id}>

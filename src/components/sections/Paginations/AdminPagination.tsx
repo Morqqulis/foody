@@ -37,12 +37,10 @@ const Pagination: React.FC<IPagination> = ({ setCurrentPage, dataCount, currentP
       {pageCount.slice(previewCount, nextCount).map((num) => (
         <button
           key={num}
-          className={`flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-[100px] border border-[#EC5CF8]  ${currentPage === num && 'bg-[#EC5CF8]'}`}
+          onClick={() => setCurrentPage(num)}
+          className={`flex h-[64px] w-[64px]  cursor-pointer items-center justify-center rounded-[100px] border border-[#EC5CF8]  ${currentPage === num && 'bg-[#EC5CF8]'}`}
         >
-          <p
-            className={`h-[22px] w-[62px] text-center text-[18px] font-extrabold ${currentPage === num ? 'text-white' : 'text-[#EC5CF8]'}`}
-            onClick={() => setCurrentPage(num)}
-          >
+          <p className={`h-[22px] w-[62px] text-center text-[18px]  font-extrabold ${currentPage === num ? 'text-white' : 'text-[#EC5CF8]'}`}>
             {num}
           </p>
         </button>

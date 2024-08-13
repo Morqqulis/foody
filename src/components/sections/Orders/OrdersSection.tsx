@@ -31,11 +31,11 @@ const OrdersSection: React.FC = (): JSX.Element => {
 
   const t = useTranslations('Admin.Products.Modal')
   const t2 = useTranslations('OrdersSection')
-
+  const t3 = useTranslations('Table')
   useEffect(() => {
     const token = localStorage.getItem('userId')
     if (token != '') setUserId(token)
-        
+
     const handleStorageChange = () => {
       const updatedToken = localStorage.getItem('userId')
       setUserId(updatedToken || '')
@@ -69,9 +69,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
       window.removeEventListener('storage', handleStorageChange)
     }
   }, [userId])
-
-  const headers = ['ID', 'Time', 'Delivery Address', 'Amount', 'Payment Method', 'Contact', '']
-
+  const headers = [t3('id'), t3('time'), t3('deliveryAdress'), t3('amount'), t3('paymentMethod'), t3('contact'), '']
   const filteredData = orders.slice((currentPage - 1) * perPage, currentPage * perPage).map((order) => {
     const { id, amount, phone, basket, address, payment, time } = order
     const updatesOrder = {
@@ -82,8 +80,7 @@ const OrdersSection: React.FC = (): JSX.Element => {
       payment,
       phone
     }
-
-    const basketHeader = ['Image', 'Name', 'Price $', 'Count', 'Amount']
+    const basketHeader = [t3('image'), t3('name'), t3('price') + ' $', t3('count'), t3('amount')]
     const updatesBasket = basket.map((item: any) => {
       const { image, name, price, quantity } = item
       return {

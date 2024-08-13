@@ -18,16 +18,17 @@ const AdminRestaurants: React.FC<IAdminRestaurants> = ({ setSelected }): JSX.Ele
       setCategories(categories.documents)
     })()
   }, [])
-
+  
   const t = useTranslations(`Admin.Restaurants.AddRestaurant.Sheet.imageBlock`)
+  const t2=useTranslations("Select")
   return (
     <div className="flex gap-[15px] md:items-center md:justify-center  mmd:flex-col ">
       <Select onValueChange={setSelected}>
         <SelectTrigger className="min-w-[180px] border-none bg-[#5A5B70] text-white mmd:w-full">
-          <SelectValue placeholder="Category Type" />
+          <SelectValue placeholder={t2('category')}/>
         </SelectTrigger>
         <SelectContent className="bg-[#5A5B70] text-white">
-          <SelectItem value={'All'}>All</SelectItem>
+          <SelectItem value={'All'}>{t2("all")}</SelectItem>
           {categories?.map((restaurant: any) => (
             <SelectItem key={restaurant.$id} value={restaurant.$id}>
               {restaurant.name}

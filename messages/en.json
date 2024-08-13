@@ -1,12 +1,6 @@
 {
   "Header": {
-    "menu": [
-      "Home",
-      "Restaurants",
-      "About",
-      "How it works",
-      "FAQs"
-    ],
+    "menu": ["Home", "Restaurants", "About", "How it works", "FAQs"],
     "search": "Search...",
     "more": "More",
     "signUp": "Sign Up",
@@ -17,28 +11,15 @@
     "text": "Follow Us: Stay updated with our latest promotions and restaurant partners on our social media channels",
     "popular": {
       "title": "Popular",
-      "links": [
-        "Programming",
-        "Books for children",
-        "Psychology",
-        "Business"
-      ]
+      "links": ["Programming", "Books for children", "Psychology", "Business"]
     },
     "cash": {
       "title": "Cash",
-      "links": [
-        "Delivery",
-        "Payment",
-        "About the store"
-      ]
+      "links": ["Delivery", "Payment", "About the store"]
     },
     "help": {
       "title": "Help",
-      "links": [
-        "Contacts",
-        "Purchase returns",
-        "Buyer help"
-      ]
+      "links": ["Contacts", "Purchase returns", "Buyer help"]
     },
     "copyright": "All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy"
   },
@@ -81,11 +62,7 @@
       ]
     },
     "Food": {
-      "titles": [
-        "Menu That Always Make You Fall In Love",
-        "Yummy Always Papa John’s Pizza.Agree?",
-        "Do You Like French Fries? Mmm..."
-      ],
+      "titles": ["Menu That Always Make You Fall In Love", "Yummy Always Papa John’s Pizza.Agree?", "Do You Like French Fries? Mmm..."],
       "texts": [
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
         "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
@@ -195,6 +172,7 @@
       }
     },
     "Products": {
+      "title": "Products",
       "Modal": {
         "title": "Are you sure it’s deleted ?",
         "text": "Attention! If you delete this product, it will not come back",
@@ -210,12 +188,7 @@
           },
           "InfoBlock": {
             "text": "Edit your Product description and necessary information",
-            "labels": [
-              "Name",
-              "Description",
-              "Price",
-              "Restaurants"
-            ],
+            "labels": ["Name", "Description", "Price", "Restaurants"],
             "name": "Name",
             "description": "Description",
             "price": "Price",
@@ -237,7 +210,6 @@
       "image": "Image",
       "name": "Name",
       "slug": "Slug",
-      "actions": "Actions",
       "addCategory": "Add Category",
 
       "EditCategory": {
@@ -377,6 +349,12 @@
           "submitBtn": "Edit Offer"
         }
       }
+    },
+    "Orders": {
+      "title": "Orders"
+    },
+    "History": {
+      "title": "History"
     }
   },
 
@@ -455,33 +433,24 @@
   },
 
   "ProfileSection": {
-    "profile": "Profile"
-  },
+    "profile": "Profile",
 
-  "ProfileForm": {
-    "upload": "Upload Avatar",
-    "contact": "Contact Number",
-    "email": "Email Address",
-    "username": "Username",
-    "address": "Address",
-    "fullName": "Full Name",
-    "save": "Save",
-    "contactPlaceholder": "+994",
-    "emailPlaceholder": "info@eacamp.com",
-    "usernamePlaceholder": "eacampm1",
-    "addressPlaceholder": "Ataturk 45 Ganclik Baku",
-    "fullNamePlaceholder": "Fuad Pashayev"
-  },
-
-  "AdminOrders": {
-    "Products": {
-      "Modal": {
-        "deleteBtn": "Delete",
-        "title": "Are you sure you want to delete this order?",
-        "text": "This action cannot be undone.",
-        "cancelBtn": "Cancel"
-      }
+    "ProfileForm": {
+      "upload": "Upload",
+      "contact": "Contact",
+      "email": "Email",
+      "username": "Username",
+      "address": "Address",
+      "fullName": "Full Name",
+      "save": "Save"
     }
+  },
+
+  "DeleteModal": {
+    "deleteBtn": "Delete",
+    "title": "Are you sure you want to delete this order?",
+    "text": "This action cannot be undone.",
+    "cancelBtn": "Cancel"
   },
 
   "OrdersSection": {
@@ -509,5 +478,26 @@
   "ProductList": {
     "title": "Products",
     "description": "Prepared with quality, a slice of cheese and special sauce"
+  },
+  "Table": {
+    "id": "ID",
+    "customerId": "Customer ID",
+    "time": "Time",
+    "deliveryAdress": "Delivery Adress",
+    "amount": "Amount",
+    "paymentMethod": "Payment Method",
+    "contact": "Contact",
+    "image": "Image",
+    "name": "Name",
+    "price": "Price",
+    "count": "Count"
+  },
+  "Pagination": {
+    "rowsPerPage": "Rows per page"
+  },
+  "Select": {
+    "all": "All",
+    "category":"Category type",
+    "restaurant":"Restaurant type"
   }
 }

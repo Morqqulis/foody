@@ -155,7 +155,6 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
     form.reset()
     setFileUrl(null)
     setFile(null)
-    setFormattedSelectOption([])
     setPrevValue(null)
 
     toast({
@@ -169,7 +168,7 @@ const Myform: React.FC<IMyform> = ({ whatIs, actionId }): JSX.Element => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col h-[calc(100vh-70px)] gap-8 mmd:w-full">
+      <form onSubmit={form.handleSubmit(submit)} className="flex flex-col h-[calc(100vh-70px)] gap-8 mmd:w-full overflow-x-auto">
         <div className="flex items-center justify-between md:gap-10 mmd:flex-col">
           <div className="flex basis-1/3 flex-col gap-2">
             <p className="flex h-[32px] items-center text-[18px] font-medium leading-[24px] text-[#C7C7C7] mmd:w-full">

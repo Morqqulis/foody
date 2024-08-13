@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react'
 import { subscribeToCollection } from '../../../../utls/functions'
 import SectionHeader from '../Headers/SectionHeaders/SectionHeader'
 import RestaurantCard from './RestaurantCard'
+import { useTranslations } from 'next-intl'
 const RestaurantsSection: React.FC = (): JSX.Element => {
   const [restaurants, setRestaurants] = useState([])
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const t=useTranslations('Admin.Restaurants')
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.restaurantsId, setRestaurants)
@@ -25,7 +27,7 @@ const RestaurantsSection: React.FC = (): JSX.Element => {
 
   return (
     <section>
-      <SectionHeader title="Restaurants" setSelected={setSelectedCategory} />
+      <SectionHeader title={t("Title")} setSelected={setSelectedCategory} />
       <div className="mt-12 flex">
         <div className={`grid grid-cols-4 items-center !gap-6`}>
           {filteredRestaurants?.map((restaurant) => (
