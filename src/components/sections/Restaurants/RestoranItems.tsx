@@ -47,11 +47,6 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
       ;(async () => {
         if (basketId) {
           await databases.updateDocument(dbId, collections.basketId, basketId, { productsList: strBasket })
-        } else {
-          if (basket.length > 0) {
-            const newBasket = await databases.createDocument(dbId, collections.basketId, ID.unique(), { user: userId, productsList: strBasket })
-            setBasketId(newBasket.$id)
-          }
         }
       })()
     }
