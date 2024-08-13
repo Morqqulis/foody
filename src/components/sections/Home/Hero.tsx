@@ -21,12 +21,23 @@ const Hero: React.FC<IHero> = (): JSX.Element => {
     const token = localStorage.getItem('userId')
     setUserId(token || '')
 
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken || '')
+    }
+
     if (heroRef.current && imageRef.current && textRefs.current.length) {
       gsap.fromTo(heroRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1 })
       gsap.fromTo(imageRef.current, { opacity: 0, x: 100 }, { opacity: 1, x: 0, duration: 1, delay: 0.5 })
       textRefs.current.forEach((el, index) => {
         gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.5 + index * 0.3 })
       })
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
     }
   }, [])
 

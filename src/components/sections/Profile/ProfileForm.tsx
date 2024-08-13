@@ -33,6 +33,13 @@ const ProfileForm: FC = (): JSX.Element => {
     const token = localStorage.getItem('userId')
     if (token != '') setUserId(token)
 
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      if (updatedToken != '') setUserId(updatedToken)
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
     if (userId) {
       ;(async () => {
         const data = await getDocuments(collections.userId, userId)
@@ -40,6 +47,10 @@ const ProfileForm: FC = (): JSX.Element => {
         const info = { ...JSON.parse(data.userInfo), email }
         setUser(info)
       })()
+    }
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
     }
   }, [userId])
 

@@ -21,7 +21,7 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
   const t = useTranslations('RestaurantCard')
   return (
     <Link
-      className={`group/rest-card relative flex h-fit w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl`}
+      className={`group/rest-card relative flex  h-full w-full max-w-[235px] flex-col whitespace-nowrap rounded-md p-5 duration-300 hover:scale-105 hover:shadow-2xl`}
       style={{ boxShadow: '0px 0px 5px 3px rgba(0, 0, 0, 0.25)' }}
       href={`/restaurants/${data.name + '__' + data.$id}`}
     >
@@ -35,11 +35,11 @@ const RestaurantCard: FC<IRestCard> = ({ data }): JSX.Element => {
       />
       <h3 className={`mb-2.5 text-lg font-bold text-gray-2`}>{data.name}</h3>
       <p className={`mb-5 grow`}>{data.cuisine}</p>
-      <div className={`flex items-center justify-between gap-2.5`}>
+      <div className={`flex flex-wrap items-center justify-between gap-2.5`}>
         <span className={`text-base font-bold text-gray-2`}>
           ${data.deliveryPrice} {t('delivery')}
         </span>
-        <span className={`w-full max-w-[80px] whitespace-normal rounded-full bg-mainRed py-1 text-center font-medium text-white`}>
+        <span className={`whitespace-nowrap rounded-full bg-mainRed px-5 py-1 text-center font-medium text-white`}>
           {data.deliveryMin} {t('minutes')}
         </span>
       </div>

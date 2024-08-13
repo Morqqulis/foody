@@ -17,7 +17,14 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
 
   useEffect(() => {
     const token = localStorage.getItem('userId')
-    setUserId(token || '')
+    if (token !== '') setUserId(token)
+
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem('userId')
+      setUserId(updatedToken)
+    }
+
+    window.addEventListener('storage', handleStorageChange)
 
     if (!userId) return
     ;(async () => {
@@ -28,6 +35,10 @@ const RestoranItems: React.FC<IproductsSection> = ({ restId }): JSX.Element => {
         prevBasket ? setBasket(JSON.parse(prevBasket)) : setBasket([])
       }
     })()
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [userId])
 
   useEffect(() => {

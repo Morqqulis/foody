@@ -48,8 +48,10 @@ const LoginForm: React.FC<ILoginForm> = ({ name = 'login' }: ILoginForm): JSX.El
         duration: 2000
       })
 
-      router.push('/user')
+      window.dispatchEvent(new Event('storage'))
+      
       form.reset()
+      router.push('/user')
     }
 
     setIsLoading(false)
