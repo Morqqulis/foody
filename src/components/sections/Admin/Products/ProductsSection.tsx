@@ -13,6 +13,7 @@ const ProductsSection: FC = (): JSX.Element => {
   const [selectedRestaurant, setSelectedRestaurant] = useState('All')
   const [searchValue, setSearchValue] = useState('')
   const t = useTranslations('Admin.Products')
+
   useEffect(() => {
     ;(async () => {
       const data = await subscribeToCollection(collections.productsId, setProducts)
@@ -31,8 +32,9 @@ const ProductsSection: FC = (): JSX.Element => {
     }
     selectedRestaurant === 'All'
       ? setFilteredProducts(products)
-      : setFilteredProducts(products.filter((doc) => doc.restaurant.$id === selectedRestaurant))
+      : (setFilteredProducts(products.filter((doc) => doc.restaurant.$id === selectedRestaurant)), setCurrentPage(1))
   }, [searchValue, selectedRestaurant, products])
+
   const productsPerPage = 10
   const firstIndex = (currentPage - 1) * productsPerPage
   const secondIndex = currentPage * productsPerPage
