@@ -57,7 +57,8 @@ const Searchbar: React.FC<Isearchbar> = ({ setShowModal, value, setInputValue })
         ) : (
           filteredValues.map((restaurant) => (
             <Link
-              href={`/restaurants/${restaurant.$id}`}
+    href={`/restaurants/${restaurant.name + '__' + restaurant.$id}`}
+
               key={restaurant.$id}
               onClick={() => {
                 setShowModal(false)
