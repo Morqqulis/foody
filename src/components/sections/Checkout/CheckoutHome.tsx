@@ -203,7 +203,7 @@ function CheckoutHome() {
                   </FormItem>
                 )}
               />
-              <Button className={`bg-[#6FCF97] py-7 duration-300 hover:bg-mainRed`} type="submit">
+              <Button disabled={basket.length === 0}  className={`bg-[#6FCF97] py-7 duration-300 hover:bg-mainRed`} type="submit">
                 {t('submitButton')}
               </Button>
             </form>
